@@ -61,7 +61,7 @@ html(lang="en")
       a(onclick='scrollToTop("html, body")')
         span(class=content.footer.icon, aria-hidden='true')
         p=content.footer.backtotop
-        p(id='small')='Version ' + version
+        p(id='small')!='Version ' + version + '<br>'
           small(title='Copyright Notice')!=content.footer.copyright
             - var date = new Date()
             time(datetime=(date.toISOString()))=date.getFullYear()
