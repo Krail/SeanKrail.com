@@ -57,8 +57,9 @@ html(lang="en")
               else
                 a(title=contact.title, href=contact.href) #[span(class=contact.icon, aria-hidden='true')] #{contact.text}
       //a(href='#top')
-      - var onclick = (page == 'projects' ? 'hide(); ' : '') + 'scrollToTop("html, body")'
-      a(onclick=onclick)
+      //- var onclick = (page == 'projects' ? 'hide(); ' : '') + 'scrollToTop("html, body")'
+      //a(onclick=onclick)
+      a(onclick='scrollToTop("html, body")')
         span(class=content.footer.icon, aria-hidden='true')
         p=content.footer.backtotop
         p(id='small')
