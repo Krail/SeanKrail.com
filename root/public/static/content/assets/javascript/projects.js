@@ -99,12 +99,12 @@ function toggle(x) {
           duration: 500,
           easing: 'easeInOutQuart',
           start: function(animation) {
-            $('html, body').addClass('stop-scrolling');
-            $('html, body').bind('touchmove', function(event){event.preventDefault()});
+            //$('html, body').addClass('stop-scrolling');
+            //$('html, body').bind('touchmove', function(event){event.preventDefault()});
           },
           complete: function() {
-            $('html, body').removeClass('stop-scrolling');
-            $('html, body').unbind('touchmove');
+            //$('html, body').removeClass('stop-scrolling');
+            //$('html, body').unbind('touchmove');
           }
         });
         if (display !== 'block') {
@@ -145,12 +145,12 @@ function show(x) {
           duration: 500,
           easing: 'easeInOutQuart',
           start: function(animation) {
-            $('html, body').addClass('stop-scrolling');
-            $('html, body').bind('touchmove', function(event){event.preventDefault()});
+            //$('html, body').addClass('stop-scrolling');
+            //$('html, body').bind('touchmove', function(event){event.preventDefault()});
           },
           complete: function() {
-            $('html, body').removeClass('stop-scrolling');
-            $('html, body').unbind('touchmove');
+            //$('html, body').removeClass('stop-scrolling');
+            //$('html, body').unbind('touchmove');
           }
         });
         //scrollToTop('#' + element + 'Article');
@@ -183,12 +183,12 @@ function hide() {
           duration: 500,
           easing: 'easeInOutQuart',
           start: function(animation) {
-            $('html, body').addClass('stop-scrolling');
-            $('html, body').bind('touchmove', function(event){event.preventDefault()});
+            //$('html, body').addClass('stop-scrolling');
+            //$('html, body').bind('touchmove', function(event){event.preventDefault()});
           },
           complete: function() {
-            $('html, body').removeClass('stop-scrolling');
-            $('html, body').unbind('touchmove');
+            //$('html, body').removeClass('stop-scrolling');
+            //$('html, body').unbind('touchmove');
           }
         });
       }
