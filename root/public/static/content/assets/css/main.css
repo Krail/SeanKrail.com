@@ -121,7 +121,8 @@ main > section {
   margin: 0;
 	margin-top: 1vw;
   border: 0;
-  padding: 0
+  padding: 0;
+  border: 0.2vw solid white;
 }
 main#resume > section > img {
   display: block;
@@ -175,7 +176,6 @@ main > section > ul > li {
 	-moz-flex: auto;
 	flex: auto;
 	width: 50%;
-	border: 0.2vw solid white;
 }
 main > section > ul > li:first-child {border-right-width: 0.1vw}
 main > section > ul > li:last-child {border-left-width: 0.1vw}
@@ -232,6 +232,7 @@ main > form > button {
   width: 10vw;
 }
 main > section > ul > li {
+  display: block;
 	font-family: lato-heavy;
 	line-height: 3vw;
 	font-size: 1.5vw;

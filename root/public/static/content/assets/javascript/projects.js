@@ -139,7 +139,8 @@ function hide() {
 	pauseAllVideos(); // pause all active videos
   project_id.forEach(
     function(element, index, array) {
-      if (document.getElementById(element).style.display === 'block') {
+      console.log()
+      if (document.getElementById(element).style.display !== 'none') {
         $('#' + element).slideUp({
           duration: 500,
           easing: 'easeInOutQuart',
