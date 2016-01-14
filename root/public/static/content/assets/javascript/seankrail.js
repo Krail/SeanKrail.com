@@ -12,8 +12,8 @@ var TAG = 'seankrail.js :: ';
 /* HELPER FUNCTIONS */
 
 
-function stopScrolling() { document.body.setAttribute('class', 'stop-scrolling'); }
-function startScrolling() { document.body.removeAttribute('class'); }
+function stopScrolling() { document.body.setAttribute('class', 'stop-scrolling'); console.log(TAG + 'stopScrolling() -> ' + document.body.getAttribute('class')); }
+function startScrolling() { document.body.removeAttribute('class'); console.log(TAG + 'stopScrolling() -> ' + document.body.getAttribute('class')); }
 
 /* Scroll to top of element if not already viewable in window */
 function scrollIntoView(selector) {
