@@ -42,7 +42,8 @@ span.glyphicon {
 }
 
 .stop-scrolling {
-  overflow: hidden
+  overflow: hidden;
+  height: 100%
 }
 
 
@@ -66,6 +67,8 @@ h2:after, h3:after, h4:after {
 
 body {
 	display: block;
+  overflow: auto;
+  height: auto;
 	background-color: #CC9;
 	font-family: lato-regular, Helvetica, sans;
   padding-left: 11vw;
