@@ -7,24 +7,24 @@ html(lang="en")
     meta(name="author", content="Sean Krail")
     link(rel='icon', href='/static/content/assets/images/ico/favicon.ico')
     meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
-    
+
     //Bootstrap core CSS. If no theme is passed in, we'll default to the theme called 'flatly'.
     if theme
       link(href="/static/bootstrap/css/theme/" + theme + "/bootstrap.css", rel="stylesheet")
     else
     link(href="/static/bootstrap/css/theme/flatly/bootstrap.css", rel="stylesheet")
-    
+
     // Needs to be removed
     link(href='/static/content/assets/css/style.css', rel='stylesheet', type='text/css')
-    
+
     link(href='/static/content/assets/css/header.css', rel='stylesheet', type='text/css')
     link(href='/static/content/assets/css/main.css', rel='stylesheet', type='text/css')
     link(href='/static/content/assets/css/footer.css', rel='stylesheet', type='text/css')
-      
+
     //Custom styles for this template
     //link(href="/static/bootstrap/css/jumbotron-narrow.css", rel="stylesheet")
   body
-  
+
     header
       a(id='title', title='My Home', type='text/html', href='/')
         h1=content.header.title
@@ -39,9 +39,9 @@ html(lang="en")
                 a(id='#{li.name=== page ? "page" : ""}', type='text/html', href=li.url) !{li.name=== "home" ? "" : li.name} #[span(class=li.icon, aria-hidden='true')]
               else
                 a(id='#{li.name=== page ? "page" : ""}', type='text/html', href=li.url) #[span(class=li.icon, aria-hidden='true')] !{li.name=== "home" ? "" : li.name}
-                
+
     block content
-    
+
     footer
       ul
         - var numContact = 0

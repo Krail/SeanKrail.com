@@ -116,7 +116,7 @@ main > article.home > p.time {
 
 /* Resume Main */
 main#resume {height: auto; margin: 0}
-main#resume > section {
+main > section {
 	background-color: white;
   margin: 0;
 	margin-top: 1vw;
@@ -156,7 +156,7 @@ main#resume > section > header > h4 {
 	padding-left: 5vw;
 	padding-right: 5vw
 }
-main#resume > section > ul {
+main > section > ul {
 	display: -webkit-flex;
 	display: flex;
 	list-style: none;
@@ -167,7 +167,7 @@ main#resume > section > ul {
 	padding: 0;
 	width: 100%;
 }
-main#resume > section > ul > li {
+main > section > ul > li {
 	display: -webkit-inline-flex;
 	display: inline-flex;
 	-webkit-flex: auto;
@@ -177,8 +177,8 @@ main#resume > section > ul > li {
 	width: 50%;
 	border: 0.2vw solid white;
 }
-main#resume > section > ul > li:first-child {border-right-width: 0.1vw}
-main#resume > section > ul > li:last-child {border-left-width: 0.1vw}
+main > section > ul > li:first-child {border-right-width: 0.1vw}
+main > section > ul > li:last-child {border-left-width: 0.1vw}
 main#resume > section > ul > li > a {
 	display: block;
 	font-family: lato-heavy;
@@ -231,6 +231,18 @@ main > form > button {
   height: 100%;
   width: 10vw;
 }
+main > section > ul > li {
+	font-family: lato-heavy;
+	line-height: 3vw;
+	font-size: 1.5vw;
+	color: #CC9;
+	background-color: white;
+	transition: background-color 2s;
+	text-decoration: none;
+}
+main > section > ul > li:hover {background-color: rgb(17,75,133)}
+main > section > ul > li:active {background-color: black}
+
 main > article.project {background-color: #CC9}
 main > article.project > header {display: block; background-color: white; padding: 0.5vw; cursor: pointer; transition: background-color 2s;}
 main > article.project > header:hover {background-color: lightcyan}

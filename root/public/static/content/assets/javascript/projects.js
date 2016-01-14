@@ -135,14 +135,14 @@ function toggle(x) {
 }
 
 /* Expands project 'x' and collapses all of the other projects */
-function show(x) {
+function show() {
 	"use strict";
 	//pauseAllVideos(); // pause all active videos
   project_id.forEach( // Iterate through all of the projects
     function(element, index, array) {
       var display = document.getElementById(element).style.display;
       // New
-      if (element === x) {
+      if (display !== 'block') {
         $('#' + element).slideDown({
           duration: 500,
           easing: 'easeInOutQuart',
@@ -158,7 +158,7 @@ function show(x) {
           }
         });
         //scrollToTop('#' + element + 'Article');
-        playAllVideos(x);
+        playAllVideos(element);
       }
       // Old
       /*

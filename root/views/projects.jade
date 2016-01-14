@@ -1,16 +1,23 @@
 extends layout
 
 block content
-  //div(class="container")
   main(role='main')
-    //hr
+    // Error messages
     div(id='length', class="alert alert-danger", role="alert", style='display:none') #[span(class="glyphicon glyphicon-exclamation-sign" aria-hidden="true")] #[span(class="sr-only") Error:] Shorten your search criteria (30-character maximum)
     div(id='letters', class="alert alert-danger", role="alert", style='display:none') #[span(class="glyphicon glyphicon-exclamation-sign" aria-hidden="true")] #[span(class="sr-only") Error:] Only letters, spaces, and a few #[i necessary] special characters are allowed in the search field
+    // Search field
     form(id='form', action='/projects', method='post')
       input(id='searchfield', name='searchfield', class='search', type='text', placeholder='Search for a topic here... (e.g. VLSI, Cadence, Android, JavaScript, etc.)', onkeyup='keyup()')
       //input(class='submit', type='submit', value='Search')
       button(id='submitbutton', form='form', class='btn btn-default', type='submit', value='Submit', style="vertical-align: top")
         span(class=content.projects.icon, aria-hidden='true')
+    // Expand/collapse project articles
+    section
+      ul
+        li(onclick='show()') Expand All #[span(class="glyphicon glyphicon-collapse-down" aria-hidden="true")]
+      ul
+        li(onclick='hide()') Collapse All #[span(class="glyphicon glyphicon-collapse-up" aria-hidden="true")]
+    // Project articles
     - var numPro = 0
     each pro in content.projects.hard
       - numPro++
@@ -31,8 +38,10 @@ block content
                   div
                     header
                       h3=section.title
-                    iframe(src=section.src)
-                    //video(src=section.src, controls, loop, muted, preload)
+                    if section.platform == 'vimeo'
+                      iframe(src=section.src)
+                    else
+                      video(src=section.src, controls, loop, muted, preload)
               else if section.type == 'image'
                 section(class='subfloater')
                   div
@@ -54,3 +63,8 @@ block content
                         h3=subsection.title
                       each paragraph in subsection.paragraphs
                         p!=paragraph
+    section
+      ul
+        li(onclick='show()') Expand All #[span(class="glyphicon glyphicon-collapse-down" aria-hidden="true")]
+      ul
+        li(onclick='hide()') #[span(class="glyphicon glyphicon-collapse-up" aria-hidden="true")] Collapse All
