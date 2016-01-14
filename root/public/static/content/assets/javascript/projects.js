@@ -119,13 +119,9 @@ function show() {
       if (document.getElementById(element).style.display !== 'block') {
         $('#' + element).slideDown({
           duration: 500,
-          easing: 'easeInOutQuart',
-          start: function(animation) {
-            stopScrolling();
-          },
-          complete: function() {
-            startScrolling();
-          }
+          easing: 'easeInOutQuart'/*,
+          start: function(animation) { stopScrolling(); },
+          complete: function() { startScrolling(); }*/
         });
         playAllVideos(element);
       }
@@ -143,9 +139,9 @@ function hide() {
       if (document.getElementById(element).style.display !== 'none') {
         $('#' + element).slideUp({
           duration: 500,
-          easing: 'easeInOutQuart',
+          easing: 'easeInOutQuart'/*,
           start: function(animation) { stopScrolling(); },
-          complete: function() { startScrolling(); }
+          complete: function() { startScrolling(); }*/
         });
         pauseAllVideos(element);
       }
