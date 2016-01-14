@@ -35,8 +35,6 @@ html(lang="en")
           each li in content.header.nav
             - numLi++
             li
-              p #{"numLi: " + numLi + ", length: " + length + ", (numLi / length): " + (numLi / length) + ", (length / 2): " + (length / 2) + "."}
-              p #{"" + (numLi / length) + " " + (length / 2)}
               if numLi <= (length / 2)
                 a(id='#{li.name=== page ? "page" : ""}', type='text/html', href=li.url) !{li.name=== "home" ? "" : li.name} #[span(class=li.icon, aria-hidden='true')]
               else
