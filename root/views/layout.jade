@@ -36,9 +36,9 @@ html(lang="en")
             - numLi++
             li
               if numLi <= (length / 2)
-                a(id='#{if(li.name === page) "page"}', type='text/html', href=li.url) #{if(li.name !== 'home') li.text} #[span(class=li.icon, aria-hidden='true')]
+                a(id='#{li.name === page ? "page" : ""}', type='text/html', href=li.url) !{li.name === "home" ? "" : li.text} #[span(class=li.icon, aria-hidden='true')]
               else
-                a(id='#{if(li.name === page) "page"}', type='text/html', href=li.url) #[span(class=li.icon, aria-hidden='true')] #{if(li.name !== 'home') li.text}
+                a(id='#{li.name === page ? "page" : ""}', type='text/html', href=li.url) #[span(class=li.icon, aria-hidden='true')] !{li.name === "home" ? "" : li.text}
 
     block content
 
