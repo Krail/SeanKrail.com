@@ -38,9 +38,9 @@
 /***************************/
 
 .glyphicon { vertical-align: text-top; font-size: 1.5vw }
-.glyphicon-search { font-size: 2vw }
+.glyphicon-search { vertical-align: baseline; font-size: 2vw }
 .btn-default {
-  color: white;
+  color: #CC9;
   background-color: white;
   border: 0.2vw solid white;
   padding: 0.5vw 1vw
@@ -48,11 +48,11 @@
 .btn {
   vertical-align: top;
   border-radius: 0;
-  border-top-right-radius: 1vw;
-  border-top-right-radius: 1vw;
+  border-top-left-radius: 1vw;
+  border-bottom-left-radius: 1vw;
 }
-.btn:hover { background-color: rgb(17,75,133) }
-.btn:focus { background-color: black; outline: none }
+.btn:hover { background-color: rgb(17,75,133); border-color: white }
+.btn:focus { background-color: black; border-color: white; outline: none }
 
 
 /**********************/
