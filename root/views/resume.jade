@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  //div(class="container")
+    //hr
+    //article(style="padding-top:2%")
+  main(id='resume')
+    section
+      header
+        h3=content.resume.title
+      img(src=content.resume.image.src, alt=content.resume.image.alt)
+    section
+      header
+        h4 #[span(class='glyphicon glyphicon-download', aria-hidden='true')] #{content.resume.download.title} #[span(class='glyphicon glyphicon-download', aria-hidden='true')]
+      ul
+        each format in content.resume.download.formats
+          li
+            a(title=format.title, type=format.type, href=format.href, download=format.download)=format.text

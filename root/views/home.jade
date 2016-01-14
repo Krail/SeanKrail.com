@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  //div(class='container')
+  main
+    each article in content.home.articles
+      //hr
+      article(class='home')
+        header
+          h3()=article.heading
+        //hr(width='75%')
+        each paragraph in article.paragraphs
+          p!=paragraph
+        p(class='time')
+          //small
+          - var date = new Date(article.date)
+          time(datetime=(date.toISOString()))=date.toDateString()

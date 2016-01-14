@@ -1,0 +1,29 @@
+{
+  "title": "My Resume",
+  "image":
+  {
+    "src": "/static/content/assets/resume/KrailSean-Resume.png",
+    "alt": "Sean's Resume"
+  },
+  "download":
+  {
+    "title": "Downloadable Formats",
+    "formats":
+    [
+      {
+        "title": "Download in PDF Format",
+        "type": "application/pdf",
+        "href": "/static/content/assets/resume/KrailSean-Resume.pdf",
+        "download": "KrailSean-Resume.pdf",
+        "text": "PDF"
+      },
+      {
+        "title": "Download in PNG Format",
+        "type": "image/png",
+        "href": "/static/content/assets/resume/KrailSean-Resume.png",
+        "download": "KrailSean-Resume.png",
+        "text": "PNG"
+      }
+    ]
+  }
+}

@@ -1,0 +1,102 @@
+@charset "UTF-8";
+
+/****************/
+/* Footer Layer */
+/****************/
+
+footer {
+	display: block;
+	background-color: white;
+	border: 0.2vw solid white;
+	margin: 0;
+	padding: 0;
+	margin-top: 1vw;
+}
+
+/* Contact Information */
+footer > ul {
+	list-style: none;
+	font-size: 0;
+	text-align: center;
+	display: -webkit-flex;
+	display: flex;
+	margin: 0;
+	padding: 0
+}
+footer > ul > li {
+	display: -webkit-inline-flex;
+	display: inline-flex;
+	-webkit-flex: auto;
+	-ms-flex: auto;
+	-moz-flex: auto;
+	flex: auto;
+	border-width: 0;
+	padding: 0;
+	margin: 0
+}
+footer > ul > li > address {
+  display: block;
+  font-style: normal;
+  font-family: lato-thin;
+  margin: 0;
+  line-height: 3vw;
+  font-size: 2vw;
+  width: 100%
+}
+footer > ul > li > address > a {
+  display: block;
+  color: black;
+  background-color: white;
+  text-decoration: none;
+  width: 100%;
+  transition: color 2s, background-color 2s
+}
+footer > ul > li > address > a:hover {
+  color: white;
+  background-color: rgb(17,75,133)
+}
+footer > ul > li > address > a:active {
+  background-color: black
+}
+
+/* Top of the Page Link */
+footer > a {
+	/*height: 10vw;*/
+	display: block;
+	text-decoration: none;
+	font-weight: bold;
+	color: #CC9;
+	background-color: white;
+	margin: 0;
+	padding: 0;
+	padding-top: 1vw;
+	transition: background-color 2s;
+}
+footer > a:link {
+  color: #CC9
+}
+footer > a:hover {
+  background-color: rgb(17,75,133)
+}
+footer > a:active {
+  background-color: black
+}
+footer > a > span {
+  width: 100%;
+  text-align: center
+}
+footer > a > p {
+  text-align: center;
+  font-size: 1.5vw
+}
+
+/* Copyright Text */
+footer > a > p#small {
+  text-align: right;
+  font-size: 0.7vw;
+  padding: 0.5vw;
+  margin: 0;
+}
+footer > a > p#small > small {
+  font-weight: normal
+}

@@ -1,0 +1,56 @@
+extends layout
+
+block content
+  //div(class="container")
+  main(role='main')
+    //hr
+    div(id='length', class="alert alert-danger", role="alert", style='display:none') #[span(class="glyphicon glyphicon-exclamation-sign" aria-hidden="true")] #[span(class="sr-only") Error:] Shorten your search criteria (30-character maximum)
+    div(id='letters', class="alert alert-danger", role="alert", style='display:none') #[span(class="glyphicon glyphicon-exclamation-sign" aria-hidden="true")] #[span(class="sr-only") Error:] Only letters, spaces, and a few #[i necessary] special characters are allowed in the search field
+    form(id='form', action='/projects', method='post')
+      input(id='searchfield', name='searchfield', class='search', type='text', placeholder='Search for a topic here... (e.g. VLSI, Cadence, Android, JavaScript, etc.)', onkeyup='keyup()')
+      //input(class='submit', type='submit', value='Search')
+      button(id='submitbutton', form='form', class='btn btn-default', type='submit', value='Submit', style="vertical-align: top")
+        span(class=content.projects.icon, aria-hidden='true')
+    - var numPro = 0
+    each pro in content.projects.hard
+      - numPro++
+      //hr
+      article(id='#{pro.id}Article', class='project')
+        header(id='#{pro.id}Header', title='Click to expand/collapse', onclick='toggle(\'#{pro.id}\')')
+          div
+            img(title=pro.header.image.title, src=pro.header.image.src, alt=pro.header.image.alt)
+            div
+              h2!=pro.header.heading
+              each paragraph in pro.header.paragraphs
+                p!=paragraph
+        main(id=pro.id, style='display: none')
+          each section in pro.main.sections
+            section(class='floaters')
+              if section.type == 'video'
+                section(class='subfloater', style='width:100%')
+                  div
+                    header
+                      h3=section.title
+                    iframe(src=section.src)
+                    //video(src=section.src, controls, loop, muted, preload)
+              else if section.type == 'image'
+                section(class='subfloater')
+                  div
+                    header
+                      h3=section.title
+                    img(title=section.title, src=section.src)
+              else if section.type == 'full'
+                section(class='subfloater')
+                  div
+                    header
+                      h3=section.title
+                    each paragraph in section.paragraphs
+                      p!=paragraph
+              else if section.type == 'half'
+                each subsection in section.subsections
+                  section(class='subfloater')
+                    div
+                      header
+                        h3=subsection.title
+                      each paragraph in subsection.paragraphs
+                        p!=paragraph

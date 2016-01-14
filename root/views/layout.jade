@@ -1,0 +1,75 @@
+doctype default
+html(lang="en")
+  head
+    meta(charset="utf-8")
+    title=appTitle
+    meta(name="description", content="Public host for my resume and projects portfolio.")
+    meta(name="author", content="Sean Krail")
+    link(rel='icon', href='/static/content/assets/images/ico/favicon.ico')
+    meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
+    
+    //Bootstrap core CSS. If no theme is passed in, we'll default to the theme called 'flatly'.
+    if theme
+      link(href="/static/bootstrap/css/theme/" + theme + "/bootstrap.css", rel="stylesheet")
+    else
+    link(href="/static/bootstrap/css/theme/flatly/bootstrap.css", rel="stylesheet")
+    
+    // Needs to be removed
+    link(href='/static/content/assets/css/style.css', rel='stylesheet', type='text/css')
+    
+    link(href='/static/content/assets/css/header.css', rel='stylesheet', type='text/css')
+    link(href='/static/content/assets/css/main.css', rel='stylesheet', type='text/css')
+    link(href='/static/content/assets/css/footer.css', rel='stylesheet', type='text/css')
+      
+    //Custom styles for this template
+    //link(href="/static/bootstrap/css/jumbotron-narrow.css", rel="stylesheet")
+  body
+  
+    header
+      a(id='title', title='My Home', type='text/html', href='/')
+        h1=content.header.title
+      nav
+        ul
+          - var numLi = 0
+          - var length = content.header.nav.length
+          each li in content.header.nav
+            - numLi++
+            li
+              p #{"numLi: " + numLi + ", length: " + length + ", (numLi / length): " + (numLi / length) + ", (length / 2): " + (length / 2) + "."}
+              p #{"" + (numLi / length) + " " + (length / 2)}
+              if numLi <= (length / 2)
+                a(id='#{li.name=== page ? "page" : ""}', type='text/html', href=li.url) !{li.name=== "home" ? "" : li.name} #[span(class=li.icon, aria-hidden='true')]
+              else
+                a(id='#{li.name=== page ? "page" : ""}', type='text/html', href=li.url) #[span(class=li.icon, aria-hidden='true')] !{li.name=== "home" ? "" : li.name}
+                
+    block content
+    
+    footer
+      ul
+        - var numContact = 0
+        - var length = content.footer.contacts.length
+        each contact in content.footer.contacts
+          - numContact++
+          li
+            address
+              if numContact <= (length / 2)
+                a(title=contact.title, href=contact.href) #{contact.text} #[span(class=contact.icon, aria-hidden="true")]
+              else
+                a(title=contact.title, href=contact.href) #[span(class=contact.icon, aria-hidden='true')] #{contact.text}
+      //a(href='#top')
+      - var onclick = (page == 'projects' ? 'hide(); ' : '') + 'scrollToTop("html, body")'
+      a(onclick=onclick)
+        span(class=content.footer.icon, aria-hidden='true')
+        p=content.footer.backtotop
+        p(id='small')
+          small(title='Copyright Notice')!=content.footer.copyright
+            - var date = new Date()
+            time(datetime=(date.toISOString()))=date.getFullYear()
+    // 3rd party scripts
+    script(src="/static/jquery/jquery.js")
+    script(src="/static/jquery/jquery-ui.min.js")
+    script(src="/static/bootstrap/js/bootstrap.min.js")
+    // My scripts
+    script(src="/static/content/assets/javascript/seankrail.js")
+    if page == 'projects'
+      script(src="/static/content/assets/javascript/projects.js")

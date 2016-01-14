@@ -1,0 +1,31 @@
+{
+  "articles":
+  [
+    {
+      "heading": "Welcome to my page",
+      "paragraphs":
+      [
+        "It's finished construction and should be bug free in all modern browsers supporting html5. Have a look around! I'm going to be working on adding more of my projects to the site in the coming weeks. If you notice any bugs, feel free to email me about it.",
+        "This site primarily serves as a place to host my resume and college projects, although I also use this site for personal projects that require a server as well. I will add some of these projects to my projects page soon!",
+        "Thanks for visiting, <br> Sean"
+      ],
+      "date": "June 3, 2015, 2:45:00"
+    },
+    {
+      "heading": "Framework used for this site",
+      "paragraphs":
+      [
+        "I originally developed this site using pure HTML5, CSS3, and ECMAScript6 and hosted it on ApolloHosting.com in early February 2015 just before my Junior year Spring semester career fair at UD. Recently, I transformed the original code to Node.js with bootstrap ran on Amazon Web Services' BeanStalk. This was done so that I could do some server-side processing on my projects portfolio page, which is not made easy with ApolloHosting."
+      ],
+      "date": "December 22, 2015, 13:25:00"
+    },
+    {
+      "heading": "Font used on this site",
+      "paragraphs":
+      [
+        "The Lato font family is open source and is available as a free download under the <a title='SIL OFL 1.1' href='http://scripts.sil.org/OFL'>SIL Open Font License 1.1</a> at <a title='Lato Fonts Website' href='http://www.latofonts.com'>latofonts.com</a>"
+      ],
+      "date": "February 7, 2015, 12:15:00"
+    }
+  ]
+}

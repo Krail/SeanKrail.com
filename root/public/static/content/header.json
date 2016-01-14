@@ -1,0 +1,24 @@
+{
+  "title": "Sean Krail",
+  "nav":
+  [
+    {
+      "name": "projects",
+      "icon": "glyphicon glyphicon-folder-open",
+      "url": "/projects",
+      "text": "Projects"
+    },
+    {
+      "name": "home",
+      "icon": "glyphicon glyphicon-home",
+      "url": "/home",
+      "text": "Home"
+    },
+    {
+      "name": "resume",
+      "icon": "glyphicon glyphicon-file",
+      "url": "/resume",
+      "text": "Resume"
+    }
+  ]
+}
