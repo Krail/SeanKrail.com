@@ -18,27 +18,46 @@ function startScrolling() { document.body.removeAttribute('class'); console.log(
 /* Scroll to top of element if not already viewable in window */
 function scrollIntoView(selector) {
   stopScrolling();
-  if($(selector).position().top < $(window).scrollTop()) $('html, body').animate({scrollTop:$(selector).position().top}, 1000); // scroll up
-  else if($(selector).position().top + $(selector).height() > $(window).scrollTop() + window.innerHeight) $('html, body').animate({scrollTop:$(selector).position().top - (window.innerHeight || document.documentElement.clientHeight) + $(selector).height() + 15}, 1000); // scroll down
-  startScrolling();
+  if($(selector).position().top < $(window).scrollTop()) $('html, body').animate({
+    scrollTop:$(selector).position().top
+  }, {
+    duration: 1000,
+    easing: 'easeInOutQuart',
+    start: function(animation) { stopScrolling(); },
+    complete: function() { startScrolling(); }
+  }); // scroll up
+  else if($(selector).position().top + $(selector).height() > $(window).scrollTop() + window.innerHeight) $('html, body').animate({
+    scrollTop: $(selector).position().top - (window.innerHeight || document.documentElement.clientHeight) + $(selector).height() + 15
+  }, {
+    duration: 1000,
+    easing: 'easeInOutQuart',
+    start: function(animation) { stopScrolling(); },
+    complete: function() { startScrolling(); }
+  }); // scroll down
 }
 
 /* Scroll to top of element */
 function scrollToTop(selector) {
-  stopScrolling();
-  $('html, body').animate({
+  $(selector).animate({
     scrollTop: $(selector).offset().top
-  }, 1000);
-  startScrolling();
+  }, {
+    duration: 1000,
+    easing: 'easeInOutQuart',
+    start: function(animation) { stopScrolling(); },
+    complete: function() { startScrolling(); }
+  });
 }
 
 /* Scroll to bottom of element */
 function scrollToBottom(selector) {
-  stopScrolling();
-  $('html, body').animate({
+  $(selector).animate({
     scrollTop: $(selector).offset().top - $(selector).prop('scrollHeight')
-  }, 1000);
-  startScrolling();
+  }, {
+    duration: 1000,
+    easing: 'easeInOutQuart',
+    start: function(animation) { stopScrolling(); },
+    complete: function() { startScrolling(); }
+  });
 }
 
 console.log(TAG + 'Script loaded completely.')
