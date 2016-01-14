@@ -28,11 +28,14 @@ app.use(express.bodyParser());
 app.use(express.methodOverride());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
-app.locals.theme = process.env.THEME; //Make the THEME environment variable available to the app. 
+app.locals.theme = process.env.THEME; //Make the THEME environment variable available to the app.
+app.locals.version = fs.readFileSync('./version.txt', 'utf8').replace(/\n$/, '');
+
 
 // Read config values from a JSON file.
 var config = fs.readFileSync('./app_config.json', 'utf8');
 config = JSON.parse(config);
+config.VERSION = fs.readFileSync('./version.txt', 'utf8');
 
 // Create DynamoDB client and pass in region.
 var db = new AWS.DynamoDB({region: config.AWS_REGION});

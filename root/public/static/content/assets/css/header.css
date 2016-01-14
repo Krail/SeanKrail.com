@@ -50,8 +50,8 @@ header > a#title > canvas {
 }
 
 /* Navagation Bar :: Projects - Home - Resume */
-header > nav {margin: 0; padding: 0}
-header > nav > ul {
+nav {margin: 0; padding: 0}
+nav > ul {
 	list-style: none;
 	font-size: 0;
 	text-align: center;
@@ -60,7 +60,7 @@ header > nav > ul {
 	margin: 0;
 	padding: 0
 }
-header > nav > ul > li {
+nav > ul > li {
 	display: -webkit-inline-flex;
 	display: inline-flex;
 	-webkit-flex: auto;
@@ -71,7 +71,7 @@ header > nav > ul > li {
 	padding: 0;
 	margin: 0
 }
-header > nav > ul > li > a {
+nav > ul > li > a {
 	color: #CC9;
 	background-color: white;
 	width: 100%;
@@ -83,24 +83,14 @@ header > nav > ul > li > a {
 	font-size: 1.5vw;
 	padding: 0;
 	margin: 0;
-	transition: background-color 2s ease 0s, color 2s ease 0s;
+	transition: background-color 2s ease-in-out 0s, color 2s ease-in-out 0s;
 }
-header > nav > ul > li > a:hover {
-  color: #CC9;
-  background-color: rgb(17,75,133)
-}
-header > nav > ul > li > a:active {
-  color: #CC9;
-  background-color: black
-}
-header > nav > ul > li > a#page {
-  color: #CC9;
-  background-color: rgb(17,75,133)
-}
-header > nav > ul > li > a#page:hover {
-  color: #CC9;
-  background-color: black
-}
-header > nav > ul > li > a#page:active {
-  background-color: white
-}
+nav > ul > li > a#page { background-color: rgb(17,75,133) }
+
+nav > ul > li > a:hover { color: #CC9; background-color: rgb(17,75,133) }
+nav > ul > li > a:focus, nav > ul > li > a:active { color: #CC9; background-color: black }
+/*nav > ul > li > a:active { color: #CC9; background-color: black }*/
+
+nav > ul > li > a#page:hover { background-color: black }
+nav > ul > li > a#page:focus, nav > ul > li > a#page:active { background-color: white }
+/*nav > ul > li > a#page:active { color: #CC9; background-color: white }*/

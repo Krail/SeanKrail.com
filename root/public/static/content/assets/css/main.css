@@ -39,6 +39,7 @@
 
 .glyphicon { vertical-align: text-top; font-size: 1.5vw }
 .glyphicon-search { vertical-align: baseline; font-size: 2vw }
+.glyphicon-expand-collapse { vertical-align: baseline }
 .btn-default {
   color: #CC9;
   background-color: white;
@@ -50,6 +51,7 @@
   border-radius: 0;
   border-top-left-radius: 1vw;
   border-bottom-left-radius: 1vw;
+  transition: background-color 2s;
 }
 .btn:hover { background-color: rgb(17,75,133); border-color: white }
 .btn:focus { background-color: black; border-color: white; outline: none }
