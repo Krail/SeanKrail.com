@@ -99,12 +99,12 @@ function toggle(x) {
           duration: 500,
           easing: 'easeInOutQuart',
           start: function(animation) {
-            document.body.setAttribute('class', 'stop-scrolling');
+            stopScrolling();
             //$('html, body').addClass('stop-scrolling');
             //$('html, body').bind('touchmove', function(event){event.preventDefault()});
           },
           complete: function() {
-            document.body.removeAttribute('class');
+            startScrolling();
             //$('html, body').removeClass('stop-scrolling');
             //$('html, body').unbind('touchmove');
           }
@@ -147,12 +147,12 @@ function show(x) {
           duration: 500,
           easing: 'easeInOutQuart',
           start: function(animation) {
-            document.body.setAttribute('class', 'stop-scrolling');
+            stopScrolling();
             //$('html, body').addClass('stop-scrolling');
             //$('html, body').bind('touchmove', function(event){event.preventDefault()});
           },
           complete: function() {
-            document.body.removeAttribute('class');
+            startScrolling();
             //$('html, body').removeClass('stop-scrolling');
             //$('html, body').unbind('touchmove');
           }
@@ -187,12 +187,12 @@ function hide() {
           duration: 500,
           easing: 'easeInOutQuart',
           start: function(animation) {
-            document.body.setAttribute('class', 'stop-scrolling');
+            stopScrolling();
             //$('html, body').addClass('stop-scrolling');
             //$('html, body').bind('touchmove', function(event){event.preventDefault()});
           },
           complete: function() {
-            document.body.removeAttribute('class');
+            startScrolling();
             //$('html, body').removeClass('stop-scrolling');
             //$('html, body').unbind('touchmove');
           }
