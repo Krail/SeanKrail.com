@@ -15,7 +15,7 @@ block content
     section
       ul
         li(onclick='show()') Expand All #[span(class="glyphicon glyphicon-collapse-down" aria-hidden="true")]
-        li(onclick='hide()') Collapse All #[span(class="glyphicon glyphicon-collapse-up" aria-hidden="true")]
+        li(onclick='hide()') #[span(class="glyphicon glyphicon-collapse-up" aria-hidden="true")] Collapse All
     // Project articles
     - var numPro = 0
     each pro in content.projects.hard
