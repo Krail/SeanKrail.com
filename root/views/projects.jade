@@ -6,14 +6,14 @@ block content
     div(id='length', class="alert alert-danger", role="alert", style='display:none') #[span(class="glyphicon glyphicon-exclamation-sign" aria-hidden="true")] #[span(class="sr-only") Error:] Shorten your search criteria (30-character maximum)
     div(id='letters', class="alert alert-danger", role="alert", style='display:none') #[span(class="glyphicon glyphicon-exclamation-sign" aria-hidden="true")] #[span(class="sr-only") Error:] Only letters, spaces, and a few #[i necessary] special characters are allowed in the search field
     // Search field
-    form(id='form', action='/projects', method='post')
+    form(id='searchform', action='/projects', method='post')
       input(id='searchfield', name='searchfield', class='search', type='text', placeholder='Search for a topic here... (e.g. VLSI, Cadence, Android, JavaScript, etc.)', onkeyup='keyup()')
       //input(class='submit', type='submit', value='Search')
-      button(id='submitbutton', form='form', class='btn btn-default', type='submit', value='Submit', style="vertical-align: top")
+      button(id='submitbutton', form='searchform', class='btn btn-default', type='submit', value='Submit')
         span(class=content.projects.icon, aria-hidden='true')
     // Expand/collapse project articles
     section
-      ul(style='vertical-align: top')
+      ul
         li(onclick='show()') Expand All #[span(class="glyphicon glyphicon-collapse-down" aria-hidden="true")]
         li(onclick='hide()') Collapse All #[span(class="glyphicon glyphicon-collapse-up" aria-hidden="true")]
     // Project articles
@@ -33,7 +33,7 @@ block content
           each section in pro.main.sections
             section(class='floaters')
               if section.type == 'video'
-                section(class='subfloater', style='width:100%')
+                section(class='subfloater')
                   div
                     header
                       h3=section.title

@@ -12,8 +12,16 @@ var TAG = 'seankrail.js :: ';
 /* HELPER FUNCTIONS */
 
 
-function stopScrolling() { document.body.setAttribute('class', 'stop-scrolling'); $('html,body').bind('touchmove', function(event){event.preventDefault()}); console.log(TAG + 'stopScrolling() -> ' + document.body.getAttribute('class')); }
-function startScrolling() { document.body.removeAttribute('class'); $('html,body').unbind('touchmove'); console.log(TAG + 'stopScrolling() -> ' + document.body.getAttribute('class')); }
+function stopScrolling() {
+  document.body.setAttribute('class', 'stop-scrolling');
+  $('html,body').bind('touchmove', function(event){event.preventDefault()});
+  //console.log(TAG + 'stopScrolling() -> ' + document.body.getAttribute('class'));
+}
+function startScrolling() {
+  document.body.removeAttribute('class');
+  $('html,body').unbind('touchmove');
+  //console.log(TAG + 'stopScrolling() -> ' + document.body.getAttribute('class'));
+}
 
 /* Scroll to top of element if not already viewable in window */
 function scrollIntoView(selector) {

@@ -99,9 +99,9 @@ function toggle(x) {
       if (element === x) {
         $('#' + element).slideToggle({
           duration: 500,
-          easing: 'easeInOutQuart',
+          easing: 'easeInOutQuart'/*,
           start: function(animation) { stopScrolling(); },
-          complete: function() { startScrolling(); }
+          complete: function() { startScrolling(); }*/
         });
         if(document.getElementById(element).style.display !== 'block') playAllVideos(x);
         else pauseAllVideos(x);
