@@ -37,7 +37,11 @@ function bubbleAnchors() {
   project_id.forEach(
     function(element, index, array) {
       var paragraphs = document.getElementById(element + 'Header').getElementsByTagName('p');
-      for(var i = 0; i < paragraphs.length; i++) for(var j = 0; j < paragraphs[i].getElementsByTagName('a').length; j++) document.getElementById(element + 'Header').getElementsByTagName('p')[i].getElementsByTagName('a')[j].onclick = function onclick(event){event.stopPropagation();};
+      for(var i = 0; i < paragraphs.length; i++) {
+        for(var j = 0; j < paragraphs[i].getElementsByTagName('a').length; j++) {
+          document.getElementById(element + 'Header').getElementsByTagName('p')[i].getElementsByTagName('a')[j].onclick = function onclick(event){event.stopPropagation();};
+        }
+      }
     }
   );
 }
@@ -92,44 +96,16 @@ function toggle(x) {
 	//pauseAllVideos(); // pause all active videos
   project_id.forEach( // Iterate through all of the projects
     function(element, index, array) {
-      // New
-      var display = document.getElementById(element).style.display;
       if (element === x) {
         $('#' + element).slideToggle({
           duration: 500,
           easing: 'easeInOutQuart',
-          start: function(animation) {
-            stopScrolling();
-            //$('html, body').addClass('stop-scrolling');
-            //$('html, body').bind('touchmove', function(event){event.preventDefault()});
-          },
-          complete: function() {
-            startScrolling();
-            //$('html, body').removeClass('stop-scrolling');
-            //$('html, body').unbind('touchmove');
-          }
+          start: function(animation) { stopScrolling(); },
+          complete: function() { startScrolling(); }
         });
-        if (display !== 'block') {
-          //scrollToTop('#' + element + 'Article');
-          playAllVideos(x);
-        } else pauseAllVideos(x);
+        if(document.getElementById(element).style.display !== 'block') playAllVideos(x);
+        else pauseAllVideos(x);
       }
-      // Old
-      /*
-      var display = document.getElementById(element).style.display;
-      if (element === x) { // This is project 'x'
-        display = ( // Ternary for this project
-          display === 'none' ? 'block' : 'none'
-        );
-        if (display === 'block') { // Move to the top of this project's article if it is being shown
-          //document.getElementById(element + ' article').scrollIntoView({block: 'start', behavior: 'smooth'});
-          //document.getElementById(element + ' article').scrollIntoView(true);
-          scrollToTop('#' + element + 'Article');
-          playAllVideos(x);
-        }
-      } else { display = 'none'; } // Else, hide this project
-      document.getElementById(element).style.display = display;
-      */
     }
   );
 }
@@ -140,37 +116,19 @@ function show() {
 	//pauseAllVideos(); // pause all active videos
   project_id.forEach( // Iterate through all of the projects
     function(element, index, array) {
-      var display = document.getElementById(element).style.display;
-      // New
-      if (display !== 'block') {
+      if (document.getElementById(element).style.display !== 'block') {
         $('#' + element).slideDown({
           duration: 500,
           easing: 'easeInOutQuart',
           start: function(animation) {
             stopScrolling();
-            //$('html, body').addClass('stop-scrolling');
-            //$('html, body').bind('touchmove', function(event){event.preventDefault()});
           },
           complete: function() {
             startScrolling();
-            //$('html, body').removeClass('stop-scrolling');
-            //$('html, body').unbind('touchmove');
           }
         });
-        //scrollToTop('#' + element + 'Article');
         playAllVideos(element);
       }
-      // Old
-      /*
-      if (element === x) { // This is project 'x'
-        display = 'block' // Show this project
-        //document.getElementById('#' + element + ' article').scrollIntoView({block: 'start', behavior: 'smooth'}); // Move to the top of this project's article
-        //document.getElementById('#' + element + ' article').scrollIntoView(true); // Move to the top of this project's article
-        scrollToTop('#' + element + 'Article');
-        playAllVideos(x);
-      } else { display = 'none'; } // Hide this project
-      document.getElementById(element).style.display = display;
-      */
     }
   );
 }
@@ -181,27 +139,15 @@ function hide() {
 	pauseAllVideos(); // pause all active videos
   project_id.forEach(
     function(element, index, array) {
-      // New
       if (document.getElementById(element).style.display === 'block') {
         $('#' + element).slideUp({
           duration: 500,
           easing: 'easeInOutQuart',
-          start: function(animation) {
-            stopScrolling();
-            //$('html, body').addClass('stop-scrolling');
-            //$('html, body').bind('touchmove', function(event){event.preventDefault()});
-          },
-          complete: function() {
-            startScrolling();
-            //$('html, body').removeClass('stop-scrolling');
-            //$('html, body').unbind('touchmove');
-          }
+          start: function(animation) { stopScrolling(); },
+          complete: function() { startScrolling(); }
         });
+        pauseAllVideos(element);
       }
-      // Old
-      /*
-      document.getElementById(element).style.display = 'none';
-      */
     }
   );
 }
