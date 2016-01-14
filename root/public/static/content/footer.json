@@ -6,14 +6,14 @@
   [
     {
       "type": "email",
-      "icon": "glyphicon glyphicon-envelope",
+      "icon": "glyphicon glyphicon-address glyphicon-envelope",
       "title": "In no rush? Send me an email!",
       "href": "mailto:i@seankrail.com",
       "text": "i@seankrail.com"
     },
     {
       "type": "phone",
-      "icon": "glyphicon glyphicon-earphone",
+      "icon": "glyphicon glyphicon-address glyphicon-earphone",
       "title": "Time is a factor? Leave me a message!",
       "href": "tel:+12674218790",
       "text": "267.421.8790"

@@ -240,7 +240,8 @@ main > form > input {
   padding-left: 1vw;
   padding-right: 1vw;
   font-size: 1.75vw;
-  flex-grow: 2
+  vertical-align: top;
+  /*flex-grow: 2*/
 }
 main > form > input:focus {
   outline: none;
@@ -334,6 +335,7 @@ main > article.project > main > section.floaters > section.subfloater > div > p 
 main > article.project > main > section.floaters > section.subfloater > div > p > a:hover {text-decoration: overline underline}
 main > article.project > main > section.floaters > section.subfloater > div > p > a:active {text-decoration: overline line-through underline}
 
+
 /* Large Screen */
 @media only screen and (min-width: 800px) {
   body {
@@ -341,8 +343,13 @@ main > article.project > main > section.floaters > section.subfloater > div > p 
     padding-right: 11vw;
   }
 }
+
+
 /* Small Screen */
 @media not screen and (min-width: 800px) {
+  .glyphicon-search {
+    vertical-align: text-top
+  }
   body {
     padding-left: 1vw;
     padding-right: 1vw;
