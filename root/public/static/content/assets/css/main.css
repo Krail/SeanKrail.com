@@ -54,7 +54,7 @@
   transition: color 2s ease-in-out 0s, background-color 2s ease-in-out 0s
 }
 .btn:hover { background-color: rgb(17,75,133); border-color: white }
-.btn:focus { background-color: black; border-color: white; outline: none }
+.btn:active, .btn:focus { background-color: black; border-color: white; outline: none }
 
 
 /**********************/
@@ -245,7 +245,7 @@ main > form > input {
   vertical-align: top;
   /*flex-grow: 2*/
 }
-main > form > input:focus {
+main > form > input:active, main > form > input:focus {
   outline: none;
   border-color: rgb(17,75,133)
 }
@@ -265,12 +265,12 @@ main > section > ul > li {
 	transition: background-color 2s ease-in-out 0s
 }
 main > section > ul > li:hover {background-color: rgb(17,75,133)}
-main > section > ul > li:active {background-color: black}
+main > section > ul > li:active, main > section > ul > li:focus {background-color: black; outline: none}
 
 main > article.project {background-color: #CC9}
 main > article.project > header {display: block; background-color: white; padding: 0.5vw; cursor: pointer; transition: background-color 2s ease-in-out 0s}
 main > article.project > header:hover {background-color: lightcyan}
-main > article.project > header:active {background-color: lightskyblue}
+main > article.project > header:active, main > article.project > header:focus {background-color: lightskyblue; outline: none}
 main > article.project > header > div {display: block; position: relative; height: 20vw}
 main > article.project > header > div > img {float: left; margin: 0; height: 100%;}
 main > article.project > header > div > div {overflow: hidden; float: none; flex-shrink: 22; height: 100%; width: auto}
