@@ -51,8 +51,7 @@
   border-radius: 0;
   border-top-left-radius: 1vw;
   border-bottom-left-radius: 1vw;
-  transition: background-color 2s;
-  transition: color 2s;
+  transition: color 2s ease-in-out 0s, background-color 2s ease-in-out 0s
 }
 .btn:hover { background-color: rgb(17,75,133); border-color: white }
 .btn:focus { background-color: black; border-color: white; outline: none }
@@ -208,8 +207,8 @@ main#resume > section > ul > li > a {
 	font-size: 1.5vw;
 	color: #CC9;
 	background-color: white;
-	transition: background-color 2s;
-	text-decoration: none;
+  text-decoration: none;
+	transition: background-color 2s ease-in-out 0s
 }
 main#resume > section > ul > li > a:hover {background-color: rgb(17,75,133)}
 main#resume > section > ul > li > a:active {background-color: black}
@@ -262,14 +261,14 @@ main > section > ul > li {
 	color: #CC9;
 	background-color: white;
   cursor: pointer;
-	transition: background-color 2s;
-	text-decoration: none;
+  text-decoration: none;
+	transition: background-color 2s ease-in-out 0s
 }
 main > section > ul > li:hover {background-color: rgb(17,75,133)}
 main > section > ul > li:active {background-color: black}
 
 main > article.project {background-color: #CC9}
-main > article.project > header {display: block; background-color: white; padding: 0.5vw; cursor: pointer; transition: background-color 2s;}
+main > article.project > header {display: block; background-color: white; padding: 0.5vw; cursor: pointer; transition: background-color 2s ease-in-out 0s}
 main > article.project > header:hover {background-color: lightcyan}
 main > article.project > header:active {background-color: lightskyblue}
 main > article.project > header > div {display: block; position: relative; height: 20vw}
