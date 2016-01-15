@@ -7,7 +7,7 @@ block content
     div(id='letters', class="alert alert-danger", role="alert", style='display:none') #[span(class="glyphicon glyphicon-exclamation-sign" aria-hidden="true")] #[span(class="sr-only") Error:] Only letters, spaces, and a few #[i necessary] special characters are allowed in the search field
     // Search field
     form(id='searchform', action='/projects', method='post')
-      input(id='searchfield', name='searchfield', class='search', type='text', placeholder='Search for a topic here... (e.g. VLSI, Cadence, Android, JavaScript, etc.)', onkeyup='keyup()')
+      input(id='searchfield', name='searchfield', class='search', type='text', pattern="^[a-zA-Z0-9 ,.'\-]+$", autocomplete='off', maxlength='60', placeholder='Search for a topic here... (e.g. VLSI, Cadence, Android, JavaScript, etc.)', oninput='verifySearchField()', required)
       //input(class='submit', type='submit', value='Search')
       button(id='submitbutton', form='searchform', class='btn btn-default', type='submit', value='Submit')
         span(class=content.projects.icon, aria-hidden='true')

@@ -161,7 +161,7 @@ function hide() {
 /* Search bar helper functions */
 
 
-function keyup() {
+function verifySearchField() {
   var string = document.getElementById('searchfield').value,
       letters = true,
       length = true;

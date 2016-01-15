@@ -17,6 +17,7 @@ footer {
 	margin-top: 1vw;
   cursor: pointer;
 }
+footer#footer { border-bottom-left-radius: 1vw; border-bottom-right-radius: 1vw }
 
 /* Contact Information */
 footer > ul {
@@ -72,6 +73,9 @@ footer > a {
 	color: #CC9;
 	background-color: white;
 	margin: 0;
+  border: 0;
+  border-bottom-left-radius: 1vw;
+  border-bottom-right-radius: 1vw;
 	padding: 0;
 	padding-top: 1vw;
 	transition: background-color 2s;

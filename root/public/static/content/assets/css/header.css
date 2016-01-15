@@ -12,6 +12,7 @@ header {
   margin: 0 auto;
   padding: 0;
 }
+header#header() { border-top-left-radius: 1vw; border-top-right-radius: 1vw }
 header > a#title {
 	display: block;
 	height: 12vw;
@@ -19,6 +20,8 @@ header > a#title {
 	color: #CC9;
 	background-color: white;
   border: 0;
+  border-top-left-radius: 1vw;
+  border-top-right-radius: 1vw;
 	padding: 0;
   margin: 0;
 	transition: background-color 2s ease 0s;

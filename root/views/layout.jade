@@ -26,8 +26,8 @@ html(lang="en")
     //link(href="/static/bootstrap/css/jumbotron-narrow.css", rel="stylesheet")
   body
 
-    header
-      a(id='title', title='My Home', type='text/html', href='/home')
+    header(id='header')
+      a(id='title', class='top', title='My Home', type='text/html', href='/home')
         h1=content.header.title
       nav
         ul
@@ -43,7 +43,7 @@ html(lang="en")
 
     block content
 
-    footer
+    footer(id='footer')
       ul
         - var numContact = 0
         - var length = content.footer.contacts.length
