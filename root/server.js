@@ -30,7 +30,7 @@ app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 app.locals.theme = process.env.THEME; //Make the THEME environment variable available to the app.
 app.locals.version = fs.readFileSync('./version.txt', 'utf8').replace(/\n$/, '');
-app.locals
+app.locals.rawversion = fs.readFileSync('./version.txt', 'utf8');
 
 
 // Read config values from a JSON file.
