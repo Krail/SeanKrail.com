@@ -169,16 +169,30 @@ function verifySearchField() {
   // Test search field for only letters and space
   // Includes "a-z", "A-Z", "0-9", " ", ",", ".", "'", and "-".
   if (!string || string.length === 0 || /^[a-zA-Z0-9 ,.'\-]+$/.test(string)) {
-    document.getElementById('letters').style.display = 'none';
+    //document.getElementById('letters').style.display = 'none';
+    $('#letters').slideUp({
+      duration: 500,
+      easing: 'easeInOutQuart'
+    });
     letters = false;
-  } else document.getElementById('letters').style.display = '';
+  } else /*document.getElementById('letters').style.display = '';*/ $('#letters').slideDown({
+      duration: 500,
+      easing: 'easeInOutQuart'
+    });
 
   // Test search field for 30 characters
   if (string.length <= 30) {
-    document.getElementById('length').style.display = 'none';
+    //document.getElementById('length').style.display = 'none';
+    $('#length').slideUp({
+      duration: 500,
+      easing: 'easeInOutQuart'
+    });
     length = false;
   }
-  else document.getElementById('length').style.display = '';
+  else /*document.getElementById('length').style.display = '';*/ $('#length').slideDown({
+      duration: 500,
+      easing: 'easeInOutQuart'
+    });
 
   // Disable/enable submit button
   if (letters || length) document.getElementById('submitbutton').setAttribute('disabled', true);
@@ -187,7 +201,7 @@ function verifySearchField() {
   // Scroll warnings into 
   if (length != (document.getElementById('length').style.display !== 'none')
      || letters != (document.getElementById('letters').style.display !== 'none')) {
-    scrollToBottom('html, body, header, nav');
+    scrollToBottom('html, body, header');
   }
 }
 

@@ -51,11 +51,11 @@
   border-radius: 0;
   border-top-left-radius: 1vw;
   border-bottom-left-radius: 1vw;
-  transition: color 2s ease-in-out 0s, background-color 2s ease-in-out 0s
+  transition: color 2s ease-in-out 0s, border-color 2s ease-in-out 0s, background-color 2s ease-in-out 0s
 }
 .btn:hover { background-color: rgb(17,75,133); border-color: white }
 .btn:active, .btn:focus { background-color: black; border-color: white; outline: none }
-.btn[disabled] { color: darkgrey; background-color: grey; border-color: white }
+.btn[disabled] { color: #CC9; background-color: grey; border-color: grey }
 
 
 /**********************/
