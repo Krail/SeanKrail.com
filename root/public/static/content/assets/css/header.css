@@ -26,16 +26,12 @@ header > a#title {
   margin: 0;
 	transition: background-color 2s ease 0s;
 }
-header > a#title:link {
+/*header > a#title:link {
     text-decoration: none;
 }
-header > a#title:visited {}
-header > a#title:hover {
-  background-color: rgb(17,75,133)
-}
-header > a#title:active {
-  background-color: black
-}
+header > a#title:visited {}*/
+header > a#title:hover { background-color: rgb(17,75,133); text-decoration: none }
+header > a#title:active, header > a#title:focus { background-color: black; text-decoration: none; outline: none }
 header > a#title > h1 {
 	font-family: lato-heavy;
 	text-align: center;

@@ -10,12 +10,12 @@ block content
       input(id='searchfield', name='searchfield', class='search', type='text', pattern="^[a-zA-Z0-9 ,.'\-]+$", autocomplete='off', maxlength='60', placeholder='Search for a topic here... (e.g. VLSI, Cadence, Android, JavaScript, etc.)', oninput='verifySearchField()', required)
       //input(class='submit', type='submit', value='Search')
       button(id='submitbutton', form='searchform', class='btn btn-default', type='submit', value='Submit')
-        span(class=content.projects.icon, aria-hidden='true')
+        span(class='glyphicon glyphicon-search', aria-hidden='true')
     // Expand/collapse project articles
     section
       ul
-        li(onclick='show()') Expand All #[span(class="glyphicon glyphicon-collapse-down" aria-hidden="true")]
-        li(onclick='hide()') #[span(class="glyphicon glyphicon-collapse-up" aria-hidden="true")] Collapse All
+        li(onclick='show()') Expand All #[span(class="glyphicon glyphicon-expand-collapse glyphicon-collapse-down" aria-hidden="true")]
+        li(onclick='hide()') #[span(class="glyphicon glyphicon-expand-collapse glyphicon-collapse-up" aria-hidden="true")] Collapse All
     // Project articles
     - var numPro = 0
     each pro in content.projects.hard
@@ -64,5 +64,5 @@ block content
                         p!=paragraph
     section
       ul
-        li(onclick='show()') Expand All #[span(class="glyphicon glyphicon-collapse-down" aria-hidden="true")]
-        li(onclick='hide()') #[span(class="glyphicon glyphicon-collapse-up" aria-hidden="true")] Collapse All
+        li(onclick='show()') Expand All #[span(class="glyphicon glyphicon-expand-collapse glyphicon-collapse-down" aria-hidden="true")]
+        li(onclick='hide()') #[span(class="glyphicon glyphicon-expand-collapse glyphicon-collapse-up" aria-hidden="true")] Collapse All
