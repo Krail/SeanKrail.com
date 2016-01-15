@@ -12,7 +12,7 @@ header {
   margin: 0 auto;
   padding: 0;
 }
-header#header() { border-top-left-radius: 1vw; border-top-right-radius: 1vw }
+header#header { border-top-left-radius: 1vw; border-top-right-radius: 1vw }
 header > a#title {
 	display: block;
 	height: 12vw;
