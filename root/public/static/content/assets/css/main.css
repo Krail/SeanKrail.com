@@ -286,6 +286,9 @@ main > article.project > section > section.floaters > section.subfloater > div >
 main > article.project > section > section.floaters > section.subfloater > div > video {
 	display: block; margin: auto; border: 0; height: 50vh;
 }
+main > article.project > section > section.floaters > section.subfloater > div > iframe {
+	width: 10vw; height: 20vw
+}
 main > article.project > section > section.floaters > section.subfloater > div > aside {padding-top: 0.5vw; text-align: center}
 main > article.project > section > section.floaters > section.subfloater > div > aside > p {
 	font-family: lato-light;
