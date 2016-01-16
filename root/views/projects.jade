@@ -1,7 +1,7 @@
 extends layout
 
 block content
-  main(role='main')
+  main
     // Error messages
     div(id='length', class="alert alert-danger", role="alert", style='display:none') #[span(class="glyphicon glyphicon-exclamation-sign" aria-hidden="true")] #[span(class="sr-only") Error:] Shorten your search criteria (30-character maximum)
     div(id='letters', class="alert alert-danger", role="alert", style='display:none') #[span(class="glyphicon glyphicon-exclamation-sign" aria-hidden="true")] #[span(class="sr-only") Error:] Only letters, spaces, and a few #[i necessary] special characters are allowed in the search field
@@ -31,7 +31,7 @@ block content
         //main(id=pro.id, style='display: none')
         // Main content
         section(id=pro.id, style='display: none')
-          each section in pro.main.sections
+          each section in pro.content.sections
             section(class='floaters')
               if section.type == 'video'
                 section(class='subfloater')
