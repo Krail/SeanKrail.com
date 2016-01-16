@@ -65,23 +65,23 @@
 }
 .btn:hover { background-color: rgb(17,75,133); border-color: white }
 .btn:active, .btn:focus { background-color: black; border-color: white; outline: none }
-.btn[disabled] { color: #CC9; background-color: grey; border-color: grey }
+.btn[disabled] { color: #CC9; background-color: #E74C3C; border-color: #E74C3C }
 
 
 /**************/
 /* Body Layer */
 /**************/
 
-hr {border-style: solid; border-color: #CC9; border-width: 0.15vw}
+hr {border-style: solid; border-color: #CC9; border-width: 0.4vw}
 
 h2:after, h3:after, h4:after {
 	content: ' ';
 	background: #CC9;
   display: block;
-	border: 0.15vw solid #CC9;
-  border-radius: 0.15vw;
-    -webkit-border-radius: 0.15vw;
-    -moz-border-radius: 0.15vw;
+	border: 0.4vw solid #CC9;
+  border-radius: 0.4vw;
+    -webkit-border-radius: 0.4vw;
+    -moz-border-radius: 0.4vw;
 	margin-top: 1vw;
 	margin-bottom: -1vw;
 }
@@ -218,6 +218,9 @@ main#resume > section > ul > li > a:active {background-color: black}
 main > div.alert {
   margin: 0;
   margin-top: 1vw;
+  font-family: lato-regular;
+  font-size: 1.5vw;
+  padding: 1vw
 }
 main > div.alert > span {
   margin-right: 1vw
@@ -248,7 +251,11 @@ main > form > input {
 }
 main > form > input:active, main > form > input:focus {
   outline: none;
-  border-color: rgb(17,75,133)
+  /*border-color: rgb(17,75,133)*/
+  border-color: #114B85
+}
+main > form > input:hover {
+  border-color: lightskyblue
 }
 main > form > button {
   height: 100%;
@@ -276,7 +283,7 @@ main > article.project > header > div {display: block; position: relative; heigh
 main > article.project > header > div > img {float: left; margin: 0; height: 100%;}
 main > article.project > header > div > div {overflow: hidden; float: none; flex-shrink: 22; height: 100%; width: auto}
 main > article.project > header > div > div > h2 {font-family: lato-medium; font-size: 3.5vw; text-align: center; padding-left: 5%; padding-right: 5%}
-main > article.project > header > div > div > h2 > em {font-family: lato-hairline; font-size: 3.5vw; text-align: center}
+main > article.project > header > div > div > h2 > em {font-family: lato-light; font-size: 3.5vw; text-align: center}
 main > article.project > header > div  > div > p {font-family: lato-light; font-size: 1.5vw; padding-left: 5%}
 main > article.project > header > div  > div > p > a {font-family: lato-thin; text-decoration: none}
 main > article.project > header > div  > div > p > a:hover {text-decoration: overline underline}

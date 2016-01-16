@@ -43,10 +43,10 @@ footer > ul > li {
 footer > ul > li > address {
   display: block;
   font-style: normal;
-  font-family: lato-thin;
+  font-family: lato-light;
   margin: 0;
   line-height: 3vw;
-  font-size: 2vw;
+  font-size: 1.75vw;
   width: 100%
 }
 footer > ul > li > address > a {
