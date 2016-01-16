@@ -250,13 +250,14 @@ main > article.project > header > div  > div > p {font-family: lato-light; font-
 main > article.project > header > div  > div > p > a {font-family: lato-thin; text-decoration: none}
 main > article.project > header > div  > div > p > a:hover {text-decoration: overline underline}
 main > article.project > header > div  > div > p > a:active {text-decoration: overline line-through underline}
-main > article.project > section { margin: 0.5vw auto 0 auto; margin-top: 0.5vw; width: 95% }
+main > article.project > section { margin: 0.5vw auto 0 auto; width: 95% }
 main > article.project > section > section.floaters {
 	display: -webkit-flex;
 	display: flex;
 	overflow: auto;
-	margin-top: 0.2vw
+	margin-top: 0.5vw
 }
+main > article.project > section > section.floaters:first-child { margin-top: 0 }
 main > article.project > section > section.floaters > section.subfloater {
 	background-color: white;
 	display: -webkit-inline-flex;
@@ -265,9 +266,9 @@ main > article.project > section > section.floaters > section.subfloater {
 	-ms-flex: 1 1 auto;
 	-moz-flex: 1 1 auto;
 	flex: 1 1 auto;
-	padding: 1vw;
-	margin-right: 0.2vw
+	padding: 1vw
 }
+main > article.project > section > section.floaters > section.subfloater:first-child { margin-right: 0.5vw }
 main > article.project > section > section.floaters > section.subfloater > div {
 	display: block;
 	width: 100%;
