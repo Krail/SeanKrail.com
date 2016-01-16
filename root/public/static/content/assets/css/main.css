@@ -50,8 +50,7 @@ h2:after, h3:after, h4:after {
   border-radius: 1vw;
     -webkit-border-radius: 1vw;
     -moz-border-radius: 1vw;
-	margin-top: 1vw;
-	margin-bottom: -1vw;
+	margin-top: 1vw
 }
 
 body {
@@ -251,7 +250,7 @@ main > article.project > header > div  > div > p {font-family: lato-light; font-
 main > article.project > header > div  > div > p > a {font-family: lato-thin; text-decoration: none}
 main > article.project > header > div  > div > p > a:hover {text-decoration: overline underline}
 main > article.project > header > div  > div > p > a:active {text-decoration: overline line-through underline}
-main > article.project > section {margin-top: 0.5vw;  width: 80%; display: block}
+main > article.project > section { margin: 0.5vw auto 0 auto; margin-top: 0.5vw; width: 95% }
 main > article.project > section > section.floaters {
 	display: -webkit-flex;
 	display: flex;
