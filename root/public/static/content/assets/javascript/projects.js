@@ -25,9 +25,9 @@ function initialize() {
   "use strict";
   var projects = document.getElementsByClassName('project');
   for (var i = 0; i < projects.length; i++) {
-    var main = projects[i].getElementsByTagName('main');
-    if (main.length === 1) project_id.push(main[0].getAttribute('id'));
-    else console.error(TAG + 'Too many main elements inside of this project article element: ' + projects[i]);
+    var children = projects[i].children;
+    if (children.length === 2) project_id.push(children[1].getAttribute('id'));
+    else console.error(TAG + 'Expected two children inside of this project article element');
   }
 }
 initialize();
