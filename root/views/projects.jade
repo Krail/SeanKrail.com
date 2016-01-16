@@ -11,7 +11,7 @@ block content
       //input(class='submit', type='submit', value='Search')
       button(id='submitbutton', form='searchform', class='btn btn-default', type='submit', value='Submit')
         span(class='glyphicon glyphicon-search', aria-hidden='true')
-    // Expand/collapse project articles
+    // Expand/collapse all project articles
     section
       ul
         li(onclick='show()') Expand All #[span(class="glyphicon glyphicon-expand-collapse glyphicon-collapse-down" aria-hidden="true")]
@@ -20,7 +20,6 @@ block content
     - var numPro = 0
     each pro in content.projects.hard
       - numPro++
-      //hr
       article(id='#{pro.id}Article', class='project')
         header(id='#{pro.id}Header', title='Click to expand/collapse', onclick='toggle(\'#{pro.id}\')')
           div
@@ -29,7 +28,9 @@ block content
               h2!=pro.header.heading
               each paragraph in pro.header.paragraphs
                 p!=paragraph
-        main(id=pro.id, style='display: none')
+        //main(id=pro.id, style='display: none')
+        // Main content
+        section(id=pro.id, style='display: none')
           each section in pro.main.sections
             section(class='floaters')
               if section.type == 'video'
@@ -62,6 +63,7 @@ block content
                         h3=subsection.title
                       each paragraph in subsection.paragraphs
                         p!=paragraph
+    // Expand/collapse all project articles
     section
       ul
         li(onclick='show()') Expand All #[span(class="glyphicon glyphicon-expand-collapse glyphicon-collapse-down" aria-hidden="true")]

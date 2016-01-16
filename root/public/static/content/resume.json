@@ -2,7 +2,7 @@
   "title": "My Resume",
   "image":
   {
-    "src": "/static/content/assets/resume/KrailSean-Resume.png",
+    "src": "/static/content/assets/resume/KrailSean-Resume-small.png",
     "alt": "Sean's Resume"
   },
   "download":
@@ -20,7 +20,7 @@
       {
         "title": "Download in PNG Format",
         "type": "image/png",
-        "href": "/static/content/assets/resume/KrailSean-Resume.png",
+        "href": "/static/content/assets/resume/KrailSean-Resume-large.png",
         "download": "KrailSean-Resume.png",
         "text": "PNG"
       }
