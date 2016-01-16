@@ -1,38 +1,5 @@
 @charset "UTF-8";
 
-/*********************/
-/* Open Source Fonts */
-/*********************/
-
-/* Follows W3C's recommendation of using the web open font format (.woff) */
-
-/* In order of thickness */
-@font-face {
-	font-family: lato-heavy;
-	src: url(fonts/lato/Lato-Heavy.woff);
-}
-@font-face {
-	font-family: lato-regular;
-	src: url(fonts/lato/Lato-Regular.woff);
-}
-@font-face {
-	font-family: lato-medium;
-	src: url(fonts/lato/Lato-Medium.woff);
-}
-@font-face {
-	font-family: lato-light;
-	src: url(fonts/lato/Lato-Light.woff);
-}
-@font-face {
-	font-family: lato-thin;
-	src: url(fonts/lato/Lato-Thin.woff);
-}
-@font-face {
-	font-family: lato-hairline;
-	src: url(fonts/lato/Lato-Hairline.woff);
-}
-
-
 /************************************/
 /* Classes for JavaScript Functions */
 /************************************/
@@ -63,7 +30,7 @@
   border-bottom-left-radius: 1vw;
   transition: border-color 2s ease-in-out 0s, background-color 2s ease-in-out 0s
 }
-.btn:hover { background-color: rgb(17,75,133); border-color: white }
+.btn:hover { background-color: #114B85; border-color: white }
 .btn:active, .btn:focus { background-color: black; border-color: white; outline: none }
 .btn[disabled] { color: #CC9; background-color: #E74C3C; border-color: #E74C3C }
 
@@ -72,16 +39,16 @@
 /* Body Layer */
 /**************/
 
-hr {border-style: solid; border-color: #CC9; border-width: 0.4vw}
+hr {border-style: solid; border-color: #CC9; border-width: 0.25vw}
 
 h2:after, h3:after, h4:after {
 	content: ' ';
 	background: #CC9;
   display: block;
-	border: 0.4vw solid #CC9;
-  border-radius: 0.4vw;
-    -webkit-border-radius: 0.4vw;
-    -moz-border-radius: 0.4vw;
+	border: 0.25vw solid #CC9;
+  border-radius: 1vw;
+    -webkit-border-radius: 1vw;
+    -moz-border-radius: 1vw;
 	margin-top: 1vw;
 	margin-bottom: -1vw;
 }
@@ -211,8 +178,8 @@ main#resume > section > ul > li > a {
   text-decoration: none;
 	transition: background-color 2s ease-in-out 0s
 }
-main#resume > section > ul > li > a:hover {background-color: rgb(17,75,133)}
-main#resume > section > ul > li > a:active {background-color: black}
+main#resume > section > ul > li > a:hover { background-color: #114B85 }
+main#resume > section > ul > li > a:active { background-color: black }
 
 /* Project Articles */
 main > div.alert {
@@ -249,13 +216,9 @@ main > form > input {
   vertical-align: top;
   /*flex-grow: 2*/
 }
-main > form > input:active, main > form > input:focus {
+main > form > input:hover, main > form > input:active, main > form > input:focus {
   outline: none;
-  /*border-color: rgb(17,75,133)*/
   border-color: #114B85
-}
-main > form > input:hover {
-  border-color: lightskyblue
 }
 main > form > button {
   height: 100%;
@@ -272,7 +235,7 @@ main > section > ul > li {
   text-decoration: none;
 	transition: background-color 2s ease-in-out 0s
 }
-main > section > ul > li:hover {background-color: rgb(17,75,133)}
+main > section > ul > li:hover {background-color: #114B85}
 main > section > ul > li:active, main > section > ul > li:focus {background-color: black; outline: none}
 
 main > article.project {background-color: #CC9}

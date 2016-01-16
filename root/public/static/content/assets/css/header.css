@@ -1,5 +1,38 @@
 @charset "UTF-8";
 
+/*********************/
+/* Open Source Fonts */
+/*********************/
+
+/* Follows W3C's recommendation of using the web open font format (.woff) */
+
+/* In order of thickness */
+@font-face {
+	font-family: lato-heavy;
+	src: url(fonts/lato/Lato-Heavy.woff);
+}
+@font-face {
+	font-family: lato-regular;
+	src: url(fonts/lato/Lato-Regular.woff);
+}
+@font-face {
+	font-family: lato-medium;
+	src: url(fonts/lato/Lato-Medium.woff);
+}
+@font-face {
+	font-family: lato-light;
+	src: url(fonts/lato/Lato-Light.woff);
+}
+@font-face {
+	font-family: lato-thin;
+	src: url(fonts/lato/Lato-Thin.woff);
+}
+@font-face {
+	font-family: lato-hairline;
+	src: url(fonts/lato/Lato-Hairline.woff);
+}
+
+
 /******************/
 /** Header Layer **/
 /******************/
@@ -30,7 +63,7 @@ header > a#title {
     text-decoration: none;
 }
 header > a#title:visited {}*/
-header > a#title:hover { background-color: rgb(17,75,133); text-decoration: none }
+header > a#title:hover { background-color: #114B85; text-decoration: none }
 header > a#title:active, header > a#title:focus { background-color: black; text-decoration: none; outline: none }
 header > a#title > h1 {
 	font-family: lato-heavy;
@@ -84,9 +117,9 @@ nav > ul > li > a {
 	margin: 0;
 	transition: color 2s ease-in-out 0s, background-color 2s ease-in-out 0s;
 }
-nav > ul > li > a#page { color: #CC9; background-color: rgb(17,75,133); text-decoration: none }
+nav > ul > li > a#page { color: #CC9; background-color: #114B85; text-decoration: none }
 
-nav > ul > li > a:hover { color: #CC9; background-color: rgb(17,75,133); text-decoration: none }
+nav > ul > li > a:hover { color: #CC9; background-color: #114B85; text-decoration: none }
 nav > ul > li > a:active, nav > ul > li > a:focus { color: #CC9; background-color: black; text-decoration: none; outline: none }
 /*nav > ul > li > a:active { color: #CC9; background-color: black }*/
 
