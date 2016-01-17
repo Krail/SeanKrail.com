@@ -1,22 +1,22 @@
 extends layout
 
 block content
+  // Error messages
+  div(id='length', class="alert alert-danger", role="alert", style='display:none') #[span(class="glyphicon glyphicon-exclamation-sign" aria-hidden="true")] #[span(class="sr-only") Error:] Shorten your search criteria (30-character maximum)
+  div(id='letters', class="alert alert-danger", role="alert", style='display:none') #[span(class="glyphicon glyphicon-exclamation-sign" aria-hidden="true")] #[span(class="sr-only") Error:] Only letters, spaces, and a few #[i necessary] special characters are allowed in the search field
+  // Search field
+  form(id='searchform', action='/projects', method='post')
+    input(id='searchfield', name='searchfield', class='search', type='text', pattern="^[a-zA-Z0-9 ,.'\-]+$", autocomplete='off', maxlength='60', placeholder='Search for a topic here... (e.g. VLSI, Cadence, Android, JavaScript, etc.)', oninput='verifySearchField()', required)
+    //input(class='submit', type='submit', value='Search')
+    button(id='submitbutton', form='searchform', class='btn btn-default', type='submit', value='Submit')
+      span(class='glyphicon glyphicon-search', aria-hidden='true')
+  // Expand/collapse all project articles
+  section
+    ul
+      li(onclick='show()') Expand All #[span(class="glyphicon glyphicon-expand-collapse glyphicon-collapse-down" aria-hidden="true")]
+      li(onclick='hide()') #[span(class="glyphicon glyphicon-expand-collapse glyphicon-collapse-up" aria-hidden="true")] Collapse All
+  // Project articles
   main
-    // Error messages
-    div(id='length', class="alert alert-danger", role="alert", style='display:none') #[span(class="glyphicon glyphicon-exclamation-sign" aria-hidden="true")] #[span(class="sr-only") Error:] Shorten your search criteria (30-character maximum)
-    div(id='letters', class="alert alert-danger", role="alert", style='display:none') #[span(class="glyphicon glyphicon-exclamation-sign" aria-hidden="true")] #[span(class="sr-only") Error:] Only letters, spaces, and a few #[i necessary] special characters are allowed in the search field
-    // Search field
-    form(id='searchform', action='/projects', method='post')
-      input(id='searchfield', name='searchfield', class='search', type='text', pattern="^[a-zA-Z0-9 ,.'\-]+$", autocomplete='off', maxlength='60', placeholder='Search for a topic here... (e.g. VLSI, Cadence, Android, JavaScript, etc.)', oninput='verifySearchField()', required)
-      //input(class='submit', type='submit', value='Search')
-      button(id='submitbutton', form='searchform', class='btn btn-default', type='submit', value='Submit')
-        span(class='glyphicon glyphicon-search', aria-hidden='true')
-    // Expand/collapse all project articles
-    section
-      ul
-        li(onclick='show()') Expand All #[span(class="glyphicon glyphicon-expand-collapse glyphicon-collapse-down" aria-hidden="true")]
-        li(onclick='hide()') #[span(class="glyphicon glyphicon-expand-collapse glyphicon-collapse-up" aria-hidden="true")] Collapse All
-    // Project articles
     - var numPro = 0
     each pro in content.projects.hard
       - numPro++
@@ -28,7 +28,6 @@ block content
               h2!=pro.header.heading
               each paragraph in pro.header.paragraphs
                 p!=paragraph
-        //main(id=pro.id, style='display: none')
         // Main content
         section(id=pro.id, style='display: none')
           each section in pro.content.sections
@@ -37,7 +36,7 @@ block content
                 section(class='subfloater')
                   div(style='text-align: center')
                     header
-                      h3=section.title
+                      h4=section.title
                     if section.platform == 'vimeo'
                       iframe(src=section.src)
                     else
@@ -46,13 +45,13 @@ block content
                 section(class='subfloater')
                   div
                     header
-                      h3=section.title
+                      h4=section.title
                     img(title=section.title, src=section.src)
               else if section.type == 'full'
                 section(class='subfloater')
                   div
                     header
-                      h3=section.title
+                      h4=section.title
                     each paragraph in section.paragraphs
                       p!=paragraph
               else if section.type == 'half'
@@ -60,11 +59,11 @@ block content
                   section(class='subfloater')
                     div
                       header
-                        h3=subsection.title
+                        h4=subsection.title
                       each paragraph in subsection.paragraphs
                         p!=paragraph
-    // Expand/collapse all project articles
-    section
-      ul
-        li(onclick='show()') Expand All #[span(class="glyphicon glyphicon-expand-collapse glyphicon-collapse-down" aria-hidden="true")]
-        li(onclick='hide()') #[span(class="glyphicon glyphicon-expand-collapse glyphicon-collapse-up" aria-hidden="true")] Collapse All
+  // Expand/collapse all project articles
+  section
+    ul
+      li(onclick='show()') Expand All #[span(class="glyphicon glyphicon-expand-collapse glyphicon-collapse-down" aria-hidden="true")]
+      li(onclick='hide()') #[span(class="glyphicon glyphicon-expand-collapse glyphicon-collapse-up" aria-hidden="true")] Collapse All

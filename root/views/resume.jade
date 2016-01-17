@@ -8,7 +8,7 @@ block content
       img(src=content.resume.image.src, alt=content.resume.image.alt)
     section
       header
-        h3 #[span(class='glyphicon glyphicon-download', aria-hidden='true')] #{content.resume.download.title} #[span(class='glyphicon glyphicon-download', aria-hidden='true')]
+        h4 #[span(class='glyphicon glyphicon-download', aria-hidden='true')] #{content.resume.download.title} #[span(class='glyphicon glyphicon-download', aria-hidden='true')]
       ul
         each format in content.resume.download.formats
           li

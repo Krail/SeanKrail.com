@@ -1,5 +1,18 @@
 @charset "UTF-8";
 
+/*********************/
+/* Open Source Fonts */
+/*********************/
+
+/* In order of thickness using the Web open font format (.woff) */
+@font-face { font-family: lato-heavy; src: url(fonts/lato/Lato-Heavy.woff) }
+@font-face { font-family: lato-regular; src: url(fonts/lato/Lato-Regular.woff) }
+@font-face { font-family: lato-medium; src: url(fonts/lato/Lato-Medium.woff) }
+@font-face { font-family: lato-light; src: url(fonts/lato/Lato-Light.woff) }
+@font-face { font-family: lato-thin; src: url(fonts/lato/Lato-Thin.woff) }
+@font-face { font-family: lato-hairline; src: url(fonts/lato/Lato-Hairline.woff) }
+
+
 /************************************/
 /* Classes for JavaScript Functions */
 /************************************/
@@ -181,17 +194,17 @@ main#resume > section > ul > li > a:hover { background-color: #124B85 }
 main#resume > section > ul > li > a:active { background-color: black }
 
 /* Project Articles */
-div.alert {
+main > div.alert {
   margin: 0;
   margin-top: 1vw;
   font-family: lato-regular;
   font-size: 1.5vw;
   padding: 1vw
 }
-div.alert > span {
+main > div.alert > span {
   margin-right: 1vw
 }
-form {
+main > form {
   display: block;
   margin: 0;
   margin-top: 1vw;
@@ -200,7 +213,7 @@ form {
   height: 4vw;
   width: 100%
 }
-form > input {
+main > form > input {
   display: inline-block;
   height: 100%;
   width: 67vw;
@@ -215,15 +228,15 @@ form > input {
   vertical-align: top;
   /*flex-grow: 2*/
 }
-form > input:hover, main > form > input:active, form > input:focus {
+main > form > input:hover, main > form > input:active, main > form > input:focus {
   outline: none;
   border-color: #124B85
 }
-form > button {
+main > form > button {
   height: 100%;
   width: 10vw;
 }
-section > ul > li {
+main > section > ul > li {
   display: block;
 	font-family: lato-heavy;
 	line-height: 3vw;
@@ -234,9 +247,8 @@ section > ul > li {
   text-decoration: none;
 	transition: background-color 2s ease-in-out 0s
 }
-section > ul > li:hover { background-color: #124B85 }
-section > ul > li:active, section > ul > li:focus { background-color: black }
-section > ul > li:focus { outline: none }
+main > section > ul > li:hover {background-color: #124B85}
+main > section > ul > li:active, main > section > ul > li:focus {background-color: black; outline: none}
 
 main > article.project {background-color: #CC9}
 main > article.project > header {display: block; background-color: white; padding: 0.5vw; cursor: pointer; transition: background-color 2s ease-in-out 0s}
