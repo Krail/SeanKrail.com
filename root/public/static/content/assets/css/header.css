@@ -37,7 +37,6 @@
 /** Header Layer **/
 /******************/
 
-/* Title :: SeanKrail.com */
 header {
   background-color: white;
   display: block;
@@ -46,83 +45,78 @@ header {
   padding: 0;
 }
 header#header { border-top-left-radius: 1vw; border-top-right-radius: 1vw }
-header > a#title {
-	display: block;
-	height: 12vw;
-	width: 100%;
-	color: #CC9;
-	background-color: white;
-  border: 0;
-  border-top-left-radius: 1vw;
-  border-top-right-radius: 1vw;
-	padding: 0;
-  margin: 0;
-	transition: background-color 2s ease-in-out 0s;
-}
-/*header > a#title:link {
-    text-decoration: none;
-}
-header > a#title:visited {}*/
-header > a#title:hover { background-color: #124B85; text-decoration: none }
-header > a#title:active, header > a#title:focus { background-color: black; text-decoration: none; outline: none }
-header > a#title > h1 {
-	font-family: lato-heavy;
-	text-align: center;
-	font-size: 10vw;
-	font-weight: bold;
-	margin: auto auto;
-}
-header > a#title > canvas {
-  display: block;
-  height: 100%;
-  width: 100%;
-  padding: 0;
-  border: 0;
-  margin: 0
-}
-
-/* Navagation Bar :: Projects - Home - Resume */
-nav {margin: 0; padding: 0}
-nav > ul {
-	list-style: none;
-	font-size: 0;
-	text-align: center;
-	display: -webkit-flex;
-	display: flex;
-	margin: 0;
-	padding: 0
-}
-nav > ul > li {
-	display: -webkit-inline-flex;
-	display: inline-flex;
-	-webkit-flex: auto;
-	-ms-flex: auto;
-	-moz-flex: auto;
-	flex: auto;
-	border-width: 0;
-	padding: 0;
-	margin: 0
-}
-nav > ul > li > a {
-	color: #CC9;
-	background-color: white;
-	width: 100%;
-	text-decoration: none;
-	line-height: 5vw;
-	display: block;
-	text-align: center;
-	font-weight: bold;
-	font-size: 1.5vw;
-	padding: 0;
-	margin: 0;
-	transition: color 2s ease-in-out 0s, background-color 2s ease-in-out 0s;
-}
-nav > ul > li > a#page { color: #CC9; background-color: #124B85; text-decoration: none }
-
-nav > ul > li > a:hover { color: #CC9; background-color: #124B85; text-decoration: none }
-nav > ul > li > a:active, nav > ul > li > a:focus { color: #CC9; background-color: black; text-decoration: none; outline: none }
-/*nav > ul > li > a:active { color: #CC9; background-color: black }*/
-
-nav > ul > li > a#page:hover { color: #CC9; background-color: white }
-nav > ul > li > a#page:active, nav > ul > li > a#page:focus { color: #CC9; background-color: black; text-decoration: none; outline: none }
-/*nav > ul > li > a#page:active { color: #CC9; background-color: white }*/
+  /* Title :: SeanKrail.com */
+  a#title {
+    display: block;
+    height: 12vw;
+	  width: 100%;
+    color: #CC9;
+    background-color: white;
+    border: 0;
+    border-top-left-radius: 1vw;
+    border-top-right-radius: 1vw;
+    padding: 0;
+    margin: 0;
+    transition: background-color 2s ease-in-out 0s;
+  }
+  a#title:hover { background-color: #124B85; text-decoration: none }
+  a#title:active, a#title:focus { background-color: black; text-decoration: none }
+  a#title:focus { outline: none }
+    h1 {
+      font-family: lato-heavy;
+	    text-align: center;
+      font-size: 10vw;
+      font-weight: bold;
+      margin: auto auto;
+    }
+    a#title canvas {
+      display: block;
+      height: 100%;
+      width: 100%;
+      padding: 0;
+      border: 0;
+      margin: 0
+    }
+  /* Navagation Bar :: Projects - Home - Resume */
+  nav { margin: 0; padding: 0 }
+    ul {
+      list-style: none;
+      font-size: 0;
+      text-align: center;
+      display: -webkit-flex;
+      display: flex;
+      margin: 0;
+      padding: 0
+    }
+      li {
+        display: -webkit-inline-flex;
+        display: inline-flex;
+        -webkit-flex: auto;
+        -ms-flex: auto;
+        -moz-flex: auto;
+        flex: auto;
+        border-width: 0;
+        padding: 0;
+        margin: 0
+      }
+        li a {
+          color: #CC9;
+          background-color: white;
+          width: 100%;
+          text-decoration: none;
+          line-height: 5vw;
+          display: block;
+          text-align: center;
+          font-weight: bold;
+          font-size: 1.5vw;
+          padding: 0;
+          margin: 0;
+          transition: color 2s ease-in-out 0s, background-color 2s ease-in-out 0s;
+        }
+        li a:hover { color: #CC9; background-color: #124B85; text-decoration: none }
+        li a:active, nav a:focus { color: #CC9; background-color: black; text-decoration: none }
+        li a:focus { outline: none }
+        li a#page { color: #CC9; background-color: #124B85; text-decoration: none }
+        li a#page:hover { color: #CC9; background-color: white }
+        li a#page:active, nav a#page:focus { color: #CC9; background-color: black; text-decoration: none }
+        li a#page:active { outline: none }

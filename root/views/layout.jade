@@ -19,8 +19,6 @@ html(lang="en")
     link(href='/static/content/assets/css/main.css', rel='stylesheet', type='text/css')
     link(href='/static/content/assets/css/footer.css', rel='stylesheet', type='text/css')
 
-    //Custom styles for this template
-    //link(href="/static/bootstrap/css/jumbotron-narrow.css", rel="stylesheet")
   body
 
     header(id='header')
@@ -28,12 +26,12 @@ html(lang="en")
         h1=content.header.title
       nav
         ul
-          - var numLi = 0
+          - var i = 0
           - var length = content.header.nav.length
           each li in content.header.nav
-            - numLi++
+            - i++
             li
-              if numLi <= (length / 2)
+              if i <= (length / 2)
                 a(id='#{li.name === page ? "page" : ""}', type='text/html', href=li.url) !{li.name === "home" ? "" : li.text} #[span(class=li.icon, aria-hidden='true')]
               else
                 a(id='#{li.name === page ? "page" : ""}', type='text/html', href=li.url) #[span(class=li.icon, aria-hidden='true')] !{li.name === "home" ? "" : li.text}
@@ -52,13 +50,10 @@ html(lang="en")
                 a(title=contact.title, href=contact.href) #{contact.text} #[span(class=contact.icon, aria-hidden="true")]
               else
                 a(title=contact.title, href=contact.href) #[span(class=contact.icon, aria-hidden='true')] #{contact.text}
-      //a(href='#top')
-      //- var onclick = (page == 'projects' ? 'hide(); ' : '') + 'scrollToTop("html, body")'
-      //a(onclick=onclick)
       a(onclick='scrollToTop("html, body")')
         span(class=content.footer.icon, aria-hidden='true')
         p=content.footer.backtotop
-        p(id='small')!='Version ' + version + '<br>'
+        p(class='copyright')!='Version ' + version + '<br>'
           small(title='Copyright Notice')!=content.footer.copyright
             - var date = new Date()
             time(datetime=(date.toISOString()))=date.getFullYear()

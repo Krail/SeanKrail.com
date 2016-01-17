@@ -4,10 +4,7 @@
 /* Footer Layer */
 /****************/
 
-.glyphicon-address {
-  vertical-align: baseline
-}
-
+.glyphicon-address { vertical-align: baseline }
 footer {
 	display: block;
 	background-color: white;
@@ -18,95 +15,86 @@ footer {
   cursor: pointer;
 }
 footer#footer { border-bottom-left-radius: 1vw; border-bottom-right-radius: 1vw }
-
-/* Contact Information */
-footer > ul {
-	list-style: none;
-	font-size: 0;
-	text-align: center;
-	display: -webkit-flex;
-	display: flex;
-	margin: 0;
-	padding: 0
-}
-footer > ul > li {
-	display: -webkit-inline-flex;
-	display: inline-flex;
-	-webkit-flex: auto;
-	-ms-flex: auto;
-	-moz-flex: auto;
-	flex: auto;
-	border-width: 0;
-	padding: 0;
-	margin: 0
-}
-footer > ul > li > address {
-  display: block;
-  font-style: normal;
-  font-family: lato-light;
-  margin: 0;
-  line-height: 3vw;
-  font-size: 1.75vw;
-  width: 100%
-}
-footer > ul > li > address > a {
-  display: block;
-  color: black;
-  background-color: white;
-  text-decoration: none;
-  width: 100%;
-  transition: color 2s ease-in-out 0s, background-color 2s ease-in-out 0s
-}
-footer > ul > li > address > a:hover {
-  color: white;
-  background-color: #124B85;
-  text-decoration: none
-}
-footer > ul > li > address > a:active, footer > ul > li > address > a:focus {
-  color: white;
-  background-color: black;
-  text-decoration: none;
-  outline: none
-}
-
-/* Top of the Page Link */
-footer > a {
-	display: block;
-	text-decoration: none;
-	font-weight: bold;
-	color: #CC9;
-	background-color: white;
-	margin: 0;
-  border: 0;
-  border-bottom-left-radius: 1vw;
-  border-bottom-right-radius: 1vw;
-	padding: 0;
-	padding-top: 1vw;
-	transition: color 2s ease-in-out 0s, background-color 2s ease-in-out 0s
-}
-/*footer > a:link, footer > a:link {
-  color: #CC9
-}*/
-footer > a:hover { color: #CC9; background-color: #124B85; text-decoration: none }
-footer > a:active, footer > a:focus { color: #CC9; background-color: black; text-decoration: none; outline: none }
-footer > a > span {
-  width: 100%;
-  text-align: center
-}
-footer > a > p {
-  text-align: center;
-  font-size: 1.5vw;
-  margin: 0
-}
-
-/* Copyright Text */
-footer > a > p#small {
-  text-align: right;
-  font-size: 0.7vw;
-  padding: 0.5vw;
-  margin: 0;
-}
-footer > a > p#small > small { font-weight: normal }
+  /* Contact Information */
+  footer ul {
+    list-style: none;
+    font-size: 0;
+    text-align: center;
+    display: -webkit-flex;
+    display: flex;
+    margin: 0;
+    padding: 0
+  }
+    footer li {
+      display: -webkit-inline-flex;
+      display: inline-flex;
+      -webkit-flex: auto;
+      -ms-flex: auto;
+      -moz-flex: auto;
+      flex: auto;
+      border-width: 0;
+      padding: 0;
+      margin: 0
+    }
+      footer address {
+        display: block;
+        font-style: normal;
+        font-family: lato-light;
+        margin: 0;
+        line-height: 3vw;
+        font-size: 1.75vw;
+        width: 100%
+      }
+        footer address a {
+          display: block;
+          color: black;
+          background-color: white;
+          text-decoration: none;
+          width: 100%;
+          transition: color 2s ease-in-out 0s, background-color 2s ease-in-out 0s
+        }
+        footer address a:hover {
+          color: white;
+          background-color: #124B85;
+          text-decoration: none
+        }
+        footer address a:active, footer address a:focus {
+          color: white;
+          background-color: black;
+          text-decoration: none
+        }
+        footer address a:focus { outline: none }
+  /* Top of the Page Link */
+  footer a {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    color: #CC9;
+    background-color: white;
+    margin: 0;
+    border: 0;
+    border-bottom-left-radius: 1vw;
+    border-bottom-right-radius: 1vw;
+    padding: 0;
+    padding-top: 1vw;
+    transition: color 2s ease-in-out 0s, background-color 2s ease-in-out 0s
+  }
+  footer a:hover { color: #CC9; background-color: #124B85; text-decoration: none }
+  footer a:active, footer a:focus { color: #CC9; background-color: black; text-decoration: none }
+  footer a:focus { outline: none }
+    footer p {
+      font-size: 1.5vw;
+      margin: 0
+    }
+    /* Copyright Text */
+    p.copyright {
+      text-align: right;
+      font-size: 0.7vw;
+      padding: 0.5vw;
+      margin: 0;
+    }
+      p.copyright small { font-weight: normal }
 
 
 /* Small Screen */

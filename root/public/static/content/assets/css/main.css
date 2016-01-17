@@ -40,7 +40,7 @@
 /* Body Layer */
 /**************/
 
-hr {border-style: solid; border-color: #CC9; border-width: 0.25vw}
+hr { border-style: solid; border-color: #CC9; border-width: 0.25vw }
 
 h2:after, h3:after, h4:after {
 	content: ' ';
@@ -71,10 +71,10 @@ body {
 /* Main Layer */
 /**************/
 
-main {display: block; overflow: hidden; margin: 0 auto; padding: 0}
+main { display: block; overflow: hidden; margin: 0 auto; padding: 0 }
 
 /* Informative Articles */
-main > article {
+article {
 	height: auto;
 	background-color: white;
 	margin: 0;
@@ -82,7 +82,7 @@ main > article {
 }
 
 /* Home Articles */
-main > article.home {
+article.home {
 	font-family: lato-light;
 	font-size: 1.5vw;
   text-align: left;
