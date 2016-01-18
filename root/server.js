@@ -56,14 +56,14 @@ app.get('/projects2', routes.projects2);
 // GET resume page
 app.get('/resume', routes.resume);*/
 
-  // DEBUG
+// GET each page in the /routes/ directory
 Object.keys(routes).forEach(
   function(element, index, array) {
     app.get('/' + element, routes[element]);
-    console.log('app.get("/" + ' + element + ', routes.' + element + ');');
+    console.log('app.get("/" + "' + element + '", routes["' + element + '"]);');
   }
 );
-  // DEBUG
+
 
 // POST signup form.
 app.post('/signup', function(req, res) {
