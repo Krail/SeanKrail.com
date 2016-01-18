@@ -72,29 +72,19 @@ h1, h2, h3, h4 {
   font-family: lato-medium;
   text-align: center;
   margin: 0;
-  padding: 0 5%;
+  padding: 0 5%
 }
-h1 {
-  font-family: lato-heavy;
-  font-size: 10vw;
-  font-weight: bold;
-}
-h2 {
-  font-size: 3.5vw;
-}
-h3 {
-	font-size: 2.5vw;
-}
-h4 {
-	font-size: 2vw;
-}
+h1 { font-family: lato-heavy; font-size: 10vw; font-weight: bold }
+h2 { font-size: 3.5vw }
+h3 { font-size: 2.5vw; padding-top: 0.5vw; padding-bottom: 1vw }
+h4 { font-size: 2vw }
 
 
 /**************/
 /* Paragraphs */
 /**************/
 
-p.time { text-align: right }
+p.time { font-size: 1.4vw; text-align: right }
 
 
 /***********/

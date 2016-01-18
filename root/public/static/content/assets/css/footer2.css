@@ -1,8 +1,15 @@
 @charset "UTF-8";
 
-/****************/
-/* Footer Layer */
-/****************/
+/**************/
+/* Glyphicons */
+/**************/
+
+.glyphicon-address { vertical-align: baseline }
+
+
+/********/
+/* Main */
+/********/
 
 footer#footer { cursor: pointer; border-bottom-left-radius: 1vw; border-bottom-right-radius: 1vw }
   /* Contact Information */
@@ -78,7 +85,7 @@ footer#footer { cursor: pointer; border-bottom-left-radius: 1vw; border-bottom-r
       margin: 0
     }
     /* Copyright Text */
-    p.copyright {
+    footer#footer p.copyright {
       text-align: right;
       font-size: 0.7vw;
       padding: 0.5vw;
