@@ -88,6 +88,22 @@ ul.btn-expand-collapse {
   ul.btn-expand-collapse li:hover { background-color: #124B85 }
   ul.btn-expand-collapse li:active, ul.btn-expand-collapse li:focus { background-color: black }
   ul.btn-expand-collapse li:focus { outline: none }
+div.btn-collapse {
+  display: block;
+  font-family: lato-heavy;
+  line-height: 3vw;
+  font-size: 1.5vw;
+  text-align: center;
+  width: 100%;
+  margin-top: 1vw;
+  border: 0.2vw solid white;
+  color: #CC9;
+  background-color: white;
+  cursor: pointer;
+  transition: background-color 2s ease-in-out 0s
+}
+div.btn-collapse:hover { background-color: #124B85 }
+div.btn-collapse:active, div.btn-collapse li:focus { background-color: black }
 
 
 /********/
