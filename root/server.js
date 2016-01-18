@@ -44,7 +44,7 @@ var sns = new AWS.SNS({region: config.AWS_REGION});
 
 // GET home page.
 app.get('/', routes.home);
-app.get('/home', routes.home);
+/*app.get('/home', routes.home);
 
 // GET test page.
 app.get('/test', routes.test);
@@ -54,10 +54,15 @@ app.get('/projects', routes.projects);
 app.get('/projects2', routes.projects2);
 
 // GET resume page
-app.get('/resume', routes.resume);
+app.get('/resume', routes.resume);*/
 
   // DEBUG
-console.log(Object.keys(routes));
+Object.keys(routes).forEach(
+  function(element, index, array) {
+    app.get('/' + element, routes[element]);
+    console.log('app.get("/" + ' + element + ', routes.' + element + ');');
+  }
+);
   // DEBUG
 
 // POST signup form.
