@@ -1,6 +1,9 @@
-extends layout
+extends layout2
 
-block content
+block head
+  link(href='/static/content/assets/css/home.css', rel='stylesheet', type='text/css')
+
+block body
   main
     each article in content.home.articles
       article(class='home')
@@ -12,3 +15,5 @@ block content
           small
             - var date = new Date(article.date)
             time(datetime=(date.toISOString()))=date.toDateString()
+
+block script

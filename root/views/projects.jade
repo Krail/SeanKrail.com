@@ -1,6 +1,9 @@
-extends layout
+extends layout2
 
-block content
+block head
+  link(href='/static/content/assets/css/projects.css', rel='stylesheet', type='text/css')
+
+block body
   // Error messages
   div(id='length', class="alert alert-danger", role="alert", style='display:none') #[span(class="glyphicon glyphicon-exclamation-sign" aria-hidden="true")] #[span(class="sr-only") Error:] Shorten your search criteria (30-character maximum)
   div(id='letters', class="alert alert-danger", role="alert", style='display:none') #[span(class="glyphicon glyphicon-exclamation-sign" aria-hidden="true")] #[span(class="sr-only") Error:] Only letters, spaces, and a few #[i necessary] special characters are allowed in the search field
@@ -11,10 +14,9 @@ block content
     button(id='submitbutton', form='searchform', class='btn btn-default btn-search', type='submit', value='Submit')
       span(class='glyphicon glyphicon-search', aria-hidden='true')
   // Expand/collapse all project articles
-  section
-    ul
-      li(onclick='show()') Expand All #[span(class="glyphicon glyphicon-expand-collapse glyphicon-collapse-down" aria-hidden="true")]
-      li(onclick='hide()') #[span(class="glyphicon glyphicon-expand-collapse glyphicon-collapse-up" aria-hidden="true")] Collapse All
+  ul(class='btn-expand-collapse')
+    li(onclick='show()') Expand All #[span(class="glyphicon glyphicon-expand-collapse glyphicon-collapse-down" aria-hidden="true")]
+    li(onclick='hide()') #[span(class="glyphicon glyphicon-expand-collapse glyphicon-collapse-up" aria-hidden="true")] Collapse All
   // Project articles
   main
     - var numPro = 0
@@ -63,7 +65,10 @@ block content
                       each paragraph in subsection.paragraphs
                         p!=paragraph
   // Expand/collapse all project articles
-  section
-    ul
-      li(onclick='show()') Expand All #[span(class="glyphicon glyphicon-expand-collapse glyphicon-collapse-down" aria-hidden="true")]
-      li(onclick='hide()') #[span(class="glyphicon glyphicon-expand-collapse glyphicon-collapse-up" aria-hidden="true")] Collapse All
+  ul(class='btn-expand-collapse')
+    li(onclick='show()') Expand All #[span(class="glyphicon glyphicon-expand-collapse glyphicon-collapse-down" aria-hidden="true")]
+    li(onclick='hide()') #[span(class="glyphicon glyphicon-expand-collapse glyphicon-collapse-up" aria-hidden="true")] Collapse All
+
+block script
+  script(src="/static/content/assets/javascript/projects.js")
+  

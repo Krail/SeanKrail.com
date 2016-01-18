@@ -1,7 +1,7 @@
 "use strict";
-var TAG = 'seankrail.js :: ';
+var TAG = 'scroll.js :: ';
 /* 
- * Helper functions for each page on my site.
+ * Scrolling functions.
  *
  *   ~ Sean Krail
  *

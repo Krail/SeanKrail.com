@@ -1,3 +1,17 @@
+"use strict";
+var TAG = 'github.js :: ';
+/* 
+ * Functions to extract Github repositories and convert them into project articles.
+ *
+ *   ~ Sean Krail
+ *
+ */
+
+
+
+/* Request data */
+
+
 function callback(response) {
   var meta = response.meta;
   var data = response.data;
