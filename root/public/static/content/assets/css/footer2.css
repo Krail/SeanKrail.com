@@ -14,25 +14,14 @@
 footer#footer { cursor: pointer; border-bottom-left-radius: 1vw; border-bottom-right-radius: 1vw }
   /* Contact Information */
   footer#footer ul {
-    list-style: none;
-    font-size: 0;
+    display: block;
     text-align: center;
-    display: -webkit-flex;
-    display: flex;
     margin: 0;
     padding: 0
   }
-    footer#footer li {
-      display: -webkit-inline-flex;
-      display: inline-flex;
-      -webkit-flex: auto;
-      -ms-flex: auto;
-      -moz-flex: auto;
-      flex: auto;
-      border-width: 0;
-      padding: 0;
-      margin: 0
-    }
+    footer#footer li { display: inline-block; width: 50% }
+    /*footer#footer li:first { border-right: 0.1vw solid white }
+    footer#footer li:last { border-left: 0.1vw solid white }*/
       footer#footer address {
         display: block;
         font-style: normal;
@@ -87,11 +76,11 @@ footer#footer { cursor: pointer; border-bottom-left-radius: 1vw; border-bottom-r
     /* Copyright Text */
     footer#footer p.copyright {
       text-align: right;
-      font-size: 0.7vw;
+      font-size: 0.8vw;
       padding: 0.5vw;
       margin: 0;
     }
-      small.copyright { font-weight: normal }
+      small.copyright { font-size: 0.7vw; font-weight: normal }
 
 
 /*******************/

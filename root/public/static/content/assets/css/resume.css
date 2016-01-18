@@ -11,10 +11,7 @@
 /* Headings */
 /************/
 
-main.resume h4 {
-  margin-bottom: 2vw;
-  padding-top: 1vw
-}
+main.resume h4 { margin-bottom: 2vw; padding-top: 1vw  }
 
 
 /********/
@@ -32,27 +29,14 @@ main.resume { height: auto; margin: 0 }
     padding: 0
   }
     footer.download ul {
-      display: -webkit-flex;
-      display: flex;
-      list-style: none;
+      display: block;
       text-align: center;
-      font-size: 0;
       margin: 0;
-      border: 0;
-      padding: 0;
-      width: 100%;
+      padding: 0
     }
-      footer.download li {
-        display: -webkit-inline-flex;
-        display: inline-flex;
-        -webkit-flex: auto;
-        -ms-flex: auto;
-        -moz-flex: auto;
-        flex: auto;
-        width: 50%;
-      }
-      footer.download li:first-child {border-right-width: 0.1vw}
-      footer.download li:last-child {border-left-width: 0.1vw}
+      footer.download li { display: inline-block; width: 50% }
+      /*footer.download li:first-child {border-right: 0.1vw solid white}
+      footer.download li:last-child {border-left: 0.1vw solid white}*/
         footer.download a {
           display: block;
           font-family: lato-heavy;

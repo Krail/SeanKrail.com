@@ -50,7 +50,7 @@ form input {
   font-size: 1.75vw;
   vertical-align: top
 }
-form input:hover { border-color: rgba(18,75,133,0.75) }
+form input:hover { border-color: rgba(18,75,133,0.5) }
 form input:active, form input:focus { outline: none; border-color: #124B85 }
 form button { height: 100%; width: 10vw}
 
@@ -71,23 +71,23 @@ ul.btn-expand-collapse {
 	padding: 0;
 	width: 100%
 }
-ul.btn-expand-collapse li {
-  display: inline-block;
-	font-family: lato-heavy;
-	line-height: 3vw;
-	font-size: 1.5vw;
-  width: 50%;
-	color: #CC9;
-	background-color: white;
-  cursor: pointer;
-  text-decoration: none;
-	transition: background-color 2s ease-in-out 0s
-}
-ul.btn-expand-collapse li:first { border-right: 0.1vw solid white }
-ul.btn-expand-collapse li:last { border-left: 0.1vw solid white }
-ul.btn-expand-collapse li:hover { background-color: #124B85 }
-ul.btn-expand-collapse li:active, ul.btn-expand-collapse li:focus { background-color: black }
-ul.btn-expand-collapse li:focus { outline: none }
+  ul.btn-expand-collapse li {
+    display: inline-block;
+    font-family: lato-heavy;
+    line-height: 3vw;
+    font-size: 1.5vw;
+    width: 50%;
+    color: #CC9;
+    background-color: white;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 2s ease-in-out 0s
+  }
+  /*ul.btn-expand-collapse li:first-child { border-right: 0.1vw solid white }
+  ul.btn-expand-collapse li:last-child { border-left: 0.1vw solid white }*/
+  ul.btn-expand-collapse li:hover { background-color: #124B85 }
+  ul.btn-expand-collapse li:active, ul.btn-expand-collapse li:focus { background-color: black }
+  ul.btn-expand-collapse li:focus { outline: none }
 
 
 /********/
@@ -111,7 +111,7 @@ article.project {background-color: #CC9}
     article.project section section.floaters {
       display: flex;
       overflow: auto;
-      margin-top: 0.5vw
+      margin: 0 auto
     }
     article.project section section.floaters:first-child { margin-top: 0 }
       article.project section section.floaters section.subfloater {

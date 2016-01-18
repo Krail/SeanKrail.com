@@ -25,24 +25,14 @@ header#header { border-top-left-radius: 1vw; border-top-right-radius: 1vw }
   /* Navagation Bar :: Projects - Home - Resume */
   nav { margin: 0; padding: 0 }
     nav ul {
-      list-style: none;
-      font-size: 0;
       text-align: center;
-      display: -webkit-flex;
-      display: flex;
+      display: block;
       margin: 0;
       padding: 0
     }
       nav li {
-        display: -webkit-inline-flex;
-        display: inline-flex;
-        -webkit-flex: auto;
-        -ms-flex: auto;
-        -moz-flex: auto;
-        flex: auto;
-        border-width: 0;
-        padding: 0;
-        margin: 0
+        display: inline-block;
+        width: 33.333%
       }
         nav a {
           color: #CC9;
@@ -51,8 +41,7 @@ header#header { border-top-left-radius: 1vw; border-top-right-radius: 1vw }
           text-decoration: none;
           line-height: 5vw;
           display: block;
-          text-align: center;
-          font-weight: bold;
+          font-family: lato-heavy;
           font-size: 1.5vw;
           padding: 0;
           margin: 0;
