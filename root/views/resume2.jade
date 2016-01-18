@@ -1,0 +1,14 @@
+extends layout2
+
+block head
+  link(href='/static/content/assets/css/resume.css', rel='stylesheet', type='text/css')
+
+block body
+  main(class='resume')
+    img(class='resume', src=content.resume.image.src, alt=content.resume.image.alt)
+    footer(class='download')
+      h4 #[span(class='glyphicon glyphicon-download', aria-hidden='true')] #{content.resume.download.title} #[span(class='glyphicon glyphicon-download', aria-hidden='true')]
+      ul
+        each format in content.resume.download.formats
+          li
+            a(title=format.title, type=format.type, href=format.href, download=format.download)=format.text

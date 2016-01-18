@@ -1,0 +1,17 @@
+extends layout2
+
+block head
+  link(href='/static/content/assets/css/home.css', rel='stylesheet', type='text/css')
+
+block body
+  main
+    each article in content.home.articles
+      article(class='home')
+        header
+          h3()=article.heading
+        each paragraph in article.paragraphs
+          p!=paragraph
+        p(class='time')
+          small
+            - var date = new Date(article.date)
+            time(datetime=(date.toISOString()))=date.toDateString()

@@ -104,7 +104,7 @@ main > article.home > p.time {
 
 /* Resume Main */
 main#resume {height: auto; margin: 0}
-main > section {
+section {
 	background-color: white;
   margin: 0;
 	margin-top: 1vw;
@@ -112,7 +112,7 @@ main > section {
   padding: 0;
   border: 0.2vw solid white;
 }
-main#resume > section > img {
+main#resume > img {
   display: block;
   width: 100%;
   margin: 0;

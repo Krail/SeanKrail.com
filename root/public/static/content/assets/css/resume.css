@@ -1,0 +1,79 @@
+@charset "UTF-8";
+
+/**************/
+/* Glyphicons */
+/**************/
+
+.glyphicon-download { vertical-align: baseline }
+
+
+/************/
+/* Headings */
+/************/
+
+main.resume h4 {
+  margin-bottom: 2vw;
+  padding-top: 1vw
+}
+
+
+/********/
+/* Main */
+/********/
+
+main.resume { height: auto; margin: 0 }
+
+  img.resume {
+    display: block;
+    width: 100%;
+    margin: 0;
+    margin-top: 1vw;
+    border: 0.2vw solid white;
+    padding: 0
+  }
+    footer.download ul {
+      display: -webkit-flex;
+      display: flex;
+      list-style: none;
+      text-align: center;
+      font-size: 0;
+      margin: 0;
+      border: 0;
+      padding: 0;
+      width: 100%;
+    }
+      footer.download li {
+        display: -webkit-inline-flex;
+        display: inline-flex;
+        -webkit-flex: auto;
+        -ms-flex: auto;
+        -moz-flex: auto;
+        flex: auto;
+        width: 50%;
+      }
+      footer.download li:first-child {border-right-width: 0.1vw}
+      footer.download li:last-child {border-left-width: 0.1vw}
+        footer.download a {
+          display: block;
+          font-family: lato-heavy;
+          width: 100%;
+          line-height: 3vw;
+          font-size: 1.5vw;
+          color: #CC9;
+          background-color: white;
+          text-decoration: none;
+          transition: background-color 2s ease-in-out 0s
+        }
+        footer.download a:hover { background-color: #124B85 }
+        footer.download a:active { background-color: black }
+
+
+/*******************/
+/* Dynamic Styling */
+/*******************/
+
+/* Large Screen */
+@media only screen and (min-width: 800px) {  }
+
+/* Small Screen */
+@media not screen and (min-width: 800px) {  }

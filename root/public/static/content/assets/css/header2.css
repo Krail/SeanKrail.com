@@ -1,49 +1,9 @@
 @charset "UTF-8";
 
-/*********************/
-/* Open Source Fonts */
-/*********************/
-
-/* Follows W3C's recommendation of using the web open font format (.woff) */
-
-/* In order of thickness */
-@font-face {
-	font-family: lato-heavy;
-	src: url(fonts/lato/Lato-Heavy.woff);
-}
-@font-face {
-	font-family: lato-regular;
-	src: url(fonts/lato/Lato-Regular.woff);
-}
-@font-face {
-	font-family: lato-medium;
-	src: url(fonts/lato/Lato-Medium.woff);
-}
-@font-face {
-	font-family: lato-light;
-	src: url(fonts/lato/Lato-Light.woff);
-}
-@font-face {
-	font-family: lato-thin;
-	src: url(fonts/lato/Lato-Thin.woff);
-}
-@font-face {
-	font-family: lato-hairline;
-	src: url(fonts/lato/Lato-Hairline.woff);
-}
-
-
 /******************/
 /** Header Layer **/
 /******************/
 
-header {
-  background-color: white;
-  display: block;
-  border: 0.2vw solid white;
-  margin: 0 auto;
-  padding: 0;
-}
 header#header { border-top-left-radius: 1vw; border-top-right-radius: 1vw }
   /* Title :: SeanKrail.com */
   a#title {
@@ -62,21 +22,6 @@ header#header { border-top-left-radius: 1vw; border-top-right-radius: 1vw }
   a#title:hover { background-color: #124B85; text-decoration: none }
   a#title:active, a#title:focus { background-color: black; text-decoration: none }
   a#title:focus { outline: none }
-    h1 {
-      font-family: lato-heavy;
-	    text-align: center;
-      font-size: 10vw;
-      font-weight: bold;
-      margin: auto auto;
-    }
-    a#title canvas {
-      display: block;
-      height: 100%;
-      width: 100%;
-      padding: 0;
-      border: 0;
-      margin: 0
-    }
   /* Navagation Bar :: Projects - Home - Resume */
   nav { margin: 0; padding: 0 }
     nav ul {
@@ -120,3 +65,14 @@ header#header { border-top-left-radius: 1vw; border-top-right-radius: 1vw }
         nav a#page:hover { color: #CC9; background-color: white }
         nav a#page:active, nav a#page:focus { color: #CC9; background-color: black; text-decoration: none }
         nav a#page:active { outline: none }
+
+
+/*******************/
+/* Dynamic Styling */
+/*******************/
+
+/* Large Screen */
+@media only screen and (min-width: 800px) {  }
+
+/* Small Screen */
+@media not screen and (min-width: 800px) {  }

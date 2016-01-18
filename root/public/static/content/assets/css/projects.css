@@ -1,0 +1,177 @@
+@charset "UTF-8";
+
+/**************/
+/* Glyphicons */
+/**************/
+
+.glyphicon-search { vertical-align: baseline; font-size: 2vw }
+.glyphicon-expand-collapse { vertical-align: baseline }
+
+
+/**********/
+/* Alerts */
+/**********/
+
+div.alert {
+  font-family: lato-regular;
+  font-size: 1.5vw;
+  margin: 0;
+  margin-top: 1vw;
+  border: 0.2vw solid #CC4335;
+  padding: 1vw
+}
+div.alert span { margin-right: 1vw }
+
+
+/********/
+/* Form */
+/********/
+
+form {
+  display: block;
+  margin: 0;
+  margin-top: 1vw;
+  border: 0;
+  padding: 0;
+  height: 4vw;
+  width: 100%
+}
+form input {
+  display: inline-block;
+  height: 100%;
+  width: 67vw;
+  margin-right: 1vw;
+  border: 0.2vw solid white;
+  border-top-right-radius: 1vw;
+  border-bottom-right-radius: 1vw;
+  padding: 0.2vw;
+  padding-left: 1vw;
+  padding-right: 1vw;
+  font-size: 1.75vw;
+  vertical-align: top
+}
+form input:hover { opacity: 0.5; border-color: #124B85 }
+form input:active, form input:focus { outline: none; border-color: #124B85 }
+form button { height: 100%; width: 10vw}
+
+
+/***********/
+/* Buttons */
+/***********/
+
+.btn-search { border-radius: 1vw 0 0 1vw }
+ul.btn-expand-collapse {
+	display: flex;
+	list-style: none;
+	text-align: center;
+	font-size: 0;
+	margin: 0;
+  margin-top: 1vw;
+  border: 0;
+	padding: 0;
+	width: 100%
+}
+ul.btn-expand-collapse li {
+  display: block;
+	font-family: lato-heavy;
+	line-height: 3vw;
+	font-size: 1.5vw;
+	color: #CC9;
+	background-color: white;
+  cursor: pointer;
+  text-decoration: none;
+	transition: background-color 2s ease-in-out 0s
+}
+ul.btn-expand-collapse li:hover { background-color: #124B85 }
+ul.btn-expand-collapse li:active, ul.btn-expand-collapse li:focus { background-color: black }
+ul.btn-expand-collapse li:focus { outline: none }
+
+
+/********/
+/* Main */
+/********/
+
+article.project {background-color: #CC9}
+  article.project header {padding: 0.5vw; cursor: pointer; transition: background-color 2s ease-in-out 0s}
+  article.project header:hover {background-color: lightcyan}
+  article.project header:active, article.project header:focus {background-color: lightskyblue; outline: none}
+    article.project header div {display: block; position: relative; height: 20vw}
+      article.project header div img {float: left; margin: 0; height: 100%;}
+      article.project header div div {overflow: hidden; float: none; flex-shrink: 22; height: 100%; width: auto}
+        article.project header div div h2 {font-family: lato-medium; font-size: 3.5vw; text-align: center; padding-left: 5%; padding-right: 5%}
+          article.project header div div h2 em {font-family: lato-light; font-size: 3.5vw; text-align: center}
+        article.project header div div p {font-family: lato-light; font-size: 1.5vw; padding-left: 5%}
+          article.project header div div p a {font-family: lato-thin; text-decoration: none}
+          article.project header div  div p a:hover {text-decoration: overline underline}
+          article.project header div  div p a:active {text-decoration: overline line-through underline}
+  article.project section { margin: 0.5vw auto 0 auto; width: 95% }
+    article.project section section.floaters {
+      display: flex;
+      overflow: auto;
+      margin-top: 0.5vw
+    }
+    article.project section section.floaters:first-child { margin-top: 0 }
+      article.project section section.floaters section.subfloater {
+        background-color: white;
+        display: inline-flex;
+        -webkit-flex: 1 1 auto;
+        -ms-flex: 1 1 auto;
+        -moz-flex: 1 1 auto;
+        flex: 1 1 auto;
+        margin-right: 0.5vw;
+        padding: 1vw
+      }
+      article.project section section.floaters section.subfloater:last-child { margin-right: 0 }
+        article.project section section.floaters section.subfloater div {
+          display: block;
+          width: 100%;
+        }
+          article.project section section.floaters section.subfloater div header h4 {
+            display: block;
+            text-align: center;
+            font-family: lato-medium;
+            font-size: 2vw;
+            padding-left: 5%;
+            padding-right: 5%
+          }
+          article.project section section.floaters section.subfloater div img { display: block; margin: auto; width: 100% }
+          article.project section section.floaters section.subfloater div video { display: block; margin: auto; border: 0; height: 50vh }
+          article.project section section.floaters section.subfloater div iframe { width: 10vw; height: 20vw }
+          article.project section section.floaters section.subfloater div aside { padding-top: 0.5vw; text-align: center }
+            article.project section section.floaters section.subfloater div aside p {
+              font-family: lato-light;
+              font-size: 1vw;
+              text-align: left
+            }
+              article.project section section.floaters section.subfloater div aside p a {
+                font-family: lato-thin;
+                font-size: 1vw;
+                text-decoration: none
+              }
+              article.project section section.floaters section.subfloater div aside p a:hover {text-decoration: overline underline}
+              article.project section section.floaters section.subfloater div aside p a:active {text-decoration: overline line-through underline}
+          article.project section section.floaters section.subfloater div p {
+            font-family: lato-light;
+            font-size: 1vw;
+          }
+            article.project section section.floaters section.subfloater div p a {font-family: lato-thin; text-decoration: none}
+            article.project section section.floaters section.subfloater div p a:hover {text-decoration: overline underline}
+            article.project section section.floaters section.subfloater div p a:active {text-decoration: overline line-through underline}
+
+
+/*******************/
+/* Dynamic Styling */
+/*******************/
+
+/* Large Screen */
+@media only screen and (min-width: 800px) {  }
+
+/* Small Screen */
+@media not screen and (min-width: 800px) {
+  .glyphicon-search {
+    vertical-align: text-top
+  }
+  form input {
+    width: 87vw;
+  }
+}

@@ -1,0 +1,23 @@
+@charset "UTF-8";
+
+/********/
+/* Main */
+/********/
+
+article.home {
+	font-family: lato-light;
+	font-size: 1.5vw;
+  text-align: left;
+	padding: 1vw
+}
+
+
+/*******************/
+/* Dynamic Styling */
+/*******************/
+
+/* Large Screen */
+@media only screen and (min-width: 800px) {  }
+
+/* Small Screen */
+@media not screen and (min-width: 800px) {  }

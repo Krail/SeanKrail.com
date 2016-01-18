@@ -1,0 +1,164 @@
+@charset "UTF-8";
+
+/*********************/
+/* Open Source Fonts */
+/*********************/
+
+/* In order of thickness using the Web open font format (.woff) */
+@font-face { font-family: lato-heavy; src: url(fonts/lato/Lato-Heavy.woff) }
+@font-face { font-family: lato-regular; src: url(fonts/lato/Lato-Regular.woff) }
+@font-face { font-family: lato-medium; src: url(fonts/lato/Lato-Medium.woff) }
+@font-face { font-family: lato-light; src: url(fonts/lato/Lato-Light.woff) }
+@font-face { font-family: lato-thin; src: url(fonts/lato/Lato-Thin.woff) }
+@font-face { font-family: lato-hairline; src: url(fonts/lato/Lato-Hairline.woff) }
+
+
+/************************************/
+/* Classes for JavaScript Functions */
+/************************************/
+
+.stop-scrolling { overflow: hidden; height: 100% }
+
+
+/**************/
+/* Glyphicons */
+/**************/
+
+.glyphicon { vertical-align: text-top; font-size: 1.5vw }
+
+
+/***********/
+/* Buttons */
+/***********/
+
+.btn {
+  color: #CC9;
+  background-color: white;
+  vertical-align: top;
+  border: 0.2vw solid white;
+  border-radius: 0;
+  padding: 0.5vw 1vw;
+  transition: border-color 2s ease-in-out 0s, background-color 2s ease-in-out 0s
+}
+.btn:hover { color: #CC9; background-color: #124B85; border-color: white }
+.btn:active, .btn:focus { color: #CC9; background-color: black; border-color: white; outline: none }
+.btn[disabled] { opacity: 1.0; color: #CC9; background-color: #E74C3C; border-color: #CC4335 }
+
+
+/*********/
+/* Links */
+/*********/
+
+a { text-decoration: none }
+a:hover { text-decoration: overline underline }
+a:active, a:focus { text-decoration: overline line-through underline; outline: none }
+
+
+/************/
+/* Headings */
+/************/
+
+h2:after, h3:after, h4:after {
+	content: ' ';
+	background: #CC9;
+  display: block;
+	border: 0.25vw solid #CC9;
+  border-radius: 1vw;
+    -webkit-border-radius: 1vw;
+    -moz-border-radius: 1vw;
+	margin-top: 1vw
+}
+h1, h2, h3, h4 {
+  font-family: lato-medium;
+  text-align: center;
+  margin: 0;
+  padding: 0 5%;
+}
+h1 {
+  font-family: lato-heavy;
+  font-size: 10vw;
+  font-weight: bold;
+}
+h2 {
+  font-size: 3.5vw;
+}
+h3 {
+	font-size: 2.5vw;
+}
+h4 {
+	font-size: 2vw;
+}
+
+
+/**************/
+/* Paragraphs */
+/**************/
+
+p.time { text-align: right }
+
+
+/***********/
+/* Content */
+/***********/
+
+body {
+	display: block;
+  overflow: auto;
+  height: auto;
+	background-color: #CC9;
+	font-family: lato-regular, Helvetica, sans;
+  padding-left: 11vw;
+  padding-right: 11vw;
+	padding-top: 1vw;
+	padding-bottom: 1vw;
+	margin: 0 auto;
+}
+
+header {
+  background-color: white;
+  display: block;
+  border: 0.2vw solid white;
+  margin: 0 auto;
+  padding: 0;
+}
+
+main { display: block; overflow: hidden; margin: 0 auto; padding: 0 }
+
+
+footer {
+	display: block;
+	background-color: white;
+	margin: 0;
+  border: 0.2vw solid white;
+	padding: 0;
+	margin-top: 1vw
+}
+
+article {
+	height: auto;
+	background-color: white;
+	margin: 0;
+	margin-top: 1vw;
+}
+
+
+/*******************/
+/* Dynamic Styling */
+/*******************/
+
+/* Large Screen */
+@media only screen and (min-width: 800px) {
+  body {
+    padding-left: 11vw;
+    padding-right: 11vw;
+  }
+}
+
+
+/* Small Screen */
+@media not screen and (min-width: 800px) {
+  body {
+    padding-left: 1vw;
+    padding-right: 1vw;
+  }
+}

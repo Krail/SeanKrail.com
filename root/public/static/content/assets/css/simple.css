@@ -17,43 +17,50 @@
 /* Classes for JavaScript Functions */
 /************************************/
 
-.stop-scrolling {
-  overflow: hidden;
-  height: 100%
-}
+.stop-scrolling { overflow: hidden; height: 100% }
 
 
-/***************************/
-/* Common Classes/Elements */
-/***************************/
+/**************/
+/* Glyphicons */
+/**************/
 
 .glyphicon { vertical-align: text-top; font-size: 1.5vw }
 .glyphicon-search { vertical-align: baseline; font-size: 2vw }
 .glyphicon-expand-collapse { vertical-align: baseline }
 .glyphicon-download { vertical-align: baseline}
-.btn-default {
+
+
+/***********/
+/* Buttons */
+/***********/
+
+.btn {
   color: #CC9;
   background-color: white;
-  border: 0.2vw solid white;
-  padding: 0.5vw 1vw
-}
-.btn {
   vertical-align: top;
+  border: 0.2vw solid white;
   border-radius: 0;
-  border-top-left-radius: 1vw;
-  border-bottom-left-radius: 1vw;
+  padding: 0.5vw 1vw;
   transition: border-color 2s ease-in-out 0s, background-color 2s ease-in-out 0s
 }
 .btn:hover { color: #CC9; background-color: #124B85; border-color: white }
 .btn:active, .btn:focus { color: #CC9; background-color: black; border-color: white; outline: none }
 .btn[disabled] { opacity: 1.0; color: #CC9; background-color: #E74C3C; border-color: #CC4335 }
+.btn-search { border-radius: 1vw 0 0 1vw }
 
 
-/**************/
-/* Body Layer */
-/**************/
+/*********/
+/* Links */
+/*********/
 
-hr { border-style: solid; border-color: #CC9; border-width: 0.25vw }
+a { text-decoration: none }
+a:hover { text-decoration: overline underline }
+a:active, a:focus { text-decoration: overline line-through underline; outline: none }
+
+
+/************/
+/* Headings */
+/************/
 
 h2:after, h3:after, h4:after {
 	content: ' ';
@@ -65,6 +72,42 @@ h2:after, h3:after, h4:after {
     -moz-border-radius: 1vw;
 	margin-top: 1vw
 }
+h1, h2, h3, h4 {
+  font-family: lato-medium;
+  text-align: center;
+  margin: 0;
+  padding: 0 5%;
+}
+h1 {
+  font-family: lato-heavy;
+  font-size: 10vw;
+  font-weight: bold;
+}
+h2 {
+  font-size: 3.5vw;
+}
+h3 {
+	font-size: 2.5vw;
+}
+h4 {
+	font-size: 2vw;
+}
+main#resume h4 {
+  margin-bottom: 2vw;
+  padding-top: 1vw
+}
+
+
+/**************/
+/* Paragraphs */
+/**************/
+
+p.time { text-align: right }
+
+
+/***********/
+/* Content */
+/***********/
 
 body {
 	display: block;
@@ -79,85 +122,22 @@ body {
 	margin: 0 auto;
 }
 
-
-/**************/
-/* Main Layer */
-/**************/
-
 main { display: block; overflow: hidden; margin: 0 auto; padding: 0 }
+main#resume {height: auto; margin: 0}
 
-/* Informative Articles */
 article {
 	height: auto;
 	background-color: white;
 	margin: 0;
 	margin-top: 1vw;
 }
-
-/* Home Articles */
 article.home {
 	font-family: lato-light;
 	font-size: 1.5vw;
   text-align: left;
 	padding: 1vw
 }
-main > article.home > header > h3 {
-	font-family: lato-medium;
-	text-align: center;
-	font-size: 2.5vw;
-	padding-left: 5%;
-	padding-right: 5%
-}
-main > article.home > p > a {text-decoration: none}
-main > article.home > p > a:hover {text-decoration: overline underline}
-main > article.home > p > a:active {text-decoration: overline line-through underline}
-main > article.home > p.time {
-  text-align: right;
-}
-
-/* Resume Main */
-main#resume {height: auto; margin: 0}
-main > section {
-	background-color: white;
-  margin: 0;
-	margin-top: 1vw;
-  border: 0;
-  padding: 0;
-  border: 0.2vw solid white;
-}
-main#resume > section > img {
-  display: block;
-  width: 100%;
-  margin: 0;
-  /*margin-top: -1vw;*/
-  border: 0;
-  padding: 0}
-main#resume > section > header > h4 {
-	display: block;
-	text-align: center;
-	font-family: lato-medium;
-	font-size: 2vw;
-  margin: 0;
-  margin-bottom: 2vw;
-  border: 0;
-  padding: 0;
-  padding-top: 1vw;
-	padding-left: 5vw;
-	padding-right: 5vw
-}
-/*main#resume > section > header > h4 {
-	font-family: lato-hairline;
-	text-align: center;
-	font-size: 2vw;
-  margin: 0;
-  margin-bottom: 2vw;
-  border: 0;
-  padding: 0;
-  padding-top: 1vw;
-	padding-left: 5vw;
-	padding-right: 5vw
-}*/
-main > section > ul {
+section.expand-collapse ul {
 	display: -webkit-flex;
 	display: flex;
 	list-style: none;
@@ -168,7 +148,49 @@ main > section > ul {
 	padding: 0;
 	width: 100%;
 }
-main > section > ul > li {
+section.expand-collapse li {
+  display: block;
+	font-family: lato-heavy;
+	line-height: 3vw;
+	font-size: 1.5vw;
+	color: #CC9;
+	background-color: white;
+  cursor: pointer;
+  text-decoration: none;
+	transition: background-color 2s ease-in-out 0s
+}
+section.expand-collapse li:hover { background-color: #124B85 }
+section.expand-collapse li:active, section > ul > li:focus { background-color: black }
+section.expand-collapse li:focus { outline: none }
+
+main#resume img {
+  display: block;
+  width: 100%;
+  margin: 0;
+  margin-top: 1vw;
+  border: 0.2vw solid white;
+  padding: 0
+}
+footer.download {
+	background-color: white;
+  margin: 0;
+	margin-top: 1vw;
+  border: 0;
+  padding: 0;
+  border: 0.2vw solid white;
+}
+footer.download ul {
+	display: -webkit-flex;
+	display: flex;
+	list-style: none;
+	text-align: center;
+	font-size: 0;
+	margin: 0;
+  border: 0;
+	padding: 0;
+	width: 100%;
+}
+footer.download li {
 	display: -webkit-inline-flex;
 	display: inline-flex;
 	-webkit-flex: auto;
@@ -177,9 +199,9 @@ main > section > ul > li {
 	flex: auto;
 	width: 50%;
 }
-main > section > ul > li:first-child {border-right-width: 0.1vw}
-main > section > ul > li:last-child {border-left-width: 0.1vw}
-main#resume > section > ul > li > a {
+footer.download li:first-child {border-right-width: 0.1vw}
+footer.download li:last-child {border-left-width: 0.1vw}
+footer.download a {
 	display: block;
 	font-family: lato-heavy;
 	width: 100%;
@@ -190,21 +212,32 @@ main#resume > section > ul > li > a {
   text-decoration: none;
 	transition: background-color 2s ease-in-out 0s
 }
-main#resume > section > ul > li > a:hover { background-color: #124B85 }
-main#resume > section > ul > li > a:active { background-color: black }
+footer.download a:hover { background-color: #124B85 }
+footer.download a:active { background-color: black }
 
-/* Project Articles */
-main > div.alert {
+
+
+/********/
+/* Divs */
+/********/
+
+div.alert {
   margin: 0;
   margin-top: 1vw;
   font-family: lato-regular;
   font-size: 1.5vw;
   padding: 1vw
 }
-main > div.alert > span {
+div.alert span {
   margin-right: 1vw
 }
-main > form {
+
+
+/********/
+/* Form */
+/********/
+
+form {
   display: block;
   margin: 0;
   margin-top: 1vw;
@@ -213,7 +246,7 @@ main > form {
   height: 4vw;
   width: 100%
 }
-main > form > input {
+form input {
   display: inline-block;
   height: 100%;
   width: 67vw;
@@ -228,50 +261,40 @@ main > form > input {
   vertical-align: top;
   /*flex-grow: 2*/
 }
-main > form > input:hover, main > form > input:active, main > form > input:focus {
+form input:hover, main > form > input:active, form > input:focus {
   outline: none;
   border-color: #124B85
 }
-main > form > button {
+form button {
   height: 100%;
   width: 10vw;
 }
-main > section > ul > li {
-  display: block;
-	font-family: lato-heavy;
-	line-height: 3vw;
-	font-size: 1.5vw;
-	color: #CC9;
-	background-color: white;
-  cursor: pointer;
-  text-decoration: none;
-	transition: background-color 2s ease-in-out 0s
-}
-main > section > ul > li:hover {background-color: #124B85}
-main > section > ul > li:active, main > section > ul > li:focus {background-color: black; outline: none}
 
-main > article.project {background-color: #CC9}
-main > article.project > header {display: block; background-color: white; padding: 0.5vw; cursor: pointer; transition: background-color 2s ease-in-out 0s}
-main > article.project > header:hover {background-color: lightcyan}
-main > article.project > header:active, main > article.project > header:focus {background-color: lightskyblue; outline: none}
-main > article.project > header > div {display: block; position: relative; height: 20vw}
-main > article.project > header > div > img {float: left; margin: 0; height: 100%;}
-main > article.project > header > div > div {overflow: hidden; float: none; flex-shrink: 22; height: 100%; width: auto}
-main > article.project > header > div > div > h2 {font-family: lato-medium; font-size: 3.5vw; text-align: center; padding-left: 5%; padding-right: 5%}
-main > article.project > header > div > div > h2 > em {font-family: lato-light; font-size: 3.5vw; text-align: center}
-main > article.project > header > div  > div > p {font-family: lato-light; font-size: 1.5vw; padding-left: 5%}
-main > article.project > header > div  > div > p > a {font-family: lato-thin; text-decoration: none}
-main > article.project > header > div  > div > p > a:hover {text-decoration: overline underline}
-main > article.project > header > div  > div > p > a:active {text-decoration: overline line-through underline}
-main > article.project > section { margin: 0.5vw auto 0 auto; width: 95% }
-main > article.project > section > section.floaters {
+
+
+
+article.project {background-color: #CC9}
+article.project > header {display: block; background-color: white; padding: 0.5vw; cursor: pointer; transition: background-color 2s ease-in-out 0s}
+article.project > header:hover {background-color: lightcyan}
+article.project > header:active, main > article.project > header:focus {background-color: lightskyblue; outline: none}
+article.project > header > div {display: block; position: relative; height: 20vw}
+article.project > header > div > img {float: left; margin: 0; height: 100%;}
+article.project > header > div > div {overflow: hidden; float: none; flex-shrink: 22; height: 100%; width: auto}
+article.project > header > div > div > h2 {font-family: lato-medium; font-size: 3.5vw; text-align: center; padding-left: 5%; padding-right: 5%}
+article.project > header > div > div > h2 > em {font-family: lato-light; font-size: 3.5vw; text-align: center}
+article.project > header > div  > div > p {font-family: lato-light; font-size: 1.5vw; padding-left: 5%}
+article.project > header > div  > div > p > a {font-family: lato-thin; text-decoration: none}
+article.project > header > div  > div > p > a:hover {text-decoration: overline underline}
+article.project > header > div  > div > p > a:active {text-decoration: overline line-through underline}
+article.project > section { margin: 0.5vw auto 0 auto; width: 95% }
+article.project > section > section.floaters {
 	display: -webkit-flex;
 	display: flex;
 	overflow: auto;
 	margin-top: 0.5vw
 }
-main > article.project > section > section.floaters:first-child { margin-top: 0 }
-main > article.project > section > section.floaters > section.subfloater {
+article.project > section > section.floaters:first-child { margin-top: 0 }
+article.project > section > section.floaters > section.subfloater {
 	background-color: white;
 	display: inline-flex;
 	-webkit-flex: 1 1 auto;
@@ -281,12 +304,12 @@ main > article.project > section > section.floaters > section.subfloater {
   margin-right: 0.5vw;
 	padding: 1vw
 }
-main > article.project > section > section.floaters > section.subfloater:last-child { margin-right: 0 }
-main > article.project > section > section.floaters > section.subfloater > div {
+article.project > section > section.floaters > section.subfloater:last-child { margin-right: 0 }
+article.project > section > section.floaters > section.subfloater > div {
 	display: block;
 	width: 100%;
 }
-main > article.project > section > section.floaters > section.subfloater > div > header > h4 {
+article.project > section > section.floaters > section.subfloater > div > header > h4 {
 	display: block;
 	text-align: center;
 	font-family: lato-medium;
@@ -294,35 +317,35 @@ main > article.project > section > section.floaters > section.subfloater > div >
 	padding-left: 5%;
 	padding-right: 5%
 }
-main > article.project > section > section.floaters > section.subfloater > div > img {
+article.project > section > section.floaters > section.subfloater > div > img {
 	display: block; margin: auto; width: 100%
 }
-main > article.project > section > section.floaters > section.subfloater > div > video {
+article.project > section > section.floaters > section.subfloater > div > video {
 	display: block; margin: auto; border: 0; height: 50vh;
 }
-main > article.project > section > section.floaters > section.subfloater > div > iframe {
+article.project > section > section.floaters > section.subfloater > div > iframe {
 	width: 10vw; height: 20vw
 }
-main > article.project > section > section.floaters > section.subfloater > div > aside {padding-top: 0.5vw; text-align: center}
-main > article.project > section > section.floaters > section.subfloater > div > aside > p {
+article.project > section > section.floaters > section.subfloater > div > aside {padding-top: 0.5vw; text-align: center}
+article.project > section > section.floaters > section.subfloater > div > aside > p {
 	font-family: lato-light;
 	font-size: 1vw;
 	text-align: left
 }
-main > article.project > section > section.floaters > section.subfloater > div > aside > p > a {
+article.project > section > section.floaters > section.subfloater > div > aside > p > a {
 	font-family: lato-thin;
 	font-size: 1vw;
 	text-decoration: none
 }
-main > article.project > section > section.floaters > section.subfloater > div > aside > p > a:hover {text-decoration: overline underline}
-main > article.project > section > section.floaters > section.subfloater > div > aside > p > a:active {text-decoration: overline line-through underline}
-main > article.project > section > section.floaters > section.subfloater > div > p {
+article.project > section > section.floaters > section.subfloater > div > aside > p > a:hover {text-decoration: overline underline}
+article.project > section > section.floaters > section.subfloater > div > aside > p > a:active {text-decoration: overline line-through underline}
+article.project > section > section.floaters > section.subfloater > div > p {
 	font-family: lato-light;
 	font-size: 1vw;
 }
-main > article.project > section > section.floaters > section.subfloater > div > p > a {font-family: lato-thin; text-decoration: none}
-main > article.project > section > section.floaters > section.subfloater > div > p > a:hover {text-decoration: overline underline}
-main > article.project > section > section.floaters > section.subfloater > div > p > a:active {text-decoration: overline line-through underline}
+article.project > section > section.floaters > section.subfloater > div > p > a {font-family: lato-thin; text-decoration: none}
+article.project > section > section.floaters > section.subfloater > div > p > a:hover {text-decoration: overline underline}
+article.project > section > section.floaters > section.subfloater > div > p > a:active {text-decoration: overline line-through underline}
 
 
 /* Large Screen */
