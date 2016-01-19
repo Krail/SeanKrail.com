@@ -35,7 +35,8 @@ function initialize() {
   for (var i = 0; i < first.length; i += 2) {
     var maxHeight = first[i].offsetHeight;
     if (first[i+1].offsetHeight > maxHeight) maxHeight = first[i+1].offsetHeight;
-    first[i].style.height = first[i+1].style.height = maxHeight + 'px';
+    first[i].style.height = maxHeight + 'px';
+    first[i+1].style.height = maxHeight + 'px';
   }
 }
 initialize();
