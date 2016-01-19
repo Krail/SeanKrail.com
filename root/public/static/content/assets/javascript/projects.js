@@ -53,6 +53,16 @@ bubbleAnchors();
 /* HELPER FUNCTIONS */
 
 
+// resize sections (assuming correct formatting)
+function resizeSections(project_id) {
+  var first = document.getElementById(project_id).getElementsByClassName('section-half');
+  for (var i = 0; i < first.length; i += 2) {
+    var maxHeight = (first[i].offsetHeight > first[i+1].offsetHeight) ? first[i].offsetHeight : first[i+1].offsetHeight;
+    first[i].style.height = maxHeight + 'px';
+    first[i+1].style.height = maxHeight + 'px';
+  }
+}
+
 /* A helper function to pause all active videos (specifically iframe-vimeo videos, tongue twister) */
 function pauseAllVideos() {
 	"use strict";
@@ -100,22 +110,15 @@ function toggle(x) {
       if (element === x) {
         $('#' + element).slideToggle({
           duration: 500,
-          easing: 'easeInOutQuart',
-          complete: function() {
-            // resize sections (assuming correct formatting)
-            var first = document.getElementById(element).getElementsByClassName('section-half');
-            for (var i = 0; i < first.length; i += 2) {
-              var maxHeight = (first[i].offsetHeight > first[i+1].offsetHeight) ? first[i].offsetHeight : first[i+1].offsetHeight;
-              first[i].style.height = maxHeight + 'px';
-              first[i+1].style.height = maxHeight + 'px';
-            }
-          }
-          /*,
+          easing: 'easeInOutQuart'/*,
           start: function(animation) { stopScrolling(); },
           complete: function() { startScrolling(); }*/
         });
-        if(document.getElementById(element).style.display !== 'block') playAllVideos(x);
-        else pauseAllVideos(x);
+        if(document.getElementById(x).style.display !== 'block') {
+          playAllVideos(x);
+          resizeSections(x)
+          }
+        } else pauseAllVideos(x);
       }
     }
   );
@@ -130,21 +133,12 @@ function show() {
       if (document.getElementById(element).style.display !== 'block') {
         $('#' + element).slideDown({
           duration: 500,
-          easing: 'easeInOutQuart',
-          complete: function() {
-            // resize sections (assuming correct formatting)
-            var first = document.getElementById(element).getElementsByClassName('section-half');
-            for (var i = 0; i < first.length; i += 2) {
-              var maxHeight = (first[i].offsetHeight > first[i+1].offsetHeight) ? first[i].offsetHeight : first[i+1].offsetHeight;
-              first[i].style.height = maxHeight + 'px';
-              first[i+1].style.height = maxHeight + 'px';
-            }
-          }
-          /*,
+          easing: 'easeInOutQuart'/*,
           start: function(animation) { stopScrolling(); },
           complete: function() { startScrolling(); }*/
         });
         playAllVideos(element);
+        resizeSections(element);
       }
     }
   );
@@ -160,17 +154,7 @@ function hide() {
       if (document.getElementById(element).style.display !== 'none') {
         $('#' + element).slideUp({
           duration: 500,
-          easing: 'easeInOutQuart',
-          complete: function() {
-            // resize sections (assuming correct formatting)
-            var first = document.getElementById(element).getElementsByClassName('section-half');
-            for (var i = 0; i < first.length; i += 2) {
-              var maxHeight = (first[i].offsetHeight > first[i+1].offsetHeight) ? first[i].offsetHeight : first[i+1].offsetHeight;
-              first[i].style.height = maxHeight + 'px';
-              first[i+1].style.height = maxHeight + 'px';
-            }
-          }
-          /*,
+          easing: 'easeInOutQuart'/*,
           start: function(animation) { stopScrolling(); },
           complete: function() { startScrolling(); }*/
         });
