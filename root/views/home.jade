@@ -3,7 +3,7 @@ extends layout
 block style
   link(href='/static/content/assets/css/home.css', rel='stylesheet', type='text/css')
 
-block body
+block main
   main
     each article in content.home.articles
       article(class='home')

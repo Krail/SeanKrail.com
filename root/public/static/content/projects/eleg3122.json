@@ -1,0 +1,71 @@
+{
+  "id": "ELEG312Final",
+  "header":
+  {
+    "image":
+    {
+      "title": "My two partners and I (on the left)",
+      "src": "/static/content/assets/images/projects/eleg312/Final Project.png",
+      "alt": "A picture of my group and I with our final project for ELEG 312: Microelectronic Circuit Analysis II."
+    },
+    "heading": "ELEG312 Final Project",
+    "paragraphs":
+    [
+      "Our final project in ELEG312: Microelectonic Circuit Analysis II taught by <a title=\"Professor Martin's UD Page\" href='http://www.ece.udel.edu/research/by-faculty.Richard.Martin.html'>Professor Richard Martin</a>.",
+      "An infrared light-emitting diode (IR LED) to photodiode sensor which plays music when nothing significant is blocking the light's path."
+    ]
+  },
+  "content":
+  {
+    "sections":
+    [
+      {
+        "type": "image",
+        "title": "SIMetrix Schematic",
+        "src": "/static/content/assets/images/projects/eleg312/Simetrix Schematic.png"
+      },
+      {
+        "type": "full",
+        "title": "How does it work?",
+        "paragraphs":
+        [
+          "A center-tapped transformer (taken from an old alarm clock) connected to two full-wave rectifiers converts the AC voltage signal from a wall outlet into a positive and negative DC voltage supply. The photodiode acts as a switch; either outputing current or not. The output of the photodiode enters two common source amplifiers (CS amps), both of which having a ~700 millivolt threshold. Two CS amps are used to double this threshold voltage. The output signal of the two CS amps is attached to the positive DC power supply of a unity-gain buffer operational amplifier (op amp). The audio input is connected to the positive terminal of the op amp. The output of this op amp is capacitively coupled to the audio output; removing the DC component of the signal. This output becomes the audio input if the IR LED's light hits the photodiode, otherwise it produces only noise."
+        ]
+      },
+      {
+        "type": "half",
+        "title": "Two Full-Wave Rectifiers",
+        "paragraphs":
+        [
+          "The top full-wave rectifer is responisble for the positive DC voltage supply of the photodiode and CS amps. The bottom full-wave rectifier is responsible for the negative DC voltage supply of the unity-gain buffer op amp.",
+          "Notice the symmetry of the two rectifier circuits. They are both identical, except all diodes are flipped."
+        ]
+      },
+      {
+        "type": "half",
+        "title": "IR LED to Photodiode",
+        "paragraphs":
+        [
+          "The IR LED emits radiation in the form of electromagnetic waves. These waves propagate through the air and strike the surface of the photodiode. The photodiode converts this energy into current.",
+          "The photodiode will produce current whenever outside sources of light of a particular range of frequencies strike its surface &mdash; the more light, the more current."
+        ]
+      },
+      {
+        "type": "half",
+        "title": "CS MOSFET Amps",
+        "paragraphs":
+        [
+          "Two common source metal oxide semiconductor field effect transistors (CS MOSFETs) are used as a secondary switch to cutoff when the photodiode does not produce significant current."
+        ]
+      },
+      {
+        "type": "half",
+        "title": "Unity-Gain Buffer Op Amp",
+        "paragraphs":
+        [
+          "Finally, a unity-gain buffer is used to act as a switch and to allow the output speakers to draw as much current as it needs. The op amp uses the quasi-DC voltage from the CS MOSFET stage for its positive voltage supply and the DC voltage from the bottom full-wave rectifier stage for its negative voltage supply."
+        ]
+      }
+    ]
+  }
+}

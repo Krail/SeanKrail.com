@@ -1,0 +1,136 @@
+@charset "UTF-8";
+
+/**************/
+/* Glyphicons */
+/**************/
+
+.glyphicon-search { vertical-align: baseline; font-size: 2vw }
+.glyphicon-expand-collapse { vertical-align: baseline }
+
+
+/**********/
+/* Alerts */
+/**********/
+
+div.alert {
+  font-family: lato-regular;
+  font-size: 1.5vw;
+  margin: 0;
+  margin-top: 1vw;
+  border: 0.2vw solid #CC4335;
+  padding: 1vw
+}
+div.alert span { margin-right: 1vw }
+
+
+/********/
+/* Form */
+/********/
+
+form {
+  display: block;
+  margin: 0;
+  margin-top: 1vw;
+  border: 0;
+  padding: 0;
+  height: 4vw;
+  width: 100%
+}
+form input {
+  display: inline-block;
+  height: 100%;
+  width: 67vw;
+  margin-right: 1vw;
+  border: 0.2vw solid white;
+  border-top-right-radius: 1vw;
+  border-bottom-right-radius: 1vw;
+  padding: 0.2vw;
+  padding-left: 1vw;
+  padding-right: 1vw;
+  font-size: 1.75vw;
+  vertical-align: top
+}
+form input:hover { border-color: rgba(18,75,133,0.5) }
+form input:active, form input:focus { outline: none; border-color: #124B85 }
+form button { height: 100%; width: 10vw}
+
+
+/***********/
+/* Buttons */
+/***********/
+
+.btn-search { border-radius: 1vw 0 0 1vw }
+ul.btn-expand-collapse {
+	display: block;
+	list-style: none;
+	text-align: center;
+	font-size: 0;
+	margin: 0;
+  margin-top: 1vw;
+  border: 0.2vw solid white;
+	padding: 0;
+	width: 100%
+}
+  ul.btn-expand-collapse li {
+    display: inline-block;
+    font-family: lato-heavy;
+    line-height: 3vw;
+    font-size: 1.5vw;
+    text-decoration: none;
+    width: 50%
+  }
+div.btn-collapse {
+  display: block;
+  font-family: lato-heavy;
+  line-height: 3vw;
+  font-size: 1.5vw;
+  text-align: center;
+  width: 100%;
+  margin-top: 1vw;
+}
+
+
+/********/
+/* Main */
+/********/
+
+article.project { display: block; background-color: #CC9 }
+  article.project header { padding: 0.5vw; cursor: pointer; transition: background-color 2s ease-in-out 0s }
+  article.project header:hover { background-color: lightcyan }
+  article.project header:active, article.project header:focus { background-color: lightskyblue; outline: none }
+    article.project header h2 { font-family: lato-medium; font-size: 3.5vw; text-align: center; padding-left: 5%; padding-right: 5% }
+      article.project header h2 em { font-family: lato-light; font-size: 3.5vw; text-align: center }
+    article.project header div { display: block; position: relative; height: 20vw }
+      article.project header div img { float: left; margin: 0; height: 100% }
+      article.project header div p { font-family: lato-light; font-size: 1.5vw; padding-left: 5% }
+
+  article.project section {
+    display: inline-block;
+    background-color: white;
+    margin-top: 0.5vw;
+    border: 0.2vw solid white;
+    padding: 1vw
+  }
+  article.project section.half { width: 50%; margin-right: 0.5vw }
+  article.project section.half:last-child { margin-right: 0 }
+  article.project section.full, article.project section.image, article.project section.video { width: 100% }
+    article.project section.video video, article.project section.video iframe { width: 45% }
+    article.project section p { font-family: lato-light; font-size: 1vw }
+
+
+/*******************/
+/* Dynamic Styling */
+/*******************/
+
+/* Large Screen */
+@media only screen and (min-width: 800px) {  }
+
+/* Small Screen */
+@media not screen and (min-width: 800px) {
+  .glyphicon-search {
+    vertical-align: text-top
+  }
+  form input {
+    width: 87vw;
+  }
+}

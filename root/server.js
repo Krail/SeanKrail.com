@@ -42,19 +42,9 @@ var db = new AWS.DynamoDB({region: config.AWS_REGION});
 // Create SNS client and pass in region.
 var sns = new AWS.SNS({region: config.AWS_REGION});
 
+
 // GET home page.
 app.get('/', routes.home);
-/*app.get('/home', routes.home);
-
-// GET test page.
-app.get('/test', routes.test);
-
-// GET projects page
-app.get('/projects', routes.projects);
-app.get('/projects2', routes.projects2);
-
-// GET resume page
-app.get('/resume', routes.resume);*/
 
 // GET each page in the /routes/ directory
 Object.keys(routes).forEach(

@@ -38,20 +38,23 @@
   border: 0.2vw solid white;
   border-radius: 0;
   padding: 0.5vw 1vw;
+  cursor: pointer;
   transition: border-color 2s ease-in-out 0s, background-color 2s ease-in-out 0s
 }
 .btn:hover { color: #CC9; background-color: #124B85; border-color: white }
-.btn:active, .btn:focus { color: #CC9; background-color: black; border-color: white; outline: none }
-.btn[disabled] { opacity: 1.0; color: #CC9; background-color: #E74C3C; border-color: #CC4335 }
+.btn:active, .btn:focus { color: #CC9; background-color: black; border-color: white }
+.btn:focus { outline: none }
+.btn[disabled] { opacity: 1.0; color: #CC9; background-color: #E74C3C; border-color: #CC4335; cursor: not-allowed }
 
 
 /*********/
 /* Links */
 /*********/
 
-a { text-decoration: none }
+a { font-family: lato-thin; text-decoration: none }
 a:hover { text-decoration: overline underline }
-a:active, a:focus { text-decoration: overline line-through underline; outline: none }
+a:active, a:focus { text-decoration: overline line-through underline }
+a:focus { outline: none }
 
 
 /************/
@@ -86,6 +89,19 @@ h4 { font-size: 2vw }
 
 p.time { font-size: 1.2vw; text-align: right }
 p.time small { font-size: 1.1vw }
+
+
+/*********/
+/* Media */
+/*********/
+
+img, video, iframe {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  border: 0
+}
 
 
 /***********/
