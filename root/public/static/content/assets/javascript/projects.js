@@ -30,13 +30,6 @@ function initialize() {
     if (children.length === 2) project_id.push(children[1].getAttribute('id'));
     else console.error(TAG + 'Expected two children inside of this project article element');
   }
-  // resize sections (assuming correct formatting)
-  var first = document.getElementsByClassName('section-half');
-  for (var i = 0; i < first.length; i += 2) {
-    var maxHeight = (first[i].offsetHeight > first[i+1].offsetHeight) ? first[i].offsetHeight : first[i+1].offsetHeight;
-    first[i].style.height = maxHeight + 'px';
-    first[i+1].style.height = maxHeight + 'px';
-  }
 }
 initialize();
 console.log(TAG + '# of projects: ' + project_id.length + '.');
@@ -107,7 +100,17 @@ function toggle(x) {
       if (element === x) {
         $('#' + element).slideToggle({
           duration: 500,
-          easing: 'easeInOutQuart'/*,
+          easing: 'easeInOutQuart',
+          complete: function() {
+            // resize sections (assuming correct formatting)
+            var first = document.getElementById(element).getElementsByClassName('section-half');
+            for (var i = 0; i < first.length; i += 2) {
+              var maxHeight = (first[i].offsetHeight > first[i+1].offsetHeight) ? first[i].offsetHeight : first[i+1].offsetHeight;
+              first[i].style.height = maxHeight + 'px';
+              first[i+1].style.height = maxHeight + 'px';
+            }
+          }
+          /*,
           start: function(animation) { stopScrolling(); },
           complete: function() { startScrolling(); }*/
         });
@@ -127,7 +130,17 @@ function show() {
       if (document.getElementById(element).style.display !== 'block') {
         $('#' + element).slideDown({
           duration: 500,
-          easing: 'easeInOutQuart'/*,
+          easing: 'easeInOutQuart',
+          complete: function() {
+            // resize sections (assuming correct formatting)
+            var first = document.getElementById(element).getElementsByClassName('section-half');
+            for (var i = 0; i < first.length; i += 2) {
+              var maxHeight = (first[i].offsetHeight > first[i+1].offsetHeight) ? first[i].offsetHeight : first[i+1].offsetHeight;
+              first[i].style.height = maxHeight + 'px';
+              first[i+1].style.height = maxHeight + 'px';
+            }
+          }
+          /*,
           start: function(animation) { stopScrolling(); },
           complete: function() { startScrolling(); }*/
         });
@@ -147,7 +160,17 @@ function hide() {
       if (document.getElementById(element).style.display !== 'none') {
         $('#' + element).slideUp({
           duration: 500,
-          easing: 'easeInOutQuart'/*,
+          easing: 'easeInOutQuart',
+          complete: function() {
+            // resize sections (assuming correct formatting)
+            var first = document.getElementById(element).getElementsByClassName('section-half');
+            for (var i = 0; i < first.length; i += 2) {
+              var maxHeight = (first[i].offsetHeight > first[i+1].offsetHeight) ? first[i].offsetHeight : first[i+1].offsetHeight;
+              first[i].style.height = maxHeight + 'px';
+              first[i+1].style.height = maxHeight + 'px';
+            }
+          }
+          /*,
           start: function(animation) { stopScrolling(); },
           complete: function() { startScrolling(); }*/
         });
