@@ -19,6 +19,7 @@ var TAG = 'projects.js :: ';
 
 /* Initialize the element id's of each project based on the number of projects, this is ran when the javascript tag loads */
 var project_id = [];
+var opened = [];
 
 // Create the list of projects here
 function initialize() {
@@ -29,6 +30,7 @@ function initialize() {
     var children = projects[i].children;
     if (children.length === 2) project_id.push(children[1].getAttribute('id'));
     else console.error(TAG + 'Expected two children inside of this project article element');
+    opened.push(false);
   }
 }
 initialize();
@@ -116,7 +118,9 @@ function toggle(x) {
         });
         if(document.getElementById(x).style.display !== 'block') {
           playAllVideos(x);
-          resizeSections(x)
+          if (opened[index] === false) {
+            resizeSections(x);
+            opened[index] = true;
           }
         } else pauseAllVideos(x);
       }
@@ -138,7 +142,10 @@ function show() {
           complete: function() { startScrolling(); }*/
         });
         playAllVideos(element);
-        resizeSections(element);
+        if (opened[index] === false) {
+          resizeSections(x);
+          opened[index] = true;
+        }
       }
     }
   );
