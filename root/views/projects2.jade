@@ -31,26 +31,35 @@ block main
             p!=paragraph
 
         // Main content
-        div(id=pro.id)
+        div(id=pro.id, style='display:none')
+          - var firstHalf = true
           each section in pro.content.sections
-            if section.type == 'half'
-              section(class='section-half')
-                h4=section.title
-                each paragraph in section.paragraphs
-                  p!=paragraph
-            else if section.type == 'full'
+            if section.type === 'half'
+              if firstHalf === true
+                - firstHalf = false
+                section(class='section-half section-half-first')
+                  h4=section.title
+                  each paragraph in section.paragraphs
+                    p!=paragraph
+              else
+                - firstHalf = true
+                section(class='section-half section-half-last')
+                  h4=section.title
+                  each paragraph in section.paragraphs
+                    p!=paragraph
+            else if section.type === 'full'
               section(class='section-full')
                 h4=section.title
                 each paragraph in section.paragraphs
                   p!=paragraph
-            else if section.type == 'video'
+            else if section.type === 'video'
               section(class='section-video')
                 h4=section.title
-                if section.platform == 'vimeo'
+                if section.platform === 'vimeo'
                   iframe(src=section.src)
                 else
                   video(src=section.src, controls, loop, muted, preload)
-            else if section.type == 'image'
+            else if section.type === 'image'
               section(class='section-image')
                 h4=section.title
                 img(title=section.title, src=section.src)
