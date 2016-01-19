@@ -56,13 +56,13 @@ block main
               section(class='section-video')
                 h4=section.title
                 if section.platform === 'vimeo'
-                  iframe(src=section.src)
+                  iframe(class=section.orientation, src=section.src)
                 else
-                  video(src=section.src, controls, loop, muted, preload)
+                  video(class=section.orientation, src=section.src, controls, loop, muted, preload)
             else if section.type === 'image'
               section(class='section-image')
                 h4=section.title
-                img(title=section.title, src=section.src)
+                img(class=section.orientation, title=section.title, src=section.src)
 
   // Expand/collapse all project articles
   div(class='btn btn-default', class='btn-collapse', onclick='hide()') #[span(class="glyphicon glyphicon-expand-collapse glyphicon-collapse-up" aria-hidden="true")] Collapse All #[span(class="glyphicon glyphicon-expand-collapse glyphicon-collapse-up" aria-hidden="true")]

@@ -143,7 +143,7 @@ function show() {
         });
         playAllVideos(element);
         if (opened[index] === false) {
-          resizeSections(x);
+          resizeSections(element);
           opened[index] = true;
         }
       }

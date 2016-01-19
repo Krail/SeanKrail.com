@@ -21,6 +21,7 @@
     [
       {
         "type": "image",
+        "orientation": "landscape",
         "title": "SIMetrix Schematic",
         "src": "/static/content/assets/images/projects/eleg312/Simetrix Schematic.png"
       },

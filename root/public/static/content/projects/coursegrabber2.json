@@ -21,6 +21,7 @@
     [
       {
         "type": "video",
+        "orientation": "portrait",
         "platform": "vimeo",
         "title": "Video Demonstration",
         "__COMMENT__src": "https://www.vimeo.com/seankrail/coursegrabberdemo",

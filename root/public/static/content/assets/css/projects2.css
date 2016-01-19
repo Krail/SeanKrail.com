@@ -117,8 +117,9 @@ article.project { display: block; background-color: #CC9 }
   
   article.project section.section-half:first-child { margin-left: 5% }
   article.project section.section-half:last-child { margin-right: 0 }
-  article.project section.section-full, article.project section.section-image, article.project section.section-video { width: 100% }
-    article.project section.section-video video, article.project section.section-video iframe { width: 45% }
+  article.project section.section-full, article.project section .landscape { height: auto; width: 100% }
+    article.project section .portrait { height: 50vh; width: auto }
+    article.project section video.portrait, article.project section iframe.portrait { width: 100% }
     article.project section p { font-family: lato-light; font-size: 1vw }
 
 
