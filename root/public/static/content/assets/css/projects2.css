@@ -108,7 +108,7 @@ article.project { display: block; background-color: #CC9 }
   article.project section {
     display: inline-block;
     background-color: white;
-    margin: 0.5vw auto 0;
+    margin-top: 0.5vs;
     border: 0.2vw solid white;
     padding: 1vw
   }

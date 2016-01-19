@@ -23,11 +23,19 @@ var project_id = [];
 // Create the list of projects here
 function initialize() {
   "use strict";
+  // get project ids
   var projects = document.getElementsByClassName('project');
   for (var i = 0; i < projects.length; i++) {
     var children = projects[i].children;
     if (children.length === 2) project_id.push(children[1].getAttribute('id'));
     else console.error(TAG + 'Expected two children inside of this project article element');
+  }
+  // resize sections
+  var first = document.getElementsByClassName('section-half');
+  for (var i = 0; i < first.length; i += 2) {
+    var maxHeight = first[i].offsetHeight;
+    if (first[i+1].offsetHeight > maxHeight) maxHeight = first[i+1].offsetHeight;
+    first[i].style.height = first[i+1].style.height = maxHeight + 'px';
   }
 }
 initialize();
