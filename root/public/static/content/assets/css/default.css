@@ -87,6 +87,7 @@ h4 { font-size: 2vw }
 /* Paragraphs */
 /**************/
 
+p { font-family: lato-light; font-size: 1.5vw; cursor: text }
 p.time { font-size: 1.2vw; text-align: right }
 p.time small { font-size: 1.1vw }
 

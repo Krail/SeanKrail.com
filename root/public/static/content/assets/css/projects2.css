@@ -71,13 +71,14 @@ ul.btn-expand-collapse {
 	padding: 0;
 	width: 100%
 }
-  ul.btn-expand-collapse li {
+  ul.btn-expand-collapse li.btn {
     display: inline-block;
     font-family: lato-heavy;
     line-height: 3vw;
     font-size: 1.5vw;
     text-decoration: none;
-    width: 50%
+    width: 50%;
+    border: 0
   }
 div.btn-collapse {
   display: block;
@@ -95,14 +96,13 @@ div.btn-collapse {
 /********/
 
 article.project { display: block; background-color: #CC9 }
-  article.project header { padding: 0.5vw; cursor: pointer; transition: background-color 2s ease-in-out 0s }
+  article.project header { display: block; height: 21.4vw; width: 100%; padding: 0.5vw; cursor: pointer; transition: background-color 2s ease-in-out 0s }
   article.project header:hover { background-color: lightcyan }
   article.project header:active, article.project header:focus { background-color: lightskyblue; outline: none }
-    article.project header h2 { font-family: lato-medium; font-size: 3.5vw; text-align: center; padding-left: 5%; padding-right: 5% }
-      article.project header h2 em { font-family: lato-light; font-size: 3.5vw; text-align: center }
-    article.project header div { display: block; position: relative; height: 20vw }
-      article.project header div img { float: left; margin: 0; height: 100% }
-      article.project header div p { font-family: lato-light; font-size: 1.5vw; padding-left: 5% }
+      article.project header img { display: inline-block; position: relative; float: left; height: 20vw; width: 20vw; margin: 0 }
+      article.project header h2 { display: inline-block; width: 56.6793674375vw; margin-bottom: 3vw }
+        article.project header h2 em { font-family: lato-light }
+    article.project header p { font-family: lato-light; font-size: 1.5vw; padding: 0 2vw }
 
   article.project section {
     display: inline-block;
@@ -111,10 +111,10 @@ article.project { display: block; background-color: #CC9 }
     border: 0.2vw solid white;
     padding: 1vw
   }
-  article.project section.half { width: 50%; margin-right: 0.5vw }
-  article.project section.half:last-child { margin-right: 0 }
-  article.project section.full, article.project section.image, article.project section.video { width: 100% }
-    article.project section.video video, article.project section.video iframe { width: 45% }
+  article.project section.section-half { width: 50%; margin-right: 0.5vw }
+  article.project section.section-half:last-child { margin-right: 0 }
+  article.project section.section-full, article.project section.section-image, article.project section.section-video { width: 100% }
+    article.project section.section-video video, article.project section.section-video iframe { width: 45% }
     article.project section p { font-family: lato-light; font-size: 1vw }
 
 
