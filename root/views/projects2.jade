@@ -36,12 +36,12 @@ block main
           if section.type == 'half'
             section(class='section-half')
               h4=section.title
-              each paragraph in subsection.paragraphs
+              each paragraph in section.paragraphs
                 p!=paragraph
           else if section.type == 'full'
             section(class='section-full')
               h4=section.title
-              each paragraph in subsection.paragraphs
+              each paragraph in section.paragraphs
                 p!=paragraph
           else if section.type == 'video'
             section(class='section-video')
