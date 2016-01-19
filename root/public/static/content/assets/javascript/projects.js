@@ -30,11 +30,10 @@ function initialize() {
     if (children.length === 2) project_id.push(children[1].getAttribute('id'));
     else console.error(TAG + 'Expected two children inside of this project article element');
   }
-  // resize sections
+  // resize sections (assuming correct formatting)
   var first = document.getElementsByClassName('section-half');
   for (var i = 0; i < first.length; i += 2) {
-    var maxHeight = first[i].offsetHeight;
-    if (first[i+1].offsetHeight > maxHeight) maxHeight = first[i+1].offsetHeight;
+    var maxHeight = (first[i].offsetHeight > first[i+1].offsetHeight) ? first[i].offsetHeight : first[i+1].offsetHeight;
     first[i].style.height = maxHeight + 'px';
     first[i+1].style.height = maxHeight + 'px';
   }
