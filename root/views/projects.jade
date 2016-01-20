@@ -11,12 +11,12 @@ block main
   form(id='searchform', action='/projects', method='post')
     input(id='searchfield', class='search border', name='searchfield', type='text', pattern="^[a-zA-Z0-9 ,.'\-]+$", autocomplete='off', maxlength='60', placeholder='Search for a topic here... (e.g. VLSI, Cadence, Android, JavaScript, etc.)', oninput='verifySearchField()', required)
     //input(class='submit', type='submit', value='Search')
-    button(id='submitbutton', form='searchform', class='btn btn-default btn-search border', type='submit', value='Submit')
+    button(id='submitbutton', class='btn btn-default btn-search border', form='searchform', type='submit', value='Submit')
       span(class='glyphicon glyphicon-search', aria-hidden='true')
   // Expand/collapse all project articles
   ul(class='btn-expand-collapse border')
-    li(class='btn btn-default', onclick='show()') Expand All #[span(class="glyphicon glyphicon-expand-collapse glyphicon-collapse-down" aria-hidden="true")]
-    li(class='btn btn-default', class='btn', onclick='hide()') #[span(class="glyphicon glyphicon-expand-collapse glyphicon-collapse-up" aria-hidden="true")] Collapse All
+    li(class='btn btn-default btn-text', onclick='show()') Expand All #[span(class="glyphicon glyphicon-expand-collapse glyphicon-collapse-down" aria-hidden="true")]
+    li(class='btn btn-default btn-text', onclick='hide()') #[span(class="glyphicon glyphicon-expand-collapse glyphicon-collapse-up" aria-hidden="true")] Collapse All
 
   // Project articles
   main
@@ -66,7 +66,7 @@ block main
                 img(class=section.orientation, title=section.title, src=section.src)
 
   // Expand/collapse all project articles
-  div(class='btn btn-default', class='btn-collapse border', onclick='hide()') #[span(class="glyphicon glyphicon-expand-collapse glyphicon-collapse-up" aria-hidden="true")] Collapse All #[span(class="glyphicon glyphicon-expand-collapse glyphicon-collapse-up" aria-hidden="true")]
+  div(class='btn btn-default btn-collapse btn-text border', onclick='hide()') #[span(class="glyphicon glyphicon-expand-collapse glyphicon-collapse-up" aria-hidden="true")] Collapse All #[span(class="glyphicon glyphicon-expand-collapse glyphicon-collapse-up" aria-hidden="true")]
   
 
 block script

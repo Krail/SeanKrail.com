@@ -126,8 +126,8 @@
   cursor: pointer;
   transition: border-color 2s ease-in-out 0s, background-color 2s ease-in-out 0s
 }
-.btn:hover { color: #CC9; background-color: #124B85; border-color: white }
-.btn:active, .btn:focus { color: #CC9; background-color: black; border-color: white }
+.btn:hover { color: #CC9; background-color: #124B85; text-decoration: none; border-color: white }
+.btn:active, .btn:focus { color: #CC9; background-color: black; text-decoration: none; border-color: white }
 .btn:focus { outline: none }
 .btn[disabled] { opacity: 1.0; color: #CC9; background-color: #E74C3C; border-color: #CC4335; cursor: not-allowed }
 
@@ -147,25 +147,6 @@ a { font-family: 'lato-thin'; text-decoration: none }
 a:hover { text-decoration: overline underline }
 a:active, a:focus { text-decoration: overline line-through underline }
 a:focus { outline: none }
-
-/*a.btn {
-  display: block;
-  color: #CC9;
-  background-color: white;
-  font-family: 'lato-heavy';
-  font-size: 2em;
-  line-height: 250%;
-  text-decoration: none;
-  height: auto;
-  width: 100%;
-  margin: 0;
-  border: 0;
-  padding: 0;
-  transition: background-color 2s ease-in-out 0s
-}
-a.btn:hover { background-color: #124B85 }
-a.btn:active, a.btn:focus { background-color: black }
-a.btn:focus { outline: none }*/
 
 
 /************/
@@ -190,9 +171,9 @@ h1, h2, h3, h4 {
   padding: 0 5%
 }
 h1 { font-family: 'lato-black'; font-size: 7.5em }
-h2 { font-size: 2.5em }
-h3 { font-size: 1.875em; padding-top: 0.5vw; padding-bottom: 1vw }
-h4 { font-size: 1.5em; margin-bottom: 1vw }
+h2 { font-size: 4em }
+h3 { font-size: 3.5em; padding-top: 0.5vw; padding-bottom: 1vw }
+h4 { font-size: 2.5em; margin-bottom: 1vw }
 
 
 /**************/

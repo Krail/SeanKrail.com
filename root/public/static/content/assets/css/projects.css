@@ -48,23 +48,23 @@ form input {
   padding-left: 1vw;
   padding-right: 1vw;
   font-size: 1.5em;
-  vertical-align: top
+  vertical-align: top;
+  transition: border-color 2s ease-in-out 0s
 }
 form input:hover { border-color: rgba(18,75,133,0.5) }
 form input:active, form input:focus { outline: none; border-color: #124B85 }
-form button { height: 100%; width: 10vw}
+form button { height: 100%; width: 10vw; }
 
 
 /***********/
 /* Buttons */
 /***********/
 
-.btn-search { border-radius: 1vw 0 0 1vw }
+.btn-search { display: inline-block; height: 100%; width: 10vw; border-radius: 1vw 0 0 1vw }
 ul.btn-expand-collapse {
 	display: block;
 	list-style: none;
 	text-align: center;
-	font-size: 0;
 	margin: 0;
   margin-top: 1vw;
   border: 0.2vw solid white;
