@@ -8,7 +8,6 @@ header#header { border-top-left-radius: 1vw; border-top-right-radius: 1vw }
   /* Title :: SeanKrail.com */
   a#title {
     display: block;
-    height: 12vw;
 	  width: 100%;
     color: #CC9;
     background-color: white;
