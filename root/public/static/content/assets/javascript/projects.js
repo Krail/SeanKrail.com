@@ -60,8 +60,9 @@ function resizeSections(project_id) {
   var first = document.getElementById(project_id).getElementsByClassName('section-half');
   for (var i = 0; i < first.length; i += 2) {
     var maxHeight = (first[i].offsetHeight > first[i+1].offsetHeight) ? first[i].offsetHeight : first[i+1].offsetHeight;
-    first[i].style.height = maxHeight + 'px';
-    first[i+1].style.height = maxHeight + 'px';
+    maxHeight = maxHeight * 100 / window.innerWidth;
+    first[i].style.height = maxHeight + 'vw';
+    first[i+1].style.height = maxHeight + 'vw';
   }
 }
 
