@@ -74,6 +74,7 @@ h2:after, h3:after, h4:after {
 h1, h2, h3, h4 {
   font-family: lato-medium;
   text-align: center;
+  cursor: text;
   margin: 0;
   padding: 0 5%
 }

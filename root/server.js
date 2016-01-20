@@ -50,7 +50,6 @@ app.get('/', routes.home);
 Object.keys(routes).forEach(
   function(element, index, array) {
     app.get('/' + element, routes[element]);
-    console.log('app.get("/" + "' + element + '", routes["' + element + '"]);');
   }
 );
 

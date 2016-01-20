@@ -11,14 +11,14 @@
     "formats":
     [
       {
-        "title": "Download in PDF Format",
+        "title": "Download in PDF format",
         "type": "application/pdf",
         "href": "/static/content/assets/resume/KrailSean-Resume.pdf",
         "download": "KrailSean-Resume.pdf",
         "text": "PDF"
       },
       {
-        "title": "Download in PNG Format",
+        "title": "Download in PNG format",
         "type": "image/png",
         "href": "/static/content/assets/resume/KrailSean-Resume-large.png",
         "download": "KrailSean-Resume.png",
