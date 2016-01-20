@@ -4,7 +4,7 @@
 /* Glyphicons */
 /**************/
 
-.glyphicon-address { vertical-align: baseline }
+/*.glyphicon-address { vertical-align: baseline }*/
 
 
 /********/
@@ -52,7 +52,7 @@ footer#footer { cursor: pointer; border-bottom-left-radius: 1vw; border-bottom-r
         }
         footer#footer address a:focus { outline: none }*/
   /* Top of the Page Link */
-  /*a#footer {
+  /*a#backtotop {
     display: block;
     text-align: center;
     text-decoration: none;
@@ -64,12 +64,11 @@ footer#footer { cursor: pointer; border-bottom-left-radius: 1vw; border-bottom-r
     padding: 0;
     padding-top: 1vw;
     transition: color 2s ease-in-out 0s, background-color 2s ease-in-out 0s
-  }
-  a#footer { border-bottom-left-radius: 1vw; border-bottom-right-radius: 1vw }
-  a#footer:hover { color: #CC9; background-color: #124B85; text-decoration: none }
-  a#footer:active, footer a:focus { color: #CC9; background-color: black; text-decoration: none }
+  }*/
+  a#backtotop { border-bottom-left-radius: 1vw; border-bottom-right-radius: 1vw }
+  /*a#backtotop:hover { color: #CC9; background-color: #124B85; text-decoration: none }
+  a#backtotop:active, footer a:focus { color: #CC9; background-color: black; text-decoration: none }
   a#footer:focus { outline: none }*/
-    footer#footer span { font-size: 2em }
     footer#footer p {
       font-family: 'lato-heavy';
       font-size: 2em;
@@ -78,11 +77,11 @@ footer#footer { cursor: pointer; border-bottom-left-radius: 1vw; border-bottom-r
     /* Copyright Text */
     footer#footer p.copyright {
       text-align: right;
-      font-size: 1em;
+      font-size: 0.75em;
       padding: 0.5vw;
       margin: 0;
     }
-      small.copyright { font-size: 0.5em; font-weight: normal }
+      small.copyright { font-size: 0.75em; font-weight: normal }
 
 
 /*******************/

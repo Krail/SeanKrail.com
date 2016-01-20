@@ -51,7 +51,7 @@ html(lang="en")
                 a(class='btn btn-text', title=contact.title, href=contact.href) #{contact.text} #[span(class=contact.icon, aria-hidden="true")]
               else
                 a(class='btn btn-text', title=contact.title, href=contact.href) #[span(class=contact.icon, aria-hidden='true')] #{contact.text}
-      a(class='btn', id='footer', onclick='scrollToTop("html, body")')
+      a(class='btn', id='backtotop', onclick='scrollToTop("html, body")')
         span(class=content.footer.icon, aria-hidden='true')
         p=content.footer.backtotop
         p(class='copyright')!='Version ' + version + '<br>'
