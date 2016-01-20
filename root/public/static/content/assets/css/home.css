@@ -5,8 +5,8 @@
 /********/
 
 article.home {
-	font-family: lato-light;
-	font-size: 1.5vw;
+	font-family: 'lato-light';
+	font-size: 1em;
   text-align: left;
 	padding: 1vw
 }

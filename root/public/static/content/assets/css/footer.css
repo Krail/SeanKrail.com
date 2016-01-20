@@ -25,10 +25,10 @@ footer#footer { cursor: pointer; border-bottom-left-radius: 1vw; border-bottom-r
       footer#footer address {
         display: block;
         font-style: normal;
-        font-family: lato-light;
+        font-family: 'lato-light';
         margin: 0;
         line-height: 3vw;
-        font-size: 1.75vw;
+        font-size: 1.75em;
         width: 100%
       }
         footer#footer address a {
@@ -70,17 +70,17 @@ footer#footer { cursor: pointer; border-bottom-left-radius: 1vw; border-bottom-r
   a#footer:active, footer a:focus { color: #CC9; background-color: black; text-decoration: none }
   a#footer:focus { outline: none }
     footer#footer p {
-      font-size: 1.5vw;
+      font-size: 1em;
       margin: 0
     }
     /* Copyright Text */
     footer#footer p.copyright {
       text-align: right;
-      font-size: 0.8vw;
+      font-size: 0.8em;
       padding: 0.5vw;
       margin: 0;
     }
-      small.copyright { font-size: 0.7vw; font-weight: normal }
+      small.copyright { font-size: 0.7em; font-weight: normal }
 
 
 /*******************/

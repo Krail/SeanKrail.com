@@ -41,8 +41,8 @@ header#header { border-top-left-radius: 1vw; border-top-right-radius: 1vw }
           text-decoration: none;
           line-height: 5vw;
           display: block;
-          font-family: lato-heavy;
-          font-size: 1.5vw;
+          font-family: 'lato-heavy';
+          font-size: 1.5em;
           padding: 0;
           margin: 0;
           transition: color 2s ease-in-out 0s, background-color 2s ease-in-out 0s;

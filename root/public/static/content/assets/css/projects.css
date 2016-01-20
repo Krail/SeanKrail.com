@@ -4,7 +4,7 @@
 /* Glyphicons */
 /**************/
 
-.glyphicon-search { vertical-align: baseline; font-size: 2vw }
+.glyphicon-search { vertical-align: baseline; font-size: 1em }
 .glyphicon-expand-collapse { vertical-align: baseline }
 
 
@@ -13,8 +13,8 @@
 /**********/
 
 div.alert {
-  font-family: lato-regular;
-  font-size: 1.5vw;
+  font-family: 'lato-regular';
+  font-size: 1.5em;
   margin: 0;
   margin-top: 1vw;
   border: 0.2vw solid #CC4335;
@@ -47,7 +47,7 @@ form input {
   padding: 0.2vw;
   padding-left: 1vw;
   padding-right: 1vw;
-  font-size: 1.75vw;
+  font-size: 1.5em;
   vertical-align: top
 }
 form input:hover { border-color: rgba(18,75,133,0.5) }
@@ -71,111 +71,55 @@ ul.btn-expand-collapse {
 	padding: 0;
 	width: 100%
 }
-  ul.btn-expand-collapse li {
+  ul.btn-expand-collapse li.btn {
     display: inline-block;
-    font-family: lato-heavy;
+    font-family: 'lato-heavy';
     line-height: 3vw;
-    font-size: 1.5vw;
-    width: 50%;
-    color: #CC9;
-    background-color: white;
-    cursor: pointer;
+    font-size: 1em;
     text-decoration: none;
-    transition: background-color 2s ease-in-out 0s
+    width: 50%;
+    border: 0
   }
-  /*ul.btn-expand-collapse li:first-child { border-right: 0.1vw solid white }
-  ul.btn-expand-collapse li:last-child { border-left: 0.1vw solid white }*/
-  ul.btn-expand-collapse li:hover { background-color: #124B85 }
-  ul.btn-expand-collapse li:active, ul.btn-expand-collapse li:focus { background-color: black }
-  ul.btn-expand-collapse li:focus { outline: none }
 div.btn-collapse {
   display: block;
-  font-family: lato-heavy;
+  font-family: 'lato-heavy';
   line-height: 3vw;
-  font-size: 1.5vw;
+  font-size: 1em;
   text-align: center;
   width: 100%;
   margin-top: 1vw;
-  border: 0.2vw solid white;
-  color: #CC9;
-  background-color: white;
-  cursor: pointer;
-  transition: background-color 2s ease-in-out 0s
 }
-div.btn-collapse:hover { background-color: #124B85 }
-div.btn-collapse:active, div.btn-collapse li:focus { background-color: black }
 
 
 /********/
 /* Main */
 /********/
 
-article.project {background-color: #CC9}
-  article.project header {padding: 0.5vw; cursor: pointer; transition: background-color 2s ease-in-out 0s}
-  article.project header:hover {background-color: lightcyan}
-  article.project header:active, article.project header:focus {background-color: lightskyblue; outline: none}
-    article.project header div {display: block; position: relative; height: 20vw}
-      article.project header div img {float: left; margin: 0; height: 100%;}
-      article.project header div div {overflow: hidden; float: none; flex-shrink: 22; height: 100%; width: auto}
-        article.project header div div h2 {font-family: lato-medium; font-size: 3.5vw; text-align: center; padding-left: 5%; padding-right: 5%}
-          article.project header div div h2 em {font-family: lato-light; font-size: 3.5vw; text-align: center}
-        article.project header div div p {font-family: lato-light; font-size: 1.5vw; padding-left: 5%}
-          article.project header div div p a {font-family: lato-thin; text-decoration: none}
-          article.project header div  div p a:hover {text-decoration: overline underline}
-          article.project header div  div p a:active {text-decoration: overline line-through underline}
-  article.project section { margin: 0.5vw auto 0 auto; width: 95% }
-    article.project section section.floaters {
-      display: flex;
-      overflow: auto;
-      margin: 0 auto
-    }
-    article.project section section.floaters:first-child { margin-top: 0 }
-      article.project section section.floaters section.subfloater {
-        background-color: white;
-        display: inline-flex;
-        -webkit-flex: 1 1 auto;
-        -ms-flex: 1 1 auto;
-        -moz-flex: 1 1 auto;
-        flex: 1 1 auto;
-        margin-right: 0.5vw;
-        padding: 1vw
-      }
-      article.project section section.floaters section.subfloater:last-child { margin-right: 0 }
-        article.project section section.floaters section.subfloater div {
-          display: block;
-          width: 100%;
-        }
-          article.project section section.floaters section.subfloater div header h4 {
-            display: block;
-            text-align: center;
-            font-family: lato-medium;
-            font-size: 2vw;
-            padding-left: 5%;
-            padding-right: 5%
-          }
-          article.project section section.floaters section.subfloater div img { display: block; margin: auto; width: 100% }
-          article.project section section.floaters section.subfloater div video { display: block; margin: auto; border: 0; height: 50vh }
-          article.project section section.floaters section.subfloater div iframe { width: 10vw; height: 20vw }
-          article.project section section.floaters section.subfloater div aside { padding-top: 0.5vw; text-align: center }
-            article.project section section.floaters section.subfloater div aside p {
-              font-family: lato-light;
-              font-size: 1vw;
-              text-align: left
-            }
-              article.project section section.floaters section.subfloater div aside p a {
-                font-family: lato-thin;
-                font-size: 1vw;
-                text-decoration: none
-              }
-              article.project section section.floaters section.subfloater div aside p a:hover {text-decoration: overline underline}
-              article.project section section.floaters section.subfloater div aside p a:active {text-decoration: overline line-through underline}
-          article.project section section.floaters section.subfloater div p {
-            font-family: lato-light;
-            font-size: 1vw;
-          }
-            article.project section section.floaters section.subfloater div p a {font-family: lato-thin; text-decoration: none}
-            article.project section section.floaters section.subfloater div p a:hover {text-decoration: overline underline}
-            article.project section section.floaters section.subfloater div p a:active {text-decoration: overline line-through underline}
+article.project { display: block; background-color: #CC9 }
+  article.project header { display: block; overflow: hidden; height: auto; width: 100%; padding: 0.5vw; cursor: pointer; transition: background-color 2s ease-in-out 0s }
+  article.project header:hover { background-color: lightcyan }
+  article.project header:active, article.project header:focus { background-color: lightskyblue; outline: none }
+      article.project header img { position: relative; float: left; height: auto; width: 20vw; margin: 0 }
+      article.project header h2 { overflow: hidden; margin: 1vw auto 2vw }
+        article.project header h2 em { font-family: 'lato-light' }
+    article.project header p { overflow: hidden; font-family: 'lato-light'; font-size: 1em; padding: 0 2vw }
+
+  article.project div { display: block; padding: 0 3vw }
+  article.project section {
+    display: inline-block;
+    background-color: white;
+    margin-top: 0.5vw;
+    border: 0.2vw solid white;
+    padding: 1vw
+  }
+  section.section-half { width: 35.75vw; vertical-align: top }
+  section.section-half-first { margin-right: 0.5vw }
+  
+  article.project section.section-half:first-child { margin-left: 5% }
+  article.project section.section-half:last-child { margin-right: 0 }
+  article.project section.section-full, article.project section .landscape { height: auto; width: 100% }
+    article.project section .portrait { height: 50vh; width: auto }
+    article.project section p { font-family: 'lato-light'; font-size: 1em }
 
 
 /*******************/

@@ -4,13 +4,87 @@
 /* Open Source Fonts */
 /*********************/
 
-/* In order of thickness using the Web open font format (.woff) */
-@font-face { font-family: 'lato-heavy'; src: url(./fonts/lato/Lato-Heavy.woff) }
-@font-face { font-family: 'lato-regular'; src: url(./fonts/lato/Lato-Regular.woff) }
-@font-face { font-family: 'lato-medium'; src: url(./fonts/lato/Lato-Medium.woff) }
-@font-face { font-family: 'lato-light'; src: url(./fonts/lato/Lato-Light.woff) }
-@font-face { font-family: 'lato-thin'; src: url(./fonts/lato/Lato-Thin.woff) }
-@font-face { font-family: 'lato-hairline'; src: url(./fonts/lato/Lato-Hairline.woff) }
+/* In descending order of thickness using the Web Open Font Format (.woff2) */
+/* Lato-Black */@font-face {
+  font-family: 'lato-black';
+  src: url(fonts/lato/LatoLatin-Black.woff2) format('woff2'),
+    url(fonts/lato/LatoLatin-Black.woff) format('woff');
+  font-style: normal;
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
+}
+/* Lato-Heavy */@font-face {
+  font-family: 'lato-heavy';
+  src: url(fonts/lato/LatoLatin-Heavy.woff2) format('woff2'),
+    url(fonts/lato/LatoLatin-Heavy.woff) format('woff');
+  font-style: normal;
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
+}
+/* Lato-Regular */@font-face {
+  font-family: 'lato-regular';
+  src: url(fonts/lato/LatoLatin-Regular.woff2) format('woff2'),
+    url(fonts/lato/LatoLatin-Regular.woff) format('woff');
+  font-style: normal;
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
+}
+/* Lato-Regular Bold */@font-face {
+  font-family: 'lato-regular';
+  src: url(fonts/lato/LatoLatin-Bold.woff2) format('woff2'),
+    url(fonts/lato/LatoLatin-Bold.woff) format('woff');
+  font-style: normal;
+  font-weight: bold;
+  text-rendering: optimizeLegibility;
+}
+/* Lato-Regular Italic */@font-face {
+  font-family: 'lato-regular';
+  src: url(fonts/lato/LatoLatin-Italic.woff2) format('woff2'),
+    url(fonts/lato/LatoLatin-Italic.woff) format('woff');
+  font-style: italic;
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
+}
+/* Lato-Regular BoldItalic */@font-face {
+  font-family: 'lato-regular';
+  src: url(fonts/lato/LatoLatin-BoldItalic.woff2) format('woff2'),
+    url(fonts/lato/LatoLatin-BoldItalic.woff) format('woff');
+  font-style: italic;
+  font-weight: bold;
+  text-rendering: optimizeLegibility;
+}
+/* Lato-Light */@font-face {
+  font-family: 'lato-light';
+  src: url(fonts/lato/LatoLatin-Light.woff2) format('woff2'),
+    url(fonts/lato/LatoLatin-Light.woff) format('woff');
+  font-style: normal;
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
+}
+/* Lato-Light Italic */@font-face {
+  font-family: 'lato-light';
+  src: url(fonts/lato/LatoLatin-LightItalic.woff2) format('woff2'),
+    url(fonts/lato/LatoLatin-LightItalic.woff) format('woff');
+  font-style: italic;
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
+}
+/* Lato-Thin */@font-face {
+  font-family: 'lato-thin';
+  src: url(fonts/lato/LatoLatin-Thin.woff2) format('woff2'),
+    url(fonts/lato/LatoLatin-Thin.woff) format('woff');
+  font-style: normal;
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
+}
+/* Lato-Thin Italic */@font-face {
+  font-family: 'lato-thin';
+  src: url(fonts/lato/LatoLatin-ThinItalic.woff2) format('woff2'),
+    url(fonts/lato/LatoLatin-ThinItalic.woff) format('woff');
+  font-style: italic;
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
+}
 
 
 /************************************/
@@ -24,7 +98,7 @@
 /* Glyphicons */
 /**************/
 
-.glyphicon { vertical-align: text-top; font-size: 1.5vw }
+.glyphicon { vertical-align: text-top; font-size: 0.875em }
 
 
 /***********/
@@ -51,7 +125,7 @@
 /* Links */
 /*********/
 
-a { font-family: lato-thin; text-decoration: none }
+a { font-family: 'lato-thin'; text-decoration: none }
 a:hover { text-decoration: overline underline }
 a:active, a:focus { text-decoration: overline line-through underline }
 a:focus { outline: none }
@@ -72,25 +146,25 @@ h2:after, h3:after, h4:after {
 	margin-top: 1vw
 }
 h1, h2, h3, h4 {
-  font-family: lato-medium;
+  font-family: 'lato-medium';
   text-align: center;
   cursor: text;
   margin: 0;
   padding: 0 5%
 }
-h1 { font-family: lato-heavy; font-size: 10vw; font-weight: bold }
-h2 { font-size: 3.5vw }
-h3 { font-size: 2.5vw; padding-top: 0.5vw; padding-bottom: 1vw }
-h4 { font-size: 2vw; margin-bottom: 1vw }
+h1 { font-family: 'lato-black'; font-size: 3em }
+h2 { font-size: 2.5em }
+h3 { font-size: 1.875em; padding-top: 0.5vw; padding-bottom: 1vw }
+h4 { font-size: 1.5em; margin-bottom: 1vw }
 
 
 /**************/
 /* Paragraphs */
 /**************/
 
-p { font-family: lato-light; font-size: 1.5vw; cursor: text }
-p.time { font-size: 1.2vw; text-align: right }
-p.time small { font-size: 1.1vw }
+p { font-family: 'lato-light'; font-size: 0.875em; cursor: text }
+p.time { font-size: 0.75em; text-align: right }
+p.time small { font-size: 0.5em }
 
 
 /*********/
