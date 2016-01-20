@@ -41,6 +41,7 @@ block main
                   h4=section.title
                   each paragraph in section.paragraphs
                     p!=paragraph
+                  //div(class='cleardiv', style='clear:left')
               else
                 - firstHalf = true
                 section(class='section-half section-half-last')

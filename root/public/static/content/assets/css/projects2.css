@@ -96,7 +96,7 @@ div.btn-collapse {
 /********/
 
 article.project { display: block; background-color: #CC9 }
-  article.project header { display: block; height: 21.4vw; width: 100%; padding: 0.5vw; cursor: pointer; transition: background-color 2s ease-in-out 0s }
+  article.project header { display: block; overflow: hidden; height: auto; width: 100%; padding: 0.5vw; cursor: pointer; transition: background-color 2s ease-in-out 0s }
   article.project header:hover { background-color: lightcyan }
   article.project header:active, article.project header:focus { background-color: lightskyblue; outline: none }
       article.project header img { position: relative; float: left; height: 20vw; width: 20vw; margin: 0 }
