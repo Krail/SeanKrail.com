@@ -27,7 +27,7 @@ footer#footer { cursor: pointer; border-bottom-left-radius: 1vw; border-bottom-r
         margin: 0;
         width: 100%
       }
-        footer#footer address a {
+        /*footer#footer address a {
           display: block;
           font-family: 'lato-heavy';
           font-style: normal;
@@ -50,9 +50,9 @@ footer#footer { cursor: pointer; border-bottom-left-radius: 1vw; border-bottom-r
           background-color: black;
           text-decoration: none
         }
-        footer#footer address a:focus { outline: none }
+        footer#footer address a:focus { outline: none }*/
   /* Top of the Page Link */
-  a#footer {
+  /*a#footer {
     display: block;
     text-align: center;
     text-decoration: none;
@@ -68,7 +68,7 @@ footer#footer { cursor: pointer; border-bottom-left-radius: 1vw; border-bottom-r
   a#footer { border-bottom-left-radius: 1vw; border-bottom-right-radius: 1vw }
   a#footer:hover { color: #CC9; background-color: #124B85; text-decoration: none }
   a#footer:active, footer a:focus { color: #CC9; background-color: black; text-decoration: none }
-  a#footer:focus { outline: none }
+  a#footer:focus { outline: none }*/
     footer#footer span { font-size: 2em }
     footer#footer p {
       font-family: 'lato-heavy';

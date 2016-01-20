@@ -9,12 +9,12 @@ block main
   div(id='letters', class="alert alert-danger", role="alert", style='display:none') #[span(class="glyphicon glyphicon-exclamation-sign" aria-hidden="true")] #[span(class="sr-only") Error:] Only letters, spaces, and a few #[i necessary] special characters are allowed in the search field
   // Search field
   form(id='searchform', action='/projects', method='post')
-    input(id='searchfield', name='searchfield', class='search', type='text', pattern="^[a-zA-Z0-9 ,.'\-]+$", autocomplete='off', maxlength='60', placeholder='Search for a topic here... (e.g. VLSI, Cadence, Android, JavaScript, etc.)', oninput='verifySearchField()', required)
+    input(id='searchfield', class='search border', name='searchfield', type='text', pattern="^[a-zA-Z0-9 ,.'\-]+$", autocomplete='off', maxlength='60', placeholder='Search for a topic here... (e.g. VLSI, Cadence, Android, JavaScript, etc.)', oninput='verifySearchField()', required)
     //input(class='submit', type='submit', value='Search')
-    button(id='submitbutton', form='searchform', class='btn btn-default btn-search', type='submit', value='Submit')
+    button(id='submitbutton', form='searchform', class='btn btn-default btn-search border', type='submit', value='Submit')
       span(class='glyphicon glyphicon-search', aria-hidden='true')
   // Expand/collapse all project articles
-  ul(class='btn-expand-collapse')
+  ul(class='btn-expand-collapse border')
     li(class='btn btn-default', onclick='show()') Expand All #[span(class="glyphicon glyphicon-expand-collapse glyphicon-collapse-down" aria-hidden="true")]
     li(class='btn btn-default', class='btn', onclick='hide()') #[span(class="glyphicon glyphicon-expand-collapse glyphicon-collapse-up" aria-hidden="true")] Collapse All
 
@@ -24,7 +24,7 @@ block main
     each pro in content.projects.hard
       - numPro++
       article(id='#{pro.id}Article', class='project')
-        header(id='#{pro.id}Header', title='Click to expand/collapse', onclick='toggle(\'#{pro.id}\')')
+        header(class='border', id='#{pro.id}Header', title='Click to expand/collapse', onclick='toggle(\'#{pro.id}\')')
           img(title=pro.header.image.title, src=pro.header.image.src, alt=pro.header.image.alt)
           h2!=pro.header.heading
           each paragraph in pro.header.paragraphs
@@ -37,36 +37,36 @@ block main
             if section.type === 'half'
               if firstHalf === true
                 - firstHalf = false
-                section(class='section-half section-half-first')
+                section(class='section-half section-half-first border')
                   h4=section.title
                   each paragraph in section.paragraphs
                     p!=paragraph
                   //div(class='cleardiv', style='clear:left')
               else
                 - firstHalf = true
-                section(class='section-half section-half-last')
+                section(class='section-half section-half-last border')
                   h4=section.title
                   each paragraph in section.paragraphs
                     p!=paragraph
             else if section.type === 'full'
-              section(class='section-full')
+              section(class='section-full border')
                 h4=section.title
                 each paragraph in section.paragraphs
                   p!=paragraph
             else if section.type === 'video'
-              section(class='section-full section-video')
+              section(class='section-full section-video border')
                 h4=section.title
                 if section.platform === 'vimeo'
                   iframe(class=section.orientation, src=section.src)
                 else
                   video(class=section.orientation, src=section.src, controls, loop, muted, preload)
             else if section.type === 'image'
-              section(class='section-full section-image')
+              section(class='section-full section-image border')
                 h4=section.title
                 img(class=section.orientation, title=section.title, src=section.src)
 
   // Expand/collapse all project articles
-  div(class='btn btn-default', class='btn-collapse', onclick='hide()') #[span(class="glyphicon glyphicon-expand-collapse glyphicon-collapse-up" aria-hidden="true")] Collapse All #[span(class="glyphicon glyphicon-expand-collapse glyphicon-collapse-up" aria-hidden="true")]
+  div(class='btn btn-default', class='btn-collapse border', onclick='hide()') #[span(class="glyphicon glyphicon-expand-collapse glyphicon-collapse-up" aria-hidden="true")] Collapse All #[span(class="glyphicon glyphicon-expand-collapse glyphicon-collapse-up" aria-hidden="true")]
   
 
 block script

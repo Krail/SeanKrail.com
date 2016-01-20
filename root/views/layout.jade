@@ -20,7 +20,7 @@ html(lang="en")
     
 
   body
-    header(id='header')
+    header(class='border', id='header')
       a(class='btn', id='title', class='top', title='My Home', type='text/html', href='/home')
         h1=content.header.title
       nav
@@ -39,7 +39,7 @@ html(lang="en")
     block main
 
 
-    footer(id='footer')
+    footer(class='border', id='footer')
       ul
         - var numContact = 0
         - var length = content.footer.contacts.length
