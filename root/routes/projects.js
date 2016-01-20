@@ -3,7 +3,7 @@ content.projects = require('../public/static/content/projects.js');
 
 /* GET projects page */
 module.exports = function(req, res) {
-  res.render('projects2', {
+  res.render('projects', {
     page: 'projects',
     appTitle: 'Sean\'s Projects',
     content: content
