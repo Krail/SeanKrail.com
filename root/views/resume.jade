@@ -11,6 +11,6 @@ block main
       ul
         each format in content.resume.download.formats
           li
-            a(title=format.title, type=format.type, href=format.href, download=format.download)=format.text
+            a(class='btn', title=format.title, type=format.type, href=format.href, download=format.download)=format.text
 
 block script

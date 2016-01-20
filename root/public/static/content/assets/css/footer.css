@@ -24,16 +24,16 @@ footer#footer { cursor: pointer; border-bottom-left-radius: 1vw; border-bottom-r
     footer#footer li:last { border-left: 0.1vw solid white }*/
       footer#footer address {
         display: block;
-        font-style: normal;
-        font-family: 'lato-light';
         margin: 0;
-        line-height: 3vw;
-        font-size: 1.75em;
         width: 100%
       }
         footer#footer address a {
           display: block;
-          color: black;
+          font-family: 'lato-heavy';
+          font-style: normal;
+          font-size: 2em;
+          line-height: 250%;
+          color: #CC9;
           background-color: white;
           text-decoration: none;
           width: 100%;
@@ -41,12 +41,12 @@ footer#footer { cursor: pointer; border-bottom-left-radius: 1vw; border-bottom-r
           transition: color 2s ease-in-out 0s, background-color 2s ease-in-out 0s
         }
         footer#footer address a:hover {
-          color: white;
+          color: #CC9;
           background-color: #124B85;
           text-decoration: none
         }
         footer#footer address a:active, footer address a:focus {
-          color: white;
+          color: #CC9;
           background-color: black;
           text-decoration: none
         }
@@ -69,18 +69,20 @@ footer#footer { cursor: pointer; border-bottom-left-radius: 1vw; border-bottom-r
   a#footer:hover { color: #CC9; background-color: #124B85; text-decoration: none }
   a#footer:active, footer a:focus { color: #CC9; background-color: black; text-decoration: none }
   a#footer:focus { outline: none }
+    footer#footer span { font-size: 2em }
     footer#footer p {
-      font-size: 1em;
+      font-family: 'lato-heavy';
+      font-size: 2em;
       margin: 0
     }
     /* Copyright Text */
     footer#footer p.copyright {
       text-align: right;
-      font-size: 0.8em;
+      font-size: 1em;
       padding: 0.5vw;
       margin: 0;
     }
-      small.copyright { font-size: 0.7em; font-weight: normal }
+      small.copyright { font-size: 0.5em; font-weight: normal }
 
 
 /*******************/

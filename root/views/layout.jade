@@ -21,7 +21,7 @@ html(lang="en")
 
   body
     header(id='header')
-      a(id='title', class='top', title='My Home', type='text/html', href='/home')
+      a(class='btn', id='title', class='top', title='My Home', type='text/html', href='/home')
         h1=content.header.title
       nav
         ul
@@ -31,9 +31,9 @@ html(lang="en")
             - i++
             li
               if i <= (length / 2)
-                a(id='#{li.name === page ? "page" : ""}', type='text/html', href=li.url) !{li.name === "home" ? "" : li.text} #[span(class=li.icon, aria-hidden='true')]
+                a(class='btn', id='#{li.name === page ? "page" : ""}', type='text/html', href=li.url) !{li.name === "home" ? "" : li.text} #[span(class=li.icon, aria-hidden='true')]
               else
-                a(id='#{li.name === page ? "page" : ""}', type='text/html', href=li.url) #[span(class=li.icon, aria-hidden='true')] !{li.name === "home" ? "" : li.text}
+                a(class='btn', id='#{li.name === page ? "page" : ""}', type='text/html', href=li.url) #[span(class=li.icon, aria-hidden='true')] !{li.name === "home" ? "" : li.text}
 
 
     block main
@@ -48,10 +48,10 @@ html(lang="en")
           li
             address
               if numContact <= (length / 2)
-                a(title=contact.title, href=contact.href) #{contact.text} #[span(class=contact.icon, aria-hidden="true")]
+                a(class='btn', title=contact.title, href=contact.href) #{contact.text} #[span(class=contact.icon, aria-hidden="true")]
               else
-                a(title=contact.title, href=contact.href) #[span(class=contact.icon, aria-hidden='true')] #{contact.text}
-      a(id='footer', onclick='scrollToTop("html, body")')
+                a(class='btn', title=contact.title, href=contact.href) #[span(class=contact.icon, aria-hidden='true')] #{contact.text}
+      a(class='btn', id='footer', onclick='scrollToTop("html, body")')
         span(class=content.footer.icon, aria-hidden='true')
         p=content.footer.backtotop
         p(class='copyright')!='Version ' + version + '<br>'

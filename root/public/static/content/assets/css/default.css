@@ -98,7 +98,7 @@
 /* Glyphicons */
 /**************/
 
-.glyphicon { vertical-align: text-top; font-size: 0.875em }
+.glyphicon { vertical-align: text-top; font-size: 1em }
 
 
 /***********/
@@ -106,9 +106,17 @@
 /***********/
 
 .btn {
+  display: block;
   color: #CC9;
   background-color: white;
+  font-family: 'lato-heavy';
+  font-size: 2em;
+  line-height: 250%;
+  text-decoration: none;
+  height: auto;
+  width: 100%;
   vertical-align: top;
+  margin: 0;
   border: 0.2vw solid white;
   border-radius: 0;
   padding: 0.5vw 1vw;
@@ -129,6 +137,25 @@ a { font-family: 'lato-thin'; text-decoration: none }
 a:hover { text-decoration: overline underline }
 a:active, a:focus { text-decoration: overline line-through underline }
 a:focus { outline: none }
+
+/*a.btn {
+  display: block;
+  color: #CC9;
+  background-color: white;
+  font-family: 'lato-heavy';
+  font-size: 2em;
+  line-height: 250%;
+  text-decoration: none;
+  height: auto;
+  width: 100%;
+  margin: 0;
+  border: 0;
+  padding: 0;
+  transition: background-color 2s ease-in-out 0s
+}
+a.btn:hover { background-color: #124B85 }
+a.btn:active, a.btn:focus { background-color: black }
+a.btn:focus { outline: none }*/
 
 
 /************/
@@ -152,7 +179,7 @@ h1, h2, h3, h4 {
   margin: 0;
   padding: 0 5%
 }
-h1 { font-family: 'lato-black'; font-size: 3em }
+h1 { font-family: 'lato-black'; font-size: 10em }
 h2 { font-size: 2.5em }
 h3 { font-size: 1.875em; padding-top: 0.5vw; padding-bottom: 1vw }
 h4 { font-size: 1.5em; margin-bottom: 1vw }
