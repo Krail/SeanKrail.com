@@ -5,12 +5,12 @@
 /*********************/
 
 /* In order of thickness using the Web open font format (.woff) */
-@font-face { font-family: lato-heavy; src: url(fonts/lato/Lato-Heavy.woff) }
-@font-face { font-family: lato-regular; src: url(fonts/lato/Lato-Regular.woff) }
-@font-face { font-family: lato-medium; src: url(fonts/lato/Lato-Medium.woff) }
-@font-face { font-family: lato-light; src: url(fonts/lato/Lato-Light.woff) }
-@font-face { font-family: lato-thin; src: url(fonts/lato/Lato-Thin.woff) }
-@font-face { font-family: lato-hairline; src: url(fonts/lato/Lato-Hairline.woff) }
+@font-face { font-family: 'lato-heavy'; src: url(./fonts/lato/Lato-Heavy.woff) }
+@font-face { font-family: 'lato-regular'; src: url(./fonts/lato/Lato-Regular.woff) }
+@font-face { font-family: 'lato-medium'; src: url(./fonts/lato/Lato-Medium.woff) }
+@font-face { font-family: 'lato-light'; src: url(./fonts/lato/Lato-Light.woff) }
+@font-face { font-family: 'lato-thin'; src: url(./fonts/lato/Lato-Thin.woff) }
+@font-face { font-family: 'lato-hairline'; src: url(./fonts/lato/Lato-Hairline.woff) }
 
 
 /************************************/
@@ -115,7 +115,8 @@ body {
   overflow: auto;
   height: auto;
 	background-color: #CC9;
-	font-family: lato-regular, Helvetica, sans;
+	font-family: 'lato-regular', sans-serif;
+  font-size: 100%;
   padding-left: 11vw;
   padding-right: 11vw;
 	padding-top: 1vw;

@@ -1,7 +1,7 @@
 extends layout
 
 block style
-  link(href='/static/content/assets/css/projects.css', rel='stylesheet', type='text/css')
+  link(href='/static/content/assets/css/projects2.css', rel='stylesheet', type='text/css')
 
 block main
   // Error messages
@@ -15,8 +15,9 @@ block main
       span(class='glyphicon glyphicon-search', aria-hidden='true')
   // Expand/collapse all project articles
   ul(class='btn-expand-collapse')
-    li(onclick='show()') Expand All #[span(class="glyphicon glyphicon-expand-collapse glyphicon-collapse-down" aria-hidden="true")]
-    li(onclick='hide()') #[span(class="glyphicon glyphicon-expand-collapse glyphicon-collapse-up" aria-hidden="true")] Collapse All
+    li(class='btn btn-default', onclick='show()') Expand All #[span(class="glyphicon glyphicon-expand-collapse glyphicon-collapse-down" aria-hidden="true")]
+    li(class='btn btn-default', class='btn', onclick='hide()') #[span(class="glyphicon glyphicon-expand-collapse glyphicon-collapse-up" aria-hidden="true")] Collapse All
+
   // Project articles
   main
     - var numPro = 0
@@ -24,50 +25,49 @@ block main
       - numPro++
       article(id='#{pro.id}Article', class='project')
         header(id='#{pro.id}Header', title='Click to expand/collapse', onclick='toggle(\'#{pro.id}\')')
-          div
-            img(title=pro.header.image.title, src=pro.header.image.src, alt=pro.header.image.alt)
-            div
-              h2!=pro.header.heading
-              each paragraph in pro.header.paragraphs
-                p!=paragraph
+          img(title=pro.header.image.title, src=pro.header.image.src, alt=pro.header.image.alt)
+          h2!=pro.header.heading
+          each paragraph in pro.header.paragraphs
+            p!=paragraph
+
         // Main content
-        section(id=pro.id, style='display: none')
+        div(id=pro.id, style='display:none')
+          - var firstHalf = true
           each section in pro.content.sections
-            section(class='floaters')
-              if section.type == 'video'
-                section(class='subfloater')
-                  div(style='text-align: center')
-                    header
-                      h4=section.title
-                    if section.platform == 'vimeo'
-                      iframe(src=section.src)
-                    else
-                      video(src=section.src, controls, loop, muted, preload)
-              else if section.type == 'image'
-                section(class='subfloater')
-                  div
-                    header
-                      h4=section.title
-                    img(title=section.title, src=section.src)
-              else if section.type == 'full'
-                section(class='subfloater')
-                  div
-                    header
-                      h4=section.title
-                    each paragraph in section.paragraphs
-                      p!=paragraph
-              else if section.type == 'half'
-                each subsection in section.subsections
-                  section(class='subfloater')
-                    div
-                      header
-                        h4=subsection.title
-                      each paragraph in subsection.paragraphs
-                        p!=paragraph
+            if section.type === 'half'
+              if firstHalf === true
+                - firstHalf = false
+                section(class='section-half section-half-first')
+                  h4=section.title
+                  each paragraph in section.paragraphs
+                    p!=paragraph
+                  //div(class='cleardiv', style='clear:left')
+              else
+                - firstHalf = true
+                section(class='section-half section-half-last')
+                  h4=section.title
+                  each paragraph in section.paragraphs
+                    p!=paragraph
+            else if section.type === 'full'
+              section(class='section-full')
+                h4=section.title
+                each paragraph in section.paragraphs
+                  p!=paragraph
+            else if section.type === 'video'
+              section(class='section-full section-video')
+                h4=section.title
+                if section.platform === 'vimeo'
+                  iframe(class=section.orientation, src=section.src)
+                else
+                  video(class=section.orientation, src=section.src, controls, loop, muted, preload)
+            else if section.type === 'image'
+              section(class='section-full section-image')
+                h4=section.title
+                img(class=section.orientation, title=section.title, src=section.src)
+
   // Expand/collapse all project articles
-  ul(class='btn-expand-collapse')
-    li(onclick='show()') Expand All #[span(class="glyphicon glyphicon-expand-collapse glyphicon-collapse-down" aria-hidden="true")]
-    li(onclick='hide()') #[span(class="glyphicon glyphicon-expand-collapse glyphicon-collapse-up" aria-hidden="true")] Collapse All
+  div(class='btn btn-default', class='btn-collapse', onclick='hide()') #[span(class="glyphicon glyphicon-expand-collapse glyphicon-collapse-up" aria-hidden="true")] Collapse All #[span(class="glyphicon glyphicon-expand-collapse glyphicon-collapse-up" aria-hidden="true")]
+  
 
 block script
   script(src="/static/content/assets/javascript/projects.js")
