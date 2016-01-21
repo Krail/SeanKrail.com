@@ -118,7 +118,7 @@
 /* Border */
 /**********/
 
-.border { border: 0.2vw solid white }
+.border { border: 0.2vw solid white !important }
 
 
 /***********/
@@ -133,7 +133,6 @@
   width: 100%;
   vertical-align: top;
   margin: 0;
-  border: 0;
   border-radius: 0;
   padding: 0.5vw 1vw;
   cursor: pointer;
@@ -143,7 +142,6 @@
 .btn:active, .btn:focus { color: #CC9; background-color: black; text-decoration: none; border-color: white }
 .btn:focus { outline: none }
 .btn[disabled] { opacity: 1.0; color: #CC9; background-color: #E74C3C; border-color: #CC4335; cursor: not-allowed }
-
 .btn-text {
   font-family: 'lato-heavy';
   font-size: 2em;
