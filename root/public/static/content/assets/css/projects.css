@@ -95,31 +95,34 @@ div.btn-collapse {
 /* Main */
 /********/
 
-article.project { display: block; background-color: #CC9 }
-  article.project header { display: block; overflow: hidden; height: auto; width: 100%; padding: 0.5vw; cursor: pointer; transition: background-color 2s ease-in-out 0s }
-  article.project header:hover { background-color: lightcyan }
-  article.project header:active, article.project header:focus { background-color: lightskyblue; outline: none }
-      article.project header img { position: relative; float: left; height: auto; width: 20vw; margin: 0 }
-      article.project header h2 { overflow: hidden; margin: 1vw auto 2vw }
-        article.project header h2 em { font-family: 'lato-light' }
-    article.project header p { overflow: hidden; font-family: 'lato-light'; font-size: 1em; padding: 0 2vw }
+/*article.project { display: block; background-color: #CC9 }*/
+  article.project > header.project {
+    overflow: hidden;
+    padding: 0.5vw;
+    cursor: pointer;
+    transition: background-color 2s ease-in-out 0s
+}
+  article.project > header.project:hover { background-color: lightcyan }
+  article.project > header.project:active, article.project > header:focus { background-color: lightskyblue }
+  article.project > header.project:focus { outline: none }
+      header.project > img { position: relative; float: left; height: auto; width: 20vw; margin: 0 }
+      header.project > h2 { overflow: hidden; margin: 1vw auto 2vw }
+        header.project > h2 > em { font-family: 'lato-light' }
+    header.project > p { overflow: hidden; font-family: 'lato-light'; font-size: 1em; padding: 0 2vw }
 
-  article.project div { display: block; padding: 0 3vw }
-  article.project section {
-    display: inline-block;
-    background-color: white;
-    margin-top: 0.5vw;
-    border: 0.2vw solid white;
-    padding: 1vw
-  }
-  section.section-half { width: 35.75vw; vertical-align: top }
-  section.section-half-first { margin-right: 0.5vw }
-  
-  article.project section.section-half:first-child { margin-left: 5% }
-  article.project section.section-half:last-child { margin-right: 0 }
-  article.project section.section-full, article.project section .landscape { height: auto; width: 100% }
-    article.project section .portrait { height: 50vh; width: auto }
-    article.project section p { font-family: 'lato-light'; font-size: 1em }
+  article.project > div.main { display: block; padding: 0 3vw }
+    div.main > section {
+      display: inline-block;
+      background-color: white;
+      margin-top: 0.5vw;
+      border: 0.2vw solid white;
+      padding: 1vw
+    }
+    div.main > section.section-half { width: 35.75vw; vertical-align: top }
+    div.main > section.section-half-first { margin-right: 0.5vw }
+    div.main > section.section-full { height: auto; width: 100% }
+      section.section-full > .landscape { height: auto; width: 100% }
+      section.section-full > .portrait { height: 50vh; width: auto }
 
 
 /*******************/

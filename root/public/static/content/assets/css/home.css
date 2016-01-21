@@ -8,6 +8,8 @@ article.home {
 	font-family: 'lato-light';
 	font-size: 1em;
   text-align: left;
+  background-color: white;
+  border: 0.2vw solid white;
 	padding: 1vw
 }
 

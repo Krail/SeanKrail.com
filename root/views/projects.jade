@@ -24,14 +24,14 @@ block main
     each pro in content.projects.hard
       - numPro++
       article(id='#{pro.id}Article', class='project')
-        header(class='border', id='#{pro.id}Header', title='Click to expand/collapse', onclick='toggle(\'#{pro.id}\')')
+        header(class='project border', id='#{pro.id}Header', title='Click to expand/collapse', onclick='toggle(\'#{pro.id}\')')
           img(title=pro.header.image.title, src=pro.header.image.src, alt=pro.header.image.alt)
           h2!=pro.header.heading
           each paragraph in pro.header.paragraphs
             p!=paragraph
 
         // Main content
-        div(id=pro.id, style='display:none')
+        div(id=pro.id, class='main', style='display:none')
           - var firstHalf = true
           each section in pro.content.sections
             if section.type === 'half'
