@@ -29,7 +29,10 @@ function initialize() {
   for (var i = 0; i < projects.length; i++) {
     var children = projects[i].children;
     if (children.length === 2) project_id.push(children[1].getAttribute('id'));
-    else console.error(TAG + 'Expected two children inside of this project article element');
+    else {
+      console.error(TAG + 'Expected two children inside of this project article element');
+      console.log(children);
+    }
     opened.push(false);
   }
 }

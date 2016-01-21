@@ -15,6 +15,7 @@ footer#footer { cursor: pointer; border-bottom-left-radius: 1vw; border-bottom-r
   /* Contact Information */
   footer#footer ul {
     display: block;
+    list-style: none;
     text-align: center;
     margin: 0;
     padding: 0
