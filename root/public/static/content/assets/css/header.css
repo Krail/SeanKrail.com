@@ -22,16 +22,16 @@ header#header { border-top-left-radius: 1vw; border-top-right-radius: 1vw }
   a#title:active, a#title:focus { background-color: black; text-decoration: none }
   a#title:focus { outline: none }
   /* Navagation Bar :: Projects - Home - Resume */
-  nav { list-style: none; margin: 0; padding: 0 }
+  nav { margin: 0; padding: 0 }
     nav ul {
-      text-align: center;
       display: block;
+      list-style: none;
+      text-align: center;
       margin: 0;
       padding: 0
     }
       nav li {
         display: inline-block;
-        overflow: hidden;
         width: 33.333%
       }
         nav a {
