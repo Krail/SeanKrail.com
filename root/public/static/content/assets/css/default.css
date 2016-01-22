@@ -221,9 +221,8 @@ ul {
       padding: 0;
       transition: color 2s ease-in-out 0s, background-color 2s ease-in-out 0s
     }
-    ul > li a:hover { background-color: #124B85 } 
-    ul > li a:active, ul > li a:focus { background-color: black }
-    ul > li a:focus { outline: none }
+    ul > li a:hover { background-color: #124B85; text-decoration: none; } 
+    ul > li a:active, ul > li a:focus { background-color: black; text-decoration: none; }
 
 
 /*********/
@@ -256,22 +255,19 @@ body {
 	padding-bottom: 1vw;
 	margin: 0 auto;
 }
-header {
-  display: block;
+header, footer {
   background-color: white;
   height: auto;
-  width: 100%;
+  width: auto;
   margin: 0 auto;
   padding: 0;
 }
 main {
-  display: block;
   overflow: hidden;
   margin: 0 auto;
   padding: 0
 }
 article {
-  display: block;
 	height: auto;
   width: 100%;
 	margin: 0;
@@ -279,13 +275,7 @@ article {
   border: 0;
   padding: 0
 }
-footer {
-	display: block;
-	background-color: white;
-	margin: 0;
-	padding: 0;
-	margin-top: 1vw
-}
+footer { margin-top: 1vw }
 
 
 /*******************/
