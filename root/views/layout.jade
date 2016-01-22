@@ -33,9 +33,9 @@ html(lang='en')
             - i++
             li
               if i <= (length / 2)
-                a(class='', id='#{li.name === page ? "page" : ""}', type='text/html', href=li.url) !{li.name === "home" ? "" : li.text} #[span(class=li.icon, aria-hidden='true')]
+                a(id='#{li.name === page ? "page" : ""}', type='text/html', href=li.url) !{li.name === "home" ? "" : li.text} #[span(class=li.icon, aria-hidden='true')]
               else
-                a(class='', id='#{li.name === page ? "page" : ""}', type='text/html', href=li.url) #[span(class=li.icon, aria-hidden='true')] !{li.name === "home" ? "" : li.text}
+                a(id='#{li.name === page ? "page" : ""}', type='text/html', href=li.url) #[span(class=li.icon, aria-hidden='true')] !{li.name === "home" ? "" : li.text}
 
 
     block main
@@ -50,9 +50,9 @@ html(lang='en')
           li
             address
               if numContact <= (length / 2)
-                a(class='btn btn-text', title=contact.title, href=contact.href) #{contact.text} #[span(class=contact.icon, aria-hidden='true')]
+                a(title=contact.title, href=contact.href) #{contact.text} #[span(class=contact.icon, aria-hidden='true')]
               else
-                a(class='btn btn-text', title=contact.title, href=contact.href) #[span(class=contact.icon, aria-hidden='true')] #{contact.text}
+                a(title=contact.title, href=contact.href) #[span(class=contact.icon, aria-hidden='true')] #{contact.text}
       a(class='btn', id='backtotop', onclick='scrollToTop("html, body")')
         span(class=content.footer.icon, aria-hidden='true')
         p=content.footer.backtotop

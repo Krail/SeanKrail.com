@@ -192,9 +192,8 @@ h4 { font-size: 2.5em; margin-bottom: 1vw }
 /**************/
 
 p { font-family: 'lato-light'; font-size: 1em; cursor: text }
-p.time { font-size: 0.75em; text-align: right }
-p.time small { font-size: 0.5em }
-
+p.time { text-align: right }
+small { font-size: 80% }
 
 /*********/
 /* Lists */
@@ -214,6 +213,7 @@ ul {
       font-family: 'lato-heavy';
       font-size: 1.25em;
       line-height: 250%;
+      font-style: normal;
       text-decoration: none;
       color: #CC9;
       background-color: white;
@@ -256,7 +256,6 @@ body {
 	margin: 0 auto;
 }
 header, footer {
-  background-color: white;
   height: auto;
   width: auto;
   margin: 0 auto;

@@ -10,7 +10,8 @@ article.home {
   text-align: left;
   background-color: white;
   border: 0.2vw solid white;
-	padding: 1vw
+	padding: 1vw;
+  padding-bottom: 0
 }
 
 

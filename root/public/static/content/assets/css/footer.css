@@ -11,7 +11,7 @@
 /* Main */
 /********/
 
-footer#footer { cursor: pointer; border-bottom-left-radius: 1vw; border-bottom-right-radius: 1vw }
+footer#footer { color: #CC9; background-color: white; text-align: center; cursor: pointer; border-bottom-left-radius: 1vw; border-bottom-right-radius: 1vw }
   /* Contact Information */
   footer#footer ul {
     display: block;
