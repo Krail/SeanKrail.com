@@ -1,16 +1,17 @@
 doctype default
 !='<!-- Version ' + version + '-->'
-html(lang="en")
+html(lang='en')
   head
-    meta(charset="utf-8")
+    meta(charset='utf-8')
     title=appTitle
-    meta(name="description", content="Public host for my resume and projects portfolio.")
-    meta(name="author", content="Sean Krail")
+    meta(name='description', content='Public host for my resume and projects portfolio.')
+    meta(name='author', content='Sean Krail')
     link(rel='icon', href='/static/content/assets/images/ico/favicon.ico')
-    meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
+    meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no')
     // 3rd party
-    //link(href="/static/bootstrap/css/theme/flatly/bootstrap.css", rel="stylesheet")
-    link(href="/static/content/assets/css/glyphicons.css", rel="stylesheet")
+    //link(href='/static/bootstrap/css/theme/flatly/bootstrap.css', rel='stylesheet')
+    link(href='//normalize-css.googlecode.com/svn/trunk/normalize.min.css', rel='stylesheet')
+    link(href='/static/content/assets/css/glyphicons.css', rel='stylesheet')
     // 1st party
     link(href='/static/content/assets/css/default.css', rel='stylesheet', type='text/css')
     link(href='/static/content/assets/css/header.css', rel='stylesheet', type='text/css')
@@ -32,9 +33,9 @@ html(lang="en")
             - i++
             li
               if i <= (length / 2)
-                a(class='btn btn-text', id='#{li.name === page ? "page" : ""}', type='text/html', href=li.url) !{li.name === "home" ? "" : li.text} #[span(class=li.icon, aria-hidden='true')]
+                a(class='', id='#{li.name === page ? "page" : ""}', type='text/html', href=li.url) !{li.name === "home" ? "" : li.text} #[span(class=li.icon, aria-hidden='true')]
               else
-                a(class='btn btn-text', id='#{li.name === page ? "page" : ""}', type='text/html', href=li.url) #[span(class=li.icon, aria-hidden='true')] !{li.name === "home" ? "" : li.text}
+                a(class='', id='#{li.name === page ? "page" : ""}', type='text/html', href=li.url) #[span(class=li.icon, aria-hidden='true')] !{li.name === "home" ? "" : li.text}
 
 
     block main
@@ -49,7 +50,7 @@ html(lang="en")
           li
             address
               if numContact <= (length / 2)
-                a(class='btn btn-text', title=contact.title, href=contact.href) #{contact.text} #[span(class=contact.icon, aria-hidden="true")]
+                a(class='btn btn-text', title=contact.title, href=contact.href) #{contact.text} #[span(class=contact.icon, aria-hidden='true')]
               else
                 a(class='btn btn-text', title=contact.title, href=contact.href) #[span(class=contact.icon, aria-hidden='true')] #{contact.text}
       a(class='btn', id='backtotop', onclick='scrollToTop("html, body")')
@@ -62,10 +63,10 @@ html(lang="en")
 
 
     // 3rd party
-    script(src="/static/jquery/jquery.js")
-    script(src="/static/jquery/jquery-ui.min.js")
-    script(src="/static/bootstrap/js/bootstrap.min.js")
+    script(src='/static/jquery/jquery.js')
+    script(src='/static/jquery/jquery-ui.min.js')
+    //script(src='/static/bootstrap/js/bootstrap.min.js')
     // 1st party
-    script(src="/static/content/assets/javascript/scroll.js")
+    script(src='/static/content/assets/javascript/scroll.js')
     
     block script

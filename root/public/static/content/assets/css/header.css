@@ -38,11 +38,11 @@ header#header { border-top-left-radius: 1vw; border-top-right-radius: 1vw }
           color: #CC9;
           background-color: white;
           width: 100%;
-          text-decoration: none;
-          line-height: 250%;
           display: block;
           font-family: 'lato-heavy';
-          font-size: 2em;
+          font-size: 1.25em;
+          line-height: 250%;
+          text-decoration: none;
           padding: 0;
           margin: 0;
           transition: color 2s ease-in-out 0s, background-color 2s ease-in-out 0s;
