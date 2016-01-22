@@ -73,8 +73,8 @@ ul.btn-expand-collapse {
   ul.btn-expand-collapse > li.btn {
     display: inline-block;
     font-family: 'lato-heavy';
-    line-height: 400%;
-    font-size: 1em;
+    line-height: 250%;
+    font-size: 1.25em;
     text-decoration: none;
     width: 50%;
     border: 0;
@@ -83,10 +83,11 @@ ul.btn-expand-collapse {
 div.btn-collapse {
   display: block;
   font-family: 'lato-heavy';
-  line-height: 400%;
-  font-size: 1em;
+  line-height: 250%;
+  font-size: 1.25em;
   text-align: center;
-  margin-top: 1vw
+  margin-top: 1vw;
+  padding: 0
 }
 
 
