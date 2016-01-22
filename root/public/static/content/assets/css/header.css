@@ -22,34 +22,10 @@ header#header { border-top-left-radius: 1vw; border-top-right-radius: 1vw }
   a#title:active, a#title:focus { background-color: black; text-decoration: none }
   a#title:focus { outline: none }
   /* Navagation Bar :: Projects - Home - Resume */
-  nav { margin: 0; padding: 0 }
-    nav ul {
-      display: block;
-      list-style: none;
-      text-align: center;
-      margin: 0;
-      padding: 0
-    }
       nav li {
         display: inline-block;
         width: 33.333%
       }
-        nav a {
-          color: #CC9;
-          background-color: white;
-          width: 100%;
-          display: block;
-          font-family: 'lato-heavy';
-          font-size: 1.25em;
-          line-height: 250%;
-          text-decoration: none;
-          padding: 0;
-          margin: 0;
-          transition: color 2s ease-in-out 0s, background-color 2s ease-in-out 0s;
-        }
-        nav a:hover { color: #CC9; background-color: #124B85; text-decoration: none }
-        nav a:active, nav a:focus { color: #CC9; background-color: black; text-decoration: none }
-        nav a:focus { outline: none }
         nav a#page { color: #CC9; background-color: #124B85; text-decoration: none }
         nav a#page:hover { color: #CC9; background-color: white }
         nav a#page:active, nav a#page:focus { color: #CC9; background-color: black; text-decoration: none }

@@ -154,7 +154,7 @@
 /* Links */
 /*********/
 
-a { font-family: 'lato-thin'; text-decoration: none }
+a { font-family: 'lato-thin'; text-align: center; text-decoration: none }
 a:hover { text-decoration: overline underline }
 a:active, a:focus { text-decoration: overline line-through underline }
 a:focus { outline: none }
@@ -194,6 +194,36 @@ h4 { font-size: 2.5em; margin-bottom: 1vw }
 p { font-family: 'lato-light'; font-size: 1em; cursor: text }
 p.time { font-size: 0.75em; text-align: right }
 p.time small { font-size: 0.5em }
+
+
+/*********/
+/* Lists */
+/*********/
+
+nav { margin: 0; padding: 0 }
+
+ul {
+  display: block;
+  list-style: none;
+  margin: 0;
+  padding: 0
+}
+  ul > li { display: inline-block }
+    ul > li a {
+      display: block;
+      font-family: 'lato-heavy';
+      font-size: 1.25em;
+      line-height: 250%;
+      text-decoration: none;
+      color: #CC9;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+      transition: color 2s ease-in-out 0s, background-color 2s ease-in-out 0s
+    }
+    ul > li a:hover { background-color: #124B85 } 
+    ul > li a:active, ul > li a:focus { background-color: black }
+    ul > li a:focus { outline: none }
 
 
 /*********/
