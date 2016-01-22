@@ -123,6 +123,27 @@ var search = function(dateH, dateL) {
   });
 };
 
+
+// PostCSS w/ Autoprefixer
+var autoprefixer = require('autoprefixer-core'); 
+var postcss      = require('postcss');
+
+function cb(css) {
+  //console.log(css);
+}
+function processCSS(file, cb){
+  var css = fs.readFileSync(file, {encoding: String});
+  postcss([ autoprefixer ]).process(css).then(function (result) {
+      result.warnings().forEach(function (warn) {
+          console.warn(warn.toString());
+      });
+      console.log(result.css);
+      cb( result.css );
+  });
+}
+processCSS('./public/static/content/assets/css/default.css', cb);
+
+
 http.createServer(app).listen(app.get('port'), function() {
   console.log('Express server listening on port ' + app.get('port'));
 });
