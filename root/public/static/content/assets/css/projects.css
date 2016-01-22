@@ -78,7 +78,7 @@ ul.btn-expand-collapse {
     text-decoration: none;
     width: 50%;
     border: 0;
-    padding 0
+    padding: 0
   }
 div.btn-collapse {
   display: block;
@@ -115,10 +115,12 @@ div.btn-collapse {
     div.main > section {
       display: inline-block;
       background-color: white;
+      box-sizing: border-box;
       margin-top: 0.5vw;
-      padding: 1vw
+      padding: 1vw;
+      padding-bottom: 0.5vw
     }
-    div.main > section.section-half { width: 33.75vw; vertical-align: top }
+    div.main > section.section-half { width: 35.75vw; vertical-align: top }
     div.main > section.section-half-first { margin-right: 0.5vw }
     div.main > section.section-full { display: block; height: auto; width: auto }
       section.section-full > .landscape { height: auto; width: 100% }
