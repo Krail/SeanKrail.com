@@ -1,6 +1,6 @@
 { 
   "AWS_REGION": "us-west-2",
   "STARTUP_SIGNUP_TABLE": "my-signup-table",
-  "SEANKRAIL_PROJECTS_TABLE": "seankrail-projects-table",
+  "PROJECTS_TABLE": "seankrail-projects-table",
   "NEW_SIGNUP_TOPIC": "arn:aws:sns:us-west-2:803633149352:my-sns-topic"
 }

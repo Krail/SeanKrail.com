@@ -102,7 +102,7 @@ var signup = function (nameSubmitted, emailSubmitted, previewPreference) {
 // Search projects database.
 var search = function(dateH, dateL) {
   var queryParams = {
-    TableName: config.SEANKRAIL_PROJECTS_TABLE,
+    TableName: config.PROJECTS_TABLE,
     ExpressionAttributeValues: {
       ":dateL": dateL,
       ":dateH": dateH
