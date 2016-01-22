@@ -28,6 +28,8 @@ footer#footer { color: #CC9; background-color: white; text-align: center; cursor
         margin: 0;
         width: 100%
       }
+        footer#footer a:hover { color: #CC9 }
+        footer#footer a:active, footer#footer a:focus { color: #CC9 }
         /*footer#footer address a {
           display: block;
           font-family: 'lato-heavy';
@@ -66,11 +68,12 @@ footer#footer { color: #CC9; background-color: white; text-align: center; cursor
     padding-top: 1vw;
     transition: color 2s ease-in-out 0s, background-color 2s ease-in-out 0s
   }*/
-  a#backtotop { text-decoration: none; border-bottom-left-radius: 1vw; border-bottom-right-radius: 1vw; padding-top: 1vw }
+  a#backtotop { font-style: none; text-decoration: none; border-bottom-left-radius: 1vw; border-bottom-right-radius: 1vw; padding-top: 1vw }
   /*a#backtotop:hover { color: #CC9; background-color: #124B85; text-decoration: none }
   a#backtotop:active, footer a:focus { color: #CC9; background-color: black; text-decoration: none }
   a#footer:focus { outline: none }*/
     footer#footer p {
+      color: currentColor;
       font-family: 'lato-heavy';
       font-size: 2em;
       margin: 0

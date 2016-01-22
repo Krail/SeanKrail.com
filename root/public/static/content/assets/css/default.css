@@ -174,12 +174,13 @@ h2::after, h3::after, h4::after {
 h1, h2, h3, h4 {
   color: black;
   font-family: 'lato-medium';
+  font-style: normal;
   text-align: center;
   cursor: text;
   margin: 0;
   padding: 0 5%
 }
-h1 { font-family: 'lato-black'; font-size: 7.5em }
+h1 { color: #CC9; font-family: 'lato-black'; font-size: 7.5em }
 h2 { font-size: 3em }
 h3 { font-size: 2em; padding-top: 0.5vw; padding-bottom: 1vw }
 h4 { font-size: 1.75em; margin-bottom: 1vw }
