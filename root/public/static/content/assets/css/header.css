@@ -4,7 +4,7 @@
 /** Main **/
 /******************/
 
-header#header { border-top-left-radius: 1vw; border-top-right-radius: 1vw }
+header#header { background-color: white; border-top-left-radius: 1vw; border-top-right-radius: 1vw }
   /* Title :: SeanKrail.com */
   a#title {
     display: block;
