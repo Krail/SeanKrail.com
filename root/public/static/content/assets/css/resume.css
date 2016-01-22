@@ -18,24 +18,12 @@ main.resume h4 { padding-top: 1vw  }
 /* Main */
 /********/
 
-main.resume { height: auto; margin: 0 }
-
-  img.resume {
-    display: block;
-    width: 100%;
-    margin: 0;
-    margin-top: 1vw;
-    border: 0.2vw solid white;
-    padding: 0
-  }
+main.resume { height: auto; margin-top: 1vw }
+  footer.download { background-color: white }
     footer.download ul {
-      display: block;
-      list-style: none;
       text-align: center;
-      margin: 0;
-      padding: 0
     }
-      footer.download li { display: inline-block; width: 50% }
+      footer.download li { width: 50% }
         footer.download a {
           display: block;
           font-family: 'lato-heavy';

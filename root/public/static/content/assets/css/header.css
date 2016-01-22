@@ -8,13 +8,11 @@ header#header { border-top-left-radius: 1vw; border-top-right-radius: 1vw }
   /* Title :: SeanKrail.com */
   a#title {
     display: block;
-	  width: 100%;
     color: #CC9;
     background-color: white;
     border: 0;
     border-top-left-radius: 1vw;
     border-top-right-radius: 1vw;
-    padding: 0;
     margin: 0;
     transition: background-color 2s ease-in-out 0s;
   }
@@ -22,14 +20,11 @@ header#header { border-top-left-radius: 1vw; border-top-right-radius: 1vw }
   a#title:active, a#title:focus { background-color: black; text-decoration: none }
   a#title:focus { outline: none }
   /* Navagation Bar :: Projects - Home - Resume */
-      nav li {
-        display: inline-block;
-        width: 33.333%
-      }
-        nav a#page { color: #CC9; background-color: #124B85; text-decoration: none }
-        nav a#page:hover { color: #CC9; background-color: white }
-        nav a#page:active, nav a#page:focus { color: #CC9; background-color: black; text-decoration: none }
-        nav a#page:active { outline: none }
+      nav > ul > li { width: 33.333% }
+        nav > ul > li a#page { color: #CC9; background-color: #124B85; text-decoration: none }
+        nav > ul > li a#page:hover { color: #CC9; background-color: white }
+        nav > ul > li a#page:active, nav > ul > li a#page:focus { color: #CC9; background-color: black; text-decoration: none }
+        nav > ul > li a#page:active { outline: none }
 
 
 /*******************/
