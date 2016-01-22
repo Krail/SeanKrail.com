@@ -26,13 +26,13 @@ main.resume { height: auto; margin-top: 1vw }
       footer.download li { width: 50% }
         footer.download a {
           display: block;
-          font-family: 'lato-heavy';
-          width: 100%;
-          line-height: 400%;
-          font-size: 1em;
           color: #CC9;
           background-color: white;
+          font-family: 'lato-heavy';
+          line-height: 250%;
+          font-size: 1.25em;
           text-decoration: none;
+          padding: 0;
           transition: background-color 2s ease-in-out 0s
         }
         footer.download a:hover { background-color: #124B85 }

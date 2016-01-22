@@ -6,7 +6,7 @@ block style
 block main
   main(class='resume')
     img(class='resume border', src=content.resume.image.src, alt=content.resume.image.alt)
-    footer(class='download')
+    footer(class='download border')
       h4 #[span(class='glyphicon glyphicon-download', aria-hidden='true')] #{content.resume.download.title} #[span(class='glyphicon glyphicon-download', aria-hidden='true')]
       ul
         each format in content.resume.download.formats
