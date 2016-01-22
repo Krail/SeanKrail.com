@@ -37,31 +37,31 @@ block main
             if section.type === 'half'
               if firstHalf === true
                 - firstHalf = false
-                section(class='section-half section-half-first border')
+                section(class='section-half section-half-first')
                   h4=section.title
                   each paragraph in section.paragraphs
                     p!=paragraph
                   //div(class='cleardiv', style='clear:left')
               else
                 - firstHalf = true
-                section(class='section-half section-half-last border')
+                section(class='section-half')
                   h4=section.title
                   each paragraph in section.paragraphs
                     p!=paragraph
             else if section.type === 'full'
-              section(class='section-full border')
+              section(class='section-full')
                 h4=section.title
                 each paragraph in section.paragraphs
                   p!=paragraph
             else if section.type === 'video'
-              section(class='section-full section-video border')
+              section(class='section-full section-video')
                 h4=section.title
                 if section.platform === 'vimeo'
                   iframe(class=section.orientation, src=section.src)
                 else
                   video(class=section.orientation, src=section.src, controls, loop, muted, preload)
             else if section.type === 'image'
-              section(class='section-full section-image border')
+              section(class='section-full section-image')
                 h4=section.title
                 img(class=section.orientation, title=section.title, src=section.src)
 

@@ -116,12 +116,11 @@ div.btn-collapse {
       display: inline-block;
       background-color: white;
       margin-top: 0.5vw;
-      border: 0.2vw solid white;
       padding: 1vw
     }
-    div.main > section.section-half { width: 35.75vw; vertical-align: top }
+    div.main > section.section-half { width: 33.75vw; vertical-align: top }
     div.main > section.section-half-first { margin-right: 0.5vw }
-    div.main > section.section-full { height: auto; width: 100% }
+    div.main > section.section-full { display: block; height: auto; width: auto }
       section.section-full > .landscape { height: auto; width: 100% }
       section.section-full > .portrait { height: 50vh; width: auto }
 
