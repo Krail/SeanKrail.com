@@ -25,15 +25,17 @@ var opened = [];
 function initialize() {
   "use strict";
   // get project ids
-  var projects = document.getElementsByClassName('project');
+  var projects = document.getElementsByTagName('article');
   for (var i = 0; i < projects.length; i++) {
-    var children = projects[i].children;
-    if (children.length === 2) project_id.push(children[1].getAttribute('id'));
-    else {
-      console.error(TAG + 'Expected two children inside of this project article element');
-      console.log(children);
+    if (projects[i].classList.contains('project')) {
+      var children = projects[i].children;
+      if (children.length === 2) project_id.push(children[1].getAttribute('id'));
+      else {
+        console.error(TAG + 'Expected two children inside of this project article element');
+        console.log(children);
+      }
+      opened.push(false);
     }
-    opened.push(false);
   }
 }
 initialize();

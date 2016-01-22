@@ -11,7 +11,7 @@ block main
   form(id='searchform', action='/projects', method='post')
     input(id='searchfield', class='search border', name='searchfield', type='text', pattern="^[a-zA-Z0-9 ,.'\-]+$", autocomplete='off', maxlength='60', placeholder='Search for a topic here... (e.g. VLSI, Cadence, Android, JavaScript, etc.)', oninput='verifySearchField()', required)
     //input(class='submit', type='submit', value='Search')
-    button(id='submitbutton', class='btn btn-default btn-search border', form='searchform', type='submit', value='Submit')
+    button(id='submitbutton', class='btn btn-default btn-search', form='searchform', type='submit', value='Submit')
       span(class='glyphicon glyphicon-search', aria-hidden='true')
   // Expand/collapse all project articles
   ul(class='btn-expand-collapse border')
