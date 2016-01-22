@@ -130,7 +130,7 @@
   color: #CC9;
   background-color: white;
   height: auto;
-  width: 100%;
+  width: auto;
   vertical-align: top;
   margin: 0;
   border-radius: 0;
@@ -183,7 +183,7 @@ h1, h2, h3, h4 {
 }
 h1 { font-family: 'lato-black'; font-size: 7.5em }
 h2 { font-size: 4em }
-h3 { font-size: 2.5em; padding-top: 0.5vw; padding-bottom: 1vw }
+h3 { font-size: 2em; padding-top: 0.5vw; padding-bottom: 1vw }
 h4 { font-size: 2.5em; margin-bottom: 1vw }
 
 
@@ -269,7 +269,7 @@ main {
 }
 article {
 	height: auto;
-  width: 100%;
+  width: auto;
 	margin: 0;
 	margin-top: 1vw;
   border: 0;
