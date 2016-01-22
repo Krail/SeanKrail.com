@@ -9,6 +9,7 @@ header#header { background-color: white; border-top-left-radius: 1vw; border-top
   a#title {
     display: block;
     color: #CC9;
+    text-decoration: none;
     background-color: white;
     border: 0;
     border-top-left-radius: 1vw;

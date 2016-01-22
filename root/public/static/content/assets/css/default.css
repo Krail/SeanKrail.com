@@ -154,9 +154,9 @@
 /* Links */
 /*********/
 
-a { font-family: 'lato-thin'; text-align: center; text-decoration: none }
-a:hover { text-decoration: overline underline }
-a:active, a:focus { text-decoration: overline line-through underline }
+a { color: currentColor; font-family: 'lato-thin'; font-style: italic; text-align: center; text-decoration: underline; transition: color 2s ease-in-out 0s }
+a:hover { color: green; text-decoration: overline underline }
+a:active, a:focus { color: blue; text-decoration: overline line-through underline }
 a:focus { outline: none }
 
 
@@ -164,17 +164,15 @@ a:focus { outline: none }
 /* Headings */
 /************/
 
-h2:after, h3:after, h4:after {
-	content: ' ';
-	background: #CC9;
+h2::after, h3::after, h4::after {
+	content: '';
   display: block;
-	border: 0.25vw solid #CC9;
+	border: 0.2vw solid #CC9;
   border-radius: 1vw;
-    -webkit-border-radius: 1vw;
-    -moz-border-radius: 1vw;
-	margin-top: 1vw
+	margin: 0.5vw 10% 0 10%
 }
 h1, h2, h3, h4 {
+  color: black;
   font-family: 'lato-medium';
   text-align: center;
   cursor: text;
@@ -191,7 +189,7 @@ h4 { font-size: 1.75em; margin-bottom: 1vw }
 /* Paragraphs */
 /**************/
 
-p { font-family: 'lato-light'; font-size: 1em; cursor: text }
+p { color: black; font-family: 'lato-light'; font-size: 1em; cursor: text }
 p.time { text-align: right }
 small { font-size: 80% }
 
