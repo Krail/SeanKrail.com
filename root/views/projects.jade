@@ -1,12 +1,10 @@
 extends layout
 
-//block style
-  link(href='/static/content/assets/css/projects.css', rel='stylesheet', type='text/css')
 
 block main
   // Error messages
-  div(id='length', class="alert alert-danger", role="alert", style='display:none') #[span(class="glyphicon glyphicon-exclamation-sign" aria-hidden="true")] #[span(class="sr-only") Error:] Shorten your search criteria (30-character maximum)
-  div(id='letters', class="alert alert-danger", role="alert", style='display:none') #[span(class="glyphicon glyphicon-exclamation-sign" aria-hidden="true")] #[span(class="sr-only") Error:] Only letters, spaces, and a few #[i necessary] special characters are allowed in the search field
+  div(id='length', class='alert alert-danger', role='alert', style='display:none') #[span(class='glyphicon glyphicon-exclamation-sign' aria-hidden='true')] #[span(class='sr-only') Error:] Shorten your search criteria (30-character maximum)
+  div(id='letters', class='alert alert-danger', role='alert', style='display:none') #[span(class='glyphicon glyphicon-exclamation-sign' aria-hidden='true')] #[span(class='sr-only') Error:] Only letters, spaces, and a few #[i necessary] special characters are allowed in the search field
   // Search field
   form(id='searchform', action='/projects', method='post')
     input(id='searchfield', class='search border', name='searchfield', type='text', pattern="^[a-zA-Z0-9 ,.'\-]+$", autocomplete='off', maxlength='60', placeholder='Search for a topic here... (e.g. VLSI, Cadence, Android, JavaScript, etc.)', oninput='verifySearchField()', required)
@@ -15,8 +13,8 @@ block main
       span(class='glyphicon glyphicon-search', aria-hidden='true')
   // Expand/collapse all project articles
   ul(class='btn-expand-collapse border')
-    li(class='btn btn-text', onclick='show()') Expand All #[span(class="glyphicon glyphicon-expand-collapse glyphicon-collapse-down" aria-hidden="true")]
-    li(class='btn btn-text', onclick='hide()') #[span(class="glyphicon glyphicon-expand-collapse glyphicon-collapse-up" aria-hidden="true")] Collapse All
+    li(class='btn btn-text', onclick='show()') Expand All #[span(class='glyphicon glyphicon-expand-collapse glyphicon-collapse-down' aria-hidden='true')]
+    li(class='btn btn-text', onclick='hide()') #[span(class='glyphicon glyphicon-expand-collapse glyphicon-collapse-up' aria-hidden='true')] Collapse All
 
   // Project articles
   main
@@ -41,7 +39,6 @@ block main
                   h4=section.title
                   each paragraph in section.paragraphs
                     p!=paragraph
-                  //div(class='cleardiv', style='clear:left')
               else
                 - firstHalf = true
                 section(class='section-half')
@@ -66,9 +63,8 @@ block main
                 img(class=section.orientation, title=section.title, src=section.src)
 
   // Expand/collapse all project articles
-  div(class='btn btn-collapse btn-text border', onclick='hide()') #[span(class="glyphicon glyphicon-expand-collapse glyphicon-collapse-up" aria-hidden="true")] Collapse All #[span(class="glyphicon glyphicon-expand-collapse glyphicon-collapse-up" aria-hidden="true")]
-  
+  div(class='btn btn-collapse btn-text border', onclick='hide()') #[span(class='glyphicon glyphicon-expand-collapse glyphicon-collapse-up' aria-hidden='true')] Collapse All #[span(class='glyphicon glyphicon-expand-collapse glyphicon-collapse-up' aria-hidden='true')]
+
 
 block script
-  script(src="/static/content/assets/javascript/projects.js")
-  
+  script(src='/js/projects.js')
