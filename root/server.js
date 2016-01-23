@@ -91,8 +91,18 @@ var github = new GitHubAPI({
   protocol: 'https',
   host: 'api.github.com'
 });
-github.user.getFollowingFromUser(
-  { user: 'Krail' },
+github.authenticate({
+  type: 'oauth',
+  token: '6c737469a7f61386c5d3bd5ae42086a0f62f8406'
+});
+github.repos.getFromUser(
+  {
+    user: 'Krail', // required
+    type: 'all',
+    sort: 'created',
+    direction: 'asc',
+    per_page: 10
+  },
   function(err, data) {
     if (err) throw err;
     else console.log(JSON.stringify(data));
