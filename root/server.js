@@ -91,9 +91,11 @@ var github = new GitHubAPI({
   protocol: 'https',
   host: 'api.github.com'
 });
+var token = fs.readFileSync('./token.txt', 'utf8');
+console.log("Token: '" + token + "'");
 github.authenticate({
   type: 'oauth',
-  token: fs.readFileSync('./token.txt', 'utf8')
+  token: token
 });
 github.repos.getFromUser(
   {
