@@ -95,7 +95,7 @@ github.user.getFollowingFromUser(
   { user: 'Krail' },
   function(err, data) {
     if (err) throw err;
-    else console.log(JSON.stringify(res));
+    else console.log(JSON.stringify(data));
   }
 );
 
