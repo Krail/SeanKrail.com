@@ -6,10 +6,9 @@ block main
   div(id='length', class='alert alert-danger', role='alert', style='display:none') #[span(class='glyphicon glyphicon-exclamation-sign' aria-hidden='true')] #[span(class='sr-only') Error:] Shorten your search criteria (30-character maximum)
   div(id='letters', class='alert alert-danger', role='alert', style='display:none') #[span(class='glyphicon glyphicon-exclamation-sign' aria-hidden='true')] #[span(class='sr-only') Error:] Only letters, spaces, and a few #[i necessary] special characters are allowed in the search field
   // Search field
-  form(id='searchform', action='/projects', method='post')
-    input(id='searchfield', class='search border', name='searchfield', type='text', pattern="^[a-zA-Z0-9 ,.'\-]+$", autocomplete='off', maxlength='60', placeholder='Search for a topic here... (e.g. VLSI, Cadence, Android, JavaScript, etc.)', oninput='verifySearchField()', required)
-    //input(class='submit', type='submit', value='Search')
-    button(id='submitbutton', class='btn btn-search border', form='searchform', type='submit', value='Submit')
+  form(id='searchForm', action='/projects', method='post')
+    input(id='search', class='search border', name='search', type='text', pattern="^[a-zA-Z0-9 ,.'\-]+$", autocomplete='off', maxlength='60', placeholder='Search for a topic here... (e.g. VLSI, Cadence, Android, JavaScript, etc.)', oninput='verifySearchField()', required)
+    button(id='submitbutton', class='btn btn-search border', form='searchForm', type='submit', value='Submit')
       span(class='glyphicon glyphicon-search', aria-hidden='true')
   // Expand/collapse all project articles
   ul(class='btn-expand-collapse border')

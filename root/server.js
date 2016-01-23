@@ -19,6 +19,7 @@ var fs = require('fs');
 var AWS = require('aws-sdk');
 var sass = require('node-sass');
 var compressor = require('node-minify');
+var GitHubAPI = require('github');
 var app = express();
 
 app.set('port', process.env.PORT || 443);
@@ -84,6 +85,21 @@ files.forEach(
 );
 
 
+// Convert all of my GitHub Repos
+var github = new GitHubAPI({
+  version: '3.0.0',
+  protocol: 'https',
+  host: 'api.github.com'
+});
+github.user.getFollowingFromUser(
+  { user: 'Krail' },
+  function(err, data) {
+    if (err) throw err;
+    else console.log(JSON.stringify(res));
+  }
+);
+
+
 // GET home page.
 app.get('/', routes.home);
 
@@ -106,10 +122,9 @@ app.post('/signup', function(req, res) {
 
 // POST project search
 app.post('/projects', function(req, res) {
-  var dateL = req.body.dateL,
-      dateH = req.body.dateH;
+  var searchField = req.body.search;
   res.send(200);
-  search(dateL, dateH);
+  search(searchField);
 });
 
 // Add signup form data to database.
@@ -123,67 +138,28 @@ var signup = function (nameSubmitted, emailSubmitted, previewPreference) {
     }
   };
   db.putItem(formData, function(err, data) {
-    if (err) {
-      console.log('Error adding item to database: ', err);
-    } else {
+    if (err) console.log('Error adding item to database: ', err);
+    else {
       console.log('Form data added to database.');
       var snsMessage = 'New signup: %EMAIL%'; //Send SNS notification containing email from form.
       snsMessage = snsMessage.replace('%EMAIL%', formData.Item.email['S']);
       sns.publish({ TopicArn: config.NEW_SIGNUP_TOPIC, Message: snsMessage }, function(err, data) {
-        if (err) {
-          console.log('Error publishing SNS message: ' + err);
-        } else {
-          console.log('SNS message sent.');
-        }
+        if (err) console.log('Error publishing SNS message: ' + err);
+        else console.log('SNS message sent.');
       });  
     }
   });
 };
 
 // Search projects database.
-var search = function(dateH, dateL) {
-  var queryParams = {
+var search = function(searchSubmitted) {
+  var formData = {
     TableName: config.PROJECTS_TABLE,
-    ExpressionAttributeValues: {
-      ":dateL": dateL,
-      ":dateH": dateH
-    },
-    KeyConditionExpression: "date between :dateL and :dateH",
-    Limit: 5,
-    ProjectionExpression: "date, title, json"
-  };
-  db.query(queryParams, function(err, data) {
-    if (err) {
-      console.log('Error querying database: ', err);
-    } else {
-      console.log('Successfully queried database.');
-      data.Items.forEach(function(item) {
-        console.log(" -", item.date + ": " + item.title + "..." + item.json);
-      });
+    Item: {
+      search: {'S': searchSubmitted}
     }
-  });
+  };
 };
-
-/*
-// PostCSS w/ Autoprefixer
-var autoprefixer = require('autoprefixer-core'); 
-var postcss      = require('postcss');
-
-function cb(css) {
-  //console.log(css);
-}
-function processCSS(file, cb){
-  var css = fs.readFileSync(file, {encoding: String});
-  postcss([ autoprefixer ]).process(css).then(function (result) {
-      result.warnings().forEach(function (warn) {
-          console.warn(warn.toString());
-      });
-      console.log(result.css);
-      cb( result.css );
-  });
-}
-processCSS('./public/static/content/assets/css/default.css', cb);
-*/
 
 http.createServer(app).listen(app.get('port'), function() {
   console.log('Express server listening on port ' + app.get('port'));
