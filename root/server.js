@@ -93,7 +93,7 @@ var github = new GitHubAPI({
 });
 github.authenticate({
   type: 'oauth',
-  token: '6c737469a7f61386c5d3bd5ae42086a0f62f8406'
+  token: fs.readFileSync('./token.txt', 'utf8')
 });
 github.repos.getFromUser(
   {
