@@ -51,9 +51,7 @@ sass.render(
     if (err) {
       console.log('Error compiling Sass file: ', err);
     } else {
-      console.log('Sass file compiled.');
-      console.log(data.css);
-      console.log(data.css.toString());
+      fs.writeFileSync('./public/css/home.css', data.css);
     }
   }
 );
