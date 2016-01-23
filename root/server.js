@@ -46,12 +46,12 @@ var sns = new AWS.SNS({region: config.AWS_REGION});
 
 // Sass file
 sass.render(
-  {file: './public/static/content/assets/css/home.css'},
+  {file: './public/scss/base.scss'},
   function(err, data) {
     if (err) {
       console.log('Error compiling Sass file: ', err);
     } else {
-      fs.writeFileSync('./public/css/home.css', data.css);
+      fs.writeFileSync('./public/css/style.css', data.css);
     }
   }
 );

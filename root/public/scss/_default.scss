@@ -1,0 +1,199 @@
+@charset 'UTF-8';
+
+
+/************************************/
+/* Classes for JavaScript Functions */
+/************************************/
+
+.stop-scrolling { overflow: hidden; height: 100% }
+
+
+/**************/
+/* Glyphicons */
+/**************/
+
+.glyphicon { vertical-align: text-top; font-size: 1em }
+
+
+/**********/
+/* Border */
+/**********/
+
+.border { border: 0.2vw solid white }
+
+
+/***********/
+/* Buttons */
+/***********/
+
+.btn {
+  display: block;
+  color: #CC9;
+  background-color: white;
+  height: auto;
+  width: auto;
+  vertical-align: top;
+  margin: 0;
+  border-radius: 0;
+  padding: 0.5vw 1vw;
+  cursor: pointer;
+  transition: border-color 2s ease-in-out 0s, background-color 2s ease-in-out 0s
+}
+.btn:hover { color: #CC9; background-color: #124B85; text-decoration: none; border-color: white }
+.btn:active, .btn:focus { color: #CC9; background-color: black; text-decoration: none; border-color: white }
+.btn:focus { outline: none }
+.btn[disabled] { opacity: 1.0; color: #CC9; background-color: #E74C3C; border-color: #CC4335; cursor: not-allowed }
+.btn-text {
+  font-family: 'lato-heavy';
+  font-size: 2em;
+  line-height: 250%;
+  text-decoration: none;
+}
+
+
+/*********/
+/* Links */
+/*********/
+
+a { color: currentColor; font-family: 'lato-thin'; font-style: italic; text-align: center; text-decoration: underline; transition: color 1s ease-in-out 0s }
+a:hover { color: green; text-decoration: overline underline }
+a:active, a:focus { color: purple; text-decoration: overline line-through underline }
+a:focus { outline: none }
+
+
+/************/
+/* Headings */
+/************/
+
+h2::after, h3::after, h4::after {
+	content: '';
+  display: block;
+	border: 0.2vw solid #CC9;
+  border-radius: 1vw;
+	margin: 0.5vw 10% 0 10%
+}
+h1, h2, h3, h4 {
+  color: black;
+  font-family: 'lato-medium';
+  font-style: normal;
+  text-align: center;
+  cursor: text;
+  margin: 0;
+  padding: 0 5%
+}
+h1 { color: #CC9; font-family: 'lato-black'; font-size: 7.5em }
+h2 { font-size: 3em }
+h3 { font-size: 2em; padding-top: 0.5vw; padding-bottom: 1vw }
+h4 { font-size: 1.75em; margin-bottom: 1vw }
+
+
+/**************/
+/* Paragraphs */
+/**************/
+
+p { color: black; font-family: 'lato-light'; font-size: 1em; cursor: text }
+p.time { text-align: right }
+small { font-size: 80% }
+
+/*********/
+/* Lists */
+/*********/
+
+nav { margin: 0; padding: 0 }
+
+ul {
+  display: block;
+  list-style: none;
+  margin: 0;
+  padding: 0
+}
+  ul > li { display: inline-block }
+    ul > li a {
+      display: block;
+      color: #CC9;
+      background-color: white;
+      font-family: 'lato-heavy';
+      font-size: 1.25em;
+      line-height: 250%;
+      font-style: normal;
+      text-decoration: none;
+      margin: 0;
+      padding: 0;
+      transition: color 2s ease-in-out 0s, background-color 2s ease-in-out 0s
+    }
+    ul > li a:hover { color: #CC9; background-color: #124B85; text-decoration: none; } 
+    ul > li a:active, ul > li a:focus { color: #CC9; background-color: black; text-decoration: none; }
+
+
+/*********/
+/* Media */
+/*********/
+
+img, video, iframe {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  border: 0
+}
+
+
+/***********/
+/* Content */
+/***********/
+
+body {
+	display: block;
+  overflow: auto;
+  height: auto;
+	background-color: #CC9;
+	font-family: 'lato-regular', sans-serif;
+  font-size: 100%;
+  padding-left: 11vw;
+  padding-right: 11vw;
+	padding-top: 1vw;
+	padding-bottom: 1vw;
+	margin: 0 auto;
+}
+header, footer {
+  height: auto;
+  width: auto;
+  margin: 0 auto;
+  padding: 0;
+}
+main {
+  overflow: hidden;
+  margin: 0 auto;
+  padding: 0
+}
+article {
+	height: auto;
+  width: auto;
+	margin: 0;
+	margin-top: 1vw;
+  border: 0;
+  padding: 0
+}
+footer { margin-top: 1vw }
+
+
+/*******************/
+/* Dynamic Styling */
+/*******************/
+
+/* Large Screen */
+@media only screen and (min-width: 800px) {
+  body {
+    padding-left: 11vw;
+    padding-right: 11vw;
+  }
+}
+
+
+/* Small Screen */
+@media not screen and (min-width: 800px) {
+  body {
+    padding-left: 1vw;
+    padding-right: 1vw;
+  }
+}

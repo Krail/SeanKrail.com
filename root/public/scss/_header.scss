@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+/******************/
+/** Main **/
+/******************/
+
+header#header { background-color: white; border-top-left-radius: 1vw; border-top-right-radius: 1vw }
+  /* Title :: SeanKrail.com */
+  a#title {
+    display: block;
+    text-decoration: none;
+    background-color: white;
+    border: 0;
+    border-top-left-radius: 1vw;
+    border-top-right-radius: 1vw;
+    margin: 0;
+    transition: background-color 2s ease-in-out 0s;
+  }
+  a#title:hover { background-color: #124B85; text-decoration: none }
+  a#title:active, a#title:focus { background-color: black; text-decoration: none }
+  a#title:focus { outline: none }
+  /* Navagation Bar :: Projects - Home - Resume */
+      nav > ul > li { width: 33.333% }
+        nav > ul > li a:hover { color: #CC9 }
+        nav > ul > li a:active, footer#footer a:focus { color: #CC9 }
+        nav > ul > li a#page { background-color: #124B85; text-decoration: none }
+        nav > ul > li a#page:hover { background-color: white }
+        nav > ul > li a#page:active, nav > ul > li a#page:focus { background-color: black; text-decoration: none }
+
+
+/*******************/
+/* Dynamic Styling */
+/*******************/
+
+/* Large Screen */
+@media only screen and (min-width: 800px) {  }
+
+/* Small Screen */
+@media not screen and (min-width: 800px) {  }

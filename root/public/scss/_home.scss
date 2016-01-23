@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+/********/
+/* Main */
+/********/
+
+article.home {
+	font-family: 'lato-light';
+	font-size: 1em;
+  text-align: left;
+  background-color: white;
+  border: 0.2vw solid white;
+	padding: 1vw;
+  padding-bottom: 0
+}
+
+
+/*******************/
+/* Dynamic Styling */
+/*******************/
+
+/* Large Screen */
+@media only screen and (min-width: 800px) {  }
+
+/* Small Screen */
+@media not screen and (min-width: 800px) {  }
