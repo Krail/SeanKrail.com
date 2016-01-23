@@ -18,6 +18,7 @@ var path = require('path');
 var fs = require('fs');
 var AWS = require('aws-sdk');
 var sass = require('node-sass');
+var compressor = require('node-minify');
 var app = express();
 
 app.set('port', process.env.PORT || 443);
@@ -52,7 +53,33 @@ sass.render(
   },
   function(err, data) {
     if (err) console.log('Error compiling Sass file: ', err);
+    else fs.writeFileSync('./public/css/style.min.css', data.css);
+  }
+);
+sass.render(
+  {
+    file: './public/scss/base.scss',
+    outputStyle: 'nested'
+  },
+  function(err, data) {
+    if (err) console.log('Error compiling Sass file: ', err);
     else fs.writeFileSync('./public/css/style.css', data.css);
+  }
+);
+
+// Minify javascript files
+var jsDir = './public/js/'
+var files = fs.readdirSync(jsDir);
+files.forEach(
+  function(element, index, array) {
+    new compressor.minify({
+      type: 'gcc',
+      fileIn: jsDir + element,
+      fileOut: jsDir + element.replace(/\.[^/.]+$/, "") + '.min.js',
+      callback: function(err, min) {
+        if (err) console.log('Error minifying javascript files: ', err);
+      }
+    });
   }
 );
 

@@ -1,12 +1,13 @@
 {
   "name": "seankrail.com",
-  "version": "0.0.8",
+  "version": "0.3.107",
   "private": true,
   "scripts": {  "start": "node server.js" },
   "dependencies": {
     "express": "3.4.0",
     "jade": "*",
     "aws-sdk": "*",
-    "node-sass": "*"
+    "node-sass": "*",
+    "node-minify": "*"
   }
 }
