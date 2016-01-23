@@ -154,7 +154,7 @@
 /* Links */
 /*********/
 
-a { color: currentColor; font-family: 'lato-thin'; font-style: italic; text-align: center; text-decoration: underline; transition: color 2s ease-in-out 0s }
+a { color: currentColor; font-family: 'lato-thin'; font-style: italic; text-align: center; text-decoration: underline; transition: color 1s ease-in-out 0s }
 a:hover { color: green; text-decoration: overline underline }
 a:active, a:focus { color: blue; text-decoration: overline line-through underline }
 a:focus { outline: none }
@@ -209,19 +209,19 @@ ul {
   ul > li { display: inline-block }
     ul > li a {
       display: block;
+      color: #CC9;
+      background-color: white;
       font-family: 'lato-heavy';
       font-size: 1.25em;
       line-height: 250%;
       font-style: normal;
       text-decoration: none;
-      color: #CC9;
-      background-color: white;
       margin: 0;
       padding: 0;
       transition: color 2s ease-in-out 0s, background-color 2s ease-in-out 0s
     }
-    ul > li a:hover { background-color: #124B85; text-decoration: none; } 
-    ul > li a:active, ul > li a:focus { background-color: black; text-decoration: none; }
+    ul > li a:hover { color: #CC9; background-color: #124B85; text-decoration: none; } 
+    ul > li a:active, ul > li a:focus { color: #CC9; background-color: black; text-decoration: none; }
 
 
 /*********/
