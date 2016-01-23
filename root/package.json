@@ -3,7 +3,9 @@
   "version": "0.0.8",
   "private": true,
   "scripts": {
-    "start": "node server.js"
+    //"prestart": "node -e 'console.log(\'node starting\')'",
+    "start": "node server.js"//,
+    //"poststart": "node -e 'console.log(\'node ending\')'"
   },
   "dependencies": {
     "express": "3.4.0",

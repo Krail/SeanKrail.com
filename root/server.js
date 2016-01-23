@@ -17,6 +17,7 @@ var http = require('http');
 var path = require('path');
 var fs = require('fs');
 var AWS = require('aws-sdk');
+var sass = require('node-sass');
 var app = express();
 
 app.set('port', process.env.PORT || 443);
@@ -41,6 +42,21 @@ config.VERSION = fs.readFileSync('./version.txt', 'utf8');
 var db = new AWS.DynamoDB({region: config.AWS_REGION});
 // Create SNS client and pass in region.
 var sns = new AWS.SNS({region: config.AWS_REGION});
+
+
+// Sass file
+sass.render(
+  {file: './public/static/content/assets/css/home.css'},
+  function(err, data) {
+    if (err) {
+      console.log('Error compiling Sass file: ', err);
+    } else {
+      console.log('Sass file compiled.');
+      console.log(data.css);
+      console.log(data.css.toString());
+    }
+  }
+);
 
 
 // GET home page.
@@ -123,7 +139,6 @@ var search = function(dateH, dateL) {
   });
 };
 
-var sass = require('node-sass');
 /*
 // PostCSS w/ Autoprefixer
 var autoprefixer = require('autoprefixer-core'); 
