@@ -44,15 +44,15 @@ var db = new AWS.DynamoDB({region: config.AWS_REGION});
 var sns = new AWS.SNS({region: config.AWS_REGION});
 
 
-// Sass file
+// Convert base.scss file into style.css (Async)
 sass.render(
-  {file: './public/scss/base.scss'},
+  {
+    file: './public/scss/base.scss',
+    outputStyle: 'compressed'
+  },
   function(err, data) {
-    if (err) {
-      console.log('Error compiling Sass file: ', err);
-    } else {
-      fs.writeFileSync('./public/css/style.css', data.css);
-    }
+    if (err) console.log('Error compiling Sass file: ', err);
+    else fs.writeFileSync('./public/css/style.css', data.css);
   }
 );
 

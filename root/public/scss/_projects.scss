@@ -1,6 +1,11 @@
 @charset 'UTF-8';
 
 
+/*************/
+/*! Projects */
+/*************/
+
+
 /**************/
 /* Glyphicons */
 /**************/
@@ -115,7 +120,7 @@ div.btn-collapse {
   article.project > header.project:focus { outline: none }
       header.project > img { position: relative; float: left; height: auto; width: 20vw; margin: 0 }
       header.project > h2 { overflow: hidden; margin: 1vw auto 2vw }
-        header.project > h2 > em { font-family: 'lato-light' }
+        header.project > h2 > em { font-family: 'lato-light'; font-style: italic }
     header.project > p { overflow: hidden; font-family: 'lato-light'; font-size: 1em; padding: 0 2vw }
 
   article.project > div.main { display: block; padding: 0 3vw }
