@@ -88,7 +88,7 @@ files.forEach(
   }
 );
 
-
+/*
 // Convert all of my GitHub Repos
 var github = new GitHubAPI({
   version: '3.0.0',
@@ -110,7 +110,7 @@ github.repos.getFromUser(
   },
   function(err, data) {
     if (err) throw err;
-    /*else {
+    else {
       if(!Array.isArray(data)) console.log('Error. GitHub data is not an array: ', data);
       else {
         data.forEach(
@@ -144,9 +144,9 @@ github.repos.getFromUser(
           }
         );
       }
-    }*/
+    }
   }
-);
+);*/
 
 
 // GET home page.
