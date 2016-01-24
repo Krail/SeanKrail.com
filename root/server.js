@@ -57,7 +57,7 @@ sass.render(
     outputStyle: 'compressed'
   },
   function(err, data) {
-    if (err) console.log('Error compiling Sass file: ', err);
+    if (err) throw err;
     else fs.writeFileSync('./public/css/style.min.css', data.css);
   }
 );
@@ -67,7 +67,7 @@ sass.render(
     outputStyle: 'nested'
   },
   function(err, data) {
-    if (err) console.log('Error compiling Sass file: ', err);
+    if (err) throw err;
     else fs.writeFileSync('./public/css/style.css', data.css);
   }
 );
@@ -82,7 +82,7 @@ files.forEach(
       fileIn: jsDir + element,
       fileOut: jsDir + element.replace(/\.[^/.]+$/, "") + '.min.js',
       callback: function(err, min) {
-        if (err) console.log('Error minifying javascript files: ', err);
+        if (err) throw err;
       }
     });
   }
@@ -111,12 +111,8 @@ github.repos.getFromUser(
   function(err, data) {
     if (err) throw err;
     else {
-      console.log(data);
-      console.log(data[0].name)
-      /*if(!Array.isArray(data)) console.log('Error. GitHub data is not an array: ', data);
+      if(!Array.isArray(data)) console.log('Error. GitHub data is not an array: ', data);
       else {
-        console.log('it is an array');
-        /*
         data.forEach(
           function(element, index, array) {
             var project = {
@@ -142,14 +138,12 @@ github.repos.getFromUser(
               res.on('data', (d) => { data += d; });
               res.on('end', function() {
                 project.content[0].html = md(data);
-                fs.writeFile('./public/static/content/assets/projects/' + project.id + '.json', JSON.stringify(project), 'utf8');
+                fs.writeFile(path.join(__dirname, 'public/static/content/assets/projects/' + project.id + '.json'), JSON.stringify(project), 'utf8');
               });
             });
-            console.log(project);
           }
         );
-        console.log(JSON.stringify(data));*/
-      //}
+      }
     }
   }
 );
@@ -193,13 +187,13 @@ var signup = function (nameSubmitted, emailSubmitted, previewPreference) {
     }
   };
   db.putItem(formData, function(err, data) {
-    if (err) console.log('Error adding item to database: ', err);
+    if (err) throw err;
     else {
       console.log('Form data added to database.');
       var snsMessage = 'New signup: %EMAIL%'; //Send SNS notification containing email from form.
       snsMessage = snsMessage.replace('%EMAIL%', formData.Item.email['S']);
       sns.publish({ TopicArn: config.NEW_SIGNUP_TOPIC, Message: snsMessage }, function(err, data) {
-        if (err) console.log('Error publishing SNS message: ' + err);
+        if (err) throw err;
         else console.log('SNS message sent.');
       });  
     }
