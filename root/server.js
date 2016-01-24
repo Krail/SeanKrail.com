@@ -110,7 +110,7 @@ github.repos.getFromUser(
   },
   function(err, data) {
     if (err) throw err;
-    else {
+    /*else {
       if(!Array.isArray(data)) console.log('Error. GitHub data is not an array: ', data);
       else {
         data.forEach(
@@ -144,7 +144,7 @@ github.repos.getFromUser(
           }
         );
       }
-    }
+    }*/
   }
 );
 
