@@ -134,11 +134,12 @@ github.repos.getFromUser(
                 }
               ]
             };
-            var response = request('GET', 'https://raw.githubusercontent.com/' + element.full_name + '/master/README.md').getBody();
-            project.content[0].html = mdConverter(
+            //var response = request('GET', 'https://raw.githubusercontent.com/' + element.full_name + '/master/README.md').getBody();
+            //console.log(response);
+            /*project.content[0].html = mdConverter(
               response
-            );
-            fs.writeFileSync(path.join(__dirname, 'public/static/content/projects', project.id + '.json'), JSON.stringify(project), 'utf8');
+            );*/
+            //fs.writeFileSync(path.join(__dirname, 'public/static/content/projects', project.id + '.json'), JSON.stringify(project), 'utf8');
           }
         );
       }
