@@ -138,7 +138,7 @@ github.repos.getFromUser(
               res.on('data', (d) => { data += d; });
               res.on('end', function() {
                 project.content[0].html = md(data);
-                fs.writeFile(path.join(__dirname, 'public/static/content/projects/' + project.id + '.json'), JSON.stringify(project), 'utf8');
+                fs.writeFileSync(path.join(__dirname, 'public/static/content/projects/' + project.id + '.json'), JSON.stringify(project), 'utf8');
               });
             });
           }

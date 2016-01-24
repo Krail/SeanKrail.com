@@ -6,13 +6,12 @@ var fs = require('fs');
 module.exports.hard = [];
 module.exports.icon = 'glyphicon glyphicon-search';
 
-fs.readdir(path.join(__dirname, '/projects/'), function (err, data) {
-  if (err) console.log("Error adding hard-coded projects", err);
-  data.forEach(function (file) {
+fs.readdirSync(path.join(__dirname, '/projects/').forEach(
+  function (element, index, array) {
     module.exports.hard.push(
       JSON.parse(
-        fs.readFileSync(path.join(__dirname, 'projects', file), 'utf8')
+        fs.readFileSync(path.join(__dirname, 'projects', element), 'utf8')
       )
     );
-  });
-});
+  }
+));
