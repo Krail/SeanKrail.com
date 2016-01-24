@@ -137,14 +137,16 @@ github.repos.getFromUser(
             };
             var readme_url = 'https://raw.githubusercontent.com/' + element.full_name + '/master/README.md';
             https.get(readme_url, (res) => {
-              var data = '';
+              console.log(res);
+              res.resume();
+              /*var data = '';
               res.on('data', (d) => { data += d; });
               res.on('end', function() {
                 project.content[0].html = md(data);
                 fs.writeFileSync(path.join(__dirname, 'public/static/content/projects/' + project.id + '.json'), JSON.stringify(project), 'utf8');
                 finished++;
                 console.log('Finished: ' + finished);
-              });
+              });*/
             });
           }
         );
