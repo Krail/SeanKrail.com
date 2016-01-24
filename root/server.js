@@ -14,6 +14,7 @@
 var express = require('express');
 var routes = require('./routes/index.js');
 var http = require('http');
+var https = require('https');
 var path = require('path');
 var fs = require('fs');
 var AWS = require('aws-sdk');
@@ -131,9 +132,9 @@ github.repos.getFromUser(
             ]
           };
           var readme_url = 'https://raw.githubusercontent.com/' + element.full_name + '/master/README.md';
-          http.get(readme_url, function(res) {
+          https.get(readme_url, (res) => {
             var data = '';
-            res.on('data', function(chunk) { data += chunk; });
+            res.on('data', (d) => { data += d; });
             res.on('end', function() {
               project.content[0].html = md(data);
               fs.writeFile('./public/static/content/assets/projects/' + project.id + '.json', JSON.stringify(project), 'utf8');
