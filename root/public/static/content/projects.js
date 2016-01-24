@@ -6,7 +6,7 @@ var fs = require('fs');
 module.exports.hard = [];
 module.exports.icon = 'glyphicon glyphicon-search';
 
-fs.readdirSync(path.join(__dirname, '/projects/').forEach(
+fs.readdirSync(path.join(__dirname, '/projects/')).forEach(
   function (element, index, array) {
     module.exports.hard.push(
       JSON.parse(
@@ -14,4 +14,4 @@ fs.readdirSync(path.join(__dirname, '/projects/').forEach(
       )
     );
   }
-));
+);
