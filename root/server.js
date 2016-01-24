@@ -88,7 +88,7 @@ files.forEach(
   }
 );
 
-/*
+
 var finished = 0, length = 1;
 // Convert all of my GitHub Repos
 var github = new GitHubAPI({
@@ -161,7 +161,7 @@ fs.readdirSync(path.join(__dirname, 'public/static/content/projects/')).forEach(
     console.log('Before: ' + element);
   }
 );
-//debug end*/
+//debug end
 
 // Has to be after the github requests
 var routes = require('./routes/index.js');
