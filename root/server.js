@@ -111,39 +111,42 @@ github.repos.getFromUser(
   function(err, data) {
     if (err) throw err;
     else {
+      data = JSON.parse(data);
       if(!Array.isArray(data)) console.log('Error. GitHub data is not an array: ', data);
-      data.forEach(
-        function(element, index, array) {
-          var project = {
-            id: element.name,
-            header: {
-              image: {
-                title: 'My GitHub Avatar',
-                src: element.owner.avatar_url,
-                alt: element.name
+      else {
+        data.forEach(
+          function(element, index, array) {
+            var project = {
+              id: element.name,
+              header: {
+                image: {
+                  title: 'My GitHub Avatar',
+                  src: element.owner.avatar_url,
+                  alt: element.name
+                },
+                heading: element.name,
+                paragraphs: [ element.description ]
               },
-              heading: element.name,
-              paragraphs: [ element.description ]
-            },
-            content: [
-              {
-                type: 'readme'
-              }
-            ]
-          };
-          var readme_url = 'https://raw.githubusercontent.com/' + element.full_name + '/master/README.md';/*
-          https.get(readme_url, (res) => {
-            var data = '';
-            res.on('data', (d) => { data += d; });
-            res.on('end', function() {
-              project.content[0].html = md(data);
-              fs.writeFile('./public/static/content/assets/projects/' + project.id + '.json', JSON.stringify(project), 'utf8');
+              content: [
+                {
+                  type: 'readme'
+                }
+              ]
+            };
+            var readme_url = 'https://raw.githubusercontent.com/' + element.full_name + '/master/README.md';
+            https.get(readme_url, (res) => {
+              var data = '';
+              res.on('data', (d) => { data += d; });
+              res.on('end', function() {
+                project.content[0].html = md(data);
+                fs.writeFile('./public/static/content/assets/projects/' + project.id + '.json', JSON.stringify(project), 'utf8');
+              });
             });
-          });*/
-          console.log(project);
-        }
-      );
-      console.log(JSON.stringify(data));
+            console.log(project);
+          }
+        );
+        console.log(JSON.stringify(data));
+      }
     }
   }
 );
