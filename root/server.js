@@ -88,7 +88,7 @@ files.forEach(
   }
 );
 
-
+/*
 // Convert all of my GitHub Repos
 var github = new GitHubAPI({
   version: '3.0.0',
@@ -146,7 +146,7 @@ github.repos.getFromUser(
       }
     }
   }
-);
+);*/
 
 
 // GET home page.
