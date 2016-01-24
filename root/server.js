@@ -22,7 +22,7 @@ var AWS = require('aws-sdk');
 var sass = require('node-sass');
 var compressor = require('node-minify');
 var GitHubAPI = require('github');
-var markdown = require("node-markdown").Markdown;
+var mdConverter = new (require("showdown")).Converter();
 
 var app = express();
 
@@ -134,7 +134,7 @@ github.repos.getFromUser(
                 }
               ]
             };
-            project.content[0].html = markdown(
+            project.content[0].html = mdConverter(
               request('GET', 'https://raw.githubusercontent.com/' + element.full_name + '/master/README.md').getBody()
             );
             fs.writeFileSync(path.join(__dirname, 'public/static/content/projects', project.id + '.json'), JSON.stringify(project), 'utf8');

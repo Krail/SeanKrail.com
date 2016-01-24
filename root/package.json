@@ -10,7 +10,7 @@
     "node-sass": "*",
     "node-minify": "*",
     "github": "*",
-    "node-markdown": "*",
+    "showdown": "*",
     "sync-request": "*"
   }
 }
