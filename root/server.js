@@ -148,6 +148,13 @@ github.repos.getFromUser(
   }
 );
 
+//debug start
+fs.readdirSync(path.join(__dirname, 'public/static/content/projects/')).forEach(
+  function (element, index, array) {
+    console.log('Before: ' + element);
+  }
+);
+//debug end
 
 // Has to be after the github requests
 var routes = require('./routes/index.js');
