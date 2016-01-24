@@ -111,9 +111,12 @@ github.repos.getFromUser(
   function(err, data) {
     if (err) throw err;
     else {
-      data = JSON.parse(data);
-      if(!Array.isArray(data)) console.log('Error. GitHub data is not an array: ', data);
+      console.log(data);
+      console.log(data[0].name)
+      /*if(!Array.isArray(data)) console.log('Error. GitHub data is not an array: ', data);
       else {
+        console.log('it is an array');
+        /*
         data.forEach(
           function(element, index, array) {
             var project = {
@@ -145,8 +148,8 @@ github.repos.getFromUser(
             console.log(project);
           }
         );
-        console.log(JSON.stringify(data));
-      }
+        console.log(JSON.stringify(data));*/
+      //}
     }
   }
 );
