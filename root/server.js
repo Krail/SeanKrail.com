@@ -134,8 +134,9 @@ github.repos.getFromUser(
                 }
               ]
             };
+            var response = request('GET', 'https://raw.githubusercontent.com/' + element.full_name + '/master/README.md').getBody();
             project.content[0].html = mdConverter(
-              request('GET', 'https://raw.githubusercontent.com/' + element.full_name + '/master/README.md').getBody()
+              response
             );
             fs.writeFileSync(path.join(__dirname, 'public/static/content/projects', project.id + '.json'), JSON.stringify(project), 'utf8');
           }
