@@ -17,9 +17,12 @@ var http = require('http');
 var path = require('path');
 var fs = require('fs');
 var AWS = require('aws-sdk');
+
 var sass = require('node-sass');
 var compressor = require('node-minify');
 var GitHubAPI = require('github');
+var md = require("node-markdown").Markdown;
+
 var app = express();
 
 app.set('port', process.env.PORT || 443);
@@ -92,7 +95,6 @@ var github = new GitHubAPI({
   host: 'api.github.com'
 });
 var token = fs.readFileSync('./token.txt', 'utf8');
-console.log("Token: '" + token + "'");
 github.authenticate({
   type: 'oauth',
   token: token
@@ -102,12 +104,46 @@ github.repos.getFromUser(
     user: 'Krail', // required
     type: 'all',
     sort: 'created',
-    direction: 'asc',
+    direction: 'desc',
     per_page: 10
   },
   function(err, data) {
     if (err) throw err;
-    else console.log(JSON.stringify(data));
+    else {
+      if(!Array.isArray(data)) console.log('Error. GitHub data is not an array: ', data);
+      data.forEach(
+        function(element, index, array) {
+          var project = {
+            id: element.name,
+            header: {
+              image: {
+                title: 'My GitHub Avatar',
+                src: element.owner.avatar_url,
+                alt: element.name
+              },
+              heading: element.name,
+              paragraphs: [ element.description ]
+            },
+            content: [
+              {
+                type: 'readme'
+              }
+            ]
+          };
+          var readme_url = 'https://raw.githubusercontent.com/' + element.full_name + '/master/README.md';
+          http.get(readme_url, function(res) {
+            var data = '';
+            res.on('data', function(chunk) { data += chunk; });
+            res.on('end', function() {
+              project.content[0].html = md(data);
+              fs.writeFile('./public/static/content/assets/projects/' + project.id + '.json', JSON.stringify(project), 'utf8');
+            });
+          });
+          
+        }
+      );
+      console.log(JSON.stringify(data));
+    }
   }
 );
 

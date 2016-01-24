@@ -9,6 +9,7 @@
     "aws-sdk": "*",
     "node-sass": "*",
     "node-minify": "*",
-    "github": "*"
+    "github": "*",
+    "node-markdown": "*"
   }
 }

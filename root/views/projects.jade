@@ -30,7 +30,7 @@ block main
         // Main content
         div(id=pro.id, class='main', style='display:none')
           - var firstHalf = true
-          each section in pro.content.sections
+          each section in pro.content
             if section.type === 'half'
               if firstHalf === true
                 - firstHalf = false
@@ -49,6 +49,8 @@ block main
                 h4=section.title
                 each paragraph in section.paragraphs
                   p!=paragraph
+            else if section.type === 'readme'
+              section(class='section-full')!=section.html
             else if section.type === 'video'
               section(class='section-full section-video')
                 h4=section.title
