@@ -89,7 +89,7 @@ files.forEach(
 );
 
 
-/*
+
 var GitHubAPI = require('github');
 var request = require('sync-request');
 var mdConverter = new (require("showdown")).Converter();
@@ -146,7 +146,7 @@ github.repos.getFromUser(
       }
     }
   }
-);*/
+);
 
 
 
