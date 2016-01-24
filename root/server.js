@@ -89,72 +89,12 @@ files.forEach(
 );
 
 
-var finished = 0;//, length = 1;
-// Convert all of my GitHub Repos
-var github = new GitHubAPI({
-  version: '3.0.0',
-  protocol: 'https',
-  host: 'api.github.com'
-});
-var token = fs.readFileSync('./token.txt', 'utf8');
-github.authenticate({
-  type: 'oauth',
-  token: token
-});
-github.repos.getFromUser(
-  {
-    user: 'Krail', // required
-    type: 'all',
-    sort: 'created',
-    direction: 'desc',
-    per_page: 10
-  },
-  function(err, data) {
-    if (err) throw err;
-    else {
-      if(!Array.isArray(data)) console.log('Error. GitHub data is not an array: ', data);
-      else {
-        length = data.length;
-        console.log('Length: ' + length);
-        data.forEach(
-          function(element, index, array) {
-            var originalFinished = finished;
-            var project = {
-              id: element.name,
-              header: {
-                image: {
-                  title: 'My GitHub Avatar',
-                  src: element.owner.avatar_url,
-                  alt: element.name
-                },
-                heading: element.name,
-                paragraphs: [ element.description ]
-              },
-              content: [
-                {
-                  type: 'readme',
-                  html: ''
-                }
-              ]
-            };
-            var readme_url = 'https://raw.githubusercontent.com/' + element.full_name + '/master/README.md';
-            https.get(readme_url, (res) => {
-              var data = '';
-              res.on('data', (d) => { data += d; });
-              res.on('end', function() {
-                project.content[0].html = markdown(data);
-                fs.writeFileSync(path.join(__dirname, 'public/static/content/projects', project.id + '.json'), JSON.stringify(project), 'utf8');
-                finished++;
-              });
-            });
-            while (finished === originalFinished);
-          }
-        );
-      }
-    }
-  }
-);
 
+
+
+
+
+function finish() {
 //while(finished !== length);
 
 //debug start
@@ -232,3 +172,79 @@ var search = function(searchSubmitted) {
 http.createServer(app).listen(app.get('port'), function() {
   console.log('Express server listening on port ' + app.get('port'));
 });
+}
+
+
+
+var finished = 0;//, length = 1;
+// Convert all of my GitHub Repos
+var github = new GitHubAPI({
+  version: '3.0.0',
+  protocol: 'https',
+  host: 'api.github.com'
+});
+var token = fs.readFileSync('./token.txt', 'utf8');
+github.authenticate({
+  type: 'oauth',
+  token: token
+});
+github.repos.getFromUser(
+  {
+    user: 'Krail', // required
+    type: 'all',
+    sort: 'created',
+    direction: 'desc',
+    per_page: 10
+  },
+  function(err, data) {
+    if (err) throw err;
+    else {
+      if(!Array.isArray(data)) console.log('Error. GitHub data is not an array: ', data);
+      else {
+        length = data.length;
+        console.log('Length: ' + length);
+        data.forEach(
+          function(element, index, array) {
+            var originalFinished = finished;
+            console.log('Original Finished: ' + originalFinished);
+            var project = {
+              id: element.name,
+              header: {
+                image: {
+                  title: 'My GitHub Avatar',
+                  src: element.owner.avatar_url,
+                  alt: element.name
+                },
+                heading: element.name,
+                paragraphs: [ element.description ]
+              },
+              content: [
+                {
+                  type: 'readme',
+                  html: ''
+                }
+              ]
+            };
+            var readme_url = 'https://raw.githubusercontent.com/' + element.full_name + '/master/README.md';
+            https.get(readme_url, (res) => {
+              var data = '';
+              res.on('data', (d) => { data += d; });
+              res.on('end', function() {
+                project.content[0].html = markdown(data);
+                fs.writeFileSync(path.join(__dirname, 'public/static/content/projects', project.id + '.json'), JSON.stringify(project), 'utf8');
+                finished++;
+                console.log('Finished: ' + finished);
+              });
+            });
+            while (finished === originalFinished);
+          }
+        );
+        
+        finish();
+        
+        
+        
+      }
+    }
+  }
+);
