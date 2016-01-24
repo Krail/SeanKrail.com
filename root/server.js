@@ -14,7 +14,7 @@
 var express = require('express');
 //var routes = require('./routes/index.js');
 var http = require('http');
-var request = require('sync-request');
+//var request = require('sync-request');
 var path = require('path');
 var fs = require('fs');
 var AWS = require('aws-sdk');
@@ -22,7 +22,7 @@ var AWS = require('aws-sdk');
 var sass = require('node-sass');
 var compressor = require('node-minify');
 var GitHubAPI = require('github');
-var mdConverter = new (require("showdown")).Converter();
+//var mdConverter = new (require("showdown")).Converter();
 
 var app = express();
 
