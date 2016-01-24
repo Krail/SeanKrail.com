@@ -21,7 +21,7 @@ var AWS = require('aws-sdk');
 
 var sass = require('node-sass');
 var compressor = require('node-minify');
-var GitHubAPI = require('github');
+//var GitHubAPI = require('github');
 //var mdConverter = new (require("showdown")).Converter();
 
 var app = express();
@@ -89,7 +89,10 @@ files.forEach(
 );
 
 
-
+/*
+var GitHubAPI = require('github');
+var request = require('sync-request');
+var mdConverter = new (require("showdown")).Converter();
 // Convert all of my GitHub Repos
 var github = new GitHubAPI({
   version: '3.0.0',
@@ -136,16 +139,14 @@ github.repos.getFromUser(
             };
             //var response = request('GET', 'https://raw.githubusercontent.com/' + element.full_name + '/master/README.md').getBody();
             //console.log(response);
-            /*project.content[0].html = mdConverter(
-              response
-            );*/
+            project.content[0].html = mdConverter(response);
             fs.writeFileSync(path.join(__dirname, 'public/static/content/projects', project.id + '.json'), JSON.stringify(project), 'utf8');
           }
         );
       }
     }
   }
-);
+);*/
 
 
 
