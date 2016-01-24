@@ -12,7 +12,7 @@
 
 // REQUIRE modules.
 var express = require('express');
-var routes = require('./routes/index.js');
+//var routes = require('./routes/index.js');
 var http = require('http');
 var https = require('https');
 var path = require('path');
@@ -148,6 +148,9 @@ github.repos.getFromUser(
   }
 );
 
+
+// Has to be after the github requests
+var routes = require('./routes/index.js');
 
 // GET home page.
 app.get('/', routes.home);
