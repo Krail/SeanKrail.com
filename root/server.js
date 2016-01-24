@@ -22,7 +22,7 @@ var AWS = require('aws-sdk');
 var sass = require('node-sass');
 var compressor = require('node-minify');
 var GitHubAPI = require('github');
-var md = require("node-markdown").Markdown;
+var markdown = require("node-markdown").Markdown;
 
 var app = express();
 
@@ -89,7 +89,7 @@ files.forEach(
 );
 
 
-var finished = 0, length = 1;
+var finished = 0;//, length = 1;
 // Convert all of my GitHub Repos
 var github = new GitHubAPI({
   version: '3.0.0',
@@ -118,6 +118,7 @@ github.repos.getFromUser(
         console.log('Length: ' + length);
         data.forEach(
           function(element, index, array) {
+            var originalFinished = finished;
             var project = {
               id: element.name,
               header: {
@@ -131,23 +132,22 @@ github.repos.getFromUser(
               },
               content: [
                 {
-                  type: 'readme'
+                  type: 'readme',
+                  html: ''
                 }
               ]
             };
             var readme_url = 'https://raw.githubusercontent.com/' + element.full_name + '/master/README.md';
             https.get(readme_url, (res) => {
-              console.log(res);
-              res.resume();
-              /*var data = '';
+              var data = '';
               res.on('data', (d) => { data += d; });
               res.on('end', function() {
-                project.content[0].html = md(data);
-                fs.writeFileSync(path.join(__dirname, 'public/static/content/projects/' + project.id + '.json'), JSON.stringify(project), 'utf8');
+                project.content[0].html = markdown(data);
+                fs.writeFileSync(path.join(__dirname, 'public/static/content/projects', project.id + '.json'), JSON.stringify(project), 'utf8');
                 finished++;
-                console.log('Finished: ' + finished);
-              });*/
+              });
             });
+            while (finished === originalFinished);
           }
         );
       }
