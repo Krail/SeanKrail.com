@@ -88,7 +88,7 @@ files.forEach(
   }
 );
 
-/*
+
 // Convert all of my GitHub Repos
 var github = new GitHubAPI({
   version: '3.0.0',
@@ -138,7 +138,7 @@ github.repos.getFromUser(
               res.on('data', (d) => { data += d; });
               res.on('end', function() {
                 project.content[0].html = md(data);
-                fs.writeFile(path.join(__dirname, 'public/static/content/assets/projects/' + project.id + '.json'), JSON.stringify(project), 'utf8');
+                fs.writeFile(path.join(__dirname, 'public/static/content/projects/' + project.id + '.json'), JSON.stringify(project), 'utf8');
               });
             });
           }
@@ -146,7 +146,7 @@ github.repos.getFromUser(
       }
     }
   }
-);*/
+);
 
 
 // GET home page.
