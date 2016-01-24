@@ -88,7 +88,7 @@ files.forEach(
   }
 );
 
-
+var finished = 0, length = 1;
 // Convert all of my GitHub Repos
 var github = new GitHubAPI({
   version: '3.0.0',
@@ -113,6 +113,7 @@ github.repos.getFromUser(
     else {
       if(!Array.isArray(data)) console.log('Error. GitHub data is not an array: ', data);
       else {
+        length = data.length;
         data.forEach(
           function(element, index, array) {
             var project = {
@@ -139,6 +140,7 @@ github.repos.getFromUser(
               res.on('end', function() {
                 project.content[0].html = md(data);
                 fs.writeFileSync(path.join(__dirname, 'public/static/content/projects/' + project.id + '.json'), JSON.stringify(project), 'utf8');
+                finished++;
               });
             });
           }
@@ -147,6 +149,8 @@ github.repos.getFromUser(
     }
   }
 );
+
+while(finished !== length);
 
 //debug start
 fs.readdirSync(path.join(__dirname, 'public/static/content/projects/')).forEach(
