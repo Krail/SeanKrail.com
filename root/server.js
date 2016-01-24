@@ -131,7 +131,7 @@ github.repos.getFromUser(
               }
             ]
           };
-          var readme_url = 'https://raw.githubusercontent.com/' + element.full_name + '/master/README.md';
+          var readme_url = 'https://raw.githubusercontent.com/' + element.full_name + '/master/README.md';/*
           https.get(readme_url, (res) => {
             var data = '';
             res.on('data', (d) => { data += d; });
@@ -139,8 +139,8 @@ github.repos.getFromUser(
               project.content[0].html = md(data);
               fs.writeFile('./public/static/content/assets/projects/' + project.id + '.json', JSON.stringify(project), 'utf8');
             });
-          });
-          
+          });*/
+          console.log(project);
         }
       );
       console.log(JSON.stringify(data));
