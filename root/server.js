@@ -114,6 +114,7 @@ github.repos.getFromUser(
       if(!Array.isArray(data)) console.log('Error. GitHub data is not an array: ', data);
       else {
         length = data.length;
+        console.log('Length: ' + length);
         data.forEach(
           function(element, index, array) {
             var project = {
@@ -141,6 +142,7 @@ github.repos.getFromUser(
                 project.content[0].html = md(data);
                 fs.writeFileSync(path.join(__dirname, 'public/static/content/projects/' + project.id + '.json'), JSON.stringify(project), 'utf8');
                 finished++;
+                console.log('Finished: ' + finished);
               });
             });
           }
