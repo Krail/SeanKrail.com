@@ -9,8 +9,6 @@
     "aws-sdk": "*",
     "node-sass": "*",
     "node-minify": "*",
-    "github": "*",
-    "showdown": "*",
-    "sync-request": "*"
+    "github": "*"
   }
 }
