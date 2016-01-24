@@ -155,7 +155,7 @@ github.repos.getFromUser(
   }
 );
 
-while(finished !== length);
+//while(finished !== length);
 
 //debug start
 fs.readdirSync(path.join(__dirname, 'public/static/content/projects/')).forEach(
