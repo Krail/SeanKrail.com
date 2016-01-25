@@ -100,7 +100,7 @@ fs.readdir(path.join(__dirname, 'public/static/content/projects'), (err, files) 
   if (err) throw err;
   files.forEach(
     function (element, index, array) {
-      fs.readFile(path.join(__dirname, 'projects', element), 'utf8', (err, data) => {
+      fs.readFile(path.join(__dirname, 'public/static/content/projects', element), 'utf8', (err, data) => {
         if (err) throw err;
         routes.projects.projects.hard.push(JSON.parse(data));
       });
