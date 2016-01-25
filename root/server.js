@@ -90,7 +90,7 @@ files.forEach(
 
 
 
-var GitHubAPI = require('github');
+/*var GitHubAPI = require('github');
 var request = require('sync-request');
 var mdConverter = new (require("showdown")).Converter();
 // Convert all of my GitHub Repos
@@ -146,7 +146,7 @@ github.repos.getFromUser(
       }
     }
   }
-);
+);*/
 
 
 
