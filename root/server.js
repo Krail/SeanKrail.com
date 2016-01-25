@@ -12,17 +12,17 @@
 
 // REQUIRE modules.
 var express = require('express');
-//var routes = require('./routes/index.js');
+var routes = require('./routes/index.js');
 var http = require('http');
-//var request = require('sync-request');
+var https = require('https');
 var path = require('path');
 var fs = require('fs');
 var AWS = require('aws-sdk');
 
 var sass = require('node-sass');
 var compressor = require('node-minify');
-//var GitHubAPI = require('github');
-//var mdConverter = new (require("showdown")).Converter();
+var GitHubAPI = require('github');
+var mdConverter = new (require("showdown")).Converter();
 
 var app = express();
 
@@ -42,7 +42,7 @@ app.locals.version = fs.readFileSync('./version.txt', 'utf8').replace(/\n$/, '')
 // Read config values from a JSON file.
 var config = fs.readFileSync('./app_config.json', 'utf8');
 config = JSON.parse(config);
-config.VERSION = fs.readFileSync('./version.txt', 'utf8');
+config.VERSION = app.locals.version;
 
 // Create DynamoDB client and pass in region.
 var db = new AWS.DynamoDB({region: config.AWS_REGION});
@@ -58,7 +58,9 @@ sass.render(
   },
   function(err, data) {
     if (err) throw err;
-    else fs.writeFileSync('./public/css/style.min.css', data.css);
+    else fs.writeFile(path.join(__dirname, 'public/css/style.min.css'), data.css, 'utf8', (err) => {
+      if (err) throw err;
+    });
   }
 );
 sass.render(
@@ -68,31 +70,46 @@ sass.render(
   },
   function(err, data) {
     if (err) throw err;
-    else fs.writeFileSync('./public/css/style.css', data.css);
-  }
-);
-
-// Minify javascript files
-var jsDir = './public/js/'
-var files = fs.readdirSync(jsDir);
-files.forEach(
-  function(element, index, array) {
-    new compressor.minify({
-      type: 'gcc',
-      fileIn: jsDir + element,
-      fileOut: jsDir + element.replace(/\.[^/.]+$/, "") + '.min.js',
-      callback: function(err, min) {
-        if (err) throw err;
-      }
+    else fs.writeFile(path.join(__dirname, 'public/css/style.css'), data.css, 'utf8', (err) => {
+      if (err) throw err;
     });
   }
 );
 
+// Minify javascript files
+var jsDir = 'public/js'
+var files = fs.readdir(path.join(__dirname, 'public/js'), (err, files) => {
+  files.forEach(
+    function(element, index, array) {
+      new compressor.minify({
+        type: 'gcc',
+        fileIn: './' + jsDir + '/' + element,
+        fileOut: './' + jsDir + '/' + element.replace(/\.[^/.]+$/, "") + '.min.js',
+        callback: function(err, min) {
+          if (err) throw err;
+        }
+      });
+    }
+  );
+});
 
 
-/*var GitHubAPI = require('github');
-var request = require('sync-request');
-var mdConverter = new (require("showdown")).Converter();
+
+// Add all 'hard' projects
+fs.readdir(path.join(__dirname, 'public/static/content/projects'), (err, files) => {
+  if (err) throw err;
+  files.forEach(
+    function (element, index, array) {
+      fs.readFile(path.join(__dirname, 'projects', element), 'utf8', (err, data) => {
+        if (err) throw err;
+        routes.projects.projects.hard.push(JSON.parse(data));
+      });
+    }
+  );
+});
+
+
+
 // Convert all of my GitHub Repos
 var github = new GitHubAPI({
   version: '3.0.0',
@@ -114,52 +131,48 @@ github.repos.getFromUser(
   },
   function(err, data) {
     if (err) throw err;
+    if(!Array.isArray(data)) console.log('Error. GitHub data is not an array: ', data);
     else {
-      if(!Array.isArray(data)) console.log('Error. GitHub data is not an array: ', data);
-      else {
-        data.forEach(
-          function(element, index, array) {
-            var project = {
-              id: element.name,
-              header: {
-                image: {
-                  title: 'My GitHub Avatar',
-                  src: element.owner.avatar_url,
-                  alt: element.name
-                },
-                heading: element.name,
-                paragraphs: [ element.description ]
+      data.forEach(
+        function(element, index, array) {
+          var project = {
+            id: element.name,
+            header: {
+              image: {
+                title: 'My GitHub Avatar',
+                src: element.owner.avatar_url,
+                alt: element.name
               },
-              content: [
-                {
-                  type: 'readme',
-                  html: ''
-                }
-              ]
-            };
-            var response = request('GET', 'https://raw.githubusercontent.com/' + element.full_name + '/master/README.md').getBody().toString('utf8');
-            console.log("'" + response + "'");
-            //project.content[0].html = mdConverter(response);
-            fs.writeFileSync(path.join(__dirname, 'public/static/content/projects', project.id + '.json'), JSON.stringify(project), 'utf8');
-          }
-        );
-      }
+              heading: element.name,
+              paragraphs: [ element.description ]
+            },
+            content: [
+              {
+                type: 'readme',
+                html: ''
+              }
+            ]
+          };
+
+          https.get('https://raw.githubusercontent.com/' + element.full_name + '/master/README.md', (res) => {
+            var data = '';
+            res.on('data', (d) => { data += d; });
+            res.on('end', function() {
+              project.content[0].html = mdConverter(data);
+              routes.projects.projects.soft.push(project);
+            });
+          });
+
+        }
+      );
     }
   }
-);*/
-
-
-
-//debug start
-fs.readdirSync(path.join(__dirname, 'public/static/content/projects/')).forEach(
-  function (element, index, array) {
-    console.log('Before: ' + element);
-  }
 );
-//debug end
 
-// Has to be after the github requests
-var routes = require('./routes/index.js');
+
+
+
+
 
 // GET home page.
 app.get('/', routes.home);
@@ -167,7 +180,15 @@ app.get('/', routes.home);
 // GET each page in the /routes/ directory
 Object.keys(routes).forEach(
   function(element, index, array) {
-    app.get('/' + element, routes[element]);
+    if (element === 'projects') {
+      app.get('/projects', (req, res) => {
+        res.render('projects', {
+          page: 'projects',
+          appTitle: 'Sean\'s Projects',
+          content: routes.projects
+        });
+      });
+    } else app.get('/' + element, routes[element]);
   }
 );
 

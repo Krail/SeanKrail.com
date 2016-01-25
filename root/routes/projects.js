@@ -1,11 +1,14 @@
-var content = require('../public/static/content/header-footer.js');
-content.projects = require('../public/static/content/projects.js');
+module.exports = require('../public/static/content/header-footer.js');
+
+module.exports.projects.hard = [];
+module.exports.projects.soft = [];
+
 
 /* GET projects page */
-module.exports = function(req, res) {
+/*module.exports = function(req, res) {
   res.render('projects', {
     page: 'projects',
     appTitle: 'Sean\'s Projects',
     content: content
   });
-};
+};*/

@@ -4,7 +4,10 @@ var fs = require('fs');
 
 /* hard-coded main content of projects page */
 module.exports.hard = [];
+module.exports.soft = [];
 module.exports.icon = 'glyphicon glyphicon-search';
+
+
 
 fs.readdirSync(path.join(__dirname, 'projects')).forEach(
   function (element, index, array) {
