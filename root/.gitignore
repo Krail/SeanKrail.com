@@ -1,4 +1,4 @@
 node_modules/
 .elasticbeanstalk/
 .DS_Store
-token.txt
+token.token
