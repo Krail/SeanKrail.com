@@ -57,9 +57,7 @@ sass.render(
     outputStyle: 'compressed'
   }, (err, data) => {
     if (err) throw err;
-    else fs.writeFile(path.join(__dirname, 'public/css/style.min.css'), data.css, 'utf8', (err) => {
-      if (err) throw err;
-    });
+    else fs.writeFile(path.join(__dirname, 'public/css/style.min.css'), data.css, 'utf8', (err) => { if (err) throw err; });
   }
 );
 sass.render(
@@ -163,18 +161,17 @@ github.repos.getFromUser(
   }
 );
 
-
-
+var object1 = {y: {x: 5}};
+var object2 = {y: object1.y};
+console.log(object2);
 
 
 
 // GET each page in the /routes/ directory
 Object.keys(routes).forEach(
   (element, index, array) => {
-    if (element === 'home') {
-      app.get('/', routes.home);
-      app.get('/home', routes.home);
-    } else if (element === 'projects') {
+    if (element === 'home') app.get('/(home)?', routes.home);
+    else if (element === 'projects') {
       app.get('/projects', (req, res) => {
         res.render('projects', {
           page: 'projects',
