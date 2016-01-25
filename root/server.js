@@ -171,8 +171,10 @@ github.repos.getFromUser(
 // GET each page in the /routes/ directory
 Object.keys(routes).forEach(
   (element, index, array) => {
-    if (element === 'home') app.get('/', '/home', routes.home);
-    else if (element === 'projects') {
+    if (element === 'home') {
+      app.get('/', routes.home);
+      app.get('/home', routes.home);
+    } else if (element === 'projects') {
       app.get('/projects', (req, res) => {
         res.render('projects', {
           page: 'projects',
