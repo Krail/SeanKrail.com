@@ -21,8 +21,8 @@ var AWS = require('aws-sdk');
 
 var sass = require('node-sass');
 var compressor = require('node-minify');
-var GitHubAPI = require('github');
-var mdConverter = new (require("showdown")).Converter();
+//var GitHubAPI = require('github');
+//var mdConverter = new (require("showdown")).Converter();
 
 var app = express();
 
@@ -96,7 +96,7 @@ var files = fs.readdir(path.join(__dirname, 'public/js'), (err, files) => {
 
 
 // Add all 'hard' projects
-fs.readdir(path.join(__dirname, 'public/static/content/projects'), (err, files) => {
+/*fs.readdir(path.join(__dirname, 'public/static/content/projects'), (err, files) => {
   if (err) throw err;
   files.forEach(
     function (element, index, array) {
@@ -106,11 +106,11 @@ fs.readdir(path.join(__dirname, 'public/static/content/projects'), (err, files) 
       });
     }
   );
-});
+});*/
 
 
 
-// Convert all of my GitHub Repos
+/*// Convert all of my GitHub Repos
 var github = new GitHubAPI({
   version: '3.0.0',
   protocol: 'https',
@@ -167,7 +167,7 @@ github.repos.getFromUser(
       );
     }
   }
-);
+);*/
 
 
 
@@ -181,13 +181,13 @@ app.get('/', routes.home);
 Object.keys(routes).forEach(
   function(element, index, array) {
     if (element === 'projects') {
-      app.get('/projects', (req, res) => {
+      /*app.get('/projects', (req, res) => {
         res.render('projects', {
           page: 'projects',
           appTitle: 'Sean\'s Projects',
           content: routes.projects
         });
-      });
+      });*/
     } else app.get('/' + element, routes[element]);
   }
 );

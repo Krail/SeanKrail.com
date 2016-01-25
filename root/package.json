@@ -8,8 +8,6 @@
     "jade": "*",
     "aws-sdk": "*",
     "node-sass": "*",
-    "node-minify": "*",
-    "github": "*",
-    "showdown": "*"
+    "node-minify": "*"
   }
 }
