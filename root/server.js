@@ -136,7 +136,7 @@ function refreshGitHubProjects() {
         data.forEach(
           (element, index, array) => {
             var project = {
-              id: element.name.replace(githubRegex2, "-").replace(githubRegex3, ""),
+              id: element.name.replace(githubRegex2, "-").replace(githubRegex3, "") + '_github',
               header: {
                 image: {
                   title: 'My GitHub Avatar',
