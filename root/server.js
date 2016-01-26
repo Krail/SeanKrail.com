@@ -22,7 +22,7 @@ var AWS = require('aws-sdk');
 var sass = require('node-sass');
 var compressor = require('node-minify');
 var GitHubAPI = require('github');
-var mdConverter = new (require("showdown")).Converter();
+var mdConverter = new (require('showdown')).Converter();
 
 var app = express();
 
@@ -151,10 +151,10 @@ github.repos.getFromUser(
           };
 
           https.get('https://raw.githubusercontent.com/' + element.full_name + '/master/README.md', (res) => {
-            var data = '';
-            res.on('data', (d) => { data += d; });
+            var md = '';
+            res.on('data', (data) => { md += data; });
             res.on('end', () => {
-              project.content[0].html = mdConverter(data);
+              project.content[0].html = mdConverter.makeHtml(md);
               routes.projects.projects.soft.push(project);
             });
           });
@@ -164,10 +164,6 @@ github.repos.getFromUser(
     }
   }
 );
-
-var object1 = {y: {x: 5}};
-var object2 = {y: object1.y};
-console.log(object2);
 
 
 
