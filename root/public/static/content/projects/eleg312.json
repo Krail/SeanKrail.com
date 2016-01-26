@@ -1,6 +1,7 @@
 {
   "id": "ELEG312Final",
-  "header":
+  "keywords": ["Circuits", "Breadboard", "UD"],
+  "header": 
   {
     "image":
     {
@@ -65,5 +66,6 @@
         "Finally, a unity-gain buffer is used to act as a switch and to allow the output speakers to draw as much current as it needs. The op amp uses the quasi-DC voltage from the CS MOSFET stage for its positive voltage supply and the DC voltage from the bottom full-wave rectifier stage for its negative voltage supply."
       ]
     }
-  ]
+  ],
+  "updated": "2014-05"
 }

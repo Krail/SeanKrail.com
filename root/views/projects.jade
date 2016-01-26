@@ -24,6 +24,10 @@ block main
         header(class='project border', id='#{pro.id}Header', title='Click to expand/collapse', onclick='toggle(\'#{pro.id}\')')
           img(title=pro.header.image.title, src=pro.header.image.src, alt=pro.header.image.alt)
           h2!=pro.header.heading
+          if pro.keywords
+            p(class='keywords') Keywords:
+              each keyword in pro.keywords
+                mark=keyword.replace(/_\-/, ' ')
           each paragraph in pro.header.paragraphs
             p!=paragraph
 

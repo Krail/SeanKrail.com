@@ -1,3 +1,7 @@
+// REQUIRE modules
+var path = require('path');
+var fs = require('fs');
+
 var sass = require('node-sass');
 var compressor = require('node-minify');
 
