@@ -21,8 +21,9 @@ var AWS = require('aws-sdk');
 
 var sass = require('node-sass');
 var compressor = require('node-minify');
-var GitHubAPI = require('github');
-var mdConverter = new (require('showdown')).Converter();
+
+var projects = require('./modules/projects.js');
+
 
 var app = express();
 
@@ -57,20 +58,20 @@ var sns = new AWS.SNS({region: config.AWS_REGION});
 // Convert base.scss file into style.css (Async)
 sass.render(
   {
-    file: path.join(__dirname, 'public/scss/base.scss'),
+    file: path.join(__dirname, 'public', 'scss', 'base.scss'),
     outputStyle: 'compressed'
   }, (err, data) => {
     if (err) throw err;
-    else fs.writeFile(path.join(__dirname, 'public/css/style.min.css'), data.css, 'utf8', (err) => { if (err) throw err; });
+    else fs.writeFile(path.join(__dirname, 'public', 'css', 'style.min.css'), data.css, 'utf8', (err) => { if (err) throw err; });
   }
 );
 sass.render(
   {
-    file: path.join(__dirname, 'public/scss/base.scss'),
+    file: path.join(__dirname, 'public', 'scss', 'base.scss'),
     outputStyle: 'nested'
   }, (err, data) => {
     if (err) throw err;
-    else fs.writeFile(path.join(__dirname, 'public/css/style.css'), data.css, 'utf8',(err) => { if (err) throw err; });
+    else fs.writeFile(path.join(__dirname, 'public', 'css', 'style.css'), data.css, 'utf8',(err) => { if (err) throw err; });
   }
 );
 
@@ -92,84 +93,8 @@ fs.readdir(path.join(__dirname, 'public/js'), (err, files) => {
 
 
 
-// Add all 'hard' projects
-fs.readdir(path.join(__dirname, 'public/static/content/projects'), (err, files) => {
-  if (err) throw err;
-  files.forEach(
-    (element, index, array) => {
-      fs.readFile(path.join(__dirname, 'public/static/content/projects', element), 'utf8', (err, data) => {
-        if (err) throw err;
-        routes.projects.projects.push(JSON.parse(data));
-      });
-    }
-  );
-});
 
-
-function refreshGitHubProjects() {
-  // Convert all of my GitHub Repos
-  var github = new GitHubAPI({
-    version: '3.0.0',
-    protocol: 'https',
-    host: 'api.github.com'
-  });
-  const token = fs.readFileSync(path.join(__dirname, 'token.token'), 'utf8');
-  github.authenticate({
-    type: 'oauth',
-    token: token
-  });
-  github.repos.getFromUser(
-    {
-      user: 'Krail', // required
-      type: 'all',
-      sort: 'created',
-      direction: 'desc',
-      per_page: 10
-    }, (err, data) => {
-      if (err) throw err;
-      if(!Array.isArray(data)) console.error('Error. GitHub data is not an array: ', data);
-      else {
-        const githubRegex1 = /[\-_]/;
-        const githubRegex2 = /_/;
-        const githubRegex3 = /:/;
-        routes.projects.projects = [];
-        data.forEach(
-          (element, index, array) => {
-            var project = {
-              id: element.name.replace(githubRegex2, "-").replace(githubRegex3, "") + '_github',
-              header: {
-                image: {
-                  title: 'My GitHub Avatar',
-                  src: element.owner.avatar_url,
-                  alt: element.name.replace(githubRegex1, " ").replace(githubRegex3, "")
-                },
-                heading: element.name.replace(githubRegex1, " ").replace(githubRegex3, ""),
-                paragraphs: [ element.description ]
-              },
-              content: [
-                {
-                  type: 'readme',
-                  html: ''
-                }
-              ]
-            };
-
-            https.get('https://raw.githubusercontent.com/' + element.full_name + '/master/README.md', (res) => {
-              var md = '';
-              res.on('data', (data) => { md += data; });
-              res.on('end', () => {
-                project.content[0].html = mdConverter.makeHtml(md);
-                routes.projects.projects.push(project);
-              });
-            });
-
-          }
-        );
-      }
-    }
-  );
-}
-refreshGitHubProjects();
+projects.refreshProjects(routes.projects.projects);
 
 
 
