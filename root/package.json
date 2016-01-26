@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {  "start": "node server.js" },
   "dependencies": {
-    "express": "*",
+    "express": "3.4.0",
     "jade": "*",
     "aws-sdk": "*",
     "node-sass": "*",

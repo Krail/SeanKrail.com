@@ -29,11 +29,15 @@ var app = express();
 app.set('port', process.env.PORT || 443);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
-app.use(express.favicon());
+app.use(require('serve-favicon')(path.join(__dirname, 'public', 'static', 'content', 'assets', 'images', 'ico', 'favicon.ico')));
+//app.use(express.favicon(path.join(__dirname, 'public', 'static', 'content', 'assets', 'images', 'ico', 'favicon.ico')));
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
 app.use(express.methodOverride());
 app.use(app.router);
+app.use(express.directory(path.join(__dirname, 'public'), {
+  hidden: true, icons: true, filter: false
+}));
 app.use(express.static(path.join(__dirname, 'public')));
 app.locals.theme = process.env.THEME; //Make the THEME environment variable available to the app.
 app.locals.version = fs.readFileSync(path.join(__dirname, 'version.version'), 'utf8').replace(/\n$/, '');
