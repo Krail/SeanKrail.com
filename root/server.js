@@ -106,64 +106,70 @@ fs.readdir(path.join(__dirname, 'public/static/content/projects'), (err, files) 
 });
 
 
-
-// Convert all of my GitHub Repos
-var github = new GitHubAPI({
-  version: '3.0.0',
-  protocol: 'https',
-  host: 'api.github.com'
-});
-const token = fs.readFileSync(path.join(__dirname, 'token.token'), 'utf8');
-github.authenticate({
-  type: 'oauth',
-  token: token
-});
-github.repos.getFromUser(
-  {
-    user: 'Krail', // required
-    type: 'all',
-    sort: 'created',
-    direction: 'desc',
-    per_page: 10
-  }, (err, data) => {
-    if (err) throw err;
-    if(!Array.isArray(data)) console.error('Error. GitHub data is not an array: ', data);
-    else {
-      data.forEach(
-        (element, index, array) => {
-          var project = {
-            id: element.name.replace(/\-/, " ").replace(/\./, "-"),
-            header: {
-              image: {
-                title: 'My GitHub Avatar',
-                src: element.owner.avatar_url,
-                alt: element.name
+function refreshGitHubProjects() {
+  // Convert all of my GitHub Repos
+  var github = new GitHubAPI({
+    version: '3.0.0',
+    protocol: 'https',
+    host: 'api.github.com'
+  });
+  const token = fs.readFileSync(path.join(__dirname, 'token.token'), 'utf8');
+  github.authenticate({
+    type: 'oauth',
+    token: token
+  });
+  github.repos.getFromUser(
+    {
+      user: 'Krail', // required
+      type: 'all',
+      sort: 'created',
+      direction: 'desc',
+      per_page: 10
+    }, (err, data) => {
+      if (err) throw err;
+      if(!Array.isArray(data)) console.error('Error. GitHub data is not an array: ', data);
+      else {
+        const githubRegex1 = /[\-_]/;
+        const githubRegex2 = /_/;
+        const githubRegex3 = /:/;
+        routes.projects.projects = [];
+        data.forEach(
+          (element, index, array) => {
+            var project = {
+              id: element.name.replace(githubRegex2, "-").replace(githubRegex3, ""),
+              header: {
+                image: {
+                  title: 'My GitHub Avatar',
+                  src: element.owner.avatar_url,
+                  alt: element.name.replace(githubRegex1, " ").replace(githubRegex3, "")
+                },
+                heading: element.name.replace(githubRegex1, " ").replace(githubRegex3, ""),
+                paragraphs: [ element.description ]
               },
-              heading: element.name,
-              paragraphs: [ element.description ]
-            },
-            content: [
-              {
-                type: 'readme',
-                html: ''
-              }
-            ]
-          };
+              content: [
+                {
+                  type: 'readme',
+                  html: ''
+                }
+              ]
+            };
 
-          https.get('https://raw.githubusercontent.com/' + element.full_name + '/master/README.md', (res) => {
-            var md = '';
-            res.on('data', (data) => { md += data; });
-            res.on('end', () => {
-              project.content[0].html = mdConverter.makeHtml(md);
-              routes.projects.projects.push(project);
+            https.get('https://raw.githubusercontent.com/' + element.full_name + '/master/README.md', (res) => {
+              var md = '';
+              res.on('data', (data) => { md += data; });
+              res.on('end', () => {
+                project.content[0].html = mdConverter.makeHtml(md);
+                routes.projects.projects.push(project);
+              });
             });
-          });
 
-        }
-      );
+          }
+        );
+      }
     }
-  }
-);
+  );
+}
+refreshGitHubProjects();
 
 
 
