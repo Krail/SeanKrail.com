@@ -1,9 +1,6 @@
 module.exports = require('../public/static/content/header-footer.js');
 
-module.exports.projects = {
-  hard: [],
-  soft: []
-};
+module.exports.projects = [];
 //module.exports.projects.hard = [];
 //module.exports.projects.soft = [];
 

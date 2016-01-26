@@ -99,7 +99,7 @@ fs.readdir(path.join(__dirname, 'public/static/content/projects'), (err, files) 
     (element, index, array) => {
       fs.readFile(path.join(__dirname, 'public/static/content/projects', element), 'utf8', (err, data) => {
         if (err) throw err;
-        routes.projects.projects.hard.push(JSON.parse(data));
+        routes.projects.projects.push(JSON.parse(data));
       });
     }
   );
@@ -155,7 +155,7 @@ github.repos.getFromUser(
             res.on('data', (data) => { md += data; });
             res.on('end', () => {
               project.content[0].html = mdConverter.makeHtml(md);
-              routes.projects.projects.soft.push(project);
+              routes.projects.projects.push(project);
             });
           });
 

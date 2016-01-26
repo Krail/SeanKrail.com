@@ -18,7 +18,7 @@ block main
   // Project articles
   main
     - var numPro = 0
-    each pro in content.projects.hard
+    each pro in content.projects
       - numPro++
       article(id='#{pro.id}Article', class='project')
         header(class='project border', id='#{pro.id}Header', title='Click to expand/collapse', onclick='toggle(\'#{pro.id}\')')
