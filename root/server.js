@@ -132,7 +132,7 @@ github.repos.getFromUser(
       data.forEach(
         (element, index, array) => {
           var project = {
-            id: element.name,
+            id: element.name.replace(/\-/, " ").replace(/\./, "-"),
             header: {
               image: {
                 title: 'My GitHub Avatar',
