@@ -19,16 +19,14 @@ var path = require('path');
 var fs = require('fs');
 var AWS = require('aws-sdk');
 
-var sass = require('node-sass');
-var compressor = require('node-minify');
-
+var sass_minify = require('./modules/sass-minify.js');
 var projects = require('./modules/projects.js');
 
 
 var app = express();
 
 app.set('port', process.env.PORT || 443);
-app.set('views', __dirname + '/views');
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 //app.use(require('serve-favicon')(path.join(__dirname, 'public', 'static', 'content', 'assets', 'images', 'ico', 'favicon.ico')));
 app.use(express.favicon(path.join(__dirname, 'public', 'static', 'content', 'assets', 'images', 'ico', 'favicon.ico')));
@@ -39,7 +37,9 @@ app.use(app.router);
 app.use(express.directory(path.join(__dirname, 'public'), {
   hidden: true, icons: true, filter: false
 }));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public'), {
+  hidden: true, icons: true, filter: false
+}));
 app.locals.theme = process.env.THEME; //Make the THEME environment variable available to the app.
 app.locals.version = fs.readFileSync(path.join(__dirname, 'version.version'), 'utf8').replace(/\n$/, '');
 
@@ -55,47 +55,14 @@ var db = new AWS.DynamoDB({region: config.AWS_REGION});
 var sns = new AWS.SNS({region: config.AWS_REGION});
 
 
-// Convert base.scss file into style.css (Async)
-sass.render(
-  {
-    file: path.join(__dirname, 'public', 'scss', 'base.scss'),
-    outputStyle: 'compressed'
-  }, (err, data) => {
-    if (err) throw err;
-    else fs.writeFile(path.join(__dirname, 'public', 'css', 'style.min.css'), data.css, 'utf8', (err) => { if (err) throw err; });
-  }
-);
-sass.render(
-  {
-    file: path.join(__dirname, 'public', 'scss', 'base.scss'),
-    outputStyle: 'nested'
-  }, (err, data) => {
-    if (err) throw err;
-    else fs.writeFile(path.join(__dirname, 'public', 'css', 'style.css'), data.css, 'utf8',(err) => { if (err) throw err; });
-  }
-);
-
+// Create minified stylesheet
+sass_minify.sass();
 // Minify javascript files
-const jsDir = 'public/js'
-fs.readdir(path.join(__dirname, 'public/js'), (err, files) => {
-  if (err) throw err;
-  files.forEach(
-    (element, index, array) => {
-      new compressor.minify({
-        type: 'gcc',
-        fileIn: path.join(__dirname, jsDir, element),
-        fileOut: path.join(__dirname, jsDir, element.replace(/\.[^/.]+$/, "") + '.min.js'),
-        callback: (err, min) => { if (err) throw err; }
-      });
-    }
-  );
-});
+sass_minify.minify();
 
 
-
-
-projects.refreshProjects(routes.projects.projects);
-
+// Refresh array of projects (hard and soft)
+projects.refresh(routes.projects.projects);
 
 
 // GET each page in the /routes/ directory

@@ -2,13 +2,14 @@
 var GitHubAPI = require('github');
 var mdConverter = new (require('showdown')).Converter();
 
+
 // Import hard-coded projects from static directory
 module.exports.importHard = (projectsArray, callback) => {
-  fs.readdir(path.join(__dirname, 'public', 'static', 'content', 'projects'), (err, files) => {
+  fs.readdir(path.join(__dirname, '..', 'public', 'static', 'content', 'projects'), (err, files) => {
     if (err) throw err;
     files.forEach(
       (element, index, array) => {
-        fs.readFile(path.join(__dirname, 'public', 'static', 'content', 'projects', element), 'utf8', (err, data) => {
+        fs.readFile(path.join(__dirname, '..', 'public', 'static', 'content', 'projects', element), 'utf8', (err, data) => {
           if (err) throw err;
           projectsArray.push(JSON.parse(data));
           if (index + 1 === array.length) callback();
@@ -19,14 +20,14 @@ module.exports.importHard = (projectsArray, callback) => {
 }
 
 // Import 'soft' GitHub repository projects
-module.exports.importGitHubProjects = (projectsArray, callback) => {
+module.exports.importSoft = (projectsArray, callback) => {
   // Convert all of my GitHub Repos
   var github = new GitHubAPI({
     version: '3.0.0',
     protocol: 'https',
     host: 'api.github.com'
   });
-  const token = fs.readFileSync(path.join(__dirname, 'token.token'), 'utf8');
+  const token = fs.readFileSync(path.join(__dirname, '..', 'token.token'), 'utf8');
   github.authenticate({
     type: 'oauth',
     token: token
@@ -86,8 +87,9 @@ module.exports.importGitHubProjects = (projectsArray, callback) => {
   );
 }
 
+
 // Sort projects by updated date (latest has lowest index)
-module.exports.sortProjects = (projectsArray) => {
+module.exports.sort = (projectsArray) => {
   projectsArray.sort((a, b) => {
   if(a.updated > b.updated) return -1; // set a (latest) to lower index than b (oldest)
   else if(a.update < b.updated) return 1; // set b (latest) to lower index than a (oldest)
@@ -96,14 +98,14 @@ module.exports.sortProjects = (projectsArray) => {
 }
 
 // Refresh the projects list
-module.exports.refreshProjects = (projectsArray) => {
+module.exports.refresh = (projectsArray) => {
   projectsArray = [];
   var sort = false
   var callback = () => {
-    if (sort) module.exports.sortProjects(projectsArray);
+    if (sort) module.exports.sort(projectsArray);
     else sort = true;
   };
-  module.exports.importHardCodedProjects(projectsArray, callback());
-  module.exports.importGitHubProjects(projectsArray, callback());
+  module.exports.importHard(projectsArray, callback());
+  module.exports.importSoft(projectsArray, callback());
   
 }
