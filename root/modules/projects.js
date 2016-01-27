@@ -62,20 +62,20 @@ module.exports.utilities = {
           var completed = 0;
           console.log('utilities.importSoft: ' + data.length + ' soft-coded files');
           // GET all 'hard' projects
-          const githubRegex1 = /[\-_]/;
-          const githubRegex2 = /_/;
-          const githubRegex3 = /:/;
+          const githubRegexId1 = /[\:#]/;
+          const githubRegexId2 = /[\._]/;
+          const githubRegexName = /[\-_]/;
           data.forEach(
             (element, index, array) => {
               var project = {
-                id: (element.name.replace(githubRegex2, "-").replace(githubRegex3, "") + '_github'),
+                id: (element.name.replace(githubRegexId1, "").replace(githubRegexId2, "-") + '_github'),
                 header: {
                   image: {
                     title: 'My GitHub Avatar',
                     src: element.owner.avatar_url,
-                    alt: element.name.replace(githubRegex1, " ").replace(githubRegex3, "")
+                    alt: element.name.replace(githubRegexName, " ")
                   },
-                  heading: element.name.replace(githubRegex1, " ").replace(githubRegex3, ""),
+                  heading: element.name.replace(githubRegexName, " "),
                   paragraphs: [ element.description ]
                 },
                 content: [
