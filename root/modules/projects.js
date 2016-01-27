@@ -12,14 +12,14 @@ module.exports.utilities = {
   // Import hard-coded projects from static directory
   importHard: (projects, callback) => {
     fs.readdir(path.join(__dirname, '..', 'public', 'static', 'content', 'projects'), (err, files) => {
-      console.logs('utilities.importHard: ' + files.length + ' hard-coded files');
+      console.log('utilities.importHard: ' + files.length + ' hard-coded files');
       if (err) throw err;
       files.forEach(
         (element, index, array) => {
           fs.readFile(path.join(__dirname, '..', 'public', 'static', 'content', 'projects', element), 'utf8', (err, data) => {
             if (err) throw err;
             projects['projects'].push(JSON.parse(data));
-            console.logs('utilities.importHard: Index is ' + index);
+            console.log('utilities.importHard: Index is ' + index);
             if (index + 1 === array.length) callback();
           });
         }
@@ -50,7 +50,7 @@ module.exports.utilities = {
         if (err) throw err;
         if(!Array.isArray(data)) console.error('Error. GitHub data is not an array: ', data);
         else {
-          console.logs('utilities.importSoft: ' + data.length + ' soft-coded files');
+          console.log('utilities.importSoft: ' + data.length + ' soft-coded files');
           // GET all 'hard' projects
           const githubRegex1 = /[\-_]/;
           const githubRegex2 = /_/;
@@ -83,7 +83,7 @@ module.exports.utilities = {
                 res.on('end', () => {
                   project.content[0].html = mdConverter.makeHtml(md);
                   projects['projects'].push(project);
-                  console.logs('utilities.importSoft: Index is ' + index);
+                  console.log('utilities.importSoft: Index is ' + index);
                   if (index + 1 === array.length) callback();
                 });
               });
