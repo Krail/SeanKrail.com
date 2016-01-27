@@ -234,9 +234,10 @@ function squares() {
   hide();
   document.getElementById('rectangles').disabled = true;
   document.getElementById('squares').disabled = false;
+  document.getElementById('expand-collapse').children[0].disabled = true;
   project_ids.forEach( function(element, index, array) {
     var header = document.getElementById(element + 'Header');
-    document.getElementById(element + 'Header').style.display = 'inline-block';
+    document.getElementById(element + 'Article').style.display = 'inline-block';
     for(var i = 0; i < header.children.length; i++) {
       if (header.children[i].tagName.toLowerCase() !== 'img') document.getElementById(element + 'Header').children[i].style.display = 'none';
     }
@@ -248,9 +249,10 @@ function rectangles() {
   hide();
   document.getElementById('rectangles').disabled = false;
   document.getElementById('squares').disabled = true;
+  document.getElementById('expand-collapse').children[0].disabled = false;
   project_ids.forEach( function(element, index, array) {
     var header = document.getElementById(element + 'Header');
-    document.getElementById(element + 'Header').style.display = 'block';
+    document.getElementById(element + 'Article').style.display = 'block';
     for(var i = 0; i < header.children.length; i++) {
       if (header.children[i].tagName.toLowerCase() !== 'img') document.getElementById(element + 'Header').children[i].style.display = 'block';
     }

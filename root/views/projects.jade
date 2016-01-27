@@ -11,10 +11,10 @@ block main
     button(id='submitbutton', class='btn btn-search border', form='searchForm', type='submit', value='Submit')
       span(class='glyphicon glyphicon-search', aria-hidden='true')
   // Expand/collapse all project articles
-  ul(id='expand-collapse', class='btn-expand-collapse border')
+  ul(id='expand-collapse', class='btn btn-expand-collapse border')
     li(class='btn btn-text', onclick='show()') Expand All #[span(class='glyphicon glyphicon-expand-collapse glyphicon-collapse-down' aria-hidden='true')]
     li(class='btn btn-text', onclick='hide()') #[span(class='glyphicon glyphicon-expand-collapse glyphicon-collapse-up' aria-hidden='true')] Collapse All
-  ul(id='squares-rectangles', class='btn-expand-collapse border')
+  ul(id='squares-rectangles', class=' btn btn-expand-collapse border')
     li(id='rectangles', class='btn btn-text', onclick='rectangles()', disabled) Rectangles #[span(class='glyphicon glyphicon-expand-collapse glyphicon glyphicon-th-list' aria-hidden='true')]
     li(id='squares', class='btn btn-text', onclick='squares()') #[span(class='glyphicon glyphicon-expand-collapse glyphicon glyphicon-th' aria-hidden='true')] Squares
 
