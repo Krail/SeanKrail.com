@@ -108,7 +108,8 @@ module.exports.refresh = (projectsArray) => {
   projectsArray = [];
   var sort = false
   var callback = () => {
-    if (sort) module.exports.utilities.sort(projectsArray);
+    console.log('refresh called: Sort is now ' + sort);
+    if (sort) {module.exports.utilities.sort(projectsArray);console.log('Projects array is now: ' + projectsArray);}
     else sort = true;
   };
   module.exports.utilities.importHard(projectsArray, callback);
