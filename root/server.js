@@ -19,8 +19,8 @@ var path = require('path');
 var fs = require('fs');
 var AWS = require('aws-sdk');
 
-//var sass_minify = require('./modules/sass-minify.js');
-//var projects = require('./modules/projects.js');
+var sass_minify = require('./modules/sass-minify.js');
+var projects = require('./modules/projects.js');
 
 
 var app = express();
@@ -57,13 +57,13 @@ var sns = new AWS.SNS({region: config.AWS_REGION});
 
 
 // Create minified stylesheet
-//sass_minify.sass();
+sass_minify.sass();
 // Minify javascript files
-//sass_minify.minify();
+sass_minify.minify();
 
 
 // Refresh array of projects (hard and soft)
-//projects.refresh(routes.projects);
+projects.refresh(routes.projects);
 
 
 // GET each page in the /routes/ directory
