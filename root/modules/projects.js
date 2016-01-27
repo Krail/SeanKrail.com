@@ -50,6 +50,7 @@ module.exports.utilities = {
         if (err) throw err;
         if(!Array.isArray(data)) console.error('Error. GitHub data is not an array: ', data);
         else {
+          var completed = 0;
           console.log('utilities.importSoft: ' + data.length + ' soft-coded files');
           // GET all 'hard' projects
           const githubRegex1 = /[\-_]/;
@@ -83,8 +84,8 @@ module.exports.utilities = {
                 res.on('end', () => {
                   project.content[0].html = mdConverter.makeHtml(md);
                   projects.projects.push(project);
-                  console.log('utilities.importSoft: Index is ' + index);
-                  if (index + 1 === array.length) callback();
+                  console.log('utilities.importSoft: Index is ' + completed);
+                  if (completed + 1 === array.length) callback();
                 });
               });
 

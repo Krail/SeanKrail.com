@@ -118,9 +118,10 @@ div.btn-collapse {
   article.project > header.project:hover { background-color: lightcyan }
   article.project > header.project:active, article.project > header:focus { background-color: lightskyblue }
   article.project > header.project:focus { outline: none }
-      header.project > img { position: relative; float: left; height: auto; width: 20vw; margin: 0 }
-      header.project > h2 { overflow: hidden; margin: 1vw auto }
-        header.project > h2 > em { font-family: 'lato-light'; font-style: italic }
+    small.updated { font-family: 'lato-thin'; float: right; color: #999 }
+    header.project > img { position: relative; float: left; height: auto; width: 20vw; margin: 0 }
+    header.project > h2 { overflow: hidden; margin: 2vw auto 1vw }
+      header.project > h2 > em { font-family: 'lato-light'; font-style: italic }
     header.project > p.keywords { font-family: 'lato-regular'; text-align: center; margin-top: 0 }
       header.project > p.keywords > mark { font-family: 'lato-light'; padding: 0.2vw 0.5vw 0 }
     header.project > p { overflow: hidden; font-family: 'lato-light'; font-size: 1em; padding: 0.5vw 2vw }
