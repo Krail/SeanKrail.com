@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # Parameters:  $1  -  Message for commit
-#              $2  -  Name of archive
+#              $2  -  Version of archive
 #
 if [[ $# -ne 2 ]]; then
   echo "Have $# argument(s), expected 2."

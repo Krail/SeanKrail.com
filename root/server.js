@@ -19,8 +19,8 @@ var path = require('path');
 var fs = require('fs');
 var AWS = require('aws-sdk');
 
-var sass_minify = require('./modules/sass-minify.js');
-var projects = require('./modules/projects.js');
+//var sass_minify = require('./modules/sass-minify.js');
+//var projects = require('./modules/projects.js');
 
 
 var app = express();
@@ -42,6 +42,7 @@ app.use(express.static(path.join(__dirname, 'public'), {
 }));
 app.locals.theme = process.env.THEME; //Make the THEME environment variable available to the app.
 app.locals.version = fs.readFileSync(path.join(__dirname, 'version.version'), 'utf8').replace(/\n$/, '');
+console.log('Version: ' + app.locals.version);
 
 
 // Read config values from a JSON file.
@@ -56,9 +57,9 @@ var sns = new AWS.SNS({region: config.AWS_REGION});
 
 
 // Create minified stylesheet
-sass_minify.sass();
+//sass_minify.sass();
 // Minify javascript files
-sass_minify.minify();
+//sass_minify.minify();
 
 
 // Refresh array of projects (hard and soft)
