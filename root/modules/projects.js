@@ -9,6 +9,14 @@ var mdConverter = new (require('showdown')).Converter();
 
 // Export utility functions, in case that the user wants to use them.
 module.exports.utilities = {
+  // Sort projects by updated date (latest has lowest index)
+  sort: (projects) => {
+    projects.projects.sort((a, b) => {
+      if (a.updated < b.updated) return 1; // set b (latest) to lower index than a (oldest)
+      else if (a.updated > b.updated) return -1; // set a (latest) to lower index than b (oldest)56
+      else return 0; // do nothing
+    });
+  },
   // Import hard-coded projects from static directory
   importHard: (projects, callback) => {
     fs.readdir(path.join(__dirname, '..', 'public', 'static', 'content', 'projects'), (err, files) => {
@@ -19,6 +27,7 @@ module.exports.utilities = {
           fs.readFile(path.join(__dirname, '..', 'public', 'static', 'content', 'projects', element), 'utf8', (err, data) => {
             if (err) throw err;
             projects.projects.push(JSON.parse(data));
+            module.exports.utilities(projects);
             console.log('utilities.importHard: Index is ' + index);
             if (index + 1 === array.length) callback();
           });
@@ -84,6 +93,7 @@ module.exports.utilities = {
                 res.on('end', () => {
                   project.content[0].html = mdConverter.makeHtml(md);
                   projects.projects.push(project);
+                  module.exports.utilities(projects);
                   console.log('utilities.importSoft: Index is ' + completed);
                   if (completed + 1 === array.length) callback();
                 });
@@ -95,14 +105,6 @@ module.exports.utilities = {
         }
       }
     );
-  },
-  // Sort projects by updated date (latest has lowest index)
-  sort: (projects) => {
-    projects.projects.sort((a, b) => {
-      if (a.updated < b.updated) return 1; // set b (latest) to lower index than a (oldest)
-      else if (a.updated > b.updated) return -1; // set a (latest) to lower index than b (oldest)56
-      else return 0; // do nothing
-    });
   }
   // END of utility functions
 }

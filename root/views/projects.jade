@@ -25,7 +25,8 @@ block main
           img(title=pro.header.image.title, src=pro.header.image.src, alt=pro.header.image.alt)
           h2!=pro.header.heading
           if pro.keywords
-            p(class='keywords') Keywords:
+            p(class='keywords')
+              em Keywords:
               each keyword in pro.keywords
                 mark=keyword.replace(/_/, ' ')
           each paragraph in pro.header.paragraphs
@@ -35,7 +36,9 @@ block main
         div(id=pro.id, class='main', style='display:none')
           - var firstHalf = true
           each section in pro.content
-            if section.type === 'half'
+            if section.type === 'readme'
+                section(class='section-full')!=section.html
+            else if section.type === 'half'
               if firstHalf === true
                 - firstHalf = false
                 section(class='section-half section-half-first')
@@ -53,8 +56,6 @@ block main
                 h4=section.title
                 each paragraph in section.paragraphs
                   p!=paragraph
-            else if section.type === 'readme'
-              section(class='section-full')!=section.html
             else if section.type === 'video'
               section(class='section-full section-video')
                 h4=section.title
