@@ -62,7 +62,7 @@ sass_minify.minify();
 
 
 // Refresh array of projects (hard and soft)
-projects.refresh(routes.projects);
+//projects.refresh(routes.projects);
 
 
 // GET each page in the /routes/ directory
