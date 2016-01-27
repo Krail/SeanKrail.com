@@ -62,7 +62,7 @@ sass_minify.minify();
 
 
 // Refresh array of projects (hard and soft)
-projects.refresh(routes.projects.projects);
+projects.refresh(routes.projects);
 
 
 // GET each page in the /routes/ directory
@@ -71,6 +71,7 @@ Object.keys(routes).forEach(
     if (element === 'home') app.get('/(home)?', routes.home);
     else if (element === 'projects') {
       app.get('/projects', (req, res) => {
+        console.log('/projects: Projects array is ' + routes.projects.projects);
         res.render('projects', {
           page: 'projects',
           appTitle: 'Sean\'s Projects',

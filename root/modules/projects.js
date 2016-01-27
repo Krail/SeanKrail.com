@@ -10,14 +10,16 @@ var mdConverter = new (require('showdown')).Converter();
 // Export utility functions, in case that the user wants to use them.
 module.exports.utilities = {
   // Import hard-coded projects from static directory
-  importHard: (projectsArray, callback) => {
+  importHard: (projects, callback) => {
     fs.readdir(path.join(__dirname, '..', 'public', 'static', 'content', 'projects'), (err, files) => {
+      console.logs('utilities.importHard: ' + files.length + ' hard-coded files');
       if (err) throw err;
       files.forEach(
         (element, index, array) => {
           fs.readFile(path.join(__dirname, '..', 'public', 'static', 'content', 'projects', element), 'utf8', (err, data) => {
             if (err) throw err;
-            projectsArray.push(JSON.parse(data));
+            projects['projects'].push(JSON.parse(data));
+            console.logs('utilities.importHard: Index is ' + index);
             if (index + 1 === array.length) callback();
           });
         }
@@ -25,7 +27,7 @@ module.exports.utilities = {
     });
   },
   // Import 'soft' GitHub repository projects
-  importSoft: (projectsArray, callback) => {
+  importSoft: (projects, callback) => {
     // Convert all of my GitHub Repos
     var github = new GitHubAPI({
       version: '3.0.0',
@@ -48,6 +50,7 @@ module.exports.utilities = {
         if (err) throw err;
         if(!Array.isArray(data)) console.error('Error. GitHub data is not an array: ', data);
         else {
+          console.logs('utilities.importSoft: ' + data.length + ' soft-coded files');
           // GET all 'hard' projects
           const githubRegex1 = /[\-_]/;
           const githubRegex2 = /_/;
@@ -79,7 +82,8 @@ module.exports.utilities = {
                 res.on('data', (data) => { md += data; });
                 res.on('end', () => {
                   project.content[0].html = mdConverter.makeHtml(md);
-                  projectsArray.push(project);
+                  projects['projects'].push(project);
+                  console.logs('utilities.importSoft: Index is ' + index);
                   if (index + 1 === array.length) callback();
                 });
               });
@@ -92,8 +96,8 @@ module.exports.utilities = {
     );
   },
   // Sort projects by updated date (latest has lowest index)
-  sort: (projectsArray) => {
-    projectsArray.sort((a, b) => {
+  sort: (projects) => {
+    projects['projects'].sort((a, b) => {
       if(a.updated > b.updated) return -1; // set a (latest) to lower index than b (oldest)
       else if(a.update < b.updated) return 1; // set b (latest) to lower index than a (oldest)
       else return 0; // do nothing
@@ -104,17 +108,17 @@ module.exports.utilities = {
 
 
 // Refresh the projects list
-module.exports.refresh = (projectsArray) => {
-  console.log('refresh(' + projectsArray + ') called');
-  projectsArray = [];
+module.exports.refresh = (projects) => {
+  console.log('refresh(' + projects['projects'] + ') called');
+  projects['projects'] = [];
   var sort = false
   console.log('refresh: Sort is ' + sort);
   var callback = () => {
     console.log('refresh: Sort was ' + sort);
-    if (sort) {module.exports.utilities.sort(projectsArray);console.log('refresh: Projects array is now: ' + projectsArray);}
+    if (sort) {module.exports.utilities.sort(projects['projects']);console.log('refresh: Projects array is now: ' + projects['projects']);}
     else sort = true;
     console.log('refresh: Sort is now ' + sort);
   };
-  module.exports.utilities.importHard(projectsArray, callback);
-  module.exports.utilities.importSoft(projectsArray, callback);
+  module.exports.utilities.importHard(projects['projects'], callback);
+  module.exports.utilities.importSoft(projects['projects'], callback);
 }
