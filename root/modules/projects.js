@@ -99,8 +99,8 @@ module.exports.utilities = {
   // Sort projects by updated date (latest has lowest index)
   sort: (projects) => {
     projects.projects.sort((a, b) => {
-      if(a.updated > b.updated) return -1; // set a (latest) to lower index than b (oldest)
-      else if(a.update < b.updated) return 1; // set b (latest) to lower index than a (oldest)
+      if (a.updated < b.updated) return 1; // set b (latest) to lower index than a (oldest)
+      else if (a.updated > b.updated) return -1; // set a (latest) to lower index than b (oldest)56
       else return 0; // do nothing
     });
   }
