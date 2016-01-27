@@ -105,12 +105,15 @@ module.exports.utilities = {
 
 // Refresh the projects list
 module.exports.refresh = (projectsArray) => {
+  console.log('refresh(' + projectsArray + ') called');
   projectsArray = [];
   var sort = false
+  console.log('refresh: Sort is ' + sort);
   var callback = () => {
-    console.log('refresh called: Sort is now ' + sort);
-    if (sort) {module.exports.utilities.sort(projectsArray);console.log('Projects array is now: ' + projectsArray);}
+    console.log('refresh: Sort was ' + sort);
+    if (sort) {module.exports.utilities.sort(projectsArray);console.log('refresh: Projects array is now: ' + projectsArray);}
     else sort = true;
+    console.log('refresh: Sort is now ' + sort);
   };
   module.exports.utilities.importHard(projectsArray, callback);
   module.exports.utilities.importSoft(projectsArray, callback);
