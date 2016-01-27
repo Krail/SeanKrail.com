@@ -230,21 +230,23 @@ function verifySearchField() {
 
 /* Squares or rectangles */
 function squares() {
+  hide();
   project_ids.forEach( (element, index, array) => {
-    var header = document.getElementsById(element + 'Header');
-    document.getElementsById(element + 'Header').style.display = 'inline-block';
+    var header = document.getElementById(element + 'Header');
+    document.getElementById(element + 'Header').style.display = 'inline-block';
     for(var i = 0; i < header.children.length; i++) {
-      if (header.children[i].tagName !== 'img') document.getElementsById(element + 'Header').children[i].style.display = 'none';
+      if (header.children[i].tagName !== 'img') document.getElementById(element + 'Header').children[i].style.display = 'none';
     }
   });
 }
 /* Squares or rectangles */
 function rectangles() {
+  hide();
   project_ids.forEach( (element, index, array) => {
-    var header = document.getElementsById(element + 'Header');
-    document.getElementsById(element + 'Header').style.display = 'block';
+    var header = document.getElementById(element + 'Header');
+    document.getElementById(element + 'Header').style.display = 'block';
     for(var i = 0; i < header.children.length; i++) {
-      if (header.children[i].tagName !== 'img') document.getElementsById(element + 'Header').children[i].style.display = 'block';
+      if (header.children[i].tagName !== 'img') document.getElementById(element + 'Header').children[i].style.display = 'block';
     }
   });
 }
