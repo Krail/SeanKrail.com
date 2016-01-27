@@ -23,7 +23,7 @@ module.exports.sass = () => {
       outputStyle: 'nested'
     }, (err, data) => {
       if (err) throw err;
-      else fs.writeFile(path.join(__dirname, '..', 'public', 'css', 'style.css'), data.css, 'utf8',(err) => { if (err) throw err; });
+      else fs.writeFile(path.join(__dirname, '..', 'public', 'css', 'style.css'), data.css, 'utf8', (err) => { if (err) throw err; });
     }
   );
 };

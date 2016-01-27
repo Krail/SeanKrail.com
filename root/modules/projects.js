@@ -91,11 +91,12 @@ module.exports.utilities = {
                 var md = '';
                 res.on('data', (data) => { md += data; });
                 res.on('end', () => {
+                  completed++;
                   project.content[0].html = mdConverter.makeHtml(md);
                   projects.projects.push(project);
                   module.exports.utilities.sort(projects);
-                  console.log('utilities.importSoft: Index is ' + completed);
-                  if (completed + 1 === array.length) callback();
+                  console.log('utilities.importSoft: Completed is ' + completed);
+                  if (completed === array.length) callback();
                 });
               });
 

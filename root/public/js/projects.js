@@ -231,7 +231,7 @@ function verifySearchField() {
 /* Squares or rectangles */
 function squares() {
   hide();
-  project_ids.forEach( (element, index, array) => {
+  project_ids.forEach( function(element, index, array) {
     var header = document.getElementById(element + 'Header');
     document.getElementById(element + 'Header').style.display = 'inline-block';
     for(var i = 0; i < header.children.length; i++) {
@@ -242,7 +242,7 @@ function squares() {
 /* Squares or rectangles */
 function rectangles() {
   hide();
-  project_ids.forEach( (element, index, array) => {
+  project_ids.forEach( function(element, index, array) {
     var header = document.getElementById(element + 'Header');
     document.getElementById(element + 'Header').style.display = 'block';
     for(var i = 0; i < header.children.length; i++) {
@@ -252,4 +252,4 @@ function rectangles() {
 }
 
 
-console.log(TAG + 'Script loaded completely.')
+console.log(TAG + 'Script loaded completely.');
