@@ -18,7 +18,7 @@ var TAG = 'projects.js :: ';
 
 
 /* Initialize the element id's of each project based on the number of projects, this is ran when the javascript tag loads */
-var project_id = [];
+var project_ids = [];
 var opened = [];
 
 // Create the list of projects here
@@ -29,7 +29,7 @@ function initialize() {
   for (var i = 0; i < projects.length; i++) {
     if (projects[i].classList.contains('project')) {
       var children = projects[i].children;
-      if (children.length === 2) project_id.push(children[1].getAttribute('id'));
+      if (children.length === 2) project_ids.push(children[1].getAttribute('id'));
       else {
         console.error(TAG + 'Expected two children inside of this project article element');
         console.log(children);
@@ -39,10 +39,10 @@ function initialize() {
   }
 }
 initialize();
-console.log(TAG + '# of projects: ' + project_id.length + '.');
+console.log(TAG + '# of projects: ' + project_ids.length + '.');
 
 function bubbleAnchors() {
-  project_id.forEach(
+  project_ids.forEach(
     function(element, index, array) {
       var paragraphs = document.getElementById(element + 'Header').getElementsByTagName('p');
       for(var i = 0; i < paragraphs.length; i++) {
@@ -61,8 +61,8 @@ bubbleAnchors();
 
 
 // resize sections (assuming correct formatting)
-function resizeSections(project_id) {
-  var first = document.getElementById(project_id).getElementsByClassName('section-half');
+function resizeSections(project_ids) {
+  var first = document.getElementById(project_ids).getElementsByClassName('section-half');
   for (var i = 0; i < first.length; i += 2) {
     var maxHeight = (first[i].offsetHeight > first[i+1].offsetHeight) ? first[i].offsetHeight : first[i+1].offsetHeight;
     maxHeight = maxHeight * 100 / window.innerWidth;
@@ -81,9 +81,9 @@ function pauseAllVideos() {
 }
 function pauseAllVideos(x) {
   "use strict";
-  for (var i = 0; i < project_id.length; i++) {
-    if (project_id[i] === x) {
-      var videos = document.getElementById(project_id[i]).getElementsByTagName('video');
+  for (var i = 0; i < project_ids.length; i++) {
+    if (project_ids[i] === x) {
+      var videos = document.getElementById(project_ids[i]).getElementsByTagName('video');
       for (var j = 0; j < videos.length; j++) {videos[j].play();}
       break;
     }
@@ -93,9 +93,9 @@ function pauseAllVideos(x) {
 /* A helper function to play all videos under element 'x' */
 function playAllVideos(x) {
 	"use strict";
-	for (var i = 0; i < project_id.length; i++) { // Iterate through all of the projects
-		if (project_id[i] === x) { // This is project 'x'
-      var videos = document.getElementById(project_id[i]).getElementsByTagName('video');
+	for (var i = 0; i < project_ids.length; i++) { // Iterate through all of the projects
+		if (project_ids[i] === x) { // This is project 'x'
+      var videos = document.getElementById(project_ids[i]).getElementsByTagName('video');
       for (var j = 0; j < videos.length; j++) {videos[j].play();}
 			break;
 		}
@@ -113,7 +113,7 @@ function playAllVideos(x) {
 function toggle(x) {
 	"use strict";
 	//pauseAllVideos(); // pause all active videos
-  project_id.forEach( // Iterate through all of the projects
+  project_ids.forEach( // Iterate through all of the projects
     function(element, index, array) {
       if (element === x) {
         $('#' + element).slideToggle({
@@ -138,7 +138,7 @@ function toggle(x) {
 function show() {
 	"use strict";
 	//pauseAllVideos(); // pause all active videos
-  project_id.forEach( // Iterate through all of the projects
+  project_ids.forEach( // Iterate through all of the projects
     function(element, index, array) {
       if (document.getElementById(element).style.display !== 'block') {
         $('#' + element).slideDown({
@@ -161,7 +161,7 @@ function show() {
 function hide() {
 	"use strict";
 	pauseAllVideos(); // pause all active videos
-  project_id.forEach(
+  project_ids.forEach(
     function(element, index, array) {
       console.log()
       if (document.getElementById(element).style.display !== 'none') {
@@ -176,13 +176,6 @@ function hide() {
     }
   );
 }
-
-
-
-/* LAST INITIALIZATION */
-
-
-//hide(); // initialize all projects as hidden, for some reason it doesn't like the fact that there's no inline style attribute declaring display to be none. I do say so in the css...
 
 
 
@@ -232,5 +225,29 @@ function verifySearchField() {
     scrollToBottom('html, body, header');
   }
 }
+
+
+
+/* Squares or rectangles */
+function squares() {
+  project_ids.forEach( (element, index, array) => {
+    var header = document.getElementsById(element + 'Header');
+    document.getElementsById(element + 'Header').style.display = 'inline-block';
+    for(var i = 0; i < header.children.length; i++) {
+      if (header.children[i].tagName !== 'img') document.getElementsById(element + 'Header').children[i].style.display = 'none';
+    }
+  });
+}
+/* Squares or rectangles */
+function rectangles() {
+  project_ids.forEach( (element, index, array) => {
+    var header = document.getElementsById(element + 'Header');
+    document.getElementsById(element + 'Header').style.display = 'block';
+    for(var i = 0; i < header.children.length; i++) {
+      if (header.children[i].tagName !== 'img') document.getElementsById(element + 'Header').children[i].style.display = 'block';
+    }
+  });
+}
+
 
 console.log(TAG + 'Script loaded completely.')
