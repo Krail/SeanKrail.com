@@ -95,7 +95,7 @@ app.post('/signup', (req, res) => {
 app.post('/projects', (req, res) => {
   var searchField = req.body.search;
   res.send(200);
-  search(searchField);
+  //search(searchField);
 });
 
 // Add signup form data to database.
@@ -122,15 +122,6 @@ var signup = function(nameSubmitted, emailSubmitted, previewPreference) {
   });
 };
 
-// Search projects database.
-var search = function(searchSubmitted) {
-  var formData = {
-    TableName: config.PROJECTS_TABLE,
-    Item: {
-      search: {'S': searchSubmitted}
-    }
-  };
-};
 
 http.createServer(app).listen(app.get('port'), () => {
   console.log('Express server listening on port ' + app.get('port'));

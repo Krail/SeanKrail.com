@@ -26,9 +26,15 @@ html(lang='en')
             - i++
             li
               if i <= (length / 2)
-                a(id='#{li.name === page ? "page" : ""}', type='text/html', href=li.url) !{li.name === 'home' ? '' : li.text} #[span(class=li.icon, aria-hidden='true')]
+                if li.name === page
+                  a(id='page', type='text/html', href=li.url) !{li.name === 'home' ? '' : li.text} #[span(class=li.icon, aria-hidden='true')]
+                else
+                  a(type='text/html', href=li.url) !{li.name === 'home' ? '' : li.text} #[span(class=li.icon, aria-hidden='true')]
               else
-                a(id='#{li.name === page ? "page" : ""}', type='text/html', href=li.url) #[span(class=li.icon, aria-hidden='true')] !{li.name === 'home' ? '' : li.text}
+                if li.name === page
+                  a(id='page', type='text/html', href=li.url) #[span(class=li.icon, aria-hidden='true')] !{li.name === 'home' ? '' : li.text}
+                else
+                  a(type='text/html', href=li.url) #[span(class=li.icon, aria-hidden='true')] !{li.name === 'home' ? '' : li.text}
 
 
     block main
