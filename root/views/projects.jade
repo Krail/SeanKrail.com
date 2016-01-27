@@ -19,7 +19,7 @@ block main
     li(id='squares', class='btn btn-text', onclick='squares()') #[span(class='glyphicon glyphicon-expand-collapse glyphicon glyphicon-th' aria-hidden='true')] Squares
 
   // Project articles
-  main
+  main(id='projects')
     each pro in content.projects
       article(id='#{pro.id}Article', class='project', updatedon=pro.updated)
         header(class='project border', id='#{pro.id}Header', title='Click to expand/collapse', onclick='toggle(\'#{pro.id}\')')

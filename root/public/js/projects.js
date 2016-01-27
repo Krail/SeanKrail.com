@@ -238,6 +238,7 @@ function squares() {
   project_ids.forEach( function(element, index, array) {
     var header = document.getElementById(element + 'Header');
     document.getElementById(element + 'Article').style.display = 'inline-block';
+    document.getElementById(element + 'Article').style.marginRight = '2vw';
     for(var i = 0; i < header.children.length; i++) {
       if (header.children[i].tagName.toLowerCase() !== 'img') document.getElementById(element + 'Header').children[i].style.display = 'none';
     }
@@ -253,6 +254,7 @@ function rectangles() {
   project_ids.forEach( function(element, index, array) {
     var header = document.getElementById(element + 'Header');
     document.getElementById(element + 'Article').style.display = 'block';
+    document.getElementById(element + 'Article').style.marginRight = '0';
     for(var i = 0; i < header.children.length; i++) {
       if (header.children[i].tagName.toLowerCase() !== 'img') document.getElementById(element + 'Header').children[i].style.display = 'block';
     }
