@@ -232,9 +232,9 @@ function verifySearchField() {
 function squares() {
   console.log(TAG + 'squares() called.');
   hide();
-  document.getElementById('rectangles').setAttribute('disabled', true);
-  document.getElementById('squares').removeAttribute('disabled');
-  document.getElementById('expand-collapse').children[0].setAttribute('disabled', true);
+  document.getElementById('rectangles').removeAttribute('disabled');
+  document.getElementById('squares').setAttribute('disabled', '');
+  document.getElementById('expand-collapse').children[0].setAttribute('disabled', '');
   project_ids.forEach( function(element, index, array) {
     var header = document.getElementById(element + 'Header');
     document.getElementById(element + 'Article').style.display = 'inline-block';
@@ -249,8 +249,8 @@ function squares() {
 function rectangles() {
   console.log(TAG + 'rectangles() called.');
   hide();
-  document.getElementById('rectangles').removeAttribute('disabled');
-  document.getElementById('squares').setAttribute('disabled', true);
+  document.getElementById('rectangles').setAttribute('disabled', '');
+  document.getElementById('squares').removeAttribute('disabled');
   document.getElementById('expand-collapse').children[0].removeAttribute('disabled');
   project_ids.forEach( function(element, index, array) {
     var header = document.getElementById(element + 'Header');
