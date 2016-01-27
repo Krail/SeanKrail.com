@@ -27,7 +27,7 @@ module.exports.utilities = {
           fs.readFile(path.join(__dirname, '..', 'public', 'static', 'content', 'projects', element), 'utf8', (err, data) => {
             if (err) throw err;
             projects.projects.push(JSON.parse(data));
-            module.exports.utilities(projects);
+            module.exports.utilities.sort(projects);
             console.log('utilities.importHard: Index is ' + index);
             if (index + 1 === array.length) callback();
           });
@@ -93,7 +93,7 @@ module.exports.utilities = {
                 res.on('end', () => {
                   project.content[0].html = mdConverter.makeHtml(md);
                   projects.projects.push(project);
-                  module.exports.utilities(projects);
+                  module.exports.utilities.sort(projects);
                   console.log('utilities.importSoft: Index is ' + completed);
                   if (completed + 1 === array.length) callback();
                 });
