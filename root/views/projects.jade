@@ -21,7 +21,7 @@ block main
       article(id='#{pro.id}Article', class='project', updatedon=pro.updated)
         header(class='project border', id='#{pro.id}Header', title='Click to expand/collapse', onclick='toggle(\'#{pro.id}\')')
           small(class='updated') Last updated on
-            time(datetime=pro.updated)=(new Date(pro.updated)).toDateString();
+            time(datetime=pro.updated)=(new Date(pro.updated)).toDateString()
           img(title=pro.header.image.title, src=pro.header.image.src, alt=pro.header.image.alt)
           h2!=pro.header.heading
           if pro.keywords
