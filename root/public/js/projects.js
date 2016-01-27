@@ -232,13 +232,14 @@ function verifySearchField() {
 function squares() {
   console.log(TAG + 'squares() called.');
   hide();
-  document.getElementById('rectangles').disabled = true;
-  document.getElementById('squares').disabled = false;
-  document.getElementById('expand-collapse').children[0].disabled = true;
+  document.getElementById('rectangles').setAttribute('disabled', true);
+  document.getElementById('squares').removeAttribute('disabled');
+  document.getElementById('expand-collapse').children[0].setAttribute('disabled', true);
   project_ids.forEach( function(element, index, array) {
     var header = document.getElementById(element + 'Header');
     document.getElementById(element + 'Article').style.display = 'inline-block';
-    document.getElementById(element + 'Article').style.marginRight = '2vw';
+    document.getElementById(element + 'Article').style.marginRight = '0.5vw';
+    document.getElementById(element + 'Article').style.marginLeft = '0.5vw';
     for(var i = 0; i < header.children.length; i++) {
       if (header.children[i].tagName.toLowerCase() !== 'img') document.getElementById(element + 'Header').children[i].style.display = 'none';
     }
@@ -248,13 +249,14 @@ function squares() {
 function rectangles() {
   console.log(TAG + 'rectangles() called.');
   hide();
-  document.getElementById('rectangles').disabled = false;
-  document.getElementById('squares').disabled = true;
-  document.getElementById('expand-collapse').children[0].disabled = false;
+  document.getElementById('rectangles').removeAttribute('disabled');
+  document.getElementById('squares').setAttribute('disabled', true);
+  document.getElementById('expand-collapse').children[0].removeAttribute('disabled');
   project_ids.forEach( function(element, index, array) {
     var header = document.getElementById(element + 'Header');
     document.getElementById(element + 'Article').style.display = 'block';
     document.getElementById(element + 'Article').style.marginRight = '0';
+    document.getElementById(element + 'Article').style.marginLeft = '0';
     for(var i = 0; i < header.children.length; i++) {
       if (header.children[i].tagName.toLowerCase() !== 'img') document.getElementById(element + 'Header').children[i].style.display = 'block';
     }
