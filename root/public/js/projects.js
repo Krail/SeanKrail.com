@@ -268,7 +268,7 @@ function rectangle(project_id) {
     if (header.children[i].tagName.toLowerCase() !== 'img') document.getElementById(project_id + 'Header').children[i].style.display = 'block';
   }
 }
-function rectangles() {
+function rectangle() {
   console.log(TAG + 'rectangles() called.');
   hide();
   document.getElementById('rectangles').setAttribute('disabled', '');
