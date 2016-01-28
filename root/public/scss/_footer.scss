@@ -41,13 +41,12 @@ footer#footer { color: $special-text-color; background-color: $foreground-color;
       font-size: 1.5em;
       margin: 0
     }
-    /* Copyright Text */
-    a#backtotop p.copyright {
+    /* Version Text */
+    a#backtotop p.version {
       text-align: right;
       font-size: 50%;
       margin: 0;
-      padding: 0.5vw;
-      padding-right: 1vw;
+      padding: 1vw 2vw 0;
     }
 
 
@@ -59,14 +58,17 @@ footer#footer { color: $special-text-color; background-color: $foreground-color;
 @media ($small) {
   footer#footer li { width: 50% }
   a#backtotop { padding-top: 1.5vw }
+  a#backtotop p.version { font-size: 60% }
 }
 
 /* Medium devices (desktops, 992px and up) */
 @media ($medium) {
   a#backtotop p { font-size: 1.75em }
+  a#backtotop p.version { font-size: 70% }
 }
 
 /* Large devices (large desktops, 1200px and up) */
 @media ($large) {
   a#backtotop { padding-top: 1vw }
+  a#backtotop p.version { font-size: 80% }
 }

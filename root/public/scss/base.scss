@@ -4,14 +4,24 @@
 /*! The single CSS file for each page of the website
 */
 
-
-@import 'colors';
+/* Font and glyphicon declarations */
 @import 'fonts';
 @import 'glyphicons';
+
+/* Media query declarations */
 @import 'media';
+
+/* Color declarations */
+@import 'colors';
+
+
+/* Default CSS */
 @import 'default';
+/* Header CSS */
 @import 'header';
+/* Page-specific main CSS */
 @import 'projects';
 @import 'home';
 @import 'resume';
+/* Footer CSS */
 @import 'footer';

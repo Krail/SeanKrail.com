@@ -6,7 +6,8 @@
 /**********/
 
 $background-color: #CC9;
-$foreground-color: #EEE;
+//$foreground-color: #EEE;
+$foreground-color: #FFF;
 
 $btn-color: $foreground-color;
 $hover-color: #09C;
@@ -18,7 +19,7 @@ $active-inverse-color: $active-color;
 
 $text-color: #333;
 $text-color-light: $foreground-color;
-$text-grey: $foreground-color;
+$text-grey: #999;
 $special-text-color: $background-color;
 
 $border-color: $foreground-color;
@@ -28,8 +29,10 @@ $disabled-dark: #CC4335;
 
 $code-background-color: #CCF;
 
-$project-hover: #EEF;
-$project-active: #DDF;
+$project-hover: #FEF;
+$project-active: #EEF;
+
+$highlight-color: #CCF;
 
 /* #CC9 - Tan */
 /* #069 - Dark Blue  */

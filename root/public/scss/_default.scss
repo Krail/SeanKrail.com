@@ -78,7 +78,7 @@ h2::after, h3::after, h4::after {
 	margin: 0.5vw 10% 0 10%
 }
 h1, h2, h3, h4 {
-  color: $text-color;
+  color: $special-text-color;
   font-family: 'lato-medium';
   font-style: normal;
   text-align: center;
@@ -100,6 +100,7 @@ p { color: $text-color; font-family: 'lato-light'; font-size: 1em; cursor: text 
 p.time { text-align: right; margin-bottom: 0; padding-bottom: 0.5em }
 small { font-size: 70% }
 code { background-color: $code-background-color; font-family: 'monospace'; padding: 0.5vw }
+mark { color: $text-color; background-color: $highlight-color }
 
 /*********/
 /* Lists */

@@ -46,6 +46,7 @@ form {
 }
 form > input {
   display: inline-block;
+  background-color: $foreground-color;
   font-size: 1.25em;
   height: 100%;
   width: 87vw;

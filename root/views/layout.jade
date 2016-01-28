@@ -55,10 +55,7 @@ html(lang='en')
       a(class='btn', id='backtotop', onclick='scrollToTop("html, body")')
         span(class=content.footer.icon, aria-hidden='true')
         p=content.footer.backtotop
-        p(class='copyright')!='Version ' + version + '<br>'
-          small(class='copyright', title='Copyright Notice')!=content.footer.copyright
-            - var date = new Date()
-            time(datetime=(date.toISOString()))=date.getFullYear()
+        p(class='version')!='Version ' + version
 
 
     // 3rd party JS

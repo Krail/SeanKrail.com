@@ -2,21 +2,27 @@ extends layout
 
 
 block main
+
   // Error messages
   div(id='length', class='alert alert-danger', role='alert', style='display:none') #[span(class='glyphicon glyphicon-exclamation-sign' aria-hidden='true')] #[span(class='sr-only') Error:] Shorten your search criteria (30-character maximum)
   div(id='letters', class='alert alert-danger', role='alert', style='display:none') #[span(class='glyphicon glyphicon-exclamation-sign' aria-hidden='true')] #[span(class='sr-only') Error:] Only letters, spaces, and a few #[i necessary] special characters are allowed in the search field
+
   // Search field
   form(id='searchForm', action='/projects', method='post')
     input(id='search', class='search border', name='search', type='text', pattern="^[a-zA-Z0-9 ,.'\-]+$", autocomplete='off', maxlength='60', placeholder='Search for a topic here... (e.g. VLSI, Cadence, Android, JavaScript, etc.)', oninput='verifySearchField()', required)
     button(id='submitButton', class='btn btn-search border', form='searchForm', type='submit', value='Submit')
       span(class='glyphicon glyphicon-search', aria-hidden='true')
-  // Expand/collapse all project articles
+
+  // Expand or collapse all project articles
   ul(id='expand-collapse', class='btn btn-expand-collapse border')
     li(class='btn btn-text', onclick='show()') Expand All #[span(class='glyphicon glyphicon-expand-collapse glyphicon-collapse-down' aria-hidden='true')]
     li(class='btn btn-text', onclick='hide()') #[span(class='glyphicon glyphicon-expand-collapse glyphicon-collapse-up' aria-hidden='true')] Collapse All
+
+  // Display all project articles as squares or rectangles
   ul(id='squares-rectangles', class=' btn btn-expand-collapse border')
     li(id='rectangles', class='btn btn-text', onclick='rectangles()', disabled) Rectangles #[span(class='glyphicon glyphicon-expand-collapse glyphicon glyphicon-th-list' aria-hidden='true')]
     li(id='squares', class='btn btn-text', onclick='squares()') #[span(class='glyphicon glyphicon-expand-collapse glyphicon glyphicon-th' aria-hidden='true')] Squares
+
 
   // Project articles
   main(id='projects')
@@ -71,7 +77,8 @@ block main
                 h4=section.title
                 img(class=section.orientation, title=section.title, src=section.src)
 
-  // Expand/collapse all project articles
+
+  // Collapse all project articles
   div(id='collapse', class='btn btn-collapse btn-text border', onclick='hide()') #[span(class='glyphicon glyphicon-expand-collapse glyphicon-collapse-up' aria-hidden='true')] Collapse All #[span(class='glyphicon glyphicon-expand-collapse glyphicon-collapse-up' aria-hidden='true')]
 
 
