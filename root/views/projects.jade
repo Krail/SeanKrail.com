@@ -8,7 +8,7 @@ block main
   // Search field
   form(id='searchForm', action='/projects', method='post')
     input(id='search', class='search border', name='search', type='text', pattern="^[a-zA-Z0-9 ,.'\-]+$", autocomplete='off', maxlength='60', placeholder='Search for a topic here... (e.g. VLSI, Cadence, Android, JavaScript, etc.)', oninput='verifySearchField()', required)
-    button(id='submitbutton', class='btn btn-search border', form='searchForm', type='submit', value='Submit')
+    button(id='submitButton', class='btn btn-search border', form='searchForm', type='submit', value='Submit')
       span(class='glyphicon glyphicon-search', aria-hidden='true')
   // Expand/collapse all project articles
   ul(id='expand-collapse', class='btn btn-expand-collapse border')

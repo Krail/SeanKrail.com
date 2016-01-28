@@ -194,7 +194,7 @@ function hide() {
 
 
 function verifySearchField() {
-  var string = document.getElementById('searchfield').value,
+  var string = document.getElementById('search').value,
       letters = true,
       length = true;
 
@@ -225,8 +225,8 @@ function verifySearchField() {
     });
 
   // Disable/enable submit button
-  if (letters || length) document.getElementById('submitbutton').setAttribute('disabled', true);
-  else document.getElementById('submitbutton').removeAttribute('disabled');
+  if (letters || length) document.getElementById('submitButton').setAttribute('disabled', true);
+  else document.getElementById('submitButton').removeAttribute('disabled');
 
   // Scroll warnings into 
   if (length != (document.getElementById('length').style.display !== 'none')
