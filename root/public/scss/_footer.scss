@@ -17,7 +17,7 @@
 /* Main */
 /********/
 
-footer#footer { color: #CC9; background-color: white; text-align: center; cursor: pointer; border-bottom-left-radius: 1vw; border-bottom-right-radius: 1vw }
+footer#footer { color: $special-text-color; background-color: $foreground-color; text-align: center; cursor: pointer; border-bottom-left-radius: 5vw; border-bottom-right-radius: 5vw }
   /* Contact Information */
   footer#footer ul {
     display: block;
@@ -26,82 +26,47 @@ footer#footer { color: #CC9; background-color: white; text-align: center; cursor
     margin: 0;
     padding: 0
   }
-    footer#footer li { display: inline-block; width: 50% }
-    /*footer#footer li:first { border-right: 0.1vw solid white }
-    footer#footer li:last { border-left: 0.1vw solid white }*/
       footer#footer address {
         display: block;
         margin: 0;
         width: 100%
       }
-        footer#footer a:hover { color: #CC9 }
-        footer#footer a:active, footer#footer a:focus { color: #CC9 }
-        /*footer#footer address a {
-          display: block;
-          font-family: 'lato-heavy';
-          font-style: normal;
-          font-size: 2em;
-          line-height: 250%;
-          color: #CC9;
-          background-color: white;
-          text-decoration: none;
-          width: 100%;
-          padding: 0;
-          transition: color 2s ease-in-out 0s, background-color 2s ease-in-out 0s
-        }
-        footer#footer address a:hover {
-          color: #CC9;
-          background-color: #124B85;
-          text-decoration: none
-        }
-        footer#footer address a:active, footer address a:focus {
-          color: #CC9;
-          background-color: black;
-          text-decoration: none
-        }
-        footer#footer address a:focus { outline: none }*/
+        footer#footer a:hover { color: $special-text-color }
+        footer#footer a:active, footer#footer a:focus { color: $special-text-color }
   /* Top of the Page Link */
-  /*a#backtotop {
-    display: block;
-    text-align: center;
-    text-decoration: none;
-    font-weight: bold;
-    color: #CC9;
-    background-color: white;
-    margin: 0;
-    border: 0;
-    padding: 0;
-    padding-top: 1vw;
-    transition: color 2s ease-in-out 0s, background-color 2s ease-in-out 0s
-  }*/
-  a#backtotop { font-style: normal; text-decoration: none; border-bottom-left-radius: 1vw; border-bottom-right-radius: 1vw; padding-top: 1vw }
-  /*a#backtotop:hover { color: #CC9; background-color: #124B85; text-decoration: none }
-  a#backtotop:active, footer a:focus { color: #CC9; background-color: black; text-decoration: none }
-  a#footer:focus { outline: none }*/
-    footer#footer p {
+  a#backtotop { font-style: normal; text-decoration: none; border-bottom-left-radius: 5vw; border-bottom-right-radius: 5vw; padding-top: 2vw }
+    a#backtotop p {
       color: currentColor;
       font-family: 'lato-heavy';
-      font-size: 2em;
+      font-size: 1.5em;
       margin: 0
     }
     /* Copyright Text */
-    footer#footer p.copyright {
+    a#backtotop p.copyright {
       text-align: right;
-      font-size: 0.75em;
-      padding: 0.5vw;
+      font-size: 50%;
       margin: 0;
+      padding: 0.5vw;
+      padding-right: 1vw;
     }
-      small.copyright { font-size: 0.75em; font-weight: normal }
 
 
 /*******************/
 /* Dynamic Styling */
 /*******************/
 
-/* Large Screen */
-@media only screen and (min-width: 800px) {  }
+/* Small devices (tablets, 768px and up) */
+@media ($small) {
+  footer#footer li { width: 50% }
+  a#backtotop { padding-top: 1.5vw }
+}
 
-/* Small Screen */
-@media not screen and (min-width: 800px) {
-  a#footer { padding-top: 0 }
+/* Medium devices (desktops, 992px and up) */
+@media ($medium) {
+  a#backtotop p { font-size: 1.75em }
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media ($large) {
+  a#backtotop { padding-top: 1vw }
 }

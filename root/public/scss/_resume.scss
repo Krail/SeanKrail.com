@@ -25,32 +25,36 @@ main.resume h4 { padding-top: 1vw  }
 /********/
 
 main.resume { height: auto; margin-top: 1vw }
-  footer.download { background-color: white }
+  footer.download { background-color: $foreground-color }
     footer.download ul {
       text-align: center;
     }
-      footer.download li { width: 50% }
         footer.download a {
           display: block;
-          color: #CC9;
-          background-color: white;
+          color: $special-text-color;
+          background-color: $foreground-color;
           font-family: 'lato-heavy';
           line-height: 250%;
           font-size: 1.25em;
           text-decoration: none;
           padding: 0;
-          transition: background-color 2s ease-in-out 0s
+          transition: background-color 1s ease-in-out 0s
         }
-        footer.download a:hover { background-color: #124B85 }
-        footer.download a:active { background-color: black }
+        footer.download a:hover { background-color: $hover-color }
+        footer.download a:active { background-color: $active-color }
 
 
 /*******************/
 /* Dynamic Styling */
 /*******************/
 
-/* Large Screen */
-@media only screen and (min-width: 800px) {  }
+/* Small devices (tablets, 768px and up) */
+@media ($small) {
+  footer.download li { width: 50% }
+}
 
-/* Small Screen */
-@media not screen and (min-width: 800px) {  }
+/* Medium devices (desktops, 992px and up) */
+@media ($medium) {  }
+
+/* Large devices (large desktops, 1200px and up) */
+@media ($large) {  }

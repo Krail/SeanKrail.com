@@ -84,7 +84,7 @@ function pauseAllVideos() {
 	"use strict";
 	var videos = document.getElementsByTagName('video');
   for (var i = 0; i < videos.length; i++) {
-    videos[i].pause();
+    document.getElementsByTagName('video')[i].pause();
   }
 }
 function pauseAllVideos(x) {
@@ -92,7 +92,9 @@ function pauseAllVideos(x) {
   for (var i = 0; i < PROJECT_IDS.length; i++) {
     if (PROJECT_IDS[i] === x) {
       var videos = document.getElementById(PROJECT_IDS[i]).getElementsByTagName('video');
-      for (var j = 0; j < videos.length; j++) {videos[j].play();}
+      for (var j = 0; j < videos.length; j++) {
+        document.getElementById(PROJECT_IDS[i]).getElementsByTagName('video')[j].pause();
+      }
       break;
     }
   }
@@ -104,7 +106,9 @@ function playAllVideos(x) {
 	for (var i = 0; i < PROJECT_IDS.length; i++) { // Iterate through all of the projects
 		if (PROJECT_IDS[i] === x) { // This is project 'x'
       var videos = document.getElementById(PROJECT_IDS[i]).getElementsByTagName('video');
-      for (var j = 0; j < videos.length; j++) {videos[j].play();}
+      for (var j = 0; j < videos.length; j++) {
+        document.getElementById(PROJECT_IDS[i]).getElementsByTagName('video')[j].play();
+      }
 			break;
 		}
 	}
@@ -242,16 +246,21 @@ function square(project_id) {
   console.log(TAG + 'square(' + project_id + ') called.');
   var header = document.getElementById(project_id + 'Header');
   if (!header) throw 'Error: No such header with id -> ' + project_id + 'Header';
-  /*$('#' + project_id + 'Article').animate({
+  $('#' + project_id + 'Article').animate({
     display: 'inline-block',
     marginRight: '0.5vw',
     marginLeft: '0.5vw'
-  },1000);*/
-  document.getElementById(project_id + 'Article').style.display = 'inline-block';
-  document.getElementById(project_id + 'Article').style.marginRight = '0.5vw';
-  document.getElementById(project_id + 'Article').style.marginLeft = '0.5vw';
+  }, 500);
+  //document.getElementById(project_id + 'Article').style.display = 'inline-block';
+  //document.getElementById(project_id + 'Article').style.marginRight = '0.5vw';
+  //document.getElementById(project_id + 'Article').style.marginLeft = '0.5vw';
   for(var i = 0; i < header.children.length; i++) {
-    if (header.children[i].tagName.toLowerCase() !== 'img') document.getElementById(project_id + 'Header').children[i].style.display = 'none';
+    if (header.children[i].tagName.toLowerCase() !== 'img') {
+      $('#' + project_id + 'Header').children().eq(i).animate({
+        width: 0
+      }, 500);
+      document.getElementById(project_id + 'Header').children[i].style.display = 'none';
+    }
   }
 }
 function squares() {

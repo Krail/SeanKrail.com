@@ -14,10 +14,9 @@ article.home {
 	font-family: 'lato-light';
 	font-size: 1em;
   text-align: left;
-  background-color: white;
-  border: 0.2vw solid white;
-	padding: 1vw;
-  padding-bottom: 0
+  background-color: $foreground-color;
+  border: 0.2vw solid $border-color;
+	padding: 2vw 2vw 0
 }
 
 
@@ -25,8 +24,15 @@ article.home {
 /* Dynamic Styling */
 /*******************/
 
-/* Large Screen */
-@media only screen and (min-width: 800px) {  }
+/* Small devices (tablets, 768px and up) */
+@media ($small) {
+  article.home { padding: 0 2vw }
+}
 
-/* Small Screen */
-@media not screen and (min-width: 800px) {  }
+/* Medium devices (desktops, 992px and up) */
+@media ($medium) {
+  article.home { padding: 0 1vw }
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media ($large) {  }

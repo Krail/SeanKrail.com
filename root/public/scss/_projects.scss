@@ -10,7 +10,7 @@
 /* Glyphicons */
 /**************/
 
-.glyphicon-search { vertical-align: baseline; font-size: 1em }
+.glyphicon-search { vertical-align: text-top; font-size: 1em }
 .glyphicon-expand-collapse { vertical-align: baseline }
 
 
@@ -19,13 +19,13 @@
 /**********/
 
 div.alert {
-  color: white;
-  background-color: #E74C3C;
+  color: $foreground-color;
+  background-color: $disabled-light;
   font-family: 'lato-regular';
   font-size: 1em;
   margin: 0;
   margin-top: 1vw;
-  border: 0.2vw solid #CC4335;
+  border: 0.2vw solid $disabled-dark;
   padding: 1vw
 }
 div.alert span { margin-right: 1vw }
@@ -48,7 +48,7 @@ form > input {
   display: inline-block;
   font-size: 1.25em;
   height: 100%;
-  width: 67vw;
+  width: 87vw;
   box-sizing: border-box;
   vertical-align: top;
   margin-right: 1vw;
@@ -57,10 +57,10 @@ form > input {
   padding: 0.2vw;
   padding-left: 1vw;
   padding-right: 1vw;
-  transition: border-color 2s ease-in-out 0s
+  transition: border-color 1s ease-in-out 0s
 }
-form > input:hover { border-color: rgba(18,75,133,0.5) }
-form > input:active, form input:focus { outline: none; border-color: #124B85 }
+form > input:hover { border-color: $hover-color }
+form > input:active, form input:focus { outline: none; border-color: $active-color }
 form > button.btn-search {
   display: inline-block;
   font-size: 1.5em;
@@ -111,15 +111,15 @@ main#projects { text-align: center }
 /*article.project { display: block; background-color: #CC9 }*/
   article.project > header.project {
     overflow: hidden;
-    background-color: white;
+    background-color: $foreground-color;
     padding: 0.5vw;
     cursor: pointer;
-    transition: background-color 2s ease-in-out 0s
+    transition: background-color 1s ease-in-out 0s
 }
-  article.project > header.project:hover { background-color: lightcyan }
-  article.project > header.project:active, article.project > header:focus { background-color: lightskyblue }
+  article.project > header.project:hover { background-color: $project-hover }
+  article.project > header.project:active, article.project > header:focus { background-color: $project-active }
   article.project > header.project:focus { outline: none }
-    small.updated { font-family: 'lato-thin'; float: right; color: #999 }
+    small.updated { font-family: 'lato-thin'; float: right; color: $text-grey }
     header.project > img { position: relative; float: left; height: 20vw; width: 20vw; margin: 0 }
     header.project > h2 { overflow: hidden; margin: 2vw auto 1vw }
       header.project > h2 > em { font-family: 'lato-light'; font-style: italic }
@@ -131,7 +131,7 @@ main#projects { text-align: center }
   article.project > div.main { display: block; padding: 0 3vw }
     div.main > section {
       display: inline-block;
-      background-color: white;
+      background-color: $foreground-color;
       text-align: left;
       text-indent: 2vw;
       box-sizing: border-box;
@@ -150,15 +150,14 @@ main#projects { text-align: center }
 /* Dynamic Styling */
 /*******************/
 
-/* Large Screen */
-@media only screen and (min-width: 800px) {  }
+/* Small devices (tablets, 768px and up) */
+@media ($small) {  }
 
-/* Small Screen */
-@media not screen and (min-width: 800px) {
-  .glyphicon-search {
-    vertical-align: text-top
-  }
-  form input {
-    width: 87vw;
-  }
+/* Medium devices (desktops, 992px and up) */
+@media ($medium) {  }
+
+/* Large devices (large desktops, 1200px and up) */
+@media ($large) {
+  .glyphicon-search { vertical-align: baseline }
+  form input { width: 67vw }
 }

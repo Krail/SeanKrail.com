@@ -24,7 +24,7 @@
 /* Border */
 /**********/
 
-.border { border: 0.2vw solid white }
+.border { border: 0.2vw solid $border-color }
 
 
 /***********/
@@ -33,8 +33,8 @@
 
 .btn {
   display: block;
-  color: #CC9;
-  background-color: white;
+  color: $special-text-color;
+  background-color: $btn-color;
   height: auto;
   width: auto;
   vertical-align: top;
@@ -42,12 +42,12 @@
   border-radius: 0;
   padding: 0.5vw 1vw;
   cursor: pointer;
-  transition: border-color 2s ease-in-out 0s, background-color 2s ease-in-out 0s
+  transition: border-color 1s ease-in-out 0s, background-color 1s ease-in-out 0s
 }
-.btn:hover { color: #CC9; background-color: #124B85; text-decoration: none; border-color: white }
-.btn:active, .btn:focus { color: #CC9; background-color: black; text-decoration: none; border-color: white }
+.btn:hover { color: $special-text-color; background-color: $hover-color; text-decoration: none; border-color: $border-color }
+.btn:active, .btn:focus { color: $special-text-color; background-color: $active-color; text-decoration: none; border-color: $border-color }
 .btn:focus { outline: none }
-.btn[disabled] { opacity: 1.0; color: #CC9; background-color: #E74C3C; border-color: #CC4335; cursor: not-allowed }
+.btn[disabled] { opacity: 1.0; color: $special-text-color; background-color: $disabled-light; border-color: $disabled-dark; cursor: not-allowed }
 .btn-text {
   font-family: 'lato-heavy';
   font-size: 2em;
@@ -73,12 +73,12 @@ a:focus { outline: none }
 h2::after, h3::after, h4::after {
 	content: '';
   display: block;
-	border: 0.2vw solid #CC9;
+	border: 0.5vw solid $border-color;
   border-radius: 1vw;
 	margin: 0.5vw 10% 0 10%
 }
 h1, h2, h3, h4 {
-  color: black;
+  color: $text-color;
   font-family: 'lato-medium';
   font-style: normal;
   text-align: center;
@@ -86,19 +86,20 @@ h1, h2, h3, h4 {
   margin: 0;
   padding: 0 5%
 }
-h1 { color: #CC9; font-family: 'lato-black'; font-size: 7.5em }
+h1 { color: $special-text-color; font-family: 'lato-black'; font-size: 4.5em }
 h2 { font-size: 3em }
-h3 { font-size: 2em; padding-top: 0.5vw; padding-bottom: 1vw }
-h4 { font-size: 1.75em; margin-bottom: 1vw }
+h3 { font-size: 1.5em; padding-top: 0.5vw; padding-bottom: 1vw }
+h4 { font-size: 1.25em; margin-bottom: 1vw }
 
 
 /**************/
 /* Paragraphs */
 /**************/
 
-p { color: black; font-family: 'lato-light'; font-size: 1em; cursor: text }
-p.time { text-align: right }
-small { font-size: 80% }
+p { color: $text-color; font-family: 'lato-light'; font-size: 1em; cursor: text }
+p.time { text-align: right; margin-bottom: 0; padding-bottom: 0.5em }
+small { font-size: 70% }
+code { background-color: $code-background-color; font-family: 'monospace'; padding: 0.5vw }
 
 /*********/
 /* Lists */
@@ -112,11 +113,11 @@ ul {
   margin: 0;
   padding: 0
 }
-  ul > li { display: inline-block }
+  ul > li { display: block }
     ul > li a {
       display: block;
-      color: #CC9;
-      background-color: white;
+      color: $special-text-color;
+      background-color: $foreground-color;
       font-family: 'lato-heavy';
       font-size: 1.25em;
       line-height: 250%;
@@ -124,10 +125,10 @@ ul {
       text-decoration: none;
       margin: 0;
       padding: 0;
-      transition: color 2s ease-in-out 0s, background-color 2s ease-in-out 0s
+      transition: color 1s ease-in-out 0s, background-color 1s ease-in-out 0s
     }
-    ul > li a:hover { color: #CC9; background-color: #124B85; text-decoration: none; } 
-    ul > li a:active, ul > li a:focus { color: #CC9; background-color: black; text-decoration: none; }
+    ul > li a:hover { color: $special-text-color; background-color: $hover-color; text-decoration: none; } 
+    ul > li a:active, ul > li a:focus { color: $special-text-color; background-color: $active-color; text-decoration: none; }
 
 
 /*********/
@@ -151,11 +152,11 @@ body {
 	display: block;
   overflow: auto;
   height: auto;
-	background-color: #CC9;
+	background-color: $background-color;
 	font-family: 'lato-regular', sans-serif;
   font-size: 100%;
-  padding-left: 11vw;
-  padding-right: 11vw;
+  padding-left: 1vw;
+  padding-right: 1vw;
 	padding-top: 1vw;
 	padding-bottom: 1vw;
 	margin: 0 auto;
@@ -186,19 +187,25 @@ footer { margin-top: 1vw }
 /* Dynamic Styling */
 /*******************/
 
-/* Large Screen */
-@media only screen and (min-width: 800px) {
-  body {
-    padding-left: 11vw;
-    padding-right: 11vw;
-  }
+/* Small devices (tablets, 768px and up) */
+@media ($small) {
+  h2::after, h3::after, h4::after { border-width: 0.2vw }
+  h1 { font-size: 7.5em }
+  h3 { font-size: 2em }
+  h4 { font-size: 1.5em }
+  small { font-size: 50% }
+  ul > li { display: inline-block }
 }
 
+/* Medium devices (desktops, 992px and up) */
+@media ($medium) {
+  h4 { font-size: 1.75em }
+}
 
-/* Small Screen */
-@media not screen and (min-width: 800px) {
+/* Large devices (large desktops, 1200px and up) */
+@media ($large) {
   body {
-    padding-left: 1vw;
-    padding-right: 1vw;
+    padding-left: 11vw;
+    padding-right: 11vw
   }
 }

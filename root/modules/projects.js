@@ -4,7 +4,7 @@ var path = require('path');
 var fs = require('fs');
 
 var GitHubAPI = require('github');
-var mdConverter = new (require('showdown')).Converter();
+var mdConverter = new (require('showdown')).Converter({headerLevelStart: 2});
 
 
 // Export utility functions, in case that the user wants to use them.
