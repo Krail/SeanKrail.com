@@ -160,7 +160,7 @@ function show() {
         playAllVideos(element);
         resizeSections(element);
         OPENED[index] = true;
-        if (!RECTANGLES) rectangle(project_id);
+        if (!RECTANGLES) rectangle(element);
       }
     }
   );
@@ -182,7 +182,7 @@ function hide() {
         });
         pauseAllVideos(element);
         OPENED[index] = false;
-        if (!RECTANGLES) square(project_id);
+        if (!RECTANGLES) square(element);
       }
     }
   );
@@ -269,7 +269,7 @@ function rectangle(project_id) {
     if (header.children[i].tagName.toLowerCase() !== 'img') document.getElementById(project_id + 'Header').children[i].style.display = 'block';
   }
 }
-function rectangle() {
+function rectangles() {
   console.log(TAG + 'rectangles() called.');
   hide();
   RECTANGLES = true;
