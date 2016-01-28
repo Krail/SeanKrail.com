@@ -5,8 +5,51 @@
 /* Colors */
 /**********/
 
+
+/* Background colors */
+$background: #CC9;
+$foreground: #FFF;  // #EEE?
+
+/* Button */
+$btn: $foreground;
+$hover: #09C;       // #69C?
+$active: #069;      // #369?
+
+/* Inverse Button */
+$btn-inverse: $hover;
+$hover-inverse: $btn;
+$active-inverse: $active;
+
+/* Text */
+$text-special: $background;
+$text-dark: #333;
+$text-grey: #888;
+$text-light: $foreground;
+
+/* Default border */
+$border: $foreground;
+
+/* Error/alert/disabled */
+$error-dark: #CC4335;
+$error-light: #E74C3C;
+
+/* Highlighter */
+$highlight: #CCF;
+
+/* Project Button */
+$project-hover: #EEF;
+$project-active: #FEF;
+
+
+
+
+/*************************************/
+/*************************************/
+/* Deprecated - Delete when possible */
+/*************************************/
+/*************************************/
+
 $background-color: #CC9;
-//$foreground-color: #EEE;
 $foreground-color: #FFF;
 
 $btn-color: $foreground-color;
@@ -19,7 +62,6 @@ $active-inverse-color: $active-color;
 
 $text-color: #333;
 $text-color-light: $foreground-color;
-$text-grey: #999;
 $special-text-color: $background-color;
 
 $border-color: $foreground-color;
@@ -28,9 +70,6 @@ $disabled-light: #E74C3C;
 $disabled-dark: #CC4335;
 
 $code-background-color: #CCF;
-
-$project-hover: #FEF;
-$project-active: #EEF;
 
 $highlight-color: #CCF;
 
