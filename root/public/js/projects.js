@@ -252,6 +252,7 @@ function square(project_id) {
 function squares() {
   console.log(TAG + 'squares() called.');
   hide();
+  RECTANGLES = false;
   document.getElementById('rectangles').removeAttribute('disabled');
   document.getElementById('squares').setAttribute('disabled', '');
   document.getElementById('expand-collapse').children[0].setAttribute('disabled', '');
@@ -271,6 +272,7 @@ function rectangle(project_id) {
 function rectangle() {
   console.log(TAG + 'rectangles() called.');
   hide();
+  RECTANGLES = true;
   document.getElementById('rectangles').setAttribute('disabled', '');
   document.getElementById('squares').removeAttribute('disabled');
   document.getElementById('expand-collapse').children[0].removeAttribute('disabled');
