@@ -123,22 +123,22 @@ function toggle(project_id) {
   PROJECT_IDS.forEach( // Iterate through all of the projects
     function(element, index, array) {
       if (element === project_id) {
+        if (OPENED[index]) {
+          if (!RECTANGLES) square(project_id);
+          pauseAllVideos(project_id);
+          OPENED[index] = false;
+        } else {
+          if (!RECTANGLES) rectangle(project_id);
+          playAllVideos(project_id);
+          resizeSections(project_id);
+          OPENED[index] = true;
+        }
         $('#' + element).slideToggle({
           duration: 500,
           easing: 'easeInOutQuart'/*,
           start: function(animation) { stopScrolling(); },
           complete: function() { startScrolling(); }*/
         });
-        if (OPENED[index]) {
-          pauseAllVideos(project_id);
-          OPENED[index] = false;
-          if (!RECTANGLES) square(project_id);
-        } else {
-          playAllVideos(project_id);
-          resizeSections(project_id);
-          OPENED[index] = true;
-          if (!RECTANGLES) rectangle(project_id);
-        }
       }
     }
   );
@@ -151,16 +151,16 @@ function show() {
   PROJECT_IDS.forEach( // Iterate through all of the projects
     function(element, index, array) {
       if (!OPENED[index]) {
+        if (!RECTANGLES) rectangle(element);
+        playAllVideos(element);
+        resizeSections(element);
+        OPENED[index] = true;
         $('#' + element).slideDown({
           duration: 500,
           easing: 'easeInOutQuart'/*,
           start: function(animation) { stopScrolling(); },
           complete: function() { startScrolling(); }*/
         });
-        playAllVideos(element);
-        resizeSections(element);
-        OPENED[index] = true;
-        if (!RECTANGLES) rectangle(element);
       }
     }
   );
@@ -174,15 +174,15 @@ function hide() {
     function(element, index, array) {
       console.log()
       if (OPENED[index]) {
+        if (!RECTANGLES) square(element);
+        pauseAllVideos(element);
+        OPENED[index] = false;
         $('#' + element).slideUp({
           duration: 500,
           easing: 'easeInOutQuart'/*,
           start: function(animation) { stopScrolling(); },
           complete: function() { startScrolling(); }*/
         });
-        pauseAllVideos(element);
-        OPENED[index] = false;
-        if (!RECTANGLES) square(element);
       }
     }
   );
