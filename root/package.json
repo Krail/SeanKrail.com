@@ -8,6 +8,8 @@
     "jade": "*",
     "aws-sdk": "*",
     "node-sass": "*",
+    "postcss": "*",
+    "autoprefixer": "*",
     "node-minify": "*",
     "github": "*",
     "showdown": "*"

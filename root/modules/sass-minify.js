@@ -3,10 +3,12 @@ var path = require('path');
 var fs = require('fs');
 
 var sass = require('node-sass');
+var postcss = require('postcss');
+var autoprefixer = require('autoprefixer');
 var compressor = require('node-minify');
 
 
-// Convert base.scss file into style.css (Async)
+// Convert base.scss file into style.css prefixed and minified
 module.exports.sass = () => {
   sass.render(
     {
@@ -14,7 +16,11 @@ module.exports.sass = () => {
       outputStyle: 'compressed'
     }, (err, data) => {
       if (err) throw err;
-      else fs.writeFile(path.join(__dirname, '..', 'public', 'css', 'style.min.css'), data.css, 'utf8', (err) => { if (err) throw err; });
+      fs.writeFile(path.join(__dirname, '..', 'public', 'css', 'style.min.css'), data.css, 'utf8', (err) => { if (err) throw err; });
+      postcss([autoprefixer]).process(data.css).then(function(res) {
+        res.warnings().forEach(function(warn) { console.warn(warn.toString()); });
+        fs.writeFile(path.join(__dirname, '..', 'public', 'css', 'style.prefixed.min.css'), res.css, 'utf8', (err) => { if (err) throw err; });
+      });
     }
   );
   sass.render(
@@ -23,7 +29,11 @@ module.exports.sass = () => {
       outputStyle: 'nested'
     }, (err, data) => {
       if (err) throw err;
-      else fs.writeFile(path.join(__dirname, '..', 'public', 'css', 'style.css'), data.css, 'utf8', (err) => { if (err) throw err; });
+      fs.writeFile(path.join(__dirname, '..', 'public', 'css', 'style.css'), data.css, 'utf8', (err) => { if (err) throw err; });
+      postcss([autoprefixer]).process(data.css).then(function(res) {
+        res.warnings().forEach(function(warn) { console.warn(warn.toString()); });
+        fs.writeFile(path.join(__dirname, '..', 'public', 'css', 'style.prefixed.css'), res.css, 'utf8', (err) => { if (err) throw err; });
+      });
     }
   );
 };
