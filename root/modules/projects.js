@@ -106,6 +106,26 @@ module.exports.utilities = {
         }
       }
     );
+    github.authenticate({
+      type: 'oauth',
+      token: token
+    });
+    var user = GitHubAPI.getUser();
+    user.repos({}, (err, repos) => {
+      repos.forEach(function(element, index, array) {
+        console.log('Repo #' + (index + 1) + ': ' + element.name);
+      });
+    });
+    github.authenticate({
+      type: 'oauth',
+      token: token
+    });
+    user = GitHubAPI.getUser();
+    user.orgs({}, (err, orgs) => {
+      orgs.forEach(function(element, index, array) {
+        console.log('Org #' + (index + 1) + ': ' + element.name);
+      });
+    });
   }
   // END of utility functions
 }
