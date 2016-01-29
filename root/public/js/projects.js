@@ -190,9 +190,7 @@ function hide() {
 
 
 
-/* Search bar helper functions */
-
-
+/* Search bar function */
 function verifySearchField() {
   var string = document.getElementById('search').value,
       letters = true,
@@ -260,6 +258,7 @@ function squares() {
   RECTANGLES = false;
   document.getElementById('rectangles').removeAttribute('disabled');
   document.getElementById('squares').setAttribute('disabled', '');
+  document.getElementById('projects').style.margin = '0 -0.5vw';
   //document.getElementById('expand-collapse').children[0].setAttribute('disabled', '');
   PROJECT_IDS.forEach( function(element, index, array) { square(element); });
 }
@@ -280,6 +279,7 @@ function rectangles() {
   RECTANGLES = true;
   document.getElementById('rectangles').setAttribute('disabled', '');
   document.getElementById('squares').removeAttribute('disabled');
+  document.getElementById('projects').style.margin = '0';
   //document.getElementById('expand-collapse').children[0].removeAttribute('disabled');
   PROJECT_IDS.forEach( function(element, index, array) { rectangle(element); });
 }

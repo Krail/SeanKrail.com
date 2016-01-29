@@ -49,29 +49,29 @@ $project-active: #FEF;
 /*************************************/
 /*************************************/
 
-$background-color: #CC9;
-$foreground-color: #FFF;
+$background-color: $background;
+$foreground-color: $foreground;
 
-$btn-color: $foreground-color;
-$hover-color: #09C;
-$active-color: #069;
+$btn-color: $btn;
+$hover-color: $hover;
+$active-color: $active;
 
-$btn-inverse-color: $hover-color;
-$hover-inverse-color: $btn-color;
-$active-inverse-color: $active-color;
+$btn-inverse-color: $btn-inverse;
+$hover-inverse-color: $hover-inverse;
+$active-inverse-color: $active-inverse;
 
-$text-color: #333;
-$text-color-light: $foreground-color;
-$special-text-color: $background-color;
+$text-color: $text-dark;
+$text-color-light: $foreground;
+$special-text-color: $background;
 
-$border-color: $foreground-color;
+$border-color: $foreground;
 
-$disabled-light: #E74C3C;
-$disabled-dark: #CC4335;
+$disabled-light: $error-light;
+$disabled-dark: $error-dark;
 
-$code-background-color: #CCF;
+$code-background-color: $highlight;
 
-$highlight-color: #CCF;
+$highlight-color: $highlight;
 
 /* #CC9 - Tan */
 /* #069 - Dark Blue  */

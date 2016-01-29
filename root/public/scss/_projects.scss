@@ -10,7 +10,7 @@
 /* Glyphicons */
 /**************/
 
-.glyphicon-search { vertical-align: text-top; font-size: 1em }
+.glyphicon-search { vertical-align: baseline; font-size: 0.8em }
 .glyphicon-expand-collapse { vertical-align: baseline }
 
 
@@ -41,7 +41,7 @@ form {
   margin-top: 1vw;
   border: 0;
   padding: 0;
-  height: 4vw;
+  height: 10vw;
   width: 100%
 }
 form > input {
@@ -87,7 +87,7 @@ ul.btn-expand-collapse {
     display: inline-block;
     font-family: 'lato-heavy';
     line-height: 250%;
-    font-size: 1.25em;
+    font-size: 1em;
     text-decoration: none;
     width: 50%;
     border: 0;
@@ -151,11 +151,22 @@ main#projects { text-align: center }
 /* Dynamic Styling */
 /*******************/
 
+/* Extra Small Devices (phones, 480px and up) */ 
+@media ($extra-small) {
+  form { height: 8vw }
+}
+
 /* Small devices (tablets, 768px and up) */
-@media ($small) {  }
+@media ($small) {
+  .glyphicon-search { vertical-align: text-top; font-size: 1em }
+  form { height: 5vw }
+  form > input { font-size: 1.25em }
+}
 
 /* Medium devices (desktops, 992px and up) */
-@media ($medium) {  }
+@media ($medium) {
+  form { height: 4vw }
+}
 
 /* Large devices (large desktops, 1200px and up) */
 @media ($large) {
