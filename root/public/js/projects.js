@@ -162,7 +162,7 @@ function show() {
         OPENED[index] = true;
         $('#' + element).slideDown({
           duration: 500,
-          easing: 'easeInOutQuart'
+          easing: 'easeInOutQuart',
           complete: function() { resizeSections(element); }
         });
       }
