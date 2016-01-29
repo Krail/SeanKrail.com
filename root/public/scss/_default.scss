@@ -87,7 +87,7 @@ h1, h2, h3, h4 {
   padding: 0 5%
 }
 h1 { color: $text-special; font-family: 'lato-black'; font-size: 4.5em; padding: 0 2% }
-h2 { font-size: 3em }
+h2 { font-size: 2em }
 h3 { font-size: 1.5em; padding-top: 0.5vw; padding-bottom: 1vw }
 h4 { font-size: 1.25em; margin-bottom: 1vw }
 
@@ -96,11 +96,11 @@ h4 { font-size: 1.25em; margin-bottom: 1vw }
 /* Paragraphs */
 /**************/
 
-p { color: $text-color; font-family: 'lato-light'; font-size: 1em; cursor: text }
+p { color: $text-color; text-align: left; text-indent: 2vw; font-family: 'lato-light'; font-size: 1em; cursor: text }
 p.time { text-align: right; margin-bottom: 0; padding-bottom: 0.5em }
-small { font-size: 70% }
+small { font-size: 50% }
 code { background-color: $highlight; font-family: 'monospace'; padding: 0.5vw }
-mark { color: $text-color; background-color: $highlight }
+mark { color: $text-color; background-color: $highlight; font-style: italic }
 
 /*********/
 /* Lists */
@@ -188,18 +188,24 @@ footer { margin-top: 1vw }
 /* Dynamic Styling */
 /*******************/
 
+@media ($xsmall) {
+  small { font-size: 60% }
+}
+
 /* Small devices (tablets, 768px and up) */
 @media ($small) {
   h2::after, h3::after, h4::after { border-width: 0.2vw }
   h1 { font-size: 7.5em; padding: 0 5% }
+  h2 { font-size: 2.5em }
   h3 { font-size: 2em }
   h4 { font-size: 1.5em }
-  small { font-size: 50% }
+  small { font-size: 70% }
   ul > li { display: inline-block }
 }
 
 /* Medium devices (desktops, 992px and up) */
 @media ($medium) {
+  h2 { font-size: 3 em }
   h4 { font-size: 1.75em }
 }
 
@@ -209,4 +215,5 @@ footer { margin-top: 1vw }
     padding-left: 11vw;
     padding-right: 11vw
   }
+  small { font-size: 80% }  *
 }

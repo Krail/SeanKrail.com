@@ -120,14 +120,14 @@ main#projects { text-align: center }
   article.project > header.project:hover { background-color: $project-hover }
   article.project > header.project:active, article.project > header:focus { background-color: $project-active }
   article.project > header.project:focus { outline: none }
-    small.updated { font-family: 'lato-thin'; float: right; color: $text-grey }
+    small.updated { position: absolute; font-family: 'lato-thin'; right: 2vw; color: $text-grey }
     header.project > img { position: relative; float: left; height: 20vw; width: 20vw; margin: 0 }
-    header.project > h2 { overflow: hidden; margin: 2vw auto 1vw }
+    header.project > h2 { overflow: hidden; margin: 2vw 0 1vw }
       header.project > h2 > em { font-family: 'lato-light'; font-style: italic }
     header.project > p.keywords { font-family: 'lato-regular'; text-align: center; margin-top: 0 }
       p.keywords > em { font-style: normal; margin-right: 0.5vw }
       p.keywords > mark { font-family: 'lato-light'; padding: 0.2vw 0.5vw 0; margin: 0 0.2vw }
-    header.project > p { overflow: hidden; text-align: left; font-family: 'lato-light'; font-size: 1em; padding: 0.5vw 2vw }
+    header.project > p { overflow: hidden; text-align: left; padding: 0.5vw 2vw }
 
   article.project > div.main { display: block; padding: 0 3vw }
     div.main > section {
@@ -140,7 +140,7 @@ main#projects { text-align: center }
       padding: 1vw;
       padding-bottom: 0.5vw
     }
-    div.main > section.section-half { width: 35.75vw; vertical-align: top }
+    div.main > section.section-half { width: 45.75vw; vertical-align: top }
     div.main > section.section-half-first { margin-right: 0.5vw }
     div.main > section.section-full { display: block; height: auto; width: auto }
       section.section-full > .landscape { height: auto; width: 100% }
@@ -161,6 +161,7 @@ main#projects { text-align: center }
   .glyphicon-search { vertical-align: text-top; font-size: 1em }
   form { height: 5vw }
   form > input { font-size: 1.25em }
+  header.project > h2 { margin-top: 1vw }
 }
 
 /* Medium devices (desktops, 992px and up) */
@@ -172,4 +173,6 @@ main#projects { text-align: center }
 @media ($large) {
   .glyphicon-search { vertical-align: baseline }
   form input { width: 67vw }
+  small.updated { right: 12vw }
+  div.main > section.section-half { width: 35.75vw }
 }

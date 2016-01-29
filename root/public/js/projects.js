@@ -69,14 +69,19 @@ console.log(TAG + '# of projects: ' + PROJECT_IDS.length + '.');
 
 
 // resize sections (assuming correct formatting)
-function resizeSections(project_id) {/*
+function resizeSections(project_id) {
   var first = document.getElementById(project_id).getElementsByClassName('section-half');
   for (var i = 0; i < first.length; i += 2) {
     var maxHeight = (first[i].offsetHeight > first[i+1].offsetHeight) ? first[i].offsetHeight : first[i+1].offsetHeight;
     maxHeight = maxHeight * 100 / window.innerWidth;
     first[i].style.height = maxHeight + 'vw';
     first[i+1].style.height = maxHeight + 'vw';
-  }*/
+  }
+}
+// resize sections (assuming correct formatting)
+function resetSections(project_id) {
+  var halfsection = document.getElementById(project_id).getElementsByClassName('section-half');
+  for (var i = 0; i < halfsection.length; i++) halfsection[i].style.height = 'auto';
 }
 
 /* A helper function to pause all active videos (specifically iframe-vimeo videos, tongue twister) */
@@ -87,10 +92,10 @@ function pauseAllVideos() {
     videos[i].pause();
   }
 }
-function pauseAllVideos(x) {
+function pauseAllVideos(project_id) {
   "use strict";
   for (var i = 0; i < PROJECT_IDS.length; i++) {
-    if (PROJECT_IDS[i] === x) {
+    if (PROJECT_IDS[i] === project_id) {
       var videos = document.getElementById(PROJECT_IDS[i]).getElementsByTagName('video');
       for (var j = 0; j < videos.length; j++) {videos[j].play();}
       break;
@@ -98,11 +103,11 @@ function pauseAllVideos(x) {
   }
 }
 
-/* A helper function to play all videos under element 'x' */
-function playAllVideos(x) {
+/* A helper function to play all videos under element 'project_id' */
+function playAllVideos(project_id) {
 	"use strict";
 	for (var i = 0; i < PROJECT_IDS.length; i++) { // Iterate through all of the projects
-		if (PROJECT_IDS[i] === x) { // This is project 'x'
+		if (PROJECT_IDS[i] === project_id) { // This is project 'project_id'
       var videos = document.getElementById(PROJECT_IDS[i]).getElementsByTagName('video');
       for (var j = 0; j < videos.length; j++) {videos[j].play();}
 			break;
@@ -123,43 +128,42 @@ function toggle(project_id) {
   PROJECT_IDS.forEach( // Iterate through all of the projects
     function(element, index, array) {
       if (element === project_id) {
-        if (OPENED[index]) {
+        var complete;
+        if (OPENED[index]) { // Project is currently opened, close it.
           if (!RECTANGLES) square(project_id);
           pauseAllVideos(project_id);
           OPENED[index] = false;
-        } else {
+          complete = resetSections;
+        } else { // Project is currently closed, open it.
           if (!RECTANGLES) rectangle(project_id);
           playAllVideos(project_id);
-          resizeSections(project_id);
           OPENED[index] = true;
+          complete = resizeSections;
         }
         $('#' + element).slideToggle({
           duration: 500,
-          easing: 'easeInOutQuart'/*,
-          start: function(animation) { stopScrolling(); },
-          complete: function() { startScrolling(); }*/
+          easing: 'easeInOutQuart',
+          complete: function() { complete(project_id); }
         });
       }
     }
   );
 }
 
-/* Expands project 'x' and collapses all of the other projects */
+/* Expands all projects */
 function show() {
 	"use strict";
 	//pauseAllVideos(); // pause all active videos
   PROJECT_IDS.forEach( // Iterate through all of the projects
     function(element, index, array) {
-      if (!OPENED[index]) {
+      if (!OPENED[index]) { // Project is currently closed, open it.
         if (!RECTANGLES) rectangle(element);
         playAllVideos(element);
-        resizeSections(element);
         OPENED[index] = true;
         $('#' + element).slideDown({
           duration: 500,
-          easing: 'easeInOutQuart'/*,
-          start: function(animation) { stopScrolling(); },
-          complete: function() { startScrolling(); }*/
+          easing: 'easeInOutQuart'
+          complete: function() { resizeSections(element); }
         });
       }
     }
@@ -173,15 +177,14 @@ function hide() {
   PROJECT_IDS.forEach(
     function(element, index, array) {
       console.log()
-      if (OPENED[index]) {
+      if (OPENED[index]) { // Project is currently opened, close it.
         if (!RECTANGLES) square(element);
         pauseAllVideos(element);
         OPENED[index] = false;
         $('#' + element).slideUp({
           duration: 500,
-          easing: 'easeInOutQuart'/*,
-          start: function(animation) { stopScrolling(); },
-          complete: function() { startScrolling(); }*/
+          easing: 'easeInOutQuart',
+          complete: function() { resetSections(element); }
         });
       }
     }
