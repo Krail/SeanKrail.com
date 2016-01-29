@@ -124,7 +124,7 @@ module.exports.utilities = {
         if(!Array.isArray(data)) console.error('Error. GitHub data is not an array: ', data);
         else {
           data.forEach(function(element, index, array) {
-            console.log('repos');
+            console.log('repos.getAll(): ' + element.name);
           });
         }
     });
