@@ -54,6 +54,7 @@ module.exports.utilities = {
         type: 'all',
         sort: 'updated',
         direction: 'desc',
+        page: 1,
         per_page: 10
       }, (err, data) => {
         if (err) throw err;
@@ -98,20 +99,39 @@ module.exports.utilities = {
                   console.log('utilities.importSoft: Completed is ' + completed);
                   if (completed === array.length) callback();
                 });
-              });
+              }); // end of https get
 
             }
-          );
+          ); // end of forEach
 
-        }
-      }
-    );
+        } // end of else
+      } // end of GitHubAPI callback
+    ); // end of GitHubAPI repos.getFromUser()
     github.authenticate({
       type: 'oauth',
       token: token
     });
+    github.repos.getAll(
+      {
+        //user: 'Krail', // required
+        type: 'all',
+        sort: 'updated',
+        direction: 'desc',
+        page: 1,
+        per_page: 10
+      }, (err, data) => {
+        if (err) throw err;
+        if(!Array.isArray(data)) console.error('Error. GitHub data is not an array: ', data);
+        else {
+          data.forEach(function(element, index, array) {
+            console.log('repos');
+          });
+        }
+    });
+    /*
     var user = GitHubAPI.getUser();
     user.repos({}, (err, repos) => {
+      if (err) throw err;
       repos.forEach(function(element, index, array) {
         console.log('Repo #' + (index + 1) + ': ' + element.name);
       });
@@ -122,10 +142,11 @@ module.exports.utilities = {
     });
     user = GitHubAPI.getUser();
     user.orgs({}, (err, orgs) => {
+      if (err) throw err;
       orgs.forEach(function(element, index, array) {
         console.log('Org #' + (index + 1) + ': ' + element.name);
       });
-    });
+    });*/
   }
   // END of utility functions
 }
