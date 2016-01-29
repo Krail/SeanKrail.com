@@ -28,7 +28,7 @@ module.exports.utilities = {
             if (err) throw err;
             projects.projects.push(JSON.parse(data));
             module.exports.utilities.sort(projects);
-            console.log('utilities.importHard: Index is ' + index);
+            console.log('utilities.importHard: ' + JSON.parse(data).id);
             if (index + 1 === array.length) callback();
           });
         }
@@ -44,7 +44,7 @@ module.exports.utilities = {
       host: 'api.github.com'
     });
     const token = fs.readFileSync(path.join(__dirname, '..', 'token.token'), 'utf8');
-    github.authenticate({
+    /*github.authenticate({
       type: 'oauth',
       token: token
     });
@@ -106,7 +106,7 @@ module.exports.utilities = {
 
         } // end of else
       } // end of GitHubAPI callback
-    ); // end of GitHubAPI repos.getFromUser()
+    ); // end of GitHubAPI repos.getFromUser()*/
     github.authenticate({
       type: 'oauth',
       token: token
@@ -123,11 +123,47 @@ module.exports.utilities = {
         if (err) throw err;
         if(!Array.isArray(data)) console.error('Error. GitHub data is not an array: ', data);
         else {
+          var completed = 0;
+          console.log('utilities.importSoft: ' + data.length + ' soft-coded files');
+          // GET all 'hard' projects
+          const githubRegexId1 = /[\:#]/;
+          const githubRegexId2 = /[\._]/;
+          const githubRegexName = /[\-_]/;
           data.forEach(function(element, index, array) {
-            console.log('repos.getAll(): ' + element.name);
-          });
+            var project = {
+              id: (element.name.replace(githubRegexId1, "").replace(githubRegexId2, "-") + '_github'),
+              header: {
+                image: {
+                  title: 'My GitHub Avatar',
+                  src: element.owner.avatar_url,
+                  alt: element.name.replace(githubRegexName, " ")
+                },
+                heading: element.name.replace(githubRegexName, " "),
+                paragraphs: [ element.description ]
+              },
+              content: [
+                {
+                  type: 'readme',
+                  html: ''
+                }
+              ],
+              updated: element.updated_at
+            };
+            https.get('https://raw.githubusercontent.com/' + element.full_name + '/master/README.md', (res) => {
+                var md = '';
+                res.on('data', (data) => { md += data; });
+                res.on('end', () => {
+                  console.log('utilities.importSoft: ' + project.id);
+                  completed++;
+                  project.content[0].html = mdConverter.makeHtml(md);
+                  projects.projects.push(project);
+                  module.exports.utilities.sort(projects);
+                  if (completed === array.length) callback();
+                });
+              }); // end of https get
+          }); // end of forEach
         }
-    });
+    }); // end of repos.getAll()
     /*
     var user = GitHubAPI.getUser();
     user.repos({}, (err, repos) => {
@@ -154,15 +190,11 @@ module.exports.utilities = {
 
 // Refresh the projects list
 module.exports.refresh = (projects) => {
-  console.log('refresh(' + projects.projects + ') called');
   projects.projects = [];
-  var sort = false
-  console.log('refresh: Sort is ' + sort);
+  var sort = false;
   var callback = () => {
-    console.log('refresh: Sort was ' + sort);
-    if (sort) {module.exports.utilities.sort(projects);console.log('refresh: Projects array is now: ' + projects.projects);}
+    if (sort) module.exports.utilities.sort(projects);
     else sort = true;
-    console.log('refresh: Sort is now ' + sort);
   };
   module.exports.utilities.importHard(projects, callback);
   module.exports.utilities.importSoft(projects, callback);
