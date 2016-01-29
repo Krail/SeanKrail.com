@@ -86,7 +86,7 @@ h1, h2, h3, h4 {
   margin: 0;
   padding: 0 5%
 }
-h1 { color: $text-special; font-family: 'lato-black'; font-size: 4.5em }
+h1 { color: $text-special; font-family: 'lato-black'; font-size: 4.5em; padding: 0 2% }
 h2 { font-size: 3em }
 h3 { font-size: 1.5em; padding-top: 0.5vw; padding-bottom: 1vw }
 h4 { font-size: 1.25em; margin-bottom: 1vw }
@@ -191,7 +191,7 @@ footer { margin-top: 1vw }
 /* Small devices (tablets, 768px and up) */
 @media ($small) {
   h2::after, h3::after, h4::after { border-width: 0.2vw }
-  h1 { font-size: 7.5em }
+  h1 { font-size: 7.5em; padding: 0 5% }
   h3 { font-size: 2em }
   h4 { font-size: 1.5em }
   small { font-size: 50% }

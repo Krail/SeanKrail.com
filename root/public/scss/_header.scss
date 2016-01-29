@@ -10,15 +10,15 @@
 /* Main */
 /********/
 
-header#header { background-color: $foreground-color; border-top-left-radius: 1vw; border-top-right-radius: 1vw }
+header#header { background-color: $foreground-color; border-top-left-radius: 5vw; border-top-right-radius: 5vw }
   /* Title :: SeanKrail.com */
   a#title {
     display: block;
     text-decoration: none;
     background-color: $foreground-color;
     border: 0;
-    border-top-left-radius: 1vw;
-    border-top-right-radius: 1vw;
+    border-top-left-radius: 5vw;
+    border-top-right-radius: 5vw;
     margin: 0;
     transition: background-color 1s ease-in-out 0s;
   }
