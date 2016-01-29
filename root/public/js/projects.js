@@ -253,6 +253,7 @@ function square(project_id) {
   }
 }
 function squares() {
+  if (document.getElementById('squares').getAttribute('disabled') === '') return;
   console.log(TAG + 'squares() called.');
   hide();
   RECTANGLES = false;
@@ -274,12 +275,13 @@ function rectangle(project_id) {
   }
 }
 function rectangles() {
+  if (document.getElementById('rectangles').getAttribute('disabled') === '') return;
   console.log(TAG + 'rectangles() called.');
   hide();
   RECTANGLES = true;
   document.getElementById('rectangles').setAttribute('disabled', '');
   document.getElementById('squares').removeAttribute('disabled');
-  document.getElementById('projects').style.margin = '0';
+  document.getElementById('projects').style.margin = 0;
   //document.getElementById('expand-collapse').children[0].removeAttribute('disabled');
   PROJECT_IDS.forEach( function(element, index, array) { rectangle(element); });
 }
