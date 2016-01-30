@@ -154,7 +154,7 @@ main#projects { text-align: center }
 /* Extra Small Devices (phones, 480px and up) */ 
 @media ($xsmall) {
   form { height: 8vw; margin-top: 1vw }
-  form > input { width: 81vw; margin-right: 1vw }
+  form > input { width: 82vw; margin-right: 1vw }
   form > button.btn-search { width: 15vw }
   ul.btn-expand-collapse { margin-top: 1vw }
   div.btn-collapse { margin-top: 1vw }
@@ -164,7 +164,7 @@ main#projects { text-align: center }
 @media ($small) {
   .glyphicon-search { vertical-align: text-top; font-size: 1em }
   form { height: 5vw; margin-top: 1vw }
-  form > input { width: 86vw; font-size: 1.25em }
+  form > input { width: 87vw; font-size: 1.25em }
   form > button.btn-search { width: 10vw }
   header.project > h2 { margin-top: 1vw }
 }
