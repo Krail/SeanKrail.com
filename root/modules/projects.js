@@ -116,7 +116,7 @@ module.exports.utilities = {
   shuffle: (projects) => {
     projects.projects.forEach(function(project, index, array) {
       project.keywords.forEach(function(keyword, index, array) {
-        if (!projects.keywords.contains(keyword)) projects.keywords.push(keyword);
+        if (!projects.keywords.includes(keyword)) projects.keywords.push(keyword);
       });
     });
     projects.keywords = shuffle(projects.keywords);
