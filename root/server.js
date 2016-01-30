@@ -40,6 +40,7 @@ app.use(express.directory(path.join(__dirname, 'public'), {
 app.use(express.static(path.join(__dirname, 'public'), {
   hidden: true, icons: true, filter: false
 }));
+process.title = 'nodeSK';
 app.locals.theme = process.env.THEME; //Make the THEME environment variable available to the app.
 app.locals.version = fs.readFileSync(path.join(__dirname, 'version.version'), 'utf8').replace(/\n$/, '');
 
@@ -47,6 +48,8 @@ app.locals.version = fs.readFileSync(path.join(__dirname, 'version.version'), 'u
 console.log('*****************************************');
 console.log('\n\nVersion: ' + app.locals.version + '\n');
 console.log('*****************************************');
+
+console.log(JSON.stringify(process.env));
 
 
 // Read config values from a JSON file.
