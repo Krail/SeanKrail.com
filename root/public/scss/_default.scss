@@ -157,10 +157,7 @@ body {
 	background-color: $background;
 	font-family: 'lato-regular', sans-serif;
   font-size: 100%;
-  padding-left: 1vw;
-  padding-right: 1vw;
-	padding-top: 1vw;
-	padding-bottom: 1vw;
+  padding: 3vw 1vw;
 	margin: 0 auto;
 }
 header, footer {
@@ -193,6 +190,7 @@ footer { margin-top: 3vw }
 @media ($xsmall) {
   small { font-size: 60% }
   meter { margin-bottom: 0.3vw }
+  body { padding-top: 2vw; padding-bottom: 2vw }
   article { margin-top: 2vw }
   footer { margin-top: 2vw }
 }
@@ -206,6 +204,7 @@ footer { margin-top: 3vw }
   h4 { font-size: 1.5em }
   small { font-size: 70% }
   ul > li { display: inline-block }
+  body { padding-top: 1vw; padding-bottom: 1vw }
   article { margin-top: 1vw }
   footer { margin-top: 1vw }
 }
