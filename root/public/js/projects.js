@@ -252,7 +252,7 @@ function sendData() {
   });
 
   // We setup our request
-  XHR.open('POST', 'http://ucommbieber.unl.edu/CORS/cors.php');
+  XHR.open('POST', 'seankrailcom.us-west-2.elasticbeanstalk.com/projects');
 
   // The data sent are the one the user provide in the form
   XHR.send(FD);
