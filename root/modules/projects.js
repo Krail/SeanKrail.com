@@ -16,17 +16,20 @@ function shuffle(o){
 
 // Export utility functions, in case that the user wants to use them.
 module.exports.utilities = {
-    // Shuffle project keywords
+  // Shuffle project keywords
   shuffle: (projects) => {
     // http://stackoverflow.com/a/6274381
     for(var j, x, i = projects.keywords.length; i; j = Math.floor(Math.random() * i), x = projects.keywords[--i], projects.keywords[i] = projects.keywords[j], projects.keywords[j] = x);
     //projects.keywords = shuffle(projects.keywords);
   },
-  addKeyword: (projects, keywords) => {
-    keywords.forEach(function(globalKey, index, array) {
-      projects.keywords.forEach(function(localKey, index, array) {
-        if (globalKey !== localKey) projects.keywords.push(keyword);
+  // Add keywords
+  addKeywords: (projects, keywords) => {
+    keywords.forEach(function(projectKey, index, array) {
+      var match = false;
+      projects.keywords.forEach(function(globalKey, index, array) {
+        if (projectKey === globalKey) match = true;
       });
+      if (!match) projects.keywords.push(keyword);
     });
   },
   // Sort projects by updated date (latest has lowest index)
@@ -49,7 +52,7 @@ module.exports.utilities = {
             projects.projects.push(JSON.parse(data));
             module.exports.utilities.sort(projects);
             console.log('    ' + JSON.parse(data).id);
-            module.exports.utilities.addKeyword(projects, JSON.parse(data).keywords);
+            module.exports.utilities.addKeywords(projects, JSON.parse(data).keywords);
             if (index + 1 === array.length) callback();
           });
         }
@@ -119,7 +122,7 @@ module.exports.utilities = {
                   fs.writeFile(path.join(__dirname, '..', 'public', 'static', 'content', 'projects', project.id), JSON.stringify(project), 'utf8', (err) => { if (err) throw err; });
                   projects.projects.push(project);
                   module.exports.utilities.sort(projects);
-                  module.exports.utilities.addKeyword(projects, project.keywords);
+                  module.exports.utilities.addKeywords(projects, project.keywords);
                   if (completed === array.length) callback();
                 });
               }); // end of https get

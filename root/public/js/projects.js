@@ -244,6 +244,7 @@ function sendData() {
   // We define what will happen if the data are successfully sent
   XHR.addEventListener("load", function(event) {
     alert(event.target.responseText);
+    console.log(event);
   });
 
   // We define what will happen in case of error
@@ -252,7 +253,7 @@ function sendData() {
   });
 
   // We setup our request
-  XHR.open('POST', 'seankrailcom.us-west-2.elasticbeanstalk.com/projects');
+  XHR.open('POST', '/projects');
 
   // The data sent are the one the user provide in the form
   XHR.send(FD);

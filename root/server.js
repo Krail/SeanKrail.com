@@ -50,7 +50,7 @@ console.log('*****************************************');
 console.log('\n\nVersion: ' + app.locals.version + '\n');
 console.log('*****************************************');
 
-console.log(JSON.stringify(process.env));
+//console.log(JSON.stringify(process.env));
 
 
 // Read config values from a JSON file.
