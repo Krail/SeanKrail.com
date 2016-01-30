@@ -121,8 +121,8 @@ main#projects { text-align: center }
   article.project > header.project:active, article.project > header:focus { background-color: $project-active }
   article.project > header.project:focus { outline: none }
     small.updated { position: absolute; font-family: 'lato-thin'; right: 2vw; color: $text-grey }
-    header.project > img { position: relative; float: left; height: 20vw; width: 20vw; margin: 0 }
-    header.project > h2 { overflow: hidden; margin: 2vw 0 1vw }
+    header.project > img { display: none; position: relative; float: left; height: 20vw; width: 20vw; margin: 0 }
+    header.project > h2 { overflow: hidden; margin: 2vw 0 0.5vw }
       header.project > h2 > em { font-family: 'lato-light'; font-style: italic }
     header.project > p.keywords { font-family: 'lato-regular'; text-align: center; margin-top: 0 }
       p.keywords > em { font-style: normal; margin-right: 0.5vw }
@@ -167,6 +167,7 @@ main#projects { text-align: center }
 /* Medium devices (desktops, 992px and up) */
 @media ($medium) {
   form { height: 4vw }
+  header.project > img { display: block } // progressive enhancement
 }
 
 /* Large devices (large desktops, 1200px and up) */

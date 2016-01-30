@@ -33,6 +33,8 @@ block main
             time(datetime=pro.updated)=(new Date(pro.updated)).toDateString()
           img(title=pro.header.image.title, src=pro.header.image.src, alt=pro.header.image.alt)
           h2!=pro.header.heading
+          if pro.progress
+            meter(value=pro.progress, min='0', low='25', high='75', max='100', optimum='100', title=((pro.progress !== 100) ? 'Under development: ' + pro.progress + '% completed' : 'This project is finished development.'))=pro.progress + '% complete.'
           if pro.keywords
             p(class='keywords')
               em Keywords:

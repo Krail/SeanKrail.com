@@ -253,6 +253,7 @@ function square(project_id) {
   document.getElementById(project_id + 'Article').style.marginLeft = '0.5vw';
   for(var i = 0; i < header.children.length; i++) {
     if (header.children[i].tagName.toLowerCase() !== 'img') document.getElementById(project_id + 'Header').children[i].style.display = 'none';
+    else document.getElementById(project_id + 'Header').children[i].style.display = 'block';
   }
 }
 function squares() {
@@ -275,6 +276,7 @@ function rectangle(project_id) {
   document.getElementById(project_id + 'Article').style.marginLeft = '0';
   for(var i = 0; i < header.children.length; i++) {
     if (header.children[i].tagName.toLowerCase() !== 'img') document.getElementById(project_id + 'Header').children[i].style.display = 'block';
+    else document.getElementById(project_id + 'Header').children[i].removeAttribute('style');
   }
 }
 function rectangles() {

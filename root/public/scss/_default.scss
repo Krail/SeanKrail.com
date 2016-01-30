@@ -101,6 +101,7 @@ p.time { text-align: right; margin-bottom: 0; padding-bottom: 0.5em }
 small { font-size: 50% }
 code { background-color: $highlight; font-family: 'monospace'; padding: 0.5vw }
 mark { color: $text-color; background-color: $highlight; font-style: italic }
+meter { width: 30vw; margin-bottom: 0.3vw }
 
 /*********/
 /* Lists */

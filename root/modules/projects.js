@@ -20,7 +20,7 @@ module.exports.utilities = {
   // Import hard-coded projects from static directory
   importHard: (projects, callback) => {
     fs.readdir(path.join(__dirname, '..', 'public', 'static', 'content', 'projects'), (err, files) => {
-      console.log('utilities.importHard: ' + files.length + ' hard-coded files');
+      console.log('  ' + files.length + ' hard-coded files');
       if (err) throw err;
       files.forEach(
         (element, index, array) => {
@@ -28,7 +28,7 @@ module.exports.utilities = {
             if (err) throw err;
             projects.projects.push(JSON.parse(data));
             module.exports.utilities.sort(projects);
-            console.log('utilities.importHard: ' + JSON.parse(data).id);
+            console.log('    ' + JSON.parse(data).id);
             if (index + 1 === array.length) callback();
           });
         }
@@ -43,73 +43,10 @@ module.exports.utilities = {
       protocol: 'https',
       host: 'api.github.com'
     });
-    const token = fs.readFileSync(path.join(__dirname, '..', 'token.token'), 'utf8');
-    /*github.authenticate({
-      type: 'oauth',
-      token: token
-    });
-    github.repos.getFromUser(
-      {
-        user: 'Krail', // required
-        type: 'all',
-        sort: 'updated',
-        direction: 'desc',
-        page: 1,
-        per_page: 10
-      }, (err, data) => {
-        if (err) throw err;
-        if(!Array.isArray(data)) console.error('Error. GitHub data is not an array: ', data);
-        else {
-          var completed = 0;
-          console.log('utilities.importSoft: ' + data.length + ' soft-coded files');
-          // GET all 'hard' projects
-          const githubRegexId1 = /[\:#]/;
-          const githubRegexId2 = /[\._]/;
-          const githubRegexName = /[\-_]/;
-          data.forEach(
-            (element, index, array) => {
-              var project = {
-                id: (element.name.replace(githubRegexId1, "").replace(githubRegexId2, "-") + '_github'),
-                header: {
-                  image: {
-                    title: 'My GitHub Avatar',
-                    src: element.owner.avatar_url,
-                    alt: element.name.replace(githubRegexName, " ")
-                  },
-                  heading: element.name.replace(githubRegexName, " "),
-                  paragraphs: [ element.description ]
-                },
-                content: [
-                  {
-                    type: 'readme',
-                    html: ''
-                  }
-                ],
-                updated: element.updated_at
-              };
-
-              https.get('https://raw.githubusercontent.com/' + element.full_name + '/master/README.md', (res) => {
-                var md = '';
-                res.on('data', (data) => { md += data; });
-                res.on('end', () => {
-                  completed++;
-                  project.content[0].html = mdConverter.makeHtml(md);
-                  projects.projects.push(project);
-                  module.exports.utilities.sort(projects);
-                  console.log('utilities.importSoft: Completed is ' + completed);
-                  if (completed === array.length) callback();
-                });
-              }); // end of https get
-
-            }
-          ); // end of forEach
-
-        } // end of else
-      } // end of GitHubAPI callback
-    ); // end of GitHubAPI repos.getFromUser()*/
+    //const token = fs.readFileSync(path.join(__dirname, '..', 'token.token'), 'utf8');
     github.authenticate({
       type: 'oauth',
-      token: token
+      token: fs.readFileSync(path.join(__dirname, '..', 'token.token'), 'utf8')
     });
     github.repos.getAll(
       {
@@ -124,7 +61,7 @@ module.exports.utilities = {
         if(!Array.isArray(data)) console.error('Error. GitHub data is not an array: ', data);
         else {
           var completed = 0;
-          console.log('utilities.importSoft: ' + data.length + ' soft-coded files');
+          console.log('  ' + data.length + ' soft-coded files');
           // GET all 'hard' projects
           const githubRegexId1 = /[\:#]/;
           const githubRegexId2 = /[\._]/;
@@ -153,7 +90,7 @@ module.exports.utilities = {
                 var md = '';
                 res.on('data', (data) => { md += data; });
                 res.on('end', () => {
-                  console.log('utilities.importSoft: ' + project.id);
+                  console.log('    ' + element.name);
                   completed++;
                   project.content[0].html = mdConverter.makeHtml(md);
                   projects.projects.push(project);
@@ -190,6 +127,7 @@ module.exports.utilities = {
 
 // Refresh the projects list
 module.exports.refresh = (projects) => {
+  console.log('Loading projects...');
   projects.projects = [];
   var sort = false;
   var callback = () => {
