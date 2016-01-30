@@ -72,7 +72,7 @@ Object.keys(routes).forEach(
     if (element === 'home') app.get('/(home)?', routes.home);
     else if (element === 'projects') {
       app.get('/projects', (req, res) => {
-        console.log('/projects: Projects array is ' + routes.projects.projects);
+        projects.utilities.shuffle(routes.projects);
         res.render('projects', {
           page: 'projects',
           appTitle: 'Sean\'s Projects',
@@ -96,6 +96,7 @@ app.post('/signup', (req, res) => {
 // POST project search
 app.post('/projects', (req, res) => {
   var searchField = req.body.search;
+  console.log('POST /projects w/ search field: "' + searchField + '"');
   res.send(200);
   //search(searchField);
 });

@@ -7,6 +7,13 @@ var GitHubAPI = require('github');
 var mdConverter = new (require('showdown')).Converter({headerLevelStart: 2});
 
 
+// http://stackoverflow.com/a/6274381
+function shuffle(o){
+    for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+    return o;
+}
+
+
 // Export utility functions, in case that the user wants to use them.
 module.exports.utilities = {
   // Sort projects by updated date (latest has lowest index)
@@ -69,6 +76,8 @@ module.exports.utilities = {
           data.forEach(function(element, index, array) {
             var project = {
               id: (element.name.replace(githubRegexId1, "").replace(githubRegexId2, "-") + '_github'),
+              keywords: ['GitHub'],
+              "progress": Math.floor(Math.random() * 101), // [0,100]
               header: {
                 image: {
                   title: 'My GitHub Avatar',
@@ -93,6 +102,7 @@ module.exports.utilities = {
                   console.log('    ' + element.name);
                   completed++;
                   project.content[0].html = mdConverter.makeHtml(md);
+                  fs.writeFile(path.join(__dirname, '..', 'public', 'static', 'content', 'projects', project.id), JSON.stringify(project), 'utf8', (err) => { if (err) throw err; });
                   projects.projects.push(project);
                   module.exports.utilities.sort(projects);
                   if (completed === array.length) callback();
@@ -101,28 +111,17 @@ module.exports.utilities = {
           }); // end of forEach
         }
     }); // end of repos.getAll()
-    /*
-    var user = GitHubAPI.getUser();
-    user.repos({}, (err, repos) => {
-      if (err) throw err;
-      repos.forEach(function(element, index, array) {
-        console.log('Repo #' + (index + 1) + ': ' + element.name);
+  }, // End of importHard
+  // Shuffle project keywords
+  shuffle: (projects) => {
+    projects.projects.forEach(function(project, index, array) {
+      project.keywords.forEach(function(keyword, index, array) {
+        if (!projects.keywords.contains(keyword)) projects.keywords.push(keyword);
       });
     });
-    github.authenticate({
-      type: 'oauth',
-      token: token
-    });
-    user = GitHubAPI.getUser();
-    user.orgs({}, (err, orgs) => {
-      if (err) throw err;
-      orgs.forEach(function(element, index, array) {
-        console.log('Org #' + (index + 1) + ': ' + element.name);
-      });
-    });*/
+    projects.keywords = shuffle(projects.keywords);
   }
-  // END of utility functions
-}
+} // END of utility functions
 
 
 // Refresh the projects list
@@ -131,7 +130,11 @@ module.exports.refresh = (projects) => {
   projects.projects = [];
   var sort = false;
   var callback = () => {
-    if (sort) module.exports.utilities.sort(projects);
+    if (sort) {
+      console.log('refresh(): All projects have been downloaded, that\'s ' + projects.projects.length + ' projects.');
+      module.exports.utilities.sort(projects);
+      module.exports.utilities.shuffle(projects);
+    }
     else sort = true;
   };
   module.exports.utilities.importHard(projects, callback);
