@@ -24,7 +24,7 @@ main.resume h4 { padding-top: 1vw  }
 /* Main */
 /********/
 
-main.resume { height: auto; margin-top: 3vw }
+main.resume { height: auto; margin-top: 2vw }
   footer.download { background-color: $foreground-color }
     footer.download ul {
       text-align: center;
@@ -50,12 +50,11 @@ main.resume { height: auto; margin-top: 3vw }
 
 /* Extra Small Devices (phones, 480px and up) */ 
 @media ($xsmall) {
-  main.resume { margin-top: 2vw }
+  main.resume { margin-top: 1vw }
 }
 
 /* Small devices (tablets, 768px and up) */
 @media ($small) {
-  main.resume { margin-top: 1vw }
   footer.download li { width: 50% }
 }
 

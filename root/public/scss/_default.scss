@@ -101,7 +101,7 @@ p.time { text-align: right; margin-bottom: 0; padding-bottom: 0.5em }
 small { font-size: 50% }
 code { background-color: $highlight; font-family: 'monospace'; padding: 0.5vw }
 mark { color: $text-color; background-color: $highlight; font-style: italic }
-meter { overflow: hidden; width: 30vw; margin: 0 auto 0.5vw }
+meter { overflow: hidden; width: 50%; margin: 0 auto 0.5vw }
 
 /*********/
 /* Lists */
@@ -157,7 +157,7 @@ body {
 	background-color: $background;
 	font-family: 'lato-regular', sans-serif;
   font-size: 100%;
-  padding: 3vw 1vw;
+  padding: 2vw 1vw;
 	margin: 0 auto;
 }
 header, footer {
@@ -175,11 +175,11 @@ article {
 	height: auto;
   width: auto;
 	margin: 0;
-	margin-top: 3vw;
+	margin-top: 2vw;
   border: 0;
   padding: 0
 }
-footer { margin-top: 3vw }
+footer { margin-top: 2vw }
 
 
 /*******************/
@@ -190,9 +190,9 @@ footer { margin-top: 3vw }
 @media ($xsmall) {
   small { font-size: 60% }
   meter { margin-bottom: 0.3vw }
-  body { padding-top: 2vw; padding-bottom: 2vw }
-  article { margin-top: 2vw }
-  footer { margin-top: 2vw }
+  body { padding-top: 1vw; padding-bottom: 1vw }
+  article { margin-top: 1vw }
+  footer { margin-top: 1vw }
 }
 
 /* Small devices (tablets, 768px and up) */
@@ -204,14 +204,11 @@ footer { margin-top: 3vw }
   h4 { font-size: 1.5em }
   small { font-size: 70% }
   ul > li { display: inline-block }
-  body { padding-top: 1vw; padding-bottom: 1vw }
-  article { margin-top: 1vw }
-  footer { margin-top: 1vw }
 }
 
 /* Medium devices (desktops, 992px and up) */
 @media ($medium) {
-  h2 { font-size: 3 em }
+  h2 { font-size: 3em }
   h4 { font-size: 1.75em }
 }
 
