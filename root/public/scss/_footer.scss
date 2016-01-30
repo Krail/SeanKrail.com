@@ -37,6 +37,8 @@ footer#footer { color: $special-text-color; background-color: $foreground-color;
   a#backtotop { font-style: normal; text-decoration: none; border-bottom-left-radius: 5vw; border-bottom-right-radius: 5vw; padding-top: 2vw }
     a#backtotop p {
       color: currentColor;
+      text-align: center;
+      text-indent: 0;
       font-family: 'lato-heavy';
       font-size: 1.5em;
       margin: 0

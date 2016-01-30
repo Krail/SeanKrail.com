@@ -38,7 +38,7 @@ div.alert span { margin-right: 1vw }
 form {
   display: block;
   margin: 0;
-  margin-top: 1vw;
+  margin-top: 3vw;
   border: 0;
   padding: 0;
   height: 10vw;
@@ -80,7 +80,7 @@ ul.btn-expand-collapse {
 	list-style: none;
 	text-align: center;
 	margin: 0;
-  margin-top: 1vw;
+  margin-top: 3vw;
 	padding: 0
 }
   ul.btn-expand-collapse > li.btn {
@@ -99,7 +99,7 @@ div.btn-collapse {
   line-height: 250%;
   font-size: 1.25em;
   text-align: center;
-  margin-top: 1vw;
+  margin-top: 3vw;
   padding: 0
 }
 
@@ -153,15 +153,19 @@ main#projects { text-align: center }
 
 /* Extra Small Devices (phones, 480px and up) */ 
 @media ($xsmall) {
-  form { height: 8vw }
+  form { height: 8vw; margin-top: 2vw }
+  ul.btn-expand-collapse { margin-top: 2vw }
+  div.btn-collapse { margin-top: 2vw }
 }
 
 /* Small devices (tablets, 768px and up) */
 @media ($small) {
   .glyphicon-search { vertical-align: text-top; font-size: 1em }
-  form { height: 5vw }
+  form { height: 5vw; margin-top: 1vw }
   form > input { font-size: 1.25em }
   header.project > h2 { margin-top: 1vw }
+  ul.btn-expand-collapse { margin-top: 1vw }
+  div.btn-collapse { margin-top: 1vw }
 }
 
 /* Medium devices (desktops, 992px and up) */
