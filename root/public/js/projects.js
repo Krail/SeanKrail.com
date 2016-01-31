@@ -208,9 +208,9 @@ function verifySearchField() {
     });
     letters = false;
   } else $('#letters').slideDown({
-      duration: 500,
-      easing: 'easeInOutQuart'
-    });
+    duration: 500,
+    easing: 'easeInOutQuart'
+  });
 
   // Test search field for 30 characters
   if (string.length <= 30) {
@@ -221,9 +221,9 @@ function verifySearchField() {
     length = false;
   }
   else $('#length').slideDown({
-      duration: 500,
-      easing: 'easeInOutQuart'
-    });
+    duration: 500,
+    easing: 'easeInOutQuart'
+  });
 
   // Disable/enable submit button
   if (letters || length) document.getElementById('submitButton').setAttribute('disabled', true);
@@ -231,9 +231,7 @@ function verifySearchField() {
 
   // Scroll warnings into 
   if (length != (document.getElementById('length').style.display !== 'none')
-     || letters != (document.getElementById('letters').style.display !== 'none')) {
-    scrollToBottom('html, body, header');
-  }
+     || letters != (document.getElementById('letters').style.display !== 'none')) scrollToBottom('html, body, header');
 }
 function sendData() {
   var XHR = new XMLHttpRequest();
@@ -254,7 +252,7 @@ function sendData() {
       }
     });
     for (var i = 0; i < sortedProjects.length; i++) {
-      document.getElementById('projects').insertBefore(document.getElementById(sortedProjects[i].id), (i !== sortedProjects.length) ? document.getElementById(sortedProjects[i+1].id) : null);
+      document.getElementById('projects').insertBefore(document.getElementById(sortedProjects[i].id), ((i !== sortedProjects.length) ? document.getElementById(sortedProjects[i+1].id) : null));
     }
   });
 
