@@ -63,6 +63,16 @@ console.log(TAG + '# of projects: ' + PROJECT_IDS.length + '.');
 })();
 //bubbleAnchors();
 
+// Add onclick event to each mark element
+(function () {
+  for (var i = 0; i < document.getElementsByTagName('mark').length; i++) {
+    document.getElementsByTagName('mark')[i].onclick = function () {
+      if (document.getElementById('search').value && document.getElementById('search').value.length > 0 ) document.getElementById('search').value = this.innerHTML;
+      else document.getElementById('search').value = ', ' + this.innerHTML;
+    };
+  }
+})();
+
 
 
 /* HELPER FUNCTIONS */
@@ -242,7 +252,8 @@ function sendData() {
   // We define what will happen if the data are successfully sent
   XHR.addEventListener("load", function(event) {
     if (event.target.status !== 200) throw 'Error: Server returned "' + event.target.status + ' ' + event.target.statusText + '"';
-    var sortedProjects = JSON.parse(event.target.responseText);
+    var res = JSON.parse(event.target.responseText);
+    var sortedProjects = res.projects;
     sortedProjects.sort(function(a, b) {
       if (a.score < b.score) return 1; // set b (highest) to lower index than a (lowest)
       else if (a.score > b.score) return -1; // set a (highest) to lower index than b (lowest)
@@ -252,10 +263,8 @@ function sendData() {
         else return 0; // do nothing
       }
     });
-    for (var i = 0; i < 2; i++) {
-      for (var j = 0; j < sortedProjects.length; j++) {
-        document.getElementById('projects').insertBefore(document.getElementById(sortedProjects[j].id + 'Article'), (j+1 !== sortedProjects.length) ? document.getElementById(sortedProjects[j+1].id + 'Article') : null);
-      }
+    for (var i = 0; i < sortedProjects.length; i++) {
+      document.getElementById('projects').insertBefore(document.getElementById(sortedProjects[i].id + 'Article'), (i+1 !== sortedProjects.length) ? document.getElementById('projects').children[i] : null);
     }
   });
 

@@ -107,7 +107,9 @@ app.post('/projects', (req, res) => {
   var reloadBool = JSON.parse(req.body.reload.toLowerCase());
   console.log('POST /projects w/ search field: "' + searchField + '" + and reload bool: "' + reloadBool + '"');
   //res.send(200);
-  res.send(search(searchField));
+  var result = {};
+  result.projects = search(searchField);
+  res.send(result);
 });
 
 // Add signup form data to database.
