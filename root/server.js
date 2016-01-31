@@ -145,7 +145,9 @@ function search(searchSubmitted) {
     projectScore[i].updated = routes.projects.projects[i].updated;
     routes.projects.projects[i].keywords.forEach(function(projectKey, index, array) {
       searchKeywords.forEach(function(searchKey, index, array) {
-        if (projectKey === searchKey) projectScore[i].score++;
+        var a = projectKey.toLowerCase(),
+            b = searchKey.toLowerCase();
+        if (a === b || a.includes(b) || b.includes(a)) projectScore[i].score++;
       });
     });
   }
