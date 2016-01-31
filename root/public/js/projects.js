@@ -242,7 +242,7 @@ function sendData() {
   // We define what will happen if the data are successfully sent
   XHR.addEventListener("load", function(event) {
     var sortedProjects = JSON.parse(event.target.responseText);
-    sortedProjects.sort((a, b) => {
+    sortedProjects.sort(function(a, b) {
       if (a.score < b.score) return 1; // set b (highest) to lower index than a (lowest)
       else if (a.score > b.score) return -1; // set a (highest) to lower index than b (lowest)
       else {
