@@ -67,8 +67,10 @@ console.log(TAG + '# of projects: ' + PROJECT_IDS.length + '.');
 (function () {
   for (var i = 0; i < document.getElementsByTagName('mark').length; i++) {
     document.getElementsByTagName('mark')[i].onclick = function () {
-      if (document.getElementById('search').value && document.getElementById('search').value.length > 0 ) document.getElementById('search').value = this.innerHTML;
-      else document.getElementById('search').value = ', ' + this.innerHTML;
+      if (!document.getElementById('search').value || document.getElementById('search').value.length === 0 ) document.getElementById('search').value = this.innerHTML;
+      else if (!document.getElementById('search').value.includes(this.innerHTML)) {
+        document.getElementById('search').value += ', ' + this.innerHTML;
+      }
     };
   }
 })();
@@ -263,9 +265,17 @@ function sendData() {
         else return 0; // do nothing
       }
     });
+    // debug start
+    console.log('Sorted projects:');
+    for (var i = 0; i < sortedProjects.length; i++) console.log(sortedProjects[i].id);
+    for (var i = 0; i < document.getElementById('projects').children.length; i++) console.log(document.getElementById('projects').children[i].id);
+    // debug end
     for (var i = 0; i < sortedProjects.length; i++) {
       document.getElementById('projects').insertBefore(document.getElementById(sortedProjects[i].id + 'Article'), (i+1 !== sortedProjects.length) ? document.getElementById('projects').children[i] : null);
     }
+    // debug start
+    for (var i = 0; i < document.getElementById('projects').children.length; i++) console.log(document.getElementById('projects').children[i].id);
+    // debug end
   });
 
   // We define what will happen in case of error

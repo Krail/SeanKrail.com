@@ -149,7 +149,7 @@ function search(searchSubmitted) {
       searchKeywords.forEach(function(searchKey, index, array) {
         var a = projectKey.toLowerCase(),
             b = searchKey.toLowerCase();
-        if (a === b || a.includes(b) || b.includes(a)) projectScore[i].score++;
+        if (a.includes(b) || b.includes(a)) projectScore[i].score++;
       });
     });
   }
