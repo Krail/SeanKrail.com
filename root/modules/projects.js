@@ -7,13 +7,6 @@ var GitHubAPI = require('github');
 var mdConverter = new (require('showdown')).Converter({headerLevelStart: 2});
 
 
-// http://stackoverflow.com/a/6274381
-function shuffle(o){
-    for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
-    return o;
-}
-
-
 // Export utility functions, in case that the user wants to use them.
 module.exports.utilities = {
   // Shuffle project keywords
@@ -37,7 +30,11 @@ module.exports.utilities = {
     projects.projects.sort((a, b) => {
       if (a.updated < b.updated) return 1; // set b (latest) to lower index than a (oldest)
       else if (a.updated > b.updated) return -1; // set a (latest) to lower index than b (oldest)
-      else return 0; // do nothing
+      else { // last updated on the same date
+        if (a.id > b.id) return 1; // set b (lowest) to lower index than a (highest)
+        else if (a.id < b.id) return -1; // set a (lowest) to lower index than b (highest)
+        else return 0; // do nothing
+      }
     });
   },
   // Import hard-coded projects from static directory

@@ -240,60 +240,66 @@ function verifySearchField() {
   if (length != (document.getElementById('length').style.display !== 'none')
      || letters != (document.getElementById('letters').style.display !== 'none')) scrollToBottom('html, body, header');
 }
-function sendData() {
-  var XHR = new XMLHttpRequest();
+(function () {
+  function sendData() {
+    
+    var XHR = new XMLHttpRequest();
 
-  // We bind the FormData object and the form element
-  var FD  = new FormData(form);
+    // We bind the FormData object and the form element
+    var FD  = new FormData(form);
 
-  // We define what will happen if the data are successfully sent
-  XHR.addEventListener("load", function(event) {
-    if (event.target.status !== 200) throw 'Error: Server returned "' + event.target.status + ' ' + event.target.statusText + '"';
-    var res = JSON.parse(event.target.responseText);
-    var sortedProjects = res.projects;
-    sortedProjects.sort(function(a, b) {
-      if (a.score < b.score) return 1; // set b (highest) to lower index than a (lowest)
-      else if (a.score > b.score) return -1; // set a (highest) to lower index than b (lowest)
-      else {
-        if (a.updated < b.updated) return 1; // set b (latest) to lower index than a (oldest)
-        else if (a.updated > b.updated) return -1; // set a (latest) to lower index than b (oldest)
-        else return 0; // do nothing
+    // We define what will happen if the data are successfully sent
+    XHR.addEventListener("load", function(event) {
+      if (event.target.status !== 200) throw 'Error: Server returned "' + event.target.status + ' ' + event.target.statusText + '"';
+      var res = JSON.parse(event.target.responseText);
+      var sortedProjects = res.projects;
+      sortedProjects.sort(function(a, b) {
+        if (a.score < b.score) return 1; // set b (highest) to lower index than a (lowest)
+        else if (a.score > b.score) return -1; // set a (highest) to lower index than b (lowest)
+        else { // scores are equal
+          if (a.updated < b.updated) return 1; // set b (latest) to lower index than a (oldest)
+          else if (a.updated > b.updated) return -1; // set a (latest) to lower index than b (oldest)
+          else { // last updated on the same date
+            if (a.id > b.id) return 1; // set b (lowest) to lower index than a (highest)
+            else if (a.id < b.id) return -1; // set a (lowest) to lower index than b (highest)
+            else return 0; // do nothing
+          }
+        }
+      });
+      // debug start
+      console.log('Sorted projects:');
+      for (var i = 0; i < sortedProjects.length; i++) console.log(sortedProjects[i].id);
+      for (var i = 0; i < document.getElementById('projects').children.length; i++) console.log(document.getElementById('projects').children[i].id);
+      // debug end
+      for (var i = 0; i < sortedProjects.length; i++) {
+        document.getElementById('projects').insertBefore(document.getElementById(sortedProjects[i].id + 'Article'), (i+1 !== sortedProjects.length) ? document.getElementById('projects').children[i] : null);
       }
+      // debug start
+      for (var i = 0; i < document.getElementById('projects').children.length; i++) console.log(document.getElementById('projects').children[i].id);
+      // debug end
     });
-    // debug start
-    console.log('Sorted projects:');
-    for (var i = 0; i < sortedProjects.length; i++) console.log(sortedProjects[i].id);
-    for (var i = 0; i < document.getElementById('projects').children.length; i++) console.log(document.getElementById('projects').children[i].id);
-    // debug end
-    for (var i = 0; i < sortedProjects.length; i++) {
-      document.getElementById('projects').insertBefore(document.getElementById(sortedProjects[i].id + 'Article'), (i+1 !== sortedProjects.length) ? document.getElementById('projects').children[i] : null);
-    }
-    // debug start
-    for (var i = 0; i < document.getElementById('projects').children.length; i++) console.log(document.getElementById('projects').children[i].id);
-    // debug end
+
+    // We define what will happen in case of error
+    XHR.addEventListener("error", function(event) {
+      alert('Oups! Something goes wrong.');
+    });
+
+    // We setup our request
+    XHR.open('POST', '/projects');
+
+    // The data sent are the one the user provide in the form
+    XHR.send(FD);
+  }
+
+  // We need to access the form element
+  var form = document.getElementById('searchForm');
+
+  // to takeover its submit event.
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+    sendData();
   });
-
-  // We define what will happen in case of error
-  XHR.addEventListener("error", function(event) {
-    alert('Oups! Something goes wrong.');
-  });
-
-  // We setup our request
-  XHR.open('POST', '/projects');
-
-  // The data sent are the one the user provide in the form
-  XHR.send(FD);
-}
-
-// We need to access the form element
-var form = document.getElementById('searchForm');
-
-// to takeover its submit event.
-form.addEventListener('submit', function (event) {
-  event.preventDefault();
-  sendData();
-});
-
+})();
 
 
 /* Squares or rectangles */
