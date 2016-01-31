@@ -11,7 +11,7 @@ block main
   form(id='searchForm', action='/projects', method='post')
     - var placeholder = 'Search for a topic here... (e.g. VLSI, Cadence, Android, JavaScript, etc.)'
     if content.keywords.length >= 3
-      - placeholder = 'Search for a topic here... (e.g. ' + content.keywords[0] + ', ' + content.keywords[1] + ', ' + content.keywords[2] + ', etc.)'
+      - placeholder = 'Search for a topic here... (e.g. ' + content.keywords[0].replace(/_/, ' ') + ', ' + content.keywords[1].replace(/_/, ' ') + ', ' + content.keywords[2].replace(/_/, ' ') + ', etc.)'
     input(id='search', class='search border', name='search', type='text', pattern="^[a-zA-Z0-9 ,.'\-]+$", autocomplete='off', maxlength='60', placeholder=placeholder, oninput='verifySearchField()', required)
     button(id='submitButton', class='btn btn-search border', form='searchForm', type='submit', value='Submit')
       span(class='glyphicon glyphicon-search', aria-hidden='true')

@@ -136,7 +136,7 @@ var signup = function(nameSubmitted, emailSubmitted, previewPreference) {
 
 function search(searchSubmitted) {
   if (!projects.utilities.verifySearchField(searchSubmitted)) throw 'Error: Not a valid search query.';
-  var searchKeywords = searchSubmitted.split(/[ ,.\-]+/);
+  var searchKeywords = searchSubmitted.split(/[ ,\._\-]+/);
   var projectScore = [];
   for (var i = 0; i < routes.projects.projects.length; i++) {
     projectScore[i] = {};

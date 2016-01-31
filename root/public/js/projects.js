@@ -243,9 +243,19 @@ function sendData() {
 
   // We define what will happen if the data are successfully sent
   XHR.addEventListener("load", function(event) {
-    alert(event.target.responseText);
-    console.log(event);
-    console.log(JSON.parse(event.target.responseText));
+    var sortedProjects = JSON.parse(event.target.responseText);
+    sortedProjects.sort((a, b) => {
+      if (a.score < b.score) return 1; // set b (highest) to lower index than a (lowest)
+      else if (a.score > b.score) return -1; // set a (highest) to lower index than b (lowest)
+      else {
+        if (a.updated < b.updated) return 1; // set b (latest) to lower index than a (oldest)
+        else if (a.updated > b.updated) return -1; // set a (latest) to lower index than b (oldest)
+        else return 0; // do nothing
+      }
+    });
+    for (var i = 0; i < sortedProjects.length; i++) {
+      document.getElementById('projects').insertBefore(document.getElementById(sortedProjects[i].id), (i !== sortedProjects.length) ? document.getElementById(sortedProjects[i+1].id) : null);
+    }
   });
 
   // We define what will happen in case of error
