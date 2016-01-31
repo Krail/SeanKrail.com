@@ -252,7 +252,7 @@ function sendData() {
       }
     });
     for (var i = 0; i < sortedProjects.length; i++) {
-      document.getElementById('projects').insertBefore(document.getElementById(sortedProjects[i].id), ((i !== sortedProjects.length) ? document.getElementById(sortedProjects[i+1].id) : null));
+      document.getElementById('projects').insertBefore(document.getElementById(sortedProjects[i].id + 'Article'), ((i !== sortedProjects.length) ? document.getElementById(sortedProjects[i+1].id + 'Article') : null));
     }
   });
 
