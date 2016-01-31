@@ -241,6 +241,7 @@ function sendData() {
 
   // We define what will happen if the data are successfully sent
   XHR.addEventListener("load", function(event) {
+    if (event.target.status !== 200) throw 'Error: Server returned "' + event.target.status + ' ' + event.target.statusText + '"';
     var sortedProjects = JSON.parse(event.target.responseText);
     sortedProjects.sort(function(a, b) {
       if (a.score < b.score) return 1; // set b (highest) to lower index than a (lowest)
@@ -251,8 +252,10 @@ function sendData() {
         else return 0; // do nothing
       }
     });
-    for (var i = 0; i < sortedProjects.length; i++) {
-      document.getElementById('projects').insertBefore(document.getElementById(sortedProjects[i].id + 'Article'), ((i !== sortedProjects.length) ? document.getElementById(sortedProjects[i+1].id + 'Article') : null));
+    for (var i = 0; i < 2; i++) {
+      for (var j = 0; j < sortedProjects.length; j++) {
+        document.getElementById('projects').insertBefore(document.getElementById(sortedProjects[j].id + 'Article'), (j+1 !== sortedProjects.length) ? document.getElementById(sortedProjects[j+1].id + 'Article') : null);
+      }
     }
   });
 
