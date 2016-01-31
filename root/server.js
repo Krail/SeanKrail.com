@@ -43,7 +43,7 @@ app.use(express.static(path.join(__dirname, 'public'), {
 process.title = 'nodeSK';
 app.locals.theme = process.env.THEME; //Make the THEME environment variable available to the app.
 app.locals.version = fs.readFileSync(path.join(__dirname, 'version.version'), 'utf8').replace(/\n$/, '');
-app.locals.url = 'seankrailcom.us-west-2.elasticbeanstalk.com';
+app.locals.url = 'seankrail.com';
 
 
 console.log('*****************************************');
@@ -103,7 +103,7 @@ app.post('/signup', (req, res) => {
 
 // POST project search
 app.post('/projects', (req, res) => {
-  var searchField = req.body.search;
+  var searchField = req.body.search.trim();
   var reloadBool = JSON.parse(req.body.reload.toLowerCase());
   console.log('POST /projects w/ search field: "' + searchField + '" + and reload bool: "' + reloadBool + '"');
   //res.send(200);
