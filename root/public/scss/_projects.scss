@@ -56,8 +56,8 @@ form > input {
   border-top-right-radius: 1vw;
   border-bottom-right-radius: 1vw;
   padding: 0.2vw;
-  padding-left: 1vw;
-  padding-right: 1vw;
+  padding-left: 0.5vw;
+  padding-right: 0.5vw;
   transition: border-color 1s ease-in-out 0s
 }
 form > input:hover { border-color: $hover-color }

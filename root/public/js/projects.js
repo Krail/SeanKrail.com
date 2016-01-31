@@ -26,13 +26,10 @@ var PROJECT_IDS = [],
 /* Initialize the element id's of each project based on the number of projects, this is ran when the javascript tag loads */
 
 // Create the list of projects here
-//function initialize() {
 (function () {
   "use strict";
   var projects = document.getElementsByTagName('article');
   for (var i = 0; i < projects.length; i++) {
-    console.log(TAG + 'initialize(): Below should be project article element');
-    console.log(projects[i]);
     if (projects[i].classList.contains('project')) {
       var children = projects[i].children;
       if (children.length === 2) PROJECT_IDS.push(children[1].getAttribute('id'));
@@ -44,11 +41,9 @@ var PROJECT_IDS = [],
     }
   }
 })();
-//initialize();
 console.log(TAG + '# of projects: ' + PROJECT_IDS.length + '.');
 
-// Make links inside header elements 'bubble'.
-//function bubbleAnchors() {
+// Make links inside header elements 'bubble'
 (function () {
   PROJECT_IDS.forEach(
     function(element, index, array) {
@@ -61,17 +56,17 @@ console.log(TAG + '# of projects: ' + PROJECT_IDS.length + '.');
     }
   );
 })();
-//bubbleAnchors();
 
 // Add onclick event to each mark element
 (function () {
   for (var i = 0; i < document.getElementsByTagName('mark').length; i++) {
-    document.getElementsByTagName('mark')[i].onclick = function () {
+    document.getElementsByTagName('mark')[i].addEventListener('click', function (event) {
+      event.stopPropagation();
       if (!document.getElementById('search').value || document.getElementById('search').value.length === 0 ) document.getElementById('search').value = this.innerHTML;
       else if (!document.getElementById('search').value.includes(this.innerHTML)) {
         document.getElementById('search').value += ', ' + this.innerHTML;
       }
-    };
+    }, false);
   }
 })();
 
