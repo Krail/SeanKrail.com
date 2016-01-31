@@ -245,6 +245,7 @@ function sendData() {
   XHR.addEventListener("load", function(event) {
     alert(event.target.responseText);
     console.log(event);
+    console.log(JSON.parse(event.target.responseText));
   });
 
   // We define what will happen in case of error

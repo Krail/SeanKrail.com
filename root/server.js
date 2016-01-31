@@ -106,8 +106,8 @@ app.post('/projects', (req, res) => {
   var searchField = req.body.search;
   var reloadBool = JSON.parse(req.body.reload.toLowerCase());
   console.log('POST /projects w/ search field: "' + searchField + '" + and reload bool: "' + reloadBool + '"');
-  res.send(200);
-  //search(searchField);
+  //res.send(200);
+  res.send(search(searchField));
 });
 
 // Add signup form data to database.
@@ -133,6 +133,24 @@ var signup = function(nameSubmitted, emailSubmitted, previewPreference) {
     }
   });
 };
+
+function search(searchSubmitted) {
+  if (!projects.utilities.verifySearchField(searchSubmitted)) throw 'Error: Not a valid search query.';
+  var searchKeywords = searchSubmitted.split(/[ ,.\-]+/);
+  var projectScore = [];
+  for (var i = 0; i < routes.projects.projects.length; i++) {
+    projectScore[i] = {};
+    projectScore[i].score = 0;
+    projectScore[i].id = routes.projects.projects[i].id;
+    projectScore[i].updated = routes.projects.projects[i].updated;
+    routes.projects.projects[i].keywords.forEach(function(projectKey, index, array) {
+      searchKeywords.forEach(function(searchKey, index, array) {
+        if (projectKey === searchKey) projectScore[i].score++;
+      });
+    });
+  }
+  return projectScore;
+}
 
 
 http.createServer(app).listen(app.get('port'), () => {
