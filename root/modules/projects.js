@@ -29,7 +29,7 @@ module.exports.utilities = {
       projects.keywords.forEach(function(globalKey, index, array) {
         if (projectKey === globalKey) match = true;
       });
-      if (!match) projects.keywords.push(keyword);
+      if (!match) projects.keywords.push(projectKey);
     });
   },
   // Sort projects by updated date (latest has lowest index)
