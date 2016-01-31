@@ -62,9 +62,13 @@ console.log(TAG + '# of projects: ' + PROJECT_IDS.length + '.');
   for (var i = 0; i < document.getElementsByTagName('mark').length; i++) {
     document.getElementsByTagName('mark')[i].addEventListener('click', function (event) {
       event.stopPropagation();
-      if (!document.getElementById('search').value || document.getElementById('search').value.length === 0 ) document.getElementById('search').value = this.innerHTML;
+      if (!document.getElementById('search').value || document.getElementById('search').value.length === 0 ) {
+        document.getElementById('search').value = this.innerHTML;
+        verifySearchField();
+      }
       else if (!document.getElementById('search').value.includes(this.innerHTML)) {
         document.getElementById('search').value += ', ' + this.innerHTML;
+        verifySearchField();
       }
     }, false);
   }
@@ -239,6 +243,10 @@ function verifySearchField() {
   // Scroll warnings into 
   if (length != (document.getElementById('length').style.display !== 'none')
      || letters != (document.getElementById('letters').style.display !== 'none')) scrollToBottom('html, body, header');
+  
+  // return
+  if (letters || length) return false;
+  else return true;
 }
 (function () {
   function sendData() {
@@ -296,6 +304,7 @@ function verifySearchField() {
 
   // to takeover its submit event.
   form.addEventListener('submit', function (event) {
+    if (!verifySearchField()) { event.preventDefault(); return; }
     if (JSON.parse(document.getElementById('reload').value) === false) {
       event.preventDefault();
       sendData();
