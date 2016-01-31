@@ -266,17 +266,17 @@ function verifySearchField() {
           }
         }
       });
-      // debug start
+      /*// debug start
       console.log('Sorted projects:');
       for (var i = 0; i < sortedProjects.length; i++) console.log(sortedProjects[i].id);
       for (var i = 0; i < document.getElementById('projects').children.length; i++) console.log(document.getElementById('projects').children[i].id);
-      // debug end
+      */// debug end
       for (var i = 0; i < sortedProjects.length; i++) {
         document.getElementById('projects').insertBefore(document.getElementById(sortedProjects[i].id + 'Article'), (i+1 !== sortedProjects.length) ? document.getElementById('projects').children[i] : null);
       }
-      // debug start
+      /*// debug start
       for (var i = 0; i < document.getElementById('projects').children.length; i++) console.log(document.getElementById('projects').children[i].id);
-      // debug end
+      */// debug end
     });
 
     // We define what will happen in case of error
@@ -296,8 +296,10 @@ function verifySearchField() {
 
   // to takeover its submit event.
   form.addEventListener('submit', function (event) {
-    event.preventDefault();
-    sendData();
+    if (JSON.parse(document.getElementById('reload').value) === false) {
+      event.preventDefault();
+      sendData();
+    }
   });
 })();
 
