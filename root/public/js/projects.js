@@ -286,7 +286,7 @@ function verifySearchField() {
           if (a.includes(b) || b.includes(a)) match = true;
         }
         if (match) document.getElementsByTagName('mark')[i].setAttribute('class', 'searched');
-        elsedocument.getElementsByTagName('mark')[i].removeAttribute('class');
+        else document.getElementsByTagName('mark')[i].removeAttribute('class');
       }
     });
 
