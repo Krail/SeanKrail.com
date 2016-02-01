@@ -127,13 +127,14 @@ module.exports.utilities = {
         }
     }); // end of repos.getAll()
   }, // End of importHard
+  // Verify that the search field is valid
   verifySearchField: (searchField) => {
     // Test search field for only letters and space
     // Includes "a-z", "A-Z", "0-9", " ", ",", ".", "'", and "-".
     if (!searchField || searchField.length === 0 || !(/^[a-zA-Z0-9 ,.'\-]+$/.test(searchField))) return false; // invalid
 
-    // Test search field for 30 characters
-    if (searchField.length > 30) return false; // invalid
+    // Test search field for 60 characters
+    if (searchField.length > 60) return false; // invalid
 
     return true; // valid
 

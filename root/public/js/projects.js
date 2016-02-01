@@ -223,8 +223,8 @@ function verifySearchField() {
     easing: 'easeInOutQuart'
   });
 
-  // Test search field for 30 characters
-  if (string.length <= 30) {
+  // Test search field for 60 characters
+  if (string.length <= 60) {
     $('#length').slideUp({
       duration: 500,
       easing: 'easeInOutQuart'
