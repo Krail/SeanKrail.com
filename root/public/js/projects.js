@@ -279,12 +279,14 @@ function verifySearchField() {
       }
       // Add/remove classes to mark elements
       for (var i = 0; i < document.getElementsByTagName('mark').length; i++) {
+        var match = false;
         for (var j = 0; j < res.keywords.length; j++) {
           var a = document.getElementsByTagName('mark')[i].innerHTML.toLowerCase(),
               b = res.keywords[j].toLowerCase();
-          if (a.includes(b) || b.includes(a)) document.getElementsByTagName('mark')[i].setAttribute('class', 'searched');
-          else document.getElementsByTagName('mark')[i].removeAttribute('class');
+          if (a.includes(b) || b.includes(a)) match = true;
         }
+        if (match) document.getElementsByTagName('mark')[i].setAttribute('class', 'searched');
+        elsedocument.getElementsByTagName('mark')[i].removeAttribute('class');
       }
     });
 
