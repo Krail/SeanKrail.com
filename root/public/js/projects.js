@@ -250,7 +250,6 @@ function verifySearchField() {
 }
 (function () {
   function sendData() {
-    
     var XHR = new XMLHttpRequest();
 
     // We bind the FormData object and the form element
@@ -274,17 +273,19 @@ function verifySearchField() {
           }
         }
       });
-      /*// debug start
-      console.log('Sorted projects:');
-      for (var i = 0; i < sortedProjects.length; i++) console.log(sortedProjects[i].id);
-      for (var i = 0; i < document.getElementById('projects').children.length; i++) console.log(document.getElementById('projects').children[i].id);
-      */// debug end
+      // Reorder HTML elements
       for (var i = 0; i < sortedProjects.length; i++) {
         document.getElementById('projects').insertBefore(document.getElementById(sortedProjects[i].id + 'Article'), (i+1 !== sortedProjects.length) ? document.getElementById('projects').children[i] : null);
       }
-      /*// debug start
-      for (var i = 0; i < document.getElementById('projects').children.length; i++) console.log(document.getElementById('projects').children[i].id);
-      */// debug end
+      // Add/remove classes to mark elements
+      for (var i = 0; i < document.getElementsByTagName('mark').length; i++) {
+        for (var j = 0; j < res.keywords.length; j++) {
+          var a = document.getElementsByTagName('mark')[i].innerHTML.toLowerCase(),
+              b = res.keywords[j].toLowerCase();
+          if (a.includes(b) || b.includes(a)) document.getElementsByTagName('mark')[i].setAttribute('class', 'searched');
+          else document.getElementsByTagName('mark')[i].removeAttribute('class');
+        }
+      }
     });
 
     // We define what will happen in case of error

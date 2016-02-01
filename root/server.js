@@ -108,6 +108,7 @@ app.post('/projects', (req, res) => {
   console.log('POST /projects w/ search field: "' + searchField + '" + and reload bool: "' + reloadBool + '"');
   //res.send(200);
   var result = {};
+  result.keywords = searchField.split(/[ ,\._\-]+/);
   result.projects = search(searchField);
   res.send(result);
 });
