@@ -106,14 +106,12 @@ app.post('/projects', (req, res) => {
   var searchField = req.body.search.trim();
   var reloadBool = JSON.parse(req.body.reload.toLowerCase());
   console.log('POST /projects w/ search field: "' + searchField + '" + and reload bool: "' + reloadBool + '"');
-  if (reloadBool) {
-    for (var i = 0; i < routes.projects)
-  }
-  //res.send(200);
   var result = {};
   result.keywords = searchField.split(/[ ,\._\-]+/);
   result.projects = search(searchField);
-  res.send(result);
+  if (reloadBool) {
+    res.send(200);
+  } else res.send(result);
 });
 
 // Add signup form data to database.

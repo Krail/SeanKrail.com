@@ -259,8 +259,8 @@ function verifySearchField() {
     XHR.addEventListener("load", function(event) {
       if (event.target.status !== 200) throw 'Error: Server returned "' + event.target.status + ' ' + event.target.statusText + '"';
       var res = JSON.parse(event.target.responseText);
-      var sortedProjects = res.projects;
-      sortedProjects.sort(function(a, b) {
+      //var sortedProjects = res.projects;
+      //sortedProjects.sort(function(a, b) {
         if (a.score < b.score) return 1; // set b (highest) to lower index than a (lowest)
         else if (a.score > b.score) return -1; // set a (highest) to lower index than b (lowest)
         else { // scores are equal
@@ -274,8 +274,8 @@ function verifySearchField() {
         }
       });
       // Reorder HTML elements
-      for (var i = 0; i < sortedProjects.length; i++) {
-        document.getElementById('projects').insertBefore(document.getElementById(sortedProjects[i].id + 'Article'), (i+1 !== sortedProjects.length) ? document.getElementById('projects').children[i] : null);
+      for (var i = 0; i < res.projects.length; i++) {
+        document.getElementById('projects').insertBefore(document.getElementById(res.projects[i].id + 'Article'), (i+1 !== res.projects.length) ? document.getElementById('projects').children[i] : null);
       }
       // Add/remove classes to mark elements
       for (var i = 0; i < document.getElementsByTagName('mark').length; i++) {
