@@ -61,8 +61,8 @@
 /*********/
 
 a { color: currentColor; font-family: 'lato-thin'; font-style: italic; text-align: center; text-decoration: underline; transition: color 1s ease-in-out 0s }
-a:hover { color: green; text-decoration: overline underline }
-a:active, a:focus { color: purple; text-decoration: overline line-through underline }
+a:hover { color: $hover; text-decoration: overline underline }
+a:active, a:focus { color: $active; text-decoration: overline line-through underline }
 a:focus { outline: none }
 
 

@@ -106,6 +106,9 @@ app.post('/projects', (req, res) => {
   var searchField = req.body.search.trim();
   var reloadBool = JSON.parse(req.body.reload.toLowerCase());
   console.log('POST /projects w/ search field: "' + searchField + '" + and reload bool: "' + reloadBool + '"');
+  if (reloadBool) {
+    for (var i = 0; i < routes.projects)
+  }
   //res.send(200);
   var result = {};
   result.keywords = searchField.split(/[ ,\._\-]+/);
@@ -154,6 +157,19 @@ function search(searchSubmitted) {
       });
     });
   }
+  projectScore.sort(function(a, b) {
+        if (a.score < b.score) return 1; // set b (highest) to lower index than a (lowest)
+        else if (a.score > b.score) return -1; // set a (highest) to lower index than b (lowest)
+        else { // scores are equal
+          if (a.updated < b.updated) return 1; // set b (latest) to lower index than a (oldest)
+          else if (a.updated > b.updated) return -1; // set a (latest) to lower index than b (oldest)
+          else { // last updated on the same date
+            if (a.id > b.id) return 1; // set b (lowest) to lower index than a (highest)
+            else if (a.id < b.id) return -1; // set a (lowest) to lower index than b (highest)
+            else return 0; // do nothing
+          }
+        }
+      });
   return projectScore;
 }
 

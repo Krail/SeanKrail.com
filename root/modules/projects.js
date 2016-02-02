@@ -71,12 +71,11 @@ module.exports.utilities = {
     });
     github.repos.getAll(
       {
-        //user: 'Krail', // required
         type: 'all',
         sort: 'updated',
         direction: 'desc',
         page: 1,
-        per_page: 10
+        per_page: 15
       }, (err, data) => {
         if (err) throw err;
         if(!Array.isArray(data)) console.error('Error. GitHub data is not an array: ', data);
@@ -90,11 +89,13 @@ module.exports.utilities = {
           data.forEach(function(element, index, array) {
             var project = {
               id: (element.name.replace(githubRegexId1, "").replace(githubRegexId2, "-") + '_github'),
+              updated: element.updated_at,
+              url: element.html_url,
               keywords: ['GitHub'],
               "progress": Math.floor(Math.random() * 101), // [0,100]
               header: {
                 image: {
-                  title: 'My GitHub Avatar',
+                  title: element.owner.login === 'Krail' ? 'My GitHub avatar' : 'GitHub avatar of the repository\'s owner',
                   src: element.owner.avatar_url,
                   alt: element.name.replace(githubRegexName, " ")
                 },
@@ -106,8 +107,7 @@ module.exports.utilities = {
                   type: 'readme',
                   html: ''
                 }
-              ],
-              updated: element.updated_at
+              ]
             };
             https.get('https://raw.githubusercontent.com/' + element.full_name + '/master/README.md', (res) => {
                 var md = '';
@@ -126,6 +126,21 @@ module.exports.utilities = {
           }); // end of forEach
         }
     }); // end of repos.getAll()
+    github.authenticate({
+      type: 'oauth',
+      token: fs.readFileSync(path.join(__dirname, '..', 'token.token'), 'utf8')
+    });
+    github.repos.getFromOrg(
+      {
+        org: 'UD-CISC-275-15S', // required
+        type: 'all',
+        page: 1,
+        per_page: 15
+      }, (err, data) => {
+        if (err) throw err;
+        console.log('UD CISC Org');
+        console.log(JSON.stringify(data, null, 2));
+    });
   }, // End of importHard
   // Verify that the search field is valid
   verifySearchField: (searchField) => {
