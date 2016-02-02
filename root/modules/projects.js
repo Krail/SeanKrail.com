@@ -64,7 +64,6 @@ module.exports.utilities = {
       protocol: 'https',
       host: 'api.github.com'
     });
-    //const token = fs.readFileSync(path.join(__dirname, '..', 'token.token'), 'utf8');
     github.authenticate({
       type: 'oauth',
       token: fs.readFileSync(path.join(__dirname, '..', 'token.token'), 'utf8')
@@ -82,7 +81,7 @@ module.exports.utilities = {
         else {
           var completed = 0;
           console.log('  ' + data.length + ' soft-coded files');
-          // GET all 'hard' projects
+          // GET all 'spft' projects
           const githubRegexId1 = /[\:#]/;
           const githubRegexId2 = /[\._]/;
           const githubRegexName = /[\-_]/;
@@ -126,21 +125,50 @@ module.exports.utilities = {
           }); // end of forEach
         }
     }); // end of repos.getAll()
+    // debug start
     github.authenticate({
       type: 'oauth',
       token: fs.readFileSync(path.join(__dirname, '..', 'token.token'), 'utf8')
     });
-    github.repos.getFromOrg(
+    github.repos.getAll(
       {
-        org: 'UD-CISC-275-15S', // required
-        type: 'all',
+        type: 'private',
+        sort: 'updated',
+        direction: 'desc',
         page: 1,
         per_page: 15
       }, (err, data) => {
         if (err) throw err;
-        console.log('UD CISC Org');
-        console.log(JSON.stringify(data, null, 2));
+        if(!Array.isArray(data)) console.error('Error. GitHub data is not an array: ', data);
+        else {
+          console.log('  ' + data.length + ' private files');
+          data.forEach(function(element, index, array) {
+            console.log(element.name);
+          }); // end of forEach
+        }
+    }); // end of repos.getAll()
+    github.authenticate({
+      type: 'oauth',
+      token: fs.readFileSync(path.join(__dirname, '..', 'token.token'), 'utf8')
     });
+    github.repos.getAll(
+      {
+        type: 'member',
+        sort: 'updated',
+        direction: 'desc',
+        page: 1,
+        per_page: 15
+      }, (err, data) => {
+        if (err) throw err;
+        if(!Array.isArray(data)) console.error('Error. GitHub data is not an array: ', data);
+        else {
+          console.log('  ' + data.length + ' private files');
+          data.forEach(function(element, index, array) {
+            console.log(element.name);
+          }); // end of forEach
+        }
+    }); // end of repos.getAll()
+    // debug end
   }, // End of importHard
   // Verify that the search field is valid
   verifySearchField: (searchField) => {
