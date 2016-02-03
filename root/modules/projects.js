@@ -10,7 +10,7 @@ var mdConverter = new (require('showdown')).Converter({headerLevelStart: 2});
 // Export utility functions, in case that the user wants to use them.
 module.exports.utilities = {
   // Shuffle project keywords
-  shuffle: (projects) => {
+  shuffleKeywords: (projects) => {
     // http://stackoverflow.com/a/6274381
     for(var j, x, i = projects.keywords.length; i; j = Math.floor(Math.random() * i), x = projects.keywords[--i], projects.keywords[i] = projects.keywords[j], projects.keywords[j] = x);
     //projects.keywords = shuffle(projects.keywords);
@@ -26,7 +26,7 @@ module.exports.utilities = {
     });
   },
   // Sort projects by updated date (latest has lowest index)
-  sort: (projects) => {
+  sortByDate: (projects) => {
     projects.projects.sort((a, b) => {
       if (a.updated < b.updated) return 1; // set b (latest) to lower index than a (oldest)
       else if (a.updated > b.updated) return -1; // set a (latest) to lower index than b (oldest)
@@ -47,7 +47,7 @@ module.exports.utilities = {
           fs.readFile(path.join(__dirname, '..', 'public', 'static', 'content', 'projects', element), 'utf8', (err, data) => {
             if (err) throw err;
             projects.projects.push(JSON.parse(data));
-            module.exports.utilities.sort(projects);
+            //module.exports.utilities.sortByDate(projects);
             console.log('    ' + JSON.parse(data).id);
             module.exports.utilities.addKeywords(projects, JSON.parse(data).keywords);
             if (index + 1 === array.length) callback();
@@ -91,7 +91,9 @@ module.exports.utilities = {
               updated: element.updated_at,
               url: element.html_url,
               keywords: ['GitHub'],
-              "progress": Math.floor(Math.random() * 101), // [0,100]
+              progress: Math.floor(Math.random() * 101), // [0,100]
+              software: true,
+              hardware: false,
               header: {
                 image: {
                   title: element.owner.login === 'Krail' ? 'My GitHub avatar' : 'GitHub avatar of the repository\'s owner',
@@ -117,7 +119,7 @@ module.exports.utilities = {
                   project.content[0].html = mdConverter.makeHtml(md);
                   fs.writeFile(path.join(__dirname, '..', 'public', 'static', 'content', 'projects', project.id), JSON.stringify(project), 'utf8', (err) => { if (err) throw err; });
                   projects.projects.push(project);
-                  module.exports.utilities.sort(projects);
+                  //module.exports.utilities.sortByDate(projects);
                   module.exports.utilities.addKeywords(projects, project.keywords);
                   if (completed === array.length) callback();
                 });
@@ -125,50 +127,6 @@ module.exports.utilities = {
           }); // end of forEach
         }
     }); // end of repos.getAll()
-    // debug start
-    github.authenticate({
-      type: 'oauth',
-      token: fs.readFileSync(path.join(__dirname, '..', 'token.token'), 'utf8')
-    });
-    github.repos.getAll(
-      {
-        type: 'private',
-        sort: 'updated',
-        direction: 'desc',
-        page: 1,
-        per_page: 15
-      }, (err, data) => {
-        if (err) throw err;
-        if(!Array.isArray(data)) console.error('Error. GitHub data is not an array: ', data);
-        else {
-          console.log('  ' + data.length + ' private files');
-          data.forEach(function(element, index, array) {
-            console.log(element.name);
-          }); // end of forEach
-        }
-    }); // end of repos.getAll()
-    github.authenticate({
-      type: 'oauth',
-      token: fs.readFileSync(path.join(__dirname, '..', 'token.token'), 'utf8')
-    });
-    github.repos.getAll(
-      {
-        type: 'member',
-        sort: 'updated',
-        direction: 'desc',
-        page: 1,
-        per_page: 15
-      }, (err, data) => {
-        if (err) throw err;
-        if(!Array.isArray(data)) console.error('Error. GitHub data is not an array: ', data);
-        else {
-          console.log('  ' + data.length + ' private files');
-          data.forEach(function(element, index, array) {
-            console.log(element.name);
-          }); // end of forEach
-        }
-    }); // end of repos.getAll()
-    // debug end
   }, // End of importHard
   // Verify that the search field is valid
   verifySearchField: (searchField) => {
@@ -187,14 +145,14 @@ module.exports.utilities = {
 
 // Refresh the projects list
 module.exports.refresh = (projects) => {
-  console.log('Loading projects...');
+  console.log('Refreshing projects...');
   projects.projects = [];
   var sort = false;
   var callback = () => {
     if (sort) {
-      console.log('refresh(): All projects have been downloaded, that\'s ' + projects.projects.length + ' projects.');
-      module.exports.utilities.sort(projects);
-      module.exports.utilities.shuffle(projects);
+      console.log('All ' + projects.projects.length + ' projects have been downloaded');
+      module.exports.utilities.sortByDate(projects);
+      module.exports.utilities.shuffleKeywords(projects);
     }
     else sort = true;
   };

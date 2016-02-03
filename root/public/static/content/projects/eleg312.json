@@ -2,6 +2,8 @@
   "id": "ELEG312Final",
   "keywords": ["Circuits", "Breadboard", "UD"],
   "progress": 100,
+  "software": false,
+  "hardware": true,
   "header": 
   {
     "image":

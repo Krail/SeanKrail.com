@@ -80,7 +80,7 @@ Object.keys(routes).forEach(
     if (element === 'home') app.get('/(home)?', routes.home);
     else if (element === 'projects') {
       app.get('/projects', (req, res) => {
-        projects.utilities.shuffle(routes.projects);
+        projects.utilities.shuffleKeywords(routes.projects);
         res.render('projects', {
           page: 'projects',
           appTitle: 'Sean\'s Projects',

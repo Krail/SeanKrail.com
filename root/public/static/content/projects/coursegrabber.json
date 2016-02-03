@@ -2,6 +2,8 @@
   "id": "CourseGrabber",
   "keywords": ["Android", "Java", "Web_Crawler", "UD"],
   "progress": 70,
+  "software": true,
+  "hardware": false,
   "header":
   {
     "image":
