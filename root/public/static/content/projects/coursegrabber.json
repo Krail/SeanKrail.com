@@ -1,5 +1,6 @@
 {
   "id": "CourseGrabber",
+  "updated": "2015-10",
   "keywords": ["Android", "Java", "Web_Crawler", "UD"],
   "progress": 70,
   "software": true,
@@ -53,6 +54,5 @@
         "The asynchronous task first downloads <a href=\"/static/content/assets/data/coursegrabber/mycalendar-2158.csv\">my class schedule located on my webserver</a>, then utilizies <a title=\"Android's Calendar Contract API\" href='http://developer.android.com/reference/android/provider/CalendarContract.html' onclick=\"toggle('project1')\">Android's Calendar Contract API</a>. The task deletes the current CourseGrabber Calendar, creates a brand new one, converts the csv file events into CourseGrabber events, and adds reminders to each event (or skips this step if the user preferred no reminders)."
       ]
     }
-  ],
-  "updated": "2015-10"
+  ]
 }
