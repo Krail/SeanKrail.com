@@ -13,11 +13,7 @@
       "alt": "A picture of my group and I with our final project for ELEG 312: Microelectronic Circuit Analysis II."
     },
     "heading": "ELEG312 Final Project",
-    "paragraphs":
-    [
-      "Our final project in ELEG312: Microelectonic Circuit Analysis II taught by <a title=\"Professor Martin's UD Page\" href='http://www.ece.udel.edu/research/by-faculty.Richard.Martin.html'>Professor Richard Martin</a>.",
-      "An infrared light-emitting diode (IR LED) to photodiode sensor which plays music when nothing significant is blocking the light's path."
-    ]
+    "paragraph": "Our final project in ELEG312: Microelectonic Circuit Analysis II taught by <a title='Professor Martin's UD Page' href='http://www.ece.udel.edu/research/by-faculty.Richard.Martin.html'>Professor Richard Martin</a>. An infrared light-emitting diode (IR LED) powers a photodiode sensor causing music to play when nothing is blocking the light's path."
   },
   "content":
   [

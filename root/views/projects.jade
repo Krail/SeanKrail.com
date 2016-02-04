@@ -17,22 +17,26 @@ block main
       span(class='glyphicon glyphicon-search', aria-hidden='true')
     input(id='reload', name='reload', type='hidden', value='false', required)
 
-  // Expand or collapse all project articles
-  ul(id='expand-collapse', class='btn btn-expand-collapse border')
-    li(class='btn btn-text', onclick='show()') Expand All #[span(class='glyphicon glyphicon-expand-collapse glyphicon-collapse-down' aria-hidden='true')]
-    li(class='btn btn-text', onclick='hide()') #[span(class='glyphicon glyphicon-expand-collapse glyphicon-collapse-up' aria-hidden='true')] Collapse All
-
-  // Display all project articles as squares or rectangles
-  ul(id='squares-rectangles', class=' btn btn-expand-collapse border')
-    li(id='rectangles', class='btn btn-text', onclick='rectangles()', disabled) Rectangles #[span(class='glyphicon glyphicon-expand-collapse glyphicon glyphicon-th-list' aria-hidden='true')]
-    li(id='squares', class='btn btn-text', onclick='squares()') #[span(class='glyphicon glyphicon-expand-collapse glyphicon glyphicon-th' aria-hidden='true')] Squares
-
+  // 1. Expand/collapse all projects, 2. Display projects as rectangles or squares, 3. Display software projects and/or hardware projects
+  ul(id='projects-ul', class='projects-ul')
+    li
+      ul(class='projects-ul-ul border')
+        li(class='btn btn-text', onclick='show()') Expand All #[span(class='glyphicon glyphicon-expand-collapse glyphicon-collapse-down' aria-hidden='true')]
+        li(class='btn btn-text', onclick='hide()') #[span(class='glyphicon glyphicon-expand-collapse glyphicon-collapse-up' aria-hidden='true')] Collapse All
+    li
+      ul(class='projects-ul-ul border')
+        li(id='rectangles', class='btn btn-text', onclick='rectangles()', active) Rectangles #[span(class='glyphicon glyphicon-expand-collapse glyphicon glyphicon-th-list' aria-hidden='true')]
+        li(id='squares', class='btn btn-text', onclick='squares()') #[span(class='glyphicon glyphicon-expand-collapse glyphicon glyphicon-th' aria-hidden='true')] Squares
+    li
+      ul(class='projects-ul-ul border')
+        li(id='software', class='btn btn-text', onclick='software()', active) Software
+        li(id='hardware', class='btn btn-text', onclick='hardware()', active) Hardware
 
   // Project articles
   main(id='projects')
     each pro in content.projects
-      article(id='#{pro.id}Article', class='project', updatedon=pro.updated)
-        header(class='project border', id='#{pro.id}Header', title='Click to expand/collapse project', onclick='toggle(\'#{pro.id}\')')
+      article(id='#{pro.id}Article', class='project-article', updated=pro.updated, software=pro.software, hardware=pro.hardware)
+        header(class='project-header border', id='#{pro.id}Header', title='Click to expand/collapse project', onclick='toggle(\'#{pro.id}\')')
           small(class='updated') Last updated on 
             time(datetime=pro.updated)=(new Date(pro.updated)).toDateString()
           img(title=pro.header.image.title, src=pro.header.image.src, alt=pro.header.image.alt)
@@ -41,11 +45,16 @@ block main
             meter(value=pro.progress, min='0', low='25', high='75', max='100', optimum='100', title=((pro.progress !== 100) ? pro.progress + '% complete' : 'Completed'))=pro.progress + '% complete'
           if pro.keywords
             p(class='keywords')
+              if pro.software && pro.hardware
+                em Software & Hardware |
+              else if pro.software
+                em Software | 
+              else if pro.hardware
+                em Hardware | 
               em Keywords:
               each keyword in pro.keywords
                 mark(title='Click to add this keyword to the search bar')=keyword.replace(/_/, ' ')
-          each paragraph in pro.header.paragraphs
-            p!=paragraph
+          p!=pro.header.paragraph
 
         // Main content
         div(id=pro.id, class='main', style='display:none')
@@ -85,7 +94,7 @@ block main
 
 
   // Collapse all project articles
-  div(id='collapse', class='btn btn-collapse btn-text border', onclick='hide()') #[span(class='glyphicon glyphicon-expand-collapse glyphicon-collapse-up' aria-hidden='true')] Collapse All #[span(class='glyphicon glyphicon-expand-collapse glyphicon-collapse-up' aria-hidden='true')]
+  div(class='btn btn-collapse btn-text border', onclick='hide()') #[span(class='glyphicon glyphicon-expand-collapse glyphicon-collapse-up' aria-hidden='true')] Collapse All #[span(class='glyphicon glyphicon-expand-collapse glyphicon-collapse-up' aria-hidden='true')]
 
 
 block script

@@ -28,6 +28,7 @@ $text-light: $foreground;
 
 /* Default border */
 $border: $foreground;
+$border-inverse: $background;
 
 /* Error/alert/disabled */
 $error-dark: #CC4335;
@@ -42,6 +43,8 @@ $highlight-searched: #CFC;
 $project-hover: #EEF;
 $project-active: #FEF;
 
+/* Transition Duration */
+$transition-duration: 0.25s;
 
 
 

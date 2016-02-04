@@ -20,7 +20,7 @@ header#header { background-color: $foreground-color; border-top-left-radius: 5vw
     border-top-left-radius: 5vw;
     border-top-right-radius: 5vw;
     margin: 0;
-    transition: background-color 1s ease-in-out 0s;
+    transition: background-color $transition-duration ease-in-out 0s;
   }
   a#title:hover { background-color: $hover-color; text-decoration: none }
   a#title:active, a#title:focus { background-color: $active-color; text-decoration: none }

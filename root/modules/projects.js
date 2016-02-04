@@ -101,7 +101,7 @@ module.exports.utilities = {
                   alt: element.name.replace(githubRegexName, " ")
                 },
                 heading: element.name.replace(githubRegexName, " "),
-                paragraphs: [ element.description ]
+                paragraph: element.description
               },
               content: [
                 {

@@ -13,11 +13,7 @@
       "alt": "CourseGrabber"
     },
     "heading": "CourseGrabber <em>(Prototype)</em>",
-    "paragraphs":
-    [
-      "An Android application for current University of Delaware (UD) students.",
-      "Designed for UD students to quickly and easily get their personalized class schedule on their Android smartphone."
-    ]
+    "paragraph": "An Android application for current University of Delaware (UD) students. Designed for UD students to quickly and easily get their personalized class schedule on their Android smartphone."
   },
   "content":
   [

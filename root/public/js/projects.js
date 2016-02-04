@@ -18,7 +18,9 @@ var TAG = 'projects.js :: ';
 
 var PROJECT_IDS = [],
     OPENED = [],
-    RECTANGLES = true;
+    RECTANGLES = true,
+    SOFTWARE = true,
+    HARDWARE = true;
 
 /* INITIALIZATION */
 
@@ -28,17 +30,15 @@ var PROJECT_IDS = [],
 // Create the list of projects here
 (function () {
   "use strict";
-  var projects = document.getElementsByTagName('article');
+  var projects = document.getElementsByClassName('project-article');
   for (var i = 0; i < projects.length; i++) {
-    if (projects[i].classList.contains('project')) {
-      var children = projects[i].children;
-      if (children.length === 2) PROJECT_IDS.push(children[1].getAttribute('id'));
-      else {
-        console.error(TAG + 'Expected two children inside of this project article element');
-        console.error(children);
-      }
-      OPENED.push(false);
+    var children = projects[i].children;
+    if (children.length === 2) PROJECT_IDS.push(children[1].getAttribute('id'));
+    else {
+      console.error(TAG + 'Expected two children inside of this project article element');
+      console.error(children);
     }
+    OPENED.push(false);
   }
 })();
 console.log(TAG + '# of projects: ' + PROJECT_IDS.length + '.');
@@ -164,7 +164,6 @@ function toggle(project_id) {
 /* Expands all projects */
 function show() {
 	"use strict";
-	//pauseAllVideos(); // pause all active videos
   PROJECT_IDS.forEach( // Iterate through all of the projects
     function(element, index, array) {
       if (!OPENED[index]) { // Project is currently closed, open it.
@@ -187,7 +186,6 @@ function hide() {
 	pauseAllVideos(); // pause all active videos
   PROJECT_IDS.forEach(
     function(element, index, array) {
-      console.log()
       if (OPENED[index]) { // Project is currently opened, close it.
         if (!RECTANGLES) square(element);
         pauseAllVideos(element);
@@ -248,9 +246,11 @@ function verifySearchField() {
   if (letters || length) return false;
   else return true;
 }
+
+/* Attach submit listner to form and prevent default action */
 (function () {
   function sendData() {
-    var XHR = new XMLHttpRequest();
+    var XHR = new XMLHttpRequest(); // Instaniate http request
 
     // We bind the FormData object and the form element
     var FD  = new FormData(form);
@@ -259,20 +259,6 @@ function verifySearchField() {
     XHR.addEventListener("load", function(event) {
       if (event.target.status !== 200) throw 'Error: Server returned "' + event.target.status + ' ' + event.target.statusText + '"';
       var res = JSON.parse(event.target.responseText);
-      //var sortedProjects = res.projects;
-      /*sortedProjects.sort(function(a, b) {
-        if (a.score < b.score) return 1; // set b (highest) to lower index than a (lowest)
-        else if (a.score > b.score) return -1; // set a (highest) to lower index than b (lowest)
-        else { // scores are equal
-          if (a.updated < b.updated) return 1; // set b (latest) to lower index than a (oldest)
-          else if (a.updated > b.updated) return -1; // set a (latest) to lower index than b (oldest)
-          else { // last updated on the same date
-            if (a.id > b.id) return 1; // set b (lowest) to lower index than a (highest)
-            else if (a.id < b.id) return -1; // set a (lowest) to lower index than b (highest)
-            else return 0; // do nothing
-          }
-        }
-      });*/
       // Reorder HTML elements
       for (var i = 0; i < res.projects.length; i++) {
         document.getElementById('projects').insertBefore(document.getElementById(res.projects[i].id + 'Article'), (i+1 !== res.projects.length) ? document.getElementById('projects').children[i] : null);
@@ -291,9 +277,7 @@ function verifySearchField() {
     });
 
     // We define what will happen in case of error
-    XHR.addEventListener("error", function(event) {
-      alert('Oups! Something goes wrong.');
-    });
+    XHR.addEventListener("error", function(event) { alert('Oops! Something goes wrong.'); });
 
     // We setup our request
     XHR.open('POST', '/projects');
@@ -318,7 +302,6 @@ function verifySearchField() {
 
 /* Squares or rectangles */
 function square(project_id) {
-  console.log(TAG + 'square(' + project_id + ') called.');
   var header = document.getElementById(project_id + 'Header');
   if (!header) throw 'Error: No such header with id -> ' + project_id + 'Header';
   /*$('#' + project_id + 'Article').animate({
@@ -335,18 +318,14 @@ function square(project_id) {
   }
 }
 function squares() {
-  if (document.getElementById('squares').getAttribute('disabled') === '') return;
-  console.log(TAG + 'squares() called.');
   hide();
+  if (!RECTANGLES) return;
   RECTANGLES = false;
-  document.getElementById('rectangles').removeAttribute('disabled');
-  document.getElementById('squares').setAttribute('disabled', '');
-  document.getElementById('projects').style.margin = '0 -0.5vw';
-  //document.getElementById('expand-collapse').children[0].setAttribute('disabled', '');
+  document.getElementById('rectangles').removeAttribute('active');
+  document.getElementById('squares').setAttribute('active', '');
   PROJECT_IDS.forEach( function(element, index, array) { square(element); });
 }
 function rectangle(project_id) {
-  console.log(TAG + 'rectangle(' + project_id + ') called.');
   var header = document.getElementById(project_id + 'Header');
   if (!header) throw 'Error: No such header with id -> ' + project_id + 'Header';
   document.getElementById(project_id + 'Article').style.display = 'block';
@@ -358,15 +337,47 @@ function rectangle(project_id) {
   }
 }
 function rectangles() {
-  if (document.getElementById('rectangles').getAttribute('disabled') === '') return;
-  console.log(TAG + 'rectangles() called.');
   hide();
+  if (RECTANGLES) return;
   RECTANGLES = true;
-  document.getElementById('rectangles').setAttribute('disabled', '');
-  document.getElementById('squares').removeAttribute('disabled');
-  document.getElementById('projects').style.margin = 0;
-  //document.getElementById('expand-collapse').children[0].removeAttribute('disabled');
+  document.getElementById('rectangles').setAttribute('active', '');
+  document.getElementById('squares').removeAttribute('active');
   PROJECT_IDS.forEach( function(element, index, array) { rectangle(element); });
+}
+
+
+/* Software and/or hardware */
+function software() {
+  if (SOFTWARE) {
+    document.getElementById('software').removeAttribute('active');
+    if (!HARDWARE) hardware();
+    SOFTWARE = false;
+    for (var i = 0; i < document.getElementsByClassName('project-article').length; i++) {
+      if (document.getElementsByClassName('project-article')[i].getAttribute('software') !== null) document.getElementsByClassName('project-article')[i].style.display = 'none';
+    }
+  } else {
+    document.getElementById('software').setAttribute('active','');
+    SOFTWARE = true;
+    for (var i = 0; i < document.getElementsByClassName('project-article').length; i++) {
+      if (document.getElementsByClassName('project-article')[i].getAttribute('software') !== null) document.getElementsByClassName('project-article')[i].removeAttribute('style');
+    }
+  }
+}
+function hardware() {
+  if (HARDWARE) {
+    document.getElementById('hardware').removeAttribute('active');
+    if (!SOFTWARE) software();
+    HARDWARE = false;
+    for (var i = 0; i < document.getElementsByClassName('project-article').length; i++) {
+      if (document.getElementsByClassName('project-article')[i].getAttribute('hardware') !== null) document.getElementsByClassName('project-article')[i].style.display = 'none';
+    }
+  } else {
+    document.getElementById('hardware').setAttribute('active','');
+    HARDWARE = true;
+    for (var i = 0; i < document.getElementsByClassName('project-article').length; i++) {
+      if (document.getElementsByClassName('project-article')[i].getAttribute('hardware') !== null) document.getElementsByClassName('project-article')[i].removeAttribute('style');
+    }
+  }
 }
 
 

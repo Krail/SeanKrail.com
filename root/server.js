@@ -46,9 +46,9 @@ app.locals.version = fs.readFileSync(path.join(__dirname, 'version.version'), 'u
 app.locals.url = 'seankrail.com';
 
 
-console.log('*****************************************');
+console.log('**************************');
 console.log('\n\nVersion: ' + app.locals.version + '\n');
-console.log('*****************************************');
+console.log('**************************');
 
 //console.log(JSON.stringify(process.env));
 
@@ -74,31 +74,20 @@ sass_minify.minify();
 projects.refresh(routes.projects);
 
 
-// GET each page in the /routes/ directory
-Object.keys(routes).forEach(
-  (element, index, array) => {
-    if (element === 'home') app.get('/(home)?', routes.home);
-    else if (element === 'projects') {
-      app.get('/projects', (req, res) => {
-        projects.utilities.shuffleKeywords(routes.projects);
-        res.render('projects', {
-          page: 'projects',
-          appTitle: 'Sean\'s Projects',
-          content: routes.projects
-        });
-      });
-    } else app.get('/' + element, routes[element]);
-  }
-);
+// GET home page
+app.get('/(home)?', routes.home);
 
+// GET resume page
+app.get('/resume', routes.resume);
 
-// POST signup form.
-app.post('/signup', (req, res) => {
-  var nameField = req.body.name,
-      emailField = req.body.email,
-      previewBool = req.body.previewAccess;
-  res.send(200);
-  signup(nameField, emailField, previewBool);
+// GET projects page
+app.get('/projects', (req, res) => {
+  projects.utilities.shuffleKeywords(routes.projects);
+  res.render('projects', {
+    page: 'projects',
+    appTitle: 'Sean\'s Projects',
+    content: routes.projects
+  });
 });
 
 // POST project search
@@ -114,30 +103,8 @@ app.post('/projects', (req, res) => {
   } else res.send(result);
 });
 
-// Add signup form data to database.
-var signup = function(nameSubmitted, emailSubmitted, previewPreference) {
-  var formData = {
-    TableName: config.STARTUP_SIGNUP_TABLE,
-    Item: {
-      email: {'S': emailSubmitted}, 
-      name: {'S': nameSubmitted},
-      preview: {'S': previewPreference}
-    }
-  };
-  db.putItem(formData, (err, data) => {
-    if (err) throw err;
-    else {
-      //console.log('Form data added to database.');
-      var snsMessage = 'New signup: %EMAIL%'; //Send SNS notification containing email from form.
-      snsMessage = snsMessage.replace('%EMAIL%', formData.Item.email['S']);
-      sns.publish({ TopicArn: config.NEW_SIGNUP_TOPIC, Message: snsMessage }, (err, data) => {
-        if (err) throw err;
-        //console.log('SNS message sent.');
-      });  
-    }
-  });
-};
 
+// Sort projects by search criteria
 function search(searchSubmitted) {
   if (!projects.utilities.verifySearchField(searchSubmitted)) throw 'Error: Not a valid search query.';
   var searchKeywords = searchSubmitted.split(/[ ,\._\-]+/);
@@ -170,6 +137,44 @@ function search(searchSubmitted) {
       });
   return projectScore;
 }
+
+
+
+
+// POST signup form.
+app.post('/signup', (req, res) => {
+  var nameField = req.body.name,
+      emailField = req.body.email,
+      previewBool = req.body.previewAccess;
+  res.send(200);
+  signup(nameField, emailField, previewBool);
+});
+
+// Add signup form data to database.
+var signup = function(nameSubmitted, emailSubmitted, previewPreference) {
+  var formData = {
+    TableName: config.STARTUP_SIGNUP_TABLE,
+    Item: {
+      email: {'S': emailSubmitted}, 
+      name: {'S': nameSubmitted},
+      preview: {'S': previewPreference}
+    }
+  };
+  db.putItem(formData, (err, data) => {
+    if (err) throw err;
+    else {
+      console.log('Form data added to database.');
+      var snsMessage = 'New signup: %EMAIL%'; //Send SNS notification containing email from form.
+      snsMessage = snsMessage.replace('%EMAIL%', formData.Item.email['S']);
+      sns.publish({ TopicArn: config.NEW_SIGNUP_TOPIC, Message: snsMessage }, (err, data) => {
+        if (err) throw err;
+        console.log('SNS message sent.');
+      });  
+    }
+  });
+};
+
+
 
 
 http.createServer(app).listen(app.get('port'), () => {

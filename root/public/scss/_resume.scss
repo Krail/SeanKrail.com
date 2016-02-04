@@ -38,7 +38,7 @@ main.resume { height: auto; margin-top: 2vw }
           font-size: 1.25em;
           text-decoration: none;
           padding: 0;
-          transition: background-color 1s ease-in-out 0s
+          transition: background-color $transition-duration ease-in-out 0s
         }
         footer.download a:hover { background-color: $hover-color }
         footer.download a:active { background-color: $active-color }
