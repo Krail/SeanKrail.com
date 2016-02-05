@@ -1,0 +1,58 @@
+@charset 'UTF-8';
+
+
+/**********/
+/* Header */
+/**********/
+
+
+/********/
+/* Main */
+/********/
+
+header#header {
+  color: $text-special;
+  text-align: center;
+  cursor: pointer
+}
+  /* Title :: SeanKrail.com */
+  a#title {
+    display: block;
+    text-decoration: none;
+    background-color: $foreground;
+    border-bottom: 0;
+    border-top-left-radius: 5vw;
+    border-top-right-radius: 5vw;
+    margin: 0;
+    //transition: background-color $transition-duration ease-in-out 0s;
+  }
+  //a#title:hover { background-color: $hover; text-decoration: none }
+  //a#title:active, a#title:focus { background-color: $active; text-decoration: none }
+  a.btn#title:focus { border-color: $active }
+  /* Navagation Bar :: Projects - Home - Resume */
+    nav a.btn { border-top: 0 !important }
+    nav li:first-child a { border-right: 0 }
+    nav li:nth-child(2) a { border-left: 0; border-right: 0 }
+    nav li:last-child a { border-left: 0 }
+    //nav a:hover { color: $text-special }
+    //nav a:focus { border }
+    nav a.btn#page { background-color: $btn-inverse; text-decoration: none }
+    nav a.btn#page:hover { background-color: $hover-inverse }
+    nav a.btn#page:active { background-color: $active-inverse; text-decoration: none }
+    nav a.btn#page:focus { background-color: $btn-inverse; border-color: $active-inverse }
+
+
+/*******************/
+/* Dynamic Styling */
+/*******************/
+
+/* Small devices (tablets, 768px and up) */
+@media ($small) {
+  nav > ul > li { width: 33.333% }
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media ($medium) {  }
+
+/* Large devices (large desktops, 1200px and up) */
+@media ($large) {  }

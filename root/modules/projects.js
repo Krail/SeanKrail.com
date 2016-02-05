@@ -37,20 +37,21 @@ module.exports.utilities = {
       }
     });
   },
-  // Import hard-coded projects from static directory
+  // Import hard-coded projects from public/content/projects directory
   importHard: (projects, callback) => {
     fs.readdir(path.join(__dirname, '..', 'public', 'static', 'content', 'projects'), (err, files) => {
       console.log('  ' + files.length + ' hard-coded files');
-      if (err) throw err;
+      if (err) throw err.formatted;
       files.forEach(
         (element, index, array) => {
           fs.readFile(path.join(__dirname, '..', 'public', 'static', 'content', 'projects', element), 'utf8', (err, data) => {
-            if (err) throw err;
-            projects.projects.push(JSON.parse(data));
-            //module.exports.utilities.sortByDate(projects);
-            console.log('    ' + JSON.parse(data).id);
-            module.exports.utilities.addKeywords(projects, JSON.parse(data).keywords);
+            if (err) throw err.formatted;
+            var json = JSON.parse(data);
+            projects.projects.push(json);
+            console.log('    ' + json.id);
+            module.exports.utilities.addKeywords(projects, json.keywords);
             if (index + 1 === array.length) callback();
+            fs.writeFile(path.join(__dirname, '..', 'public', 'dynamic', 'content', 'projects', json.id + '.json'), data, 'utf8', (err) => { if (err) throw err.formatted; });
           });
         }
       );
@@ -76,7 +77,7 @@ module.exports.utilities = {
         page: 1,
         per_page: 15
       }, (err, data) => {
-        if (err) throw err;
+        if (err) throw err.formatted;
         if(!Array.isArray(data)) console.error('Error. GitHub data is not an array: ', data);
         else {
           var completed = 0;
@@ -90,8 +91,8 @@ module.exports.utilities = {
               id: (element.name.replace(githubRegexId1, "").replace(githubRegexId2, "-") + '_github'),
               updated: element.updated_at,
               url: element.html_url,
-              keywords: ['GitHub'],
-              progress: Math.floor(Math.random() * 101), // [0,100]
+              keywords: element.keywords || ['GitHub'],
+              progress: element.progress || Math.floor(Math.random() * 101), // [0,100]
               software: true,
               hardware: false,
               header: {
@@ -111,19 +112,18 @@ module.exports.utilities = {
               ]
             };
             https.get('https://raw.githubusercontent.com/' + element.full_name + '/master/README.md', (res) => {
-                var md = '';
-                res.on('data', (data) => { md += data; });
-                res.on('end', () => {
-                  console.log('    ' + element.name);
-                  completed++;
-                  project.content[0].html = mdConverter.makeHtml(md);
-                  fs.writeFile(path.join(__dirname, '..', 'public', 'static', 'content', 'projects', project.id), JSON.stringify(project), 'utf8', (err) => { if (err) throw err; });
-                  projects.projects.push(project);
-                  //module.exports.utilities.sortByDate(projects);
-                  module.exports.utilities.addKeywords(projects, project.keywords);
-                  if (completed === array.length) callback();
-                });
-              }); // end of https get
+              var md = '';
+              res.on('data', (data) => { md += data; });
+              res.on('end', () => {
+                console.log('    ' + element.name);
+                completed++;
+                project.content[0].html = mdConverter.makeHtml(md);
+                projects.projects.push(project);
+                module.exports.utilities.addKeywords(projects, project.keywords);
+                if (completed === array.length) callback();
+                fs.writeFile(path.join(__dirname, '..', 'public', 'dynamic', 'content', 'projects', project.id + '.json'), JSON.stringify(project), 'utf8', (err) => { if (err) throw err.formatted; });
+              });
+            }); // end of https get
           }); // end of forEach
         }
     }); // end of repos.getAll()

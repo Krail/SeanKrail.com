@@ -1,0 +1,178 @@
+@charset 'UTF-8';
+
+
+/************/
+/* Projects */
+/************/
+
+
+/**************/
+/* Glyphicons */
+/**************/
+
+.glyphicon-search { vertical-align: baseline; font-size: 0.8em }
+.glyphicon-expand-collapse { vertical-align: baseline }
+
+
+/**********/
+/* Alerts */
+/**********/
+
+div.error {
+  color: $foreground;
+  background-color: $error-light;
+  font-family: 'lato-regular';
+  font-size: 1em;
+  margin: 0;
+  margin-top: 1vw;
+  border-color: $error-dark;
+  padding: 1vw
+}
+div.error span { margin-right: 1vw }
+
+
+/********/
+/* Form */
+/********/
+
+form {
+  display: block;
+  margin: 0;
+  margin-top: 2vw;
+  border: 0;
+  padding: 0;
+  height: 10vw;
+  width: 100%
+}
+form > input {
+  display: inline-block;
+  background-color: $foreground;
+  font-size: 1em;
+  height: 100%;
+  width: 74vw;
+  box-sizing: border-box;
+  vertical-align: top;
+  margin-right: 2vw;
+  border-top-right-radius: 1vw;
+  border-bottom-right-radius: 1vw;
+  padding: 0.2vw;
+  padding-left: 0.5vw;
+  padding-right: 0.5vw;
+  transition: border-color $transition-duration ease-in-out 0s
+}
+form > input:hover { border-color: $hover }
+form > input:active, form > input:focus { outline: none; border-color: $active }
+form > button {
+  height: 100%;
+  width: 20vw;
+  font-size: 1.5em;
+  border-radius: 1vw 0 0 1vw
+}
+
+
+/*****************/
+/* Lists/Buttons */
+/*****************/
+
+ul.projects-ul-ul { box-sizing: border-box; width: 100%; margin-top: 2vw }
+ul.projects-ul-ul li { display: inline-block; box-sizing: border-box; width: 50% }
+ul.projects-ul-ul li button { width: 100% }
+ul.projects-ul-ul li:first-child button { border-right: 0 }
+ul.projects-ul-ul li:last-child button { border-left: 0 }
+
+body > button { width: 100%; margin-top: 2vw }
+
+
+/**************/
+/* Paragraphs */
+/**************/
+
+mark.searched { background-color: $highlight-searched }
+
+
+/********/
+/* Main */
+/********/
+
+main#projects { text-align: center; margin: 0 -2vw }
+  article.project-article > button {
+    overflow: hidden;
+    background-color: $foreground;
+    font-size: 100%;
+    height: auto;
+    width: auto;
+    margin: 0 2vw;
+    padding: 0.5vw;
+    cursor: pointer;
+    transition: margin $transition-duration ease-in-out 0s, border-color $transition-duration ease-in-out 0s
+}
+  article.project-article > button:hover { background-color: $foreground; margin: 0; border-color: $hover }
+  article.project-article > button:active { background-color: $foreground; margin: 0 1vw; border-color: $active }
+  article.projectf-article > button:focus { background-color: $foreground; outline: none; margin: 0 2vw; border: 0.2vw solid $active }
+    small.updated { position: absolute; font-family: 'lato-thin'; right: 3vw; color: $text-grey }
+    article.project-article > button > img { display: none; position: relative; float: left; height: 20vw; width: 20vw; margin: 0 }
+    article.project-article > button > h2 { overflow: hidden; margin: 2vw 0 0.5vw }
+      article.project-article > button > h2 > em { font-family: 'lato-light'; font-style: italic }
+    article.project-article > button > p.keywords { font-family: 'lato-regular'; text-align: center; margin-top: 0 }
+      p.keywords > em { font-style: normal; margin-right: 0.5vw }
+      p.keywords > mark { font-family: 'lato-light'; padding: 0.2vw 0.5vw 0; margin: 0 0.2vw }
+    article.project-article > button > p { overflow: hidden; text-align: left; margin: 0.5em 0; padding: 0.5vw 2vw }
+
+  article.project-article > div.main { display: block; padding: 0 4vw }
+    div.main > section {
+      display: inline-block;
+      background-color: $foreground;
+      text-align: left;
+      text-indent: 2vw;
+      box-sizing: border-box;
+      margin-top: 0.5vw;
+      padding: 1vw;
+      padding-bottom: 0.5vw
+    }
+    div.main > section.section-half { width: 45.75vw; vertical-align: top }
+    div.main > section.section-half-first { margin-right: 0.5vw }
+    div.main > section.section-full { display: block; height: auto; width: auto }
+      section.section-full > .landscape { height: auto; width: 100% }
+      section.section-full > .portrait { height: 50vh; width: auto }
+
+
+/*******************/
+/* Dynamic Styling */
+/*******************/
+
+/* Extra Small Devices (phones, 480px and up) */ 
+@media ($xsmall) {
+  form { height: 8vw; margin-top: 1vw }
+  form > input { width: 80vw; margin-right: 1vw }
+  form > button { width: 15vw }
+  ul.projects-ul-ul { margin-top: 1vw }
+  body > button { margin-top: 1vw }
+}
+
+/* Small devices (tablets, 768px and up) */
+@media ($small) {
+  .glyphicon-search { vertical-align: text-top; font-size: 1em }
+  form { height: 5vw }
+  form > input { width: 85vw }
+  form > button { width: 10vw }
+  ul.projects-ul { margin-top: 1vw }
+  ul.projects-ul > li { margin-right: 1vw }
+  ul.projects-ul > li:last-child { margin-right: 0 }
+  ul.projects-ul-ul { width: 31.333vw; margin-top: 0 }
+  article.project-article > button > h2 { margin-top: 1vw }
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media ($medium) {
+  form { height: 4vw }
+  article.project-article > button > img { display: block }
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media ($large) {
+  .glyphicon-search { vertical-align: baseline }
+  form input { width: 67vw }
+  ul.projects-ul-ul { width: 25.333vw }
+  small.updated { right: 12vw }
+  div.main > section.section-half { width: 35.75vw }
+}

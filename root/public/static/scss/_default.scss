@@ -1,0 +1,240 @@
+@charset 'UTF-8';
+
+
+/***********/
+/* Default */
+/***********/
+
+
+/************************************/
+/* Classes for JavaScript Functions */
+/************************************/
+
+.stop-scrolling { overflow: hidden; height: 100% }
+
+
+/**************/
+/* Glyphicons */
+/**************/
+
+.glyphicon { vertical-align: text-top; font-size: 1em }
+
+
+/**********/
+/* Border */
+/**********/
+
+.border { border: 0.2vw solid $border }
+
+
+/***********/
+/* Buttons */
+/***********/
+
+button {
+  display: inline-block;
+  color: $text-special;
+  background-color: $btn;
+  font-family: 'lato-heavy';
+  font-size: 1.25em;
+  line-height: 250%;
+  text-align: center;
+  text-decoration: none;
+  height: auto;
+  width: auto;
+  margin: 0;
+  padding: 0.5vw 0.25vw;
+  cursor: pointer;
+  transition: background-color $transition-duration ease-in-out 0s, border-color $transition-duration ease-in-out 0s
+}
+button:hover { color: $text-special; background-color: $hover; text-decoration: none; border-color: $border }
+button:active { color: $text-special; background-color: $active; text-decoration: none; border-color: $border }
+button:focus { border-color: $active; outline: none }
+button[disabled] { opacity: 1.0; color: $text-special; background-color: $error-light; border-color: $error-dark; cursor: not-allowed }
+button[active] { background-color: $btn-inverse }
+button[active]:hover { background-color: $hover-inverse }
+button[active]:active { background-color: $active-inverse }
+button[active]:focus { border-color: $active-inverse }
+
+
+/*********/
+/* Links */
+/*********/
+
+a { color: currentColor; font-family: 'lato-thin'; font-style: italic; text-align: center; text-decoration: underline; cursor: pointer; transition: color $transition-duration ease-in-out 0s }
+a:hover { color: $hover; text-decoration: overline underline }
+a:active, a:focus { color: $active; text-decoration: overline line-through underline }
+a:focus { outline: none }
+a.btn {
+  display: block;
+  color: $text-special;
+  background-color: $btn;
+  text-decoration: none;
+  height: auto;
+  width: auto;
+  vertical-align: top;
+  margin: 0;
+  border-radius: 0;
+  padding: 0.5vw 0.25vw;
+  cursor: pointer;
+  transition: background-color $transition-duration ease-in-out 0s, border-color $transition-duration ease-in-out 0s
+}
+a.btn:hover { color: $text-special; background-color: $hover !important; text-decoration: none; border-color: $border }
+a.btn:active { color: $text-special; background-color: $active !important; text-decoration: none; border-color: $border }
+a.btn:focus { color: $text-special; background-color: $btn; text-decoration: none; border-color: $active; outline: none }
+
+
+/************/
+/* Headings */
+/************/
+
+h2::after, h3::after, h4::after {
+	content: '';
+  display: block;
+	border: 0.5vw solid $text-special;
+  border-radius: 1vw;
+	margin: 0.5vw 10% 0
+}
+h1, h2, h3, h4 {
+  color: $text-dark;
+  font-family: 'lato-regular';
+  font-style: normal;
+  text-align: center;
+  cursor: text;
+  margin: 0;
+  padding: 0 2%
+}
+h1 { color: $text-special; font-family: 'lato-black'; font-size: 4.5em; padding: 0 2% }
+h2 { font-size: 1.75em }
+h3 { font-size: 1.5em; padding-top: 0.5vw; padding-bottom: 1vw }
+h4 { font-size: 1.25em; margin-bottom: 1vw }
+
+
+/**************/
+/* Paragraphs */
+/**************/
+
+p { color: $text-dark; text-align: left; text-indent: 2vw; font-family: 'lato-light'; font-size: 1em; cursor: text }
+p.time { text-align: right; margin-bottom: 0; padding-bottom: 0.5em }
+small { font-size: 50% }
+code { background-color: $highlight-code; font-family: monospace; border-radius: 2vw; padding: 0.2vw 2vw }
+mark { color: $text-dark; background-color: $highlight; font-style: italic }
+meter { overflow: hidden; width: 50%; margin: 0 auto 0.5vw; border: 0.2vw solid $border-inverse
+}
+
+/*********/
+/* Lists */
+/*********/
+
+nav { margin: 0; padding: 0 }
+
+ul {
+  display: block;
+  list-style: none;
+  margin: 0;
+  padding: 0
+}
+  ul > li { display: block }
+    ul > li a {
+      display: block;
+      color: $text-special;
+      background-color: $foreground;
+      font-family: 'lato-heavy';
+      font-size: 1.25em;
+      line-height: 250%;
+      font-style: normal;
+      text-decoration: none;
+      margin: 0;
+      padding: 0;
+      transition: color $transition-duration ease-in-out 0s, background-color $transition-duration ease-in-out 0s
+    }
+    ul > li a:hover { color: $text-special; background-color: $hover; text-decoration: none; } 
+    ul > li a:active, ul > li a:focus { color: $text-special; background-color: $active; text-decoration: none; }
+
+
+/*********/
+/* Media */
+/*********/
+
+img, video, iframe {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  border: 0
+}
+
+
+/***********/
+/* Content */
+/***********/
+
+body {
+	display: block;
+  overflow: auto;
+  height: auto;
+	background-color: $background;
+	font-family: 'lato-regular', sans-serif;
+  font-size: 100%;
+  padding: 2vw;
+	margin: 0 auto;
+}
+header, footer {
+  height: auto;
+  width: auto;
+  margin: 0 auto;
+  padding: 0;
+}
+main {
+  overflow: hidden;
+  margin: 0 auto;
+  padding: 0
+}
+article {
+	height: auto;
+  width: auto;
+	margin: 0;
+	margin-top: 2vw;
+  border: 0;
+  padding: 0
+}
+footer { margin-top: 2vw }
+
+
+/*******************/
+/* Dynamic Styling */
+/*******************/
+
+/* Extra Small Devices (phones, 480px and up) */ 
+@media ($xsmall) {
+  h2 { font-size: 2em }
+  small { font-size: 60% }
+  meter { margin-bottom: 0.3vw }
+  article { margin-top: 1vw }
+  footer { margin-top: 1vw }
+}
+
+/* Small devices (tablets, 768px and up) */
+@media ($small) {
+  h2::after, h3::after, h4::after { border-width: 0.2vw }
+  h1 { font-size: 7.5em; padding: 0 5% }
+  h2 { font-size: 2.5em }
+  h3 { font-size: 2em }
+  h4 { font-size: 1.5em }
+  small { font-size: 70% }
+  ul > li { display: inline-block }
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media ($medium) {
+  button { font-size: 1.25em }
+  .btn-text { font-size: 1.25em } // deprecated
+  h2 { font-size: 3em }
+  h4 { font-size: 1.75em }
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media ($large) {
+  body { padding-left: 11vw; padding-right: 11vw }
+  small { font-size: 80% }
+}

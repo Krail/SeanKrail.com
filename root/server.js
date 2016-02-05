@@ -22,14 +22,16 @@ var AWS = require('aws-sdk');
 var sass_minify = require('./modules/sass-minify.js');
 var projects = require('./modules/projects.js');
 
-
+// Instantiate the app
 var app = express();
 
-app.set('port', process.env.PORT || 443);
+
+app.set('port', process.env.PORT || 443); // FOR DEPLOYMENT
+//app.set('port', process.env.PORT || 3000); // FOR DEVELOPMENT @ http://localhost:3000
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
-//app.use(require('serve-favicon')(path.join(__dirname, 'public', 'static', 'content', 'assets', 'images', 'ico', 'favicon.ico')));
-app.use(express.favicon(path.join(__dirname, 'public', 'static', 'content', 'assets', 'images', 'ico', 'favicon.ico')));
+//app.use(require('serve-favicon')(path.join(__dirname, 'public', 'static', 'images', 'favicon.ico')));
+app.use(express.favicon(path.join(__dirname, 'public', 'static', 'images', 'favicon.ico')));
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
 app.use(express.methodOverride());
@@ -139,6 +141,15 @@ function search(searchSubmitted) {
 }
 
 
+// DEBUG GET projects page
+app.get('/projects-button', (req, res) => {
+  projects.utilities.shuffleKeywords(routes.projects);
+  res.render('projects-button', {
+    page: 'projects',
+    appTitle: 'Sean\'s Projects',
+    content: routes.projects
+  });
+});
 
 
 // POST signup form.
@@ -161,20 +172,18 @@ var signup = function(nameSubmitted, emailSubmitted, previewPreference) {
     }
   };
   db.putItem(formData, (err, data) => {
-    if (err) throw err;
+    if (err) throw err.formatted;
     else {
       console.log('Form data added to database.');
       var snsMessage = 'New signup: %EMAIL%'; //Send SNS notification containing email from form.
       snsMessage = snsMessage.replace('%EMAIL%', formData.Item.email['S']);
       sns.publish({ TopicArn: config.NEW_SIGNUP_TOPIC, Message: snsMessage }, (err, data) => {
-        if (err) throw err;
+        if (err) throw err.formatted;
         console.log('SNS message sent.');
       });  
     }
   });
 };
-
-
 
 
 http.createServer(app).listen(app.get('port'), () => {

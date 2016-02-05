@@ -4,39 +4,46 @@ extends layout
 block main
 
   // Error messages
-  div(id='length', class='alert alert-danger', role='alert', style='display:none') #[span(class='glyphicon glyphicon-exclamation-sign' aria-hidden='true')] #[span(class='sr-only') Error:] Shorten your search criteria (60-character maximum)
-  div(id='letters', class='alert alert-danger', role='alert', style='display:none') #[span(class='glyphicon glyphicon-exclamation-sign' aria-hidden='true')] #[span(class='sr-only') Error:] Only letters, spaces, and a few #[i necessary] special characters are allowed in the search field
+  div(id='length', class='error border', role='alert', style='display:none') #[span(class='glyphicon glyphicon-exclamation-sign' aria-hidden='true')] #[span(class='sr-only') Error:] Shorten your search criteria (60-character maximum)
+  div(id='letters', class='error border', role='alert', style='display:none') #[span(class='glyphicon glyphicon-exclamation-sign' aria-hidden='true')] #[span(class='sr-only') Error:] Only letters, spaces, and a few #[i necessary] special characters are allowed in the search field
 
   // Search field
   form(id='searchForm', action='/projects', method='post')
     - var placeholder = 'Search for a topic here... (e.g. VLSI, Cadence, Android, JavaScript, etc.)'
     if content.keywords.length >= 3
       - placeholder = 'Search for a topic here... (e.g. ' + content.keywords[0].replace(/_/, ' ') + ', ' + content.keywords[1].replace(/_/, ' ') + ', ' + content.keywords[2].replace(/_/, ' ') + ', etc.)'
-    input(id='search', class='search border', name='search', type='search', pattern="^[a-zA-Z0-9 ,.'\-]+$", autocomplete='off', maxlength='60', placeholder=placeholder, oninput='verifySearchField()', required)
-    button(id='submitButton', class='btn btn-search border', form='searchForm', type='submit', value='Submit')
+    input(id='search', class='border', name='search', type='search', pattern="^[a-zA-Z0-9 ,.'\-]+$", autocomplete='off', maxlength='60', placeholder=placeholder, oninput='verifySearchField()', required)
+    button(id='submitButton', class='border', form='searchForm', type='submit', value='Submit')
       span(class='glyphicon glyphicon-search', aria-hidden='true')
     input(id='reload', name='reload', type='hidden', value='false', required)
 
   // 1. Expand/collapse all projects, 2. Display projects as rectangles or squares, 3. Display software projects and/or hardware projects
   ul(id='projects-ul', class='projects-ul')
     li
-      ul(class='projects-ul-ul border')
-        li(class='btn btn-text', onclick='show()') Expand All #[span(class='glyphicon glyphicon-expand-collapse glyphicon-collapse-down' aria-hidden='true')]
-        li(class='btn btn-text', onclick='hide()') #[span(class='glyphicon glyphicon-expand-collapse glyphicon-collapse-up' aria-hidden='true')] Collapse All
+      ul(class='projects-ul-ul')
+        li
+          button(class='border', onclick='show()') Expand All #[span(class='glyphicon glyphicon-expand-collapse glyphicon-collapse-down' aria-hidden='true')]
+        li
+          button(class='border', onclick='hide()') #[span(class='glyphicon glyphicon-expand-collapse glyphicon-collapse-up' aria-hidden='true')] Collapse All
     li
-      ul(class='projects-ul-ul border')
-        li(id='rectangles', class='btn btn-text', onclick='rectangles()', active) Rectangles #[span(class='glyphicon glyphicon-expand-collapse glyphicon glyphicon-th-list' aria-hidden='true')]
-        li(id='squares', class='btn btn-text', onclick='squares()') #[span(class='glyphicon glyphicon-expand-collapse glyphicon glyphicon-th' aria-hidden='true')] Squares
+      ul(class='projects-ul-ul')
+        li
+          button(id='rectangles', class='border', onclick='rectangles()', active) Rectangles #[span(class='glyphicon glyphicon-expand-collapse glyphicon glyphicon-th-list' aria-hidden='true')]
+        li
+          button(id='squares', class='border', onclick='squares()') #[span(class='glyphicon glyphicon-expand-collapse glyphicon glyphicon-th' aria-hidden='true')] Squares
     li
-      ul(class='projects-ul-ul border')
-        li(id='software', class='btn btn-text', onclick='software()', active) Software
-        li(id='hardware', class='btn btn-text', onclick='hardware()', active) Hardware
+      ul(class='projects-ul-ul')
+        li
+          button(id='software', class='border', onclick='software()', active) Software
+        li
+          button(id='hardware', class='border', onclick='hardware()', active) Hardware
+
 
   // Project articles
   main(id='projects')
     each pro in content.projects
       article(id='#{pro.id}Article', class='project-article', updated=pro.updated, software=pro.software, hardware=pro.hardware)
-        header(class='project-header border', id='#{pro.id}Header', title='Click to expand/collapse project', onclick='toggle(\'#{pro.id}\')')
+        header(id='#{pro.id}Header', class='project-header border', tabindex='0', title='Click to expand/collapse project', onclick='toggle(\'#{pro.id}\')')
           small(class='updated') Last updated on 
             time(datetime=pro.updated)=(new Date(pro.updated)).toDateString()
           img(title=pro.header.image.title, src=pro.header.image.src, alt=pro.header.image.alt)
@@ -94,8 +101,8 @@ block main
 
 
   // Collapse all project articles
-  div(class='btn btn-collapse btn-text border', onclick='hide()') #[span(class='glyphicon glyphicon-expand-collapse glyphicon-collapse-up' aria-hidden='true')] Collapse All #[span(class='glyphicon glyphicon-expand-collapse glyphicon-collapse-up' aria-hidden='true')]
+  button(class='border', onclick='hide()') #[span(class='glyphicon glyphicon-expand-collapse glyphicon-collapse-up' aria-hidden='true')] Collapse All #[span(class='glyphicon glyphicon-expand-collapse glyphicon-collapse-up' aria-hidden='true')]
 
 
 block script
-  script(src='/js/projects.min.js')
+  script(src='/dynamic/js/projects.min.js', defer)

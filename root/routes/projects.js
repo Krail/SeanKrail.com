@@ -1,4 +1,4 @@
-module.exports = require('../public/static/content/header-footer.js');
+module.exports = require('../public/static/content/header-footer/header-footer.js');
 
 module.exports.projects = [];
 

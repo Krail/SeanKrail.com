@@ -1,5 +1,5 @@
-var content = require('../public/static/content/header-footer.js');
-content.resume = require('../public/static/content/resume.js');
+var content = require('../public/static/content/header-footer/header-footer.js');
+content.resume = require('../public/static/content/resume/resume.js');
 
 /* GET resume page */
 module.exports = function(req, res) {

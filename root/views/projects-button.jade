@@ -1,0 +1,108 @@
+extends layout
+
+
+block main
+
+  // Error messages
+  div(id='length', class='error border', role='alert', style='display:none') #[span(class='glyphicon glyphicon-exclamation-sign' aria-hidden='true')] #[span(class='sr-only') Error:] Shorten your search criteria (60-character maximum)
+  div(id='letters', class='error border', role='alert', style='display:none') #[span(class='glyphicon glyphicon-exclamation-sign' aria-hidden='true')] #[span(class='sr-only') Error:] Only letters, spaces, and a few #[i necessary] special characters are allowed in the search field
+
+  // Search field
+  form(id='searchForm', action='/projects', method='post')
+    - var placeholder = 'Search for a topic here... (e.g. VLSI, Cadence, Android, JavaScript, etc.)'
+    if content.keywords.length >= 3
+      - placeholder = 'Search for a topic here... (e.g. ' + content.keywords[0].replace(/_/, ' ') + ', ' + content.keywords[1].replace(/_/, ' ') + ', ' + content.keywords[2].replace(/_/, ' ') + ', etc.)'
+    input(id='search', class='border', name='search', type='search', pattern="^[a-zA-Z0-9 ,.'\-]+$", autocomplete='off', maxlength='60', placeholder=placeholder, oninput='verifySearchField()', required)
+    button(id='submitButton', class='border', form='searchForm', type='submit', value='Submit')
+      span(class='glyphicon glyphicon-search', aria-hidden='true')
+    input(id='reload', name='reload', type='hidden', value='false', required)
+
+  // 1. Expand/collapse all projects, 2. Display projects as rectangles or squares, 3. Display software projects and/or hardware projects
+  ul(id='projects-ul', class='projects-ul')
+    li
+      ul(class='projects-ul-ul')
+        li
+          button(class='border', onclick='show()') Expand All #[span(class='glyphicon glyphicon-expand-collapse glyphicon-collapse-down' aria-hidden='true')]
+        li
+          button(class='border', onclick='hide()') #[span(class='glyphicon glyphicon-expand-collapse glyphicon-collapse-up' aria-hidden='true')] Collapse All
+    li
+      ul(class='projects-ul-ul')
+        li
+          button(id='rectangles', class='border', onclick='rectangles()', active) Rectangles #[span(class='glyphicon glyphicon-expand-collapse glyphicon glyphicon-th-list' aria-hidden='true')]
+        li
+          button(id='squares', class='border', onclick='squares()') #[span(class='glyphicon glyphicon-expand-collapse glyphicon glyphicon-th' aria-hidden='true')] Squares
+    li
+      ul(class='projects-ul-ul')
+        li
+          button(id='software', class='border', onclick='software()', active) Software
+        li
+          button(id='hardware', class='border', onclick='hardware()', active) Hardware
+
+
+  // Project articles
+  main(id='projects')
+    each pro in content.projects
+      article(id='#{pro.id}Article', class='project-article', updated=pro.updated, software=pro.software, hardware=pro.hardware)
+        button(id='#{pro.id}Header', class='project-header border', title='Click to expand/collapse project', onclick='toggle(\'#{pro.id}\')')
+          small(class='updated') Last updated on 
+            time(datetime=pro.updated)=(new Date(pro.updated)).toDateString()
+          img(title=pro.header.image.title, src=pro.header.image.src, alt=pro.header.image.alt)
+          h2!=pro.header.heading
+          if pro.progress
+            meter(value=pro.progress, min='0', low='25', high='75', max='100', optimum='100', title=((pro.progress !== 100) ? pro.progress + '% complete' : 'Completed'))=pro.progress + '% complete'
+          if pro.keywords
+            p(class='keywords')
+              if pro.software && pro.hardware
+                em Software & Hardware |
+              else if pro.software
+                em Software | 
+              else if pro.hardware
+                em Hardware | 
+              em Keywords:
+              each keyword in pro.keywords
+                mark(title='Click to add this keyword to the search bar')=keyword.replace(/_/, ' ')
+          p!=pro.header.paragraph
+
+        // Main content
+        div(id=pro.id, class='main', style='display:none')
+          - var firstHalf = true
+          each section in pro.content
+            if section.type === 'readme'
+                section(class='section-full')!=section.html
+            else if section.type === 'half'
+              if firstHalf === true
+                - firstHalf = false
+                section(class='section-half section-half-first')
+                  h4=section.title
+                  each paragraph in section.paragraphs
+                    p!=paragraph
+              else
+                - firstHalf = true
+                section(class='section-half')
+                  h4=section.title
+                  each paragraph in section.paragraphs
+                    p!=paragraph
+            else if section.type === 'full'
+              section(class='section-full')
+                h4=section.title
+                each paragraph in section.paragraphs
+                  p!=paragraph
+            else if section.type === 'video'
+              section(class='section-full section-video')
+                h4=section.title
+                if section.platform === 'vimeo'
+                  iframe(class=section.orientation, src=section.src)
+                else
+                  video(class=section.orientation, src=section.src, controls, loop, muted, preload)
+            else if section.type === 'image'
+              section(class='section-full section-image')
+                h4=section.title
+                img(class=section.orientation, title=section.title, src=section.src)
+
+
+  // Collapse all project articles
+  button(class='border', onclick='hide()') #[span(class='glyphicon glyphicon-expand-collapse glyphicon-collapse-up' aria-hidden='true')] Collapse All #[span(class='glyphicon glyphicon-expand-collapse glyphicon-collapse-up' aria-hidden='true')]
+
+
+block script
+  script(src='/dynamic/js/projects.min.js', defer)
