@@ -11,10 +11,11 @@
 /********/
 
 article.home {
+  background-color: $foreground;
+  box-shadow: $box-shadow;
 	font-family: 'lato-light';
 	font-size: 1em;
   text-align: left;
-  background-color: $foreground;
   border: 0.2vw solid $border;
 	padding: 2vw 2vw 0
 }

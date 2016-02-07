@@ -53,11 +53,16 @@ block main
           if pro.keywords
             p(class='keywords')
               if pro.software && pro.hardware
-                em Software & Hardware |
+                em Software
+                em &
+                em Hardware
+                em |
               else if pro.software
-                em Software | 
+                em Software
+                em |
               else if pro.hardware
-                em Hardware | 
+                em Hardware
+                em |
               em Keywords:
               each keyword in pro.keywords
                 mark(title='Click to add this keyword to the search bar')=keyword.replace(/_/, ' ')

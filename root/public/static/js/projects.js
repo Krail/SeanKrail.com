@@ -204,9 +204,10 @@ function hide() {
 
 /* Search bar function */
 function verifySearchField() {
-  var string = document.getElementById('search').value,
-      letters = true,
-      length = true;
+  var string = document.getElementById('search').value.trim(),
+      letters = false, // assume is it
+      length = false;
+  console.log('Search: "' + string + '"');
 
   // Test search field for only letters and space
   // Includes "a-z", "A-Z", "0-9", " ", ",", ".", "'", and "-".
@@ -215,7 +216,7 @@ function verifySearchField() {
       duration: 500,
       easing: 'easeInOutQuart'
     });
-    letters = false;
+    letters = true;
   } else $('#letters').slideDown({
     duration: 500,
     easing: 'easeInOutQuart'
@@ -227,7 +228,7 @@ function verifySearchField() {
       duration: 500,
       easing: 'easeInOutQuart'
     });
-    length = false;
+    length = true;
   }
   else $('#length').slideDown({
     duration: 500,
@@ -235,21 +236,20 @@ function verifySearchField() {
   });
 
   // Disable/enable submit button
-  if (letters || length) document.getElementById('submitButton').setAttribute('disabled', true);
-  else document.getElementById('submitButton').removeAttribute('disabled');
-
-  // Scroll warnings into 
-  if (length != (document.getElementById('length').style.display !== 'none')
-     || letters != (document.getElementById('letters').style.display !== 'none')) //scrollToBottom('html, body, header');
+  if (letters && length) document.getElementById('submitButton').removeAttribute('disabled');
+  else document.getElementById('submitButton').setAttribute('disabled', true);
   
   // return
-  if (letters || length) return false;
-  else return true;
+  console.log('Verifed Search Field: Valid characters? ' + letters + '. Valid length? ' + (length && string.length !== 0) + '. Therefore valid search? ' + (letters && length && string.length !== 0));
+  if (letters && length && string.length !== 0) return true; // valid
+  else return false; // invalid
 }
 
 /* Attach submit listner to form and prevent default action */
 (function () {
   function sendData() {
+    console.log('data sent'); // debug
+    
     var XHR = new XMLHttpRequest(); // Instaniate http request
 
     // We bind the FormData object and the form element
@@ -259,6 +259,7 @@ function verifySearchField() {
     XHR.addEventListener("load", function(event) {
       if (event.target.status !== 200) throw 'Error: Server returned "' + event.target.status + ' ' + event.target.statusText + '"';
       var res = JSON.parse(event.target.responseText);
+      console.log(res); // debug
       // Reorder HTML elements
       for (var i = 0; i < res.projects.length; i++) {
         document.getElementById('projects').insertBefore(document.getElementById(res.projects[i].id + 'Article'), (i+1 !== res.projects.length) ? document.getElementById('projects').children[i] : null);
@@ -271,6 +272,8 @@ function verifySearchField() {
               b = res.keywords[j].toLowerCase();
           if (a.includes(b) || b.includes(a)) match = true;
         }
+        if (match) console.log('Match'); // debug
+        else console.log('No Match'); // debug
         if (match) document.getElementsByTagName('mark')[i].setAttribute('class', 'searched');
         else document.getElementsByTagName('mark')[i].removeAttribute('class');
       }
@@ -291,11 +294,16 @@ function verifySearchField() {
 
   // to takeover its submit event.
   form.addEventListener('submit', function (event) {
-    if (!verifySearchField()) { event.preventDefault(); return; }
+    if (!verifySearchField()) {
+      console.log('form not submitted: invalid search');
+      event.preventDefault();
+      return;
+    }
     if (JSON.parse(document.getElementById('reload').value) === false) {
+      console.log('form submitted valid search');
       event.preventDefault();
       sendData();
-    }
+    } // else default submit (reloads page)
   });
 })();
 

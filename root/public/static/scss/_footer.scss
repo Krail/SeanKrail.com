@@ -19,8 +19,11 @@
 
 footer#footer {
   color: $text-special;
+  box-shadow: $box-shadow;
   text-align: center;
   cursor: pointer;
+  border-bottom-left-radius: 5vw;
+  border-bottom-right-radius: 5vw
 }
   /* Contact Information */
   footer#footer ul {
@@ -36,10 +39,7 @@ footer#footer {
         width: 100%
       }
         footer#footer a { border-bottom: 0 }
-        footer#footer li:first-child a { border-right: 0 }
-        footer#footer li:last-child a { border-left: 0 }
-        //footer#footer a:hover { color: $text-special }
-        //footer#footer a:active { color: $text-special }
+        footer#footer li:last-child a { border-top: 0 }
   /* Top of the Page Link */
   button#backtotop {
     font-size: 1em;
@@ -74,6 +74,11 @@ footer#footer {
 /* Small devices (tablets, 768px and up) */
 @media ($small) {
   footer#footer li { width: 50% }
+  footer#footer li:first-child a { border-right: 0 }
+  footer#footer li:last-child a {
+    border-left: 0;
+    border-top: 0.2vw solid $border
+  }
   button#backtotop p.version { font-size: 60% }
 }
 

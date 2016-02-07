@@ -25,10 +25,9 @@ main.resume h4 { padding-top: 1vw  }
 /********/
 
 main.resume { height: auto; margin-top: 2vw }
-  footer.download { background-color: $foreground }
-    footer.download ul {
-      text-align: center;
-    }
+img.resume { box-shadow: $box-shadow }
+  footer.download { background-color: $foreground; box-shadow: $box-shadow }
+    footer.download ul { text-align: center }
       footer.download a {
         display: block;
         color: $text-special;
@@ -43,8 +42,7 @@ main.resume { height: auto; margin-top: 2vw }
         padding: 0;
         transition: background-color $transition-duration ease-in-out 0s
       }
-      footer.download li:first-child a { border-right: 0 }
-      footer.download li:last-child a { border-left: 0 }
+      footer.download li:first-child a { border-bottom: 0 }
 
 
 /*******************/
@@ -59,6 +57,11 @@ main.resume { height: auto; margin-top: 2vw }
 /* Small devices (tablets, 768px and up) */
 @media ($small) {
   footer.download li { width: 50% }
+  footer.download li:first-child a {
+    border-right: 0;
+    border-bottom: 0.2vw solid $border
+  }
+  footer.download li:last-child a { border-left: 0 }
 }
 
 /* Medium devices (desktops, 992px and up) */

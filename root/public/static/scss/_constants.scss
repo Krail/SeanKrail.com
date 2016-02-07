@@ -9,6 +9,8 @@
 /* Background colors */
 $background: #CC9;
 $foreground: #FFF;  // #EEE?
+//$box-shadow: 0 0 1em #999; // too buggy
+$box-shadow: none;
 
 /* Button */
 $btn: $foreground;
