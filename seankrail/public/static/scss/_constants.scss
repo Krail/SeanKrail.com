@@ -1,0 +1,58 @@
+@charset 'UTF-8';
+
+
+/**********/
+/* Colors */
+/**********/
+
+
+/* Background colors */
+$background: #CC9;
+$foreground: #FFF;  // #EEE?
+//$box-shadow: 0 0 1em #999; // too buggy
+$box-shadow: none;
+
+/* Button */
+$btn: $foreground;
+$hover: #09C;       // #69C?
+$active: #069;      // #369?
+
+/* Inverse Button */
+$btn-inverse: $hover;
+$hover-inverse: $btn;
+$active-inverse: $active;
+
+/* Text */
+$text-special: $background;
+$text-dark: #333;
+$text-grey: #888;
+$text-light: $foreground;
+
+/* Default border */
+$border: $foreground;
+$border-inverse: $background;
+
+/* Error/alert/disabled */
+$error-dark: #CC4335;
+$error-light: #E74C3C;
+
+/* Highlighter */
+$highlight: #CCF;
+$highlight-code: #FEF;
+$highlight-searched: #CFC;
+
+/* Project Button */
+$project-hover: #EEF;
+$project-active: #FEF;
+
+/* Transition Duration */
+//$transition-duration: 0.25s;
+$transition-duration: 0.15s;
+
+/* #CC9 - Tan */
+/* #069 - Dark Blue  */
+/* #09C - Light Blue */
+/* #E74C3C - Light Red */
+/* #CC4335 - Dark Red */
+/* #CCC - White */
+/* #333 - Black */

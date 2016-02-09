@@ -1,0 +1,21 @@
+extends layout
+
+
+block main
+  main
+    each article in content.home.articles
+      article(class='home')
+        header
+          h3=article.heading
+        each paragraph in article.paragraphs
+          p!=paragraph
+        p(class='time')
+          small
+            - var date = new Date(article.date)
+            time(datetime=(date.toISOString()))=date.toDateString()
+    article(class='home')
+      header
+        h3 Check out my schedule
+      iframe(src='https://calendar.google.com/calendar/embed?src=l8aotp7v24dl1mujcvd1j042fs%40group.calendar.google.com&ctz=America/New_York', style='height: 90vh', frameborder='0', scrolling='no')
+
+block script

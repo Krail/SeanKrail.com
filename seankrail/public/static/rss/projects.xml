@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<rss version="2.0">
+  <channel>
+    <title>Sean's Projects</title>
+    <link>http://www.seankrail.com/projects</link>
+    <description>Projects of mine.</description>
+
+    <lastBuildDate>Thu, 28 Jan 2016 20:45:00 -0500</lastBuildDate>
+    <language>en-us</language>
+    <category>Computer Engineering</category>
+
+    <item>
+      <title>Course Grabber</title>
+      <link>http://www.seankrail.com/projects#coursegrabber</link>
+      <description>An Android app for UD students by a UD student.</description>
+
+      <pubDate>Thu, 28 Jan 2016 20:45:00 -0500</pubDate>
+      <category>Android</category>
+      <category>University of Delaware</category>
+      <guid>http://www.seankrail.com/projects#coursegrabber</guid>
+      
+      <content:encoded>
+        <![CDATA[
+          <p>Test paragraph 1.</p>
+          <p>Test paragraph 2.</p>
+        ]]>
+      </content:encoded>
+
+    </item>
+
+  </channel>
+</rss>

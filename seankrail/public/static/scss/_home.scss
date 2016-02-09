@@ -1,0 +1,39 @@
+@charset 'UTF-8';
+
+
+/********/
+/* Home */
+/********/
+
+
+/********/
+/* Main */
+/********/
+
+article.home {
+  background-color: $foreground;
+  box-shadow: $box-shadow;
+	font-family: 'lato-light';
+	font-size: 1em;
+  text-align: left;
+  border: 0.2vw solid $border;
+	padding: 2vw 2vw 0
+}
+
+
+/*******************/
+/* Dynamic Styling */
+/*******************/
+
+/* Small devices (tablets, 768px and up) */
+@media ($small) {
+  article.home { padding: 0 2vw }
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media ($medium) {
+  article.home { padding: 0 1vw }
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media ($large) {  }

@@ -1,0 +1,91 @@
+@charset 'UTF-8';
+
+
+/************/
+/* Projects */
+/************/
+
+
+/********/
+/* Main */
+/********/
+
+  article.project-article > button {
+    overflow: hidden;
+    box-shadow: $box-shadow;
+    background-color: $foreground;
+    height: auto;
+    width: auto;
+    margin: 0 2vw;
+    padding: 0.5vw;
+    cursor: pointer;
+    transition: margin $transition-duration ease-in-out 0s, border-color $transition-duration ease-in-out 0s
+  }
+  article.project-article > button:hover {
+    background-color: $foreground;
+    margin: 0;
+    border-color: $hover
+  }
+  article.project-article > button:active {
+    background-color: $foreground;
+    margin: 0 1vw;
+    border-color: $active
+  }
+  article.project-article > button:focus {
+    background-color: $foreground;
+    outline: none;
+    margin: 0 2vw;
+    border: 0.2vw solid $active
+  }
+    article.project-article > button > img {
+      display: none;
+      position: relative;
+      float: left;
+      height: 20vw;
+      width: 20vw;
+      margin: 0
+    }
+    article.project-article > button > h2 {
+      overflow: hidden;
+      margin: 2vw 0 0.5vw
+    }
+      article.project-article > button > h2 > em {
+        font-family: 'lato-light';
+        font-style: italic
+      }
+    article.project-article > button > p.keywords {
+      font-family: 'lato-regular';
+      text-align: center;
+      margin-top: 0
+    }
+    article.project-article > button > p {
+      overflow: hidden;
+      text-align: left;
+      width: 85vw;
+      margin: 0.5em auto;
+      padding: 0.5vw 2vw
+    }
+
+
+/*******************/
+/* Dynamic Styling */
+/*******************/
+
+/* Extra Small Devices (phones, 480px and up) */ 
+@media ($xsmall) {  }
+
+/* Small devices (tablets, 768px and up) */
+@media ($small) {
+  article.project-article > button > h2 { margin-top: 1vw }
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media ($medium) {
+  article.project-article > button > img { display: block }
+  article.project-article > button > p { width: 70vw }
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media ($large) {
+  article.project-article > button > p { width: 50vw }
+}

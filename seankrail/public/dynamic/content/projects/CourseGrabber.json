@@ -1,0 +1,58 @@
+{
+  "id": "CourseGrabber",
+  "updated": "2015-10",
+  "keywords": ["Android", "Java", "Web_Crawler", "UD"],
+  "progress": 70,
+  "software": true,
+  "hardware": false,
+  "header":
+  {
+    "image":
+    {
+      "title": "A concept logo for the project",
+      "src": "/static/images/projects/coursegrabber/CourseGrabber.png",
+      "alt": "CourseGrabber"
+    },
+    "heading": "CourseGrabber <em>(Prototype)</em>",
+    "paragraph": "An Android application for current University of Delaware (UD) students. Designed for UD students to quickly and easily get their personalized class schedule on their Android smartphone."
+  },
+  "content":
+  [
+    {
+      "type": "video",
+      "orientation": "portrait",
+      "platform": "vimeo",
+      "title": "Video Demonstration",
+      "__COMMENT__src": "https://www.vimeo.com/seankrail/coursegrabberdemo",
+      "src": "https://player.vimeo.com/video/128703081"
+    },
+    {
+      "type": "full",
+      "title": "How does it work?",
+      "paragraphs":
+      [
+        "My laptop runs a java program that acts as an interface between the student and UDSIS (a UD webpage full of confidential information requiring a  login). Its sole-purpose is to output a student's class schedule in the form of a csv file, upon receiving valid credentials. For now I have <a href='/data/coursegrabber/mycalendar-2158.csv'>my own csv file</a> stored on my web server in public domain.",
+        "Any android device of api 15 and up with the CourseGrabber android application are brought to a screen with a username and password field and two buttons: <i>UPDATE SCHEDULE</i> and <i>UPDATE SETTINGS</i>. In settings, the user can choose whether they want to be reminded <i>x</i> number of minutes before each class starts or if they don't want reminders. When users choose <i>UPDATE SCHEDULE</i> they are presented with a progress bar displaying how long the process is taking (roughly 8-15 seconds long)."
+      ]
+    },
+    {
+      "type": "half",
+      "title": "Web Scraper",
+      "paragraphs":
+      [
+        "A Java program on my laptop starts up a <b>Firefox Web Driver</b> provided by the open source Selenium project. The driver loads up <b>UD's Central Authenication Service</b> webpage. At this point the program requests valid credentials from the user to move on to the next webpage.",
+        "Once the user has successfully signed in, the driver submits the correct info and moves on to the next webpage. Here the driver selects the term which I've chosen for it to look up taking the driver to the term's webpage. The driver then downloads the <b>CSV</b> to a local directory on the machine. Finished, the program then deletes the directory and its contents and shutsdown the driver."
+      ]
+    },
+    {
+      "type": "half",
+      "title": "Android",
+      "paragraphs":
+      [
+        "The application is comprised of a single <b>activity</b>, a <b>dialog box</b>, and an <b>asynchronous task</b> which runs on a separate thread than the application.",
+        "The activity is composed of a login and password box and a login and settings button. The settings button opens up the dialog box which gives the user the option of when they want to be notified before each class (a number inclusively between 5 and 60 by steps of 5) or not be notified at all. The login button starts the asynchronous task.",
+        "The asynchronous task first downloads <a href='/data/coursegrabber/mycalendar-2158.csv'>my class schedule located on my webserver</a>, then utilizies <a title='Android's Calendar Contract API' href='http://developer.android.com/reference/android/provider/CalendarContract.html' onclick=\"toggle('project1')\">Android's Calendar Contract API</a>. The task deletes the current CourseGrabber Calendar, creates a brand new one, converts the csv file events into CourseGrabber events, and adds reminders to each event (or skips this step if the user preferred no reminders)."
+      ]
+    }
+  ]
+}
