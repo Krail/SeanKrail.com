@@ -13,7 +13,7 @@ git add *
 git commit -m "$2: $1"
 git push origin master
 CURDIR=$PWD
-cd ./root/
+cd ./seankrail/
   zip -qr ../releases/$2.zip .
 cd $CURDIR
 exit 0
