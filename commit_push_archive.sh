@@ -8,7 +8,7 @@ if [[ $# -ne 2 ]]; then
   exit 1
 fi
 find . -name '*.DS_Store' -type f -delete
-echo "$2" > ./root/version.version
+echo "$2" > ./seankrail/version.version
 git add *
 git commit -m "$2: $1"
 git push origin master
