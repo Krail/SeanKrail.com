@@ -19,6 +19,9 @@ article.home {
   border: 0.2vw solid $border;
 	padding: 2vw 2vw 0
 }
+article.home > iframe {
+  height: 90vh
+}
 
 
 /*******************/
