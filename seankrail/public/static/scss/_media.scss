@@ -5,6 +5,7 @@
 /* Media Queries */
 /*****************/
 
+/* MOBILE FIRST */
 
 /* Extra Small Devices (phones, 480px and up) */ 
 $xsmall: "min-width : 480px";
@@ -17,3 +18,18 @@ $medium: "min-width: 992px";
 
 /* Large devices (large desktops, 1200px and up) */
 $large: "min-width: 1200px";
+
+
+/* DESKTOP FIRST */
+
+/* Extra Small Devices (phones, below 480px) */ 
+$xsmall-inverse: "max-width : 479px";
+
+/* Small devices (tablets, below 768px) */
+$small-inverse: "max-width: 767px";
+
+/* Medium devices (desktops, below 992px) */
+$medium-inverse: "max-width: 991px";
+
+/* Large devices (large desktops, below 1200px) */
+$large-inverse: "max-width: 1199px";

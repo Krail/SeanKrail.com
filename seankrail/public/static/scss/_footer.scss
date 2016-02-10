@@ -39,7 +39,6 @@ footer#footer {
         width: 100%
       }
         footer#footer a { border-bottom: 0 }
-        footer#footer li:last-child a { border-top: 0 }
   /* Top of the Page Link */
   button#backtotop {
     font-size: 1em;
@@ -71,15 +70,16 @@ footer#footer {
 /* Dynamic Styling */
 /*******************/
 
+/* Small devices (tablets, below 768px) */
+@media ($small-inverse) {
+  footer#footer li:last-child a { border-top: 0 }
+}
+
 /* Small devices (tablets, 768px and up) */
 @media ($small) {
   footer#footer li { width: 50% }
   footer#footer li:first-child a { border-right: 0 }
-  footer#footer li:last-child a {
-    border-left: 0;
-    border-top: 0.2vw solid $border
-  }
-  footer#footer li:last-child a:focus { border-top: 0.2vw solid $active }
+  footer#footer li:last-child a { border-left: 0 }
   button#backtotop p.version { font-size: 60% }
 }
 

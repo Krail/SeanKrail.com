@@ -42,7 +42,6 @@ img.resume { box-shadow: $box-shadow }
         padding: 0;
         transition: background-color $transition-duration ease-in-out 0s
       }
-      footer.download li:first-child a { border-bottom: 0 }
 
 
 /*******************/
@@ -54,14 +53,15 @@ img.resume { box-shadow: $box-shadow }
   main.resume { margin-top: 1vw }
 }
 
+/* Small devices (tablets, below 768px) */
+@media ($small-inverse) {
+  footer.download li:first-child a { border-bottom: 0 }
+}
+
 /* Small devices (tablets, 768px and up) */
 @media ($small) {
   footer.download li { width: 50% }
-  footer.download li:first-child a {
-    border-right: 0;
-    border-bottom: 0.2vw solid $border
-  }
-  footer.download li:first-child a:focus { border-color: $active }
+  footer.download li:first-child a { border-right: 0 }
   footer.download li:last-child a { border-left: 0 }
 }
 

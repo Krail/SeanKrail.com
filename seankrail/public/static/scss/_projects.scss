@@ -143,8 +143,8 @@ main#projects {
   article.project-article > header:focus {
     background-color: $foreground;
     outline: none;
-    margin: 0 2vw;
-    border: 0.2vw solid $active
+    margin: 0 1vw;
+    border-color: $active
   }
     small.updated {
       position: absolute;

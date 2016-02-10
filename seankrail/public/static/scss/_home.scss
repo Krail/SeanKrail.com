@@ -19,23 +19,27 @@ article.home {
   border: 0.2vw solid $border;
 	padding: 2vw 2vw 0
 }
-article.home > iframe {
-  height: 90vh
-}
+article#calendar { display: none; padding-bottom: 2vw }
+article#calendar > iframe { height: 90vh }
 
 
 /*******************/
 /* Dynamic Styling */
 /*******************/
 
+/* Extra Small Devices (phones, 480px and up) */ 
+@media ($xsmall) {  }
+
 /* Small devices (tablets, 768px and up) */
 @media ($small) {
   article.home { padding: 0 2vw }
+  article#calendar { display: block }
 }
 
 /* Medium devices (desktops, 992px and up) */
 @media ($medium) {
   article.home { padding: 0 1vw }
+  article#calendar { padding-bottom: 1vw }
 }
 
 /* Large devices (large desktops, 1200px and up) */
