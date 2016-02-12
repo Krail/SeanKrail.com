@@ -1535,7 +1535,7 @@ article#calendar {
   padding-bottom: 2vw; }
 
 article#calendar > iframe {
-  height: 90vh; }
+  height: 80vh; }
 
 /*******************/
 /* Dynamic Styling */
@@ -1553,9 +1553,15 @@ article#calendar > iframe {
   article.home {
     padding: 0 1vw; }
   article#calendar {
-    padding-bottom: 1vw; } }
+    padding-bottom: 1vw; }
+  article#calendar > iframe {
+    height: 75vh; } }
 
 /* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  article#calendar > iframe {
+    height: 70vh; } }
+
 /**********/
 /* Resume */
 /**********/
