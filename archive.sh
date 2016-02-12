@@ -7,9 +7,9 @@ if [[ $# -ne 1 ]]; then
   exit 1
 fi
 find . -name '*.DS_Store' -type f -delete
-echo "$1" > ./root/version.version
+echo "$1" > ./seankrail/version.version
 CURDIR=$PWD
-cd ./root/
+cd ./seankrail/
   zip -qr ../releases/$1.zip .
 cd $CURDIR
 exit 0
