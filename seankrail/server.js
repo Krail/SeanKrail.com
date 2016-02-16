@@ -81,6 +81,14 @@ app.get('/(home)?', routes.home);
 
 // GET resume page
 app.get('/resume', routes.resume);
+// GET resume in pdf
+app.get('/resume.pdf', (req, res) => {
+  res.download(path.join(__dirname, 'public', 'static', 'images', 'resume', 'KrailSean-Resume.pdf'), 'KrailSean-Resume.pdf', (err) => { if (err) throw err; });
+});
+// GET resume in png
+app.get('/resume.png', (req, res) => {
+  res.download(path.join(__dirname, 'public', 'static', 'images', 'resume', 'KrailSean-Resume.png'), 'KrailSean-Resume.png', (err) => { if (err) throw err; });
+});
 
 // GET projects page
 app.get('/projects', (req, res) => {
