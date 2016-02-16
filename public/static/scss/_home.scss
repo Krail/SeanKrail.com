@@ -1,0 +1,49 @@
+@charset 'UTF-8';
+
+
+/********/
+/* Home */
+/********/
+
+
+/********/
+/* Main */
+/********/
+
+article.home {
+  background-color: $foreground;
+  box-shadow: $box-shadow;
+	font-family: 'lato-light';
+	font-size: 1em;
+  text-align: left;
+  border: 0.2vw solid $border;
+	padding: 2vw 2vw 0
+}
+article#calendar { display: none; padding-bottom: 2vw }
+article#calendar > iframe { height: 80vh }
+
+
+/*******************/
+/* Dynamic Styling */
+/*******************/
+
+/* Extra Small Devices (phones, 480px and up) */ 
+@media ($xsmall) {  }
+
+/* Small devices (tablets, 768px and up) */
+@media ($small) {
+  article.home { padding: 0 2vw }
+  article#calendar { display: block }
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media ($medium) {
+  article.home { padding: 0 1vw }
+  article#calendar { padding-bottom: 1vw }
+  article#calendar > iframe { height: 75vh }
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media ($large) {
+  article#calendar > iframe { height: 70vh }
+}
