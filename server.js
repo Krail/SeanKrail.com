@@ -44,7 +44,7 @@ app.use(express.static(path.join(__dirname, 'public'), {
 }));
 process.title = 'node-seankrail';
 app.locals.theme = process.env.THEME || 'flatly'; //Make the THEME environment variable available to the app.
-app.locals.version = JSON.parse(fs.readFileSync(path.join(__dirname, 'package.json'), 'utf8')).version || 1.0.8;
+app.locals.version = JSON.parse(fs.readFileSync(path.join(__dirname, 'package.json'), 'utf8')).version || '1.0.8';
 app.locals.url = 'seankrail.com';
 
 
