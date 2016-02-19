@@ -72,8 +72,12 @@ sass_minify.sass();
 sass_minify.minify();
 
 
-// Refresh array of projects (hard and soft)
+// Refresh array of projects (hard and soft) on startup
 projects.refresh(routes.projects);
+// Refresh array of projects (hard and soft) at midnight each night
+require('node-schedule').scheduleJob('0 0 * * *', function() {
+  projects.refresh(routes.projects);
+});
 
 
 // GET home page

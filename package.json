@@ -8,6 +8,7 @@
     "jade": "*",
     "aws-sdk": "*",
     "ncp": "*",
+    "node-schedule": "*",
     "node-sass": "*",
     "postcss": "*",
     "autoprefixer": "*",
