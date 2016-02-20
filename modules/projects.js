@@ -90,9 +90,9 @@ module.exports.utilities = {
           const githubRegexName = /[\-_]/;
           data.forEach(function(repo, index, array) {
             //console.log('Current repo: ' + repo.name);
-            var readme = false;
-            var json = false;
-            var png = false;
+            var readmeBool = false;
+            var jsonBool = false;
+            var pngBool = false;
             var project = {
               id: (repo.name.replace(githubRegexId1, "").replace(githubRegexId2, "-") + '-github'),  // Update from /.meta/project.json
               updated: repo.updated_at,
@@ -121,8 +121,8 @@ module.exports.utilities = {
             function finish() {
               completed++;
               console.log('    ' + repo.name + ' (' + completed + ' of ' + array.length + ')');
-              //console.log(repo.name + ': project pushed.');
-              //console.log(project.header.image.src);
+              //console.log('    ' + repo.name + ' (' + completed + ' of ' + array.length + '), readme(' + readmeBool + ') and json(' + jsonBool + ') and png(' + pngBool + ').');
+              //console.log('    ' + repo.name + ' (' + completed + ' of ' + array.length + '), readme(' + readmeBool + ') and json(' + jsonBool + ') and png(' + pngBool + ').');
               projects.projects.push(project);
               module.exports.utilities.addKeywords(projects, project.keywords);
               fs.writeFile(path.join(__dirname, '..', 'public', 'dynamic', 'content', 'projects', project.id + '.json'), JSON.stringify(project), 'utf8', (err) => { if (err) throw err.formatted; });
@@ -135,9 +135,10 @@ module.exports.utilities = {
               res.on('data', (data) => { md += data; });
               res.on('end', () => {
                 project.content[0].html = mdConverter.makeHtml(md);
-                readme = true;
-                console.log(repo.name + ': project loaded readme, json(' + json + ') and png(' + png + ').');
-                if (json && png) finish();
+                readmeBool = true;
+                //console.log('      ' + repo.name + ': loaded readme, json(' + jsonBool + ') and png(' + pngBool + ').');
+                console.log('      ' + repo.name + ': loaded readme');
+                if (jsonBool && pngBool) finish();
               });
             }); // end of https get
             
@@ -164,19 +165,24 @@ module.exports.utilities = {
                         //console.log(repo.name + ': Json download_url -> ' + content.download_url);
                         if (content.download_url)
                             https.get(content.download_url, (res) => {
-                              var json = '';
-                              res.on('data', (data) => { json += data; });
+                              var jsonData = '';
+                              res.on('data', (data) => { jsonData += data; });
                               res.on('end', () => {
-                                json = JSON.parse(json);
-                                if (json.id) project.id = json.id + '-github';
-                                //console.log('Project Keywords: ' + project.keywords + ', Json Keywords: ' + json.keywords);
-                                if (json.keywords) Array.prototype.push.apply(project.keywords, json.keywords);
-                                if (json.progress) project.progress = json.progress;
-                                if (json.software) project.software = json.software;
-                                if (json.hardware) project.hardware = json.hardware;
-                                json = true;
-                                if (readme && png) finish();
-                                else console.log(repo.name + ': project loaded json, readme(' + readme + ') and png(' + png + ').');
+                                jsonData = JSON.parse(jsonData);
+                                if (jsonData.id) project.id = jsonData.id + '-github';
+                                //console.log('Project Keywords: ' + project.keywords + ', Json Keywords: ' + jsonData.keywords);
+                                //if (jsonData.keywords) Array.prototype.push.apply(project.keywords, jsonData.keywords);
+                                if (jsonData.keywords) {
+                                  project.keywords = jsonData.keywords;
+                                  project.keywords.push('GitHub');
+                                }
+                                if (jsonData.progress) project.progress = jsonData.progress;
+                                if (jsonData.software) project.software = jsonData.software;
+                                if (jsonData.hardware) project.hardware = jsonData.hardware;
+                                jsonBool = true;
+                                //console.log('      ' + repo.name + ': loaded json, readme(' + readmeBool + ') and png(' + pngBool + ').');
+                                console.log('      ' + repo.name + ': loaded json');
+                                if (readmeBool && pngBool) finish();
                               });
                             });
                       } else if (/[\.png|\.jpeg|\.gif]$/.test(content.name)) { // Image meta data
@@ -185,19 +191,22 @@ module.exports.utilities = {
                         project.header.image.title = repo.name.replace(githubRegexName, " ") + '\'s logo';
                         project.header.image.src = content.download_url;
                         //console.log(repo.name + ': image updated.');
-                        png = true;
-                        console.log(repo.name + ': project loaded png, readme(' + readme + ') and json(' + json + ').');
-                        if (readme && json) finish();
+                        pngBool = true;
+                        //console.log('      ' + repo.name + ': project loaded png, readme(' + readmeBool + ') and json(' + jsonBool + ').');
+                        console.log('      ' + repo.name + ': loaded png');
+                        if (readmeBool && jsonBool) finish();
                       }
                   });
-                  if (!jsonExists) json = true;
-                  if (!pngExists) png = true;
-                  console.log(repo.name + ': project has meta data, readme(' + readme + ') and json(' + json + ') and png(' + png + ').');
-                  if (readme && json && png) finish();
+                  if (!jsonExists) jsonBool = true;
+                  if (!pngExists) pngBool = true;
+                  //console.log('      ' + repo.name + ': has meta data, readme(' + readmeBool + ') and json(' + jsonBool + ') and png(' + pngBool + ').');
+                  console.log('      ' + repo.name + ': has meta data');
+                  if (readmeBool && jsonBool && pngBool) finish();
                 } else { // No meta data
-                  json = png = true;
-                  console.log(repo.name + ': project doesn\'t have meta data, readme(' + readme + ').');
-                  if (readme) finish();
+                  jsonBool = pngBool = true;
+                  //console.log('      ' + repo.name + ': project doesn\'t have meta data, readme(' + readmeBool + ').');
+                  console.log('      ' + repo.name + ': doesn\'t have meta data');
+                  if (readmeBool) finish();
                 }
             });
             

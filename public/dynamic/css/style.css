@@ -769,7 +769,7 @@ button {
   color: #CC9;
   background-color: #FFF;
   font-family: 'lato-heavy';
-  font-size: 1.25em;
+  font-size: 1.1em;
   line-height: 250%;
   text-align: center;
   text-decoration: none;
@@ -992,6 +992,9 @@ img, video, iframe {
 /***********/
 /* Content */
 /***********/
+html {
+  width: 100vw; }
+
 body {
   display: block;
   overflow: auto;
