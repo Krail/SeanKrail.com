@@ -42,13 +42,15 @@ module.exports.utilities = {
     fs.readdir(path.join(__dirname, '..', 'public', 'static', 'content', 'projects'), (err, files) => {
       console.log('  ' + files.length + ' hard-coded files');
       if (err) throw err.formatted;
+      var completed = 0;
       files.forEach(
         (element, index, array) => {
           fs.readFile(path.join(__dirname, '..', 'public', 'static', 'content', 'projects', element), 'utf8', (err, data) => {
             if (err) throw err.formatted;
+            completed++;
             var json = JSON.parse(data);
             projects.projects.push(json);
-            console.log('    ' + json.id);
+            console.log('    ' + json.id + ' (' + completed + ' of ' + array.length + ')');
             module.exports.utilities.addKeywords(projects, json.keywords);
             if (index + 1 === array.length) callback();
             fs.writeFile(path.join(__dirname, '..', 'public', 'dynamic', 'content', 'projects', json.id + '.json'), data, 'utf8', (err) => { if (err) throw err.formatted; });
@@ -59,6 +61,7 @@ module.exports.utilities = {
   },
   // Import 'soft' GitHub repository projects
   importSoft: (projects, callback) => {
+    const token = fs.readFileSync(path.join(__dirname, '..', 'token.token'), 'utf8');
     // Convert all of my GitHub Repos
     var github = new GitHubAPI({
       version: '3.0.0',
@@ -67,7 +70,7 @@ module.exports.utilities = {
     });
     github.authenticate({
       type: 'oauth',
-      token: fs.readFileSync(path.join(__dirname, '..', 'token.token'), 'utf8')
+      token: token
     });
     github.repos.getAll(
       {
@@ -78,31 +81,34 @@ module.exports.utilities = {
         per_page: 15
       }, (err, data) => {
         if (err) throw err.formatted;
-        if(!Array.isArray(data)) console.error('Error. GitHub data is not an array: ', data);
-        else {
+        if (Array.isArray(data)) {
           var completed = 0;
           console.log('  ' + data.length + ' soft-coded files');
-          // GET all 'spft' projects
+          // GET all 'soft' projects
           const githubRegexId1 = /[\:#]/;
           const githubRegexId2 = /[\._]/;
           const githubRegexName = /[\-_]/;
-          data.forEach(function(element, index, array) {
+          data.forEach(function(repo, index, array) {
+            //console.log('Current repo: ' + repo.name);
+            var readme = false;
+            var json = false;
+            var png = false;
             var project = {
-              id: (element.name.replace(githubRegexId1, "").replace(githubRegexId2, "-") + '_github'),
-              updated: element.updated_at,
-              url: element.html_url,
-              keywords: element.keywords || ['GitHub'],
-              progress: element.progress || Math.floor(Math.random() * 101), // [0,100]
-              software: true,
-              hardware: false,
+              id: (repo.name.replace(githubRegexId1, "").replace(githubRegexId2, "-") + '-github'),  // Update from /.meta/project.json
+              updated: repo.updated_at,
+              url: repo.html_url,
+              keywords: ['GitHub'], // Update from /.meta/project.json
+              progress: Math.floor(Math.random() * 100), // [0,100] // Update from /.meta/project.json
+              software: true, // Update from /.meta/project.json
+              hardware: false, // Update from /.meta/project.json
               header: {
+                heading: repo.name.replace(githubRegexName, " "),
                 image: {
-                  title: element.owner.login === 'Krail' ? 'My GitHub avatar' : 'GitHub avatar of the repository\'s owner',
-                  src: element.owner.avatar_url,
-                  alt: element.name.replace(githubRegexName, " ")
+                  title: repo.owner.login === 'Krail' ? 'My GitHub avatar' : repo.name.replace(githubRegexName, " ") + '\'s GitHub avatar', // Update with /.meta/project.png
+                  src: repo.owner.avatar_url, // Update from /.meta/project.png
+                  alt: repo.name.replace(githubRegexName, " ")
                 },
-                heading: element.name.replace(githubRegexName, " "),
-                paragraph: element.description
+                paragraph: repo.description
               },
               content: [
                 {
@@ -111,19 +117,90 @@ module.exports.utilities = {
                 }
               ]
             };
-            https.get('https://raw.githubusercontent.com/' + element.full_name + '/master/README.md', (res) => {
+            
+            function finish() {
+              completed++;
+              console.log('    ' + repo.name + ' (' + completed + ' of ' + array.length + ')');
+              //console.log(repo.name + ': project pushed.');
+              //console.log(project.header.image.src);
+              projects.projects.push(project);
+              module.exports.utilities.addKeywords(projects, project.keywords);
+              fs.writeFile(path.join(__dirname, '..', 'public', 'dynamic', 'content', 'projects', project.id + '.json'), JSON.stringify(project), 'utf8', (err) => { if (err) throw err.formatted; });
+              if (completed === array.length) callback();
+            }
+            
+            // GET README.md
+            https.get('https://raw.githubusercontent.com/' + repo.full_name + '/' + repo.default_branch + '/README.md', (res) => {
               var md = '';
               res.on('data', (data) => { md += data; });
               res.on('end', () => {
-                console.log('    ' + element.name);
-                completed++;
                 project.content[0].html = mdConverter.makeHtml(md);
-                projects.projects.push(project);
-                module.exports.utilities.addKeywords(projects, project.keywords);
-                if (completed === array.length) callback();
-                fs.writeFile(path.join(__dirname, '..', 'public', 'dynamic', 'content', 'projects', project.id + '.json'), JSON.stringify(project), 'utf8', (err) => { if (err) throw err.formatted; });
+                readme = true;
+                console.log(repo.name + ': project loaded readme, json(' + json + ') and png(' + png + ').');
+                if (json && png) finish();
               });
             }); // end of https get
+            
+            // GET /.meta
+            github.authenticate({
+              type: 'oauth',
+              token: token
+            });
+            github.repos.getContent(
+              {
+                headers: { 'User-Agent': 'Krail' },
+                user: repo.owner.login,
+                repo: repo.name,
+                path: '/.meta'
+              }, (err, data) => {
+                if (data) { // Meta data exists
+                  var jsonExists = false;
+                  var pngExists = false;
+                  data.forEach(
+                    function(content, index, array) {
+                      if(/\.json/.test(content.name)) { // Json meta data
+                        jsonExists = true;
+                        // GET /.meta/*.json
+                        //console.log(repo.name + ': Json download_url -> ' + content.download_url);
+                        if (content.download_url)
+                            https.get(content.download_url, (res) => {
+                              var json = '';
+                              res.on('data', (data) => { json += data; });
+                              res.on('end', () => {
+                                json = JSON.parse(json);
+                                if (json.id) project.id = json.id + '-github';
+                                //console.log('Project Keywords: ' + project.keywords + ', Json Keywords: ' + json.keywords);
+                                if (json.keywords) Array.prototype.push.apply(project.keywords, json.keywords);
+                                if (json.progress) project.progress = json.progress;
+                                if (json.software) project.software = json.software;
+                                if (json.hardware) project.hardware = json.hardware;
+                                json = true;
+                                if (readme && png) finish();
+                                else console.log(repo.name + ': project loaded json, readme(' + readme + ') and png(' + png + ').');
+                              });
+                            });
+                      } else if (/[\.png|\.jpeg|\.gif]$/.test(content.name)) { // Image meta data
+                        pngExists = true;
+                        // GET /.meta/[*.png|*.jpeg|*.gif]
+                        project.header.image.title = repo.name.replace(githubRegexName, " ") + '\'s logo';
+                        project.header.image.src = content.download_url;
+                        //console.log(repo.name + ': image updated.');
+                        png = true;
+                        console.log(repo.name + ': project loaded png, readme(' + readme + ') and json(' + json + ').');
+                        if (readme && json) finish();
+                      }
+                  });
+                  if (!jsonExists) json = true;
+                  if (!pngExists) png = true;
+                  console.log(repo.name + ': project has meta data, readme(' + readme + ') and json(' + json + ') and png(' + png + ').');
+                  if (readme && json && png) finish();
+                } else { // No meta data
+                  json = png = true;
+                  console.log(repo.name + ': project doesn\'t have meta data, readme(' + readme + ').');
+                  if (readme) finish();
+                }
+            });
+            
           }); // end of forEach
         }
     }); // end of repos.getAll()
