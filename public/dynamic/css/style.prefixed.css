@@ -769,7 +769,7 @@ button {
   color: #CC9;
   background-color: #FFF;
   font-family: 'lato-heavy';
-  font-size: 1.1em;
+  font-size: 1em;
   line-height: 250%;
   text-align: center;
   text-decoration: none;
@@ -1067,10 +1067,6 @@ footer {
 
 /* Medium devices (desktops, 992px and up) */
 @media (min-width: 992px) {
-  button {
-    font-size: 1.25em; }
-  .btn-text {
-    font-size: 1.25em; }
   h2 {
     font-size: 3em; }
   h4 {
