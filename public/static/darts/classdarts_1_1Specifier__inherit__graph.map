@@ -1,0 +1,8 @@
+<map id="darts::Specifier" name="darts::Specifier">
+<area shape="rect" id="node2" href="$classdarts_1_1HardwareSpecifier.html" title="darts::HardwareSpecifier" alt="" coords="14,80,181,107"/>
+<area shape="rect" id="node6" href="$classdarts_1_1LimitSpecifier.html" title="darts::LimitSpecifier" alt="" coords="205,80,344,107"/>
+<area shape="rect" id="node7" href="$classdarts_1_1ShareSpecifier.html" title="darts::ShareSpecifier" alt="" coords="368,80,512,107"/>
+<area shape="rect" id="node3" href="$classdarts_1_1HardwareResource.html" title="darts::HardwareResource" alt="" coords="5,155,176,181"/>
+<area shape="rect" id="node4" href="$classdarts_1_1MemoryResource.html" title="darts::MemoryResource" alt="" coords="200,155,363,181"/>
+<area shape="rect" id="node5" href="$classdarts_1_1HeapResource.html" title="darts::HeapResource" alt="" coords="208,229,355,256"/>
+</map>

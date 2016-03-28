@@ -26,8 +26,8 @@ var projects = require('./modules/projects.js');
 var app = express();
 
 
-//app.set('port', process.env.PORT || 443); // FOR DEPLOYMENT
-app.set('port', process.env.PORT || 3000); // FOR DEVELOPMENT @ http://localhost:3000
+app.set('port', process.env.PORT || 443); // FOR DEPLOYMENT
+//app.set('port', process.env.PORT || 3000); // FOR DEVELOPMENT @ http://localhost:3000
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 //app.use(require('serve-favicon')(path.join(__dirname, 'public', 'static', 'images', 'favicon.ico')));
@@ -49,8 +49,10 @@ app.locals.url = 'seankrail.com';
 
 
 console.log('**************************');
-console.log('\n\nVersion: ' + app.locals.version + '\n');
+console.log('\nVersion: ' + app.locals.version + '\n');
 console.log('**************************');
+console.log('\nNode Version: ' + process.version + '\n');
+
 
 //console.log(JSON.stringify(process.env));
 
@@ -84,6 +86,12 @@ require('node-schedule').scheduleJob('0 0 * * *', function() {
 app.get('/(home)?', routes.home);
 
 // GET resume page
+app.get('/darts', (req, res) => {
+  //res.redirect(path.join(__dirname, 'public', 'static', 'darts', 'index.html'));
+  res.redirect('/static/darts/index.html');
+});
+
+// GET resume page
 app.get('/resume', routes.resume);
 // GET resume in pdf
 app.get('/resume.pdf', (req, res) => {
@@ -93,6 +101,7 @@ app.get('/resume.pdf', (req, res) => {
 app.get('/resume.png', (req, res) => {
   res.download(path.join(__dirname, 'public', 'static', 'images', 'resume', 'KrailSean-Resume.png'), 'KrailSean-Resume.png', (err) => { if (err) throw err; });
 });
+
 
 // GET projects page
 app.get('/projects', (req, res) => {
@@ -198,6 +207,4 @@ var signup = function(nameSubmitted, emailSubmitted, previewPreference) {
 };
 
 
-http.createServer(app).listen(app.get('port'), () => {
-  console.log('Express server listening on port ' + app.get('port'));
-});
+http.createServer(app).listen(app.get('port'), () => { console.log('Express server listening on port ' + app.get('port')); });

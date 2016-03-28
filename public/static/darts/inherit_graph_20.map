@@ -1,0 +1,11 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classdarts_1_1Resource.html" title="darts::Resource" alt="" coords="190,5,305,32"/>
+<area shape="rect" id="node2" href="$classdarts_1_1HardwareResource.html" title="darts::HardwareResource" alt="" coords="379,56,549,83"/>
+<area shape="rect" id="node3" href="$classdarts_1_1MemoryResource.html" title="darts::MemoryResource" alt="" coords="383,107,545,133"/>
+<area shape="rect" id="node5" href="$classdarts_1_1NullResource.html" title="darts::NullResource" alt="" coords="395,5,533,32"/>
+<area shape="rect" id="node4" href="$classdarts_1_1HeapResource.html" title="darts::HeapResource" alt="" coords="597,107,744,133"/>
+<area shape="rect" id="node6" href="$classdarts_1_1Specifier.html" title="darts::Specifier" alt="" coords="5,107,116,133"/>
+<area shape="rect" id="node7" href="$classdarts_1_1HardwareSpecifier.html" title="darts::HardwareSpecifier" alt="" coords="164,56,331,83"/>
+<area shape="rect" id="node8" href="$classdarts_1_1LimitSpecifier.html" title="darts::LimitSpecifier" alt="" coords="178,157,317,184"/>
+<area shape="rect" id="node9" href="$classdarts_1_1ShareSpecifier.html" title="darts::ShareSpecifier" alt="" coords="175,107,319,133"/>
+</map>
