@@ -22,6 +22,8 @@ var AWS = require('aws-sdk');
 var sass_minify = require('./modules/sass-minify.js');
 var projects = require('./modules/projects.js');
 
+var LEX = require('letsencrypt-express');
+
 // Instantiate the app
 var app = express();
 
@@ -207,4 +209,25 @@ var signup = function(nameSubmitted, emailSubmitted, previewPreference) {
 };
 
 
-http.createServer(app).listen(app.get('port'), () => { console.log('Express server listening on port ' + app.get('port')); });
+var lex = LEX.create({
+  configDir: require('os').homedir() + '/letsencrypt/etc',
+  approveRegistration: (hostname, approve) => {
+    if (hostname === DOMAIN) {
+      approve(null, {
+        domains: ['seankrail.com'],
+        email: 'i@seankrail.com',
+        agreeTos: true
+      });
+    }
+  }
+});
+
+lex.onRequest = app;
+
+lex.listen([80], [443], () => {
+  var protocol = ('requestCert' in this) ? 'https' : 'http';
+  console.log("Listening at " + protocol + '://localhost:' + this.address().port);
+});
+
+
+//http.createServer(app).listen(app.get('port'), () => { console.log('Express server listening on port ' + app.get('port')); });

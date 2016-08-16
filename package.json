@@ -14,7 +14,8 @@
     "autoprefixer": "*",
     "node-minify": "*",
     "github": "*",
-    "showdown": "*"
+    "showdown": "*",
+    "letsencrypt-express": "*"
   },
   "bugs": { "url": "https://github.com/Krail/SeanKrail.com/issues" }
 }
