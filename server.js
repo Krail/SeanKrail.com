@@ -235,8 +235,8 @@ var signup = function(nameSubmitted, emailSubmitted, previewPreference) {
 //http.createServer(app).listen(app.get('port'), () => { console.log('Express server listening on port ' + app.get('port')); });
 https.createServer({
   key: fs.readFileSync('domain.key'),
-  cert: fs.readFileSync('chained.pem'),
-  dhparam: fs.readFileSync('dhparam.pem')
+  cert: fs.readFileSync('chained.pem')//,
+  //dhparam: fs.readFileSync('dhparam.pem')
 }, app).listen(app.get('port'), () => {
   console.log('Express server listening on port ' + app.get('port'));
 });
