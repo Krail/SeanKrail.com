@@ -40,11 +40,11 @@ module.exports.sass = () => {
       });
     }
   );
-  http.get('http://normalize-css.googlecode.com/svn/trunk/normalize.min.css', (res) => {
+  http.get('http://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css', (res) => {
     var css = '';
     res.on('data', (data) => { css += data });
     res.on('end', () => {
-      fs.writeFile(path.join(__dirname, '..', 'public', 'dynamic', 'css', 'normalize.min.css'), css, 'utf8', (err) => { if (err) throw err.formatted; });
+    fs.writeFile(path.join(__dirname, '..', 'public', 'dynamic', 'css', 'normalize.min.css'), css, 'utf8', (err) => { if (err) throw err.formatted; });
     });
   });
 };

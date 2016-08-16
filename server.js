@@ -88,7 +88,7 @@ app.get('/(home)?', routes.home);
 // GET resume page
 app.get('/darts', (req, res) => {
   //res.redirect(path.join(__dirname, 'public', 'static', 'darts', 'index.html'));
-  res.redirect('/static/darts/index.html');
+  res.redirect('/doxygen/darts/index.html');
 });
 
 // GET resume page
