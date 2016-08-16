@@ -22,7 +22,7 @@ var AWS = require('aws-sdk');
 var sass_minify = require('./modules/sass-minify.js');
 var projects = require('./modules/projects.js');
 
-var LEX = require('letsencrypt-express');
+//var LEX = require('letsencrypt-express').testing();
 
 // Instantiate the app
 var app = express();
@@ -209,25 +209,26 @@ var signup = function(nameSubmitted, emailSubmitted, previewPreference) {
 };
 
 
-var lex = LEX.create({
-  configDir: require('os').homedir() + '/letsencrypt/etc',
+/*var lex = LEX.create({
+  //configDir: require('os').homedir() + '/letsencrypt/etc',
+  configDif: null,
+  onRequest: app,
+  letsencrypt: null,
   approveRegistration: (hostname, approve) => {
-    if (hostname === DOMAIN) {
+    //if (hostname === 'seankrail') {
       approve(null, {
         domains: ['seankrail.com'],
         email: 'i@seankrail.com',
         agreeTos: true
       });
-    }
+    //}
   }
-});
+});*/
 
-lex.onRequest = app;
-
-lex.listen([80], [443], () => {
+/*lex.listen([], [443, 5001], () => {
   var protocol = ('requestCert' in this) ? 'https' : 'http';
   console.log("Listening at " + protocol + '://localhost:' + this.address().port);
-});
+});*/
 
 
-//http.createServer(app).listen(app.get('port'), () => { console.log('Express server listening on port ' + app.get('port')); });
+http.createServer(app).listen(app.get('port'), () => { console.log('Express server listening on port ' + app.get('port')); });
