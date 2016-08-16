@@ -28,7 +28,8 @@ var projects = require('./modules/projects.js');
 var app = express();
 
 
-app.set('port', process.env.PORT || 443); // FOR DEPLOYMENT
+app.set('port', 443);
+//app.set('port', process.env.PORT || 443); // FOR DEPLOYMENT
 //app.set('port', process.env.PORT || 3000); // FOR DEVELOPMENT @ http://localhost:3000
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
