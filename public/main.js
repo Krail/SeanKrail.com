@@ -150,26 +150,38 @@ function initMap() {
 		  latitude and longitude properties, expressed in meters.
 	*/
 	function UserMarker(_latitude, _longitude, _accuracy, _heading) {
-		this.user.latitude = _latitude;
-		this.user.longitude = _longitude;
-		this.user.accuracy = _accuracy;
-		this.user.heading = _heading;
+		this.user = {
+			latitude: _latitude,
+			longitude: _longitude,
+			accuracy: _accuracy,
+			heading: _heading
+		};
 
-		this.marker.point = MyPoint(_latitude, _longitude);
+		var point = null, accuracy = null, heading = null;
 
-		if (_accuracy && _accuracy > 5) this.marker.accuracy = MyAccuracy(_latitude, _longitude, _accuracy);
-		else this.marker.accuracy = null;
+		point = MyPoint(_latitude, _longitude);
 
-		if (_heading) this.marker.heading = MyHeading(_latitude, _longitude, _heading);
-		else this.marker.heading = null;
+		if (_accuracy && _accuracy > 5) accuracy = MyAccuracy(_latitude, _longitude, _accuracy);
+		else accuracy = null;
+
+		if (_heading) heading = MyHeading(_latitude, _longitude, _heading);
+		else heading = null;
+
+		this.marker = {
+			point: point,
+			accuracy: accuracy,
+			heading, heading
+		};
 
 	}
 
 	function UserPath(_start_latitude, _start_longitude, _end_latitude, _end_longitude) {
-		this.user.start_latitude = _start_latitude;
-		this.user.start_longitude = _start_longitude;
-		this.user.end_latitude = _end_latitude;
-		this.user.end_longitude = _end_longitude;
+		this.user = {
+			start_latitude: _start_latitude,
+			start_longitude: _start_longitude,
+			end_latitude: _end_latitude,
+			end_longitude: _end_longitude
+		};
 
 		this.path = new google.maps.Polyline({
 			clickable: false,
@@ -206,7 +218,7 @@ function MyPoint(_latitude, _longitude) {
 		radius: 5,
 		strokeColor: '#00FF00',
 		strokeOpacity: 0.8,
-		strokerPosition: google.maps.strokerPosition.CENTER,
+		strokePosition: google.maps.StrokePosition.CENTER,
 		strokeWeight: 1,
 		visible: true,
 		zIndex: high_zIndex
@@ -265,7 +277,7 @@ function MyAccuracy(_latitude, _longitude, _accuracy) {
 		radius: _accuracy,
 		strokeColor: '#FF0000',
 		strokeOpacity: 0.8,
-		strokerPosition: google.maps.strokerPosition.CENTER,
+		strokePosition: google.maps.StrokePosition.CENTER,
 		strokeWeight: 2,
 		visible: true,
 		zIndex: low_zIndex
