@@ -67,7 +67,7 @@ function initMap() {
 
 	buffer = [];
 	markers = [];
-	lines = [];
+	paths = [];
 	high_zIndex = 10000;
 	medium_zIndex = 5000;
 	low_zIndex = 0;
@@ -110,7 +110,7 @@ function initMap() {
 
 			if (markers.length > 1) {
 				var prev_marker = markers[markers.length-2];
-				lines.push(new UserPath(prev_marker.latitude, prev_marker.longitude, coordinates.latitude, coordinates.longitude));
+				paths.push(new UserPath(prev_marker.user.latitude, prev_marker.user.longitude, coordinates.latitude, coordinates.longitude));
 			}
 
 			map.setCenter(pos);
@@ -226,6 +226,28 @@ function MyPoint(_latitude, _longitude) {
 }
 
 /*
+	Function for drawing a user's point's radius of accuracy in meters
+*/
+function MyAccuracy(_latitude, _longitude, _accuracy) {
+	return new google.maps.Circle({
+		center: {lat: _latitude, lng: _longitude},
+		clickable: false,
+		draggable: false,
+		editable: false,
+		fillColor: '#FF0000',
+		fillOpacity: 0.35,
+		map: map,
+		radius: _accuracy,
+		strokeColor: '#FF0000',
+		strokeOpacity: 0.8,
+		strokePosition: google.maps.StrokePosition.CENTER,
+		strokeWeight: 2,
+		visible: true,
+		zIndex: low_zIndex
+	});
+}
+
+/*
 	Function for drawing the direction a user is traveling at a given point
 */
 function MyHeading(_latitude, _longitude, _heading) {
@@ -259,28 +281,6 @@ function MyHeading(_latitude, _longitude, _heading) {
 		title: '',
 		visible: true,
 		zIndex: medium_zIndex
-	});
-}
-
-/*
-	Function for drawing a user's point's radius of accuracy in meters
-*/
-function MyAccuracy(_latitude, _longitude, _accuracy) {
-	return new google.maps.Circle({
-		center: {lat: _latitude, lng: _longitude},
-		clickable: false,
-		draggable: false,
-		editable: false,
-		fillColor: '#FF0000',
-		fillOpacity: 0.35,
-		map: map,
-		radius: _accuracy,
-		strokeColor: '#FF0000',
-		strokeOpacity: 0.8,
-		strokePosition: google.maps.StrokePosition.CENTER,
-		strokeWeight: 2,
-		visible: true,
-		zIndex: low_zIndex
 	});
 }
 
