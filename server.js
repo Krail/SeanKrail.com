@@ -23,7 +23,7 @@ var AWS = require('aws-sdk');
 var sass_minify = require('./modules/sass-minify.js');
 var projects = require('./modules/projects.js');
 
-var shortid = require('shortid');
+// var shortid = require('shortid');
 //var ExpressPeerServer = require('peer').ExpressPeerServer;
 var auto_peer = require('auto-peer');
 

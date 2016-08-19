@@ -5,17 +5,17 @@
   "scripts": { "start": "node server.js" },
   "dependencies": {
     "express": "3.4.0",
-    "jade": "*",
+    "jade": "1.11.0",
     "aws-sdk": "*",
-    "ncp": "*",
-    "node-schedule": "*",
-    "node-sass": "*",
-    "postcss": "*",
-    "autoprefixer": "*",
-    "node-minify": "*",
-    "github": "*",
-    "showdown": "*",
-    "letsencrypt-express": "*"
+    "ncp": "2.0.0",
+    "node-schedule": "1.1.1",
+    "node-sass": "3.8.0",
+    "postcss": "5.1.2",
+    "autoprefixer": "6.4.0",
+    "node-minify": "1.3.9",
+    "github": "2.5.1",
+    "showdown": "1.4.3",
+    "auto-peer": "0.8.1"
   },
   "bugs": { "url": "https://github.com/Krail/SeanKrail.com/issues" }
 }
