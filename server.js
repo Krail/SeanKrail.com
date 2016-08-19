@@ -25,7 +25,6 @@ var projects = require('./modules/projects.js');
 
 // var shortid = require('shortid');
 //var ExpressPeerServer = require('peer').ExpressPeerServer;
-var auto_peer = require('auto-peer');
 
 //var LEX = require('letsencrypt-express').testing();
 
@@ -318,8 +317,8 @@ var signup = function(nameSubmitted, emailSubmitted, previewPreference) {
 //app.use('/peerjs', ExpressPeerServer(server, { debug: true }));
 //server.listen(app.get('port'), () => { console.log('Express server listening on port ' + app.get('port')); });
 var server = http.createServer(app).listen(app.get('port'), () => { console.log('Express server listening on port ' + app.get('port')); });
-auto_peer = auto_peer(server);
-app.user(auto_peer.app)
+auto_peer = require('auto-peer')(server);
+app.use(auto_peer.app)
 
 // server.on('connection', (_id) => {
 //   var session = {

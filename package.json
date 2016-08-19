@@ -1,6 +1,6 @@
 {
   "name": "seankrail.com",
-  "version": "1.0.47",
+  "version": "1.0.48",
   "private": true,
   "scripts": { "start": "node server.js" },
   "dependencies": {
