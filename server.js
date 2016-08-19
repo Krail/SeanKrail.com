@@ -15,12 +15,17 @@ var express = require('express');
 var routes = require('./routes/index.js');
 var http = require('http');
 var https = require('https');
+//var cookieParser = require('cookie-parser')
 var path = require('path');
 var fs = require('fs');
 var AWS = require('aws-sdk');
 
 var sass_minify = require('./modules/sass-minify.js');
 var projects = require('./modules/projects.js');
+
+var shortid = require('shortid');
+//var ExpressPeerServer = require('peer').ExpressPeerServer;
+var auto_peer = require('auto-peer');
 
 //var LEX = require('letsencrypt-express').testing();
 
@@ -38,6 +43,7 @@ app.use(express.favicon(path.join(__dirname, 'public', 'static', 'images', 'favi
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
 app.use(express.methodOverride());
+//app.use(cookieParser());
 app.use(app.router);
 app.use(express.directory(path.join(__dirname, 'public'), {
   hidden: true, icons: true, filter: false
@@ -83,6 +89,82 @@ projects.refresh(routes.projects);
 require('node-schedule').scheduleJob('0 0 * * *', function() {
   projects.refresh(routes.projects);
 });
+
+/*
+  Follow Me functions
+*/
+app.post('/followme', (_req, _res) => {
+  var id = req.body.id;
+  var geoposition = req.body.geoposition;
+  res.send(200);
+});
+
+// function UserGeoposition(_timestamp, _latitude, _longitude, _accuracy, _altitudeAccuracy, _heading, _speed) {
+//   this.timestamp = _timestamp;
+//   this.latitude = _latitude;
+//   this.longitude = _longitude;
+//   this.accuracy = _accuracy;
+//   this.altitudeAccuracy = _altitudeAccuracy;
+//   this.heading = _heading;
+//   this.speed = _speed;
+// }
+// function User(_uuid, _groupid, _name, _timestamp) {
+//   this.id = _uuid;
+//   this.groupid = _groupid;
+//   this.name = _name;
+//   this.timestamp = _timestamp;
+// }
+// function Group(_uuid, _name, _users, _timestamp) {
+//   this.id = _uuid;     // S
+//   this.name = _name;   // S
+//   this.users = _users; // SS
+//   this.timestamp = _timestamp; // N
+// }
+
+// function createUser()
+
+// function createGroup(_group) {
+//   var user = {
+//     TableName: config.USER_TABLE,
+//     Key: {
+//       id: _group.users[0]
+//     }
+//   };
+//   db.getItem(user, (err, data) => {
+//     if (err) throw err.formatted;
+//     else if (!data) throw "User doesn't exist.";
+//     else {
+//       var group = {
+//         TableName: config.GROUP_TABLE,
+//         Item: {
+//           id: _uuid,
+//           name: _name,
+//           users: _users,
+//           timestamp: _timestamp
+//         };
+//       };
+//       db.putItem(group, (err, data) => {
+//         if (err) throw err.formatted;
+//         else console.log('Group added to database.');
+//       });
+//     }
+//   });
+// }
+// app.post('/signup', (req, res) => {
+//   var nameField = req.body.name,
+//       emailField = req.body.email,
+//       previewBool = req.body.previewAccess;
+//   res.send(200);
+//   signup(nameField, emailField, previewBool);
+// });
+
+// // POST followme to join group
+// app.post('/followme/group/create', (req, res) => {
+//   console.log('GET /followme/group/create');
+//   var group = new Group(shortid.generate(), req.body.name, [req.body.userid], (new Date()).getTime());
+//   createGroup(group);
+//   res.send(group);
+// });
 
 
 // GET home page
@@ -232,7 +314,39 @@ var signup = function(nameSubmitted, emailSubmitted, previewPreference) {
 });*/
 
 
-http.createServer(app).listen(app.get('port'), () => { console.log('Express server listening on port ' + app.get('port')); });
+//var server = http.createServer(app);
+//app.use('/peerjs', ExpressPeerServer(server, { debug: true }));
+//server.listen(app.get('port'), () => { console.log('Express server listening on port ' + app.get('port')); });
+var server = http.createServer(app).listen(app.get('port'), () => { console.log('Express server listening on port ' + app.get('port')); });
+auto_peer = auto_peer(server);
+app.user(auto_peer.app)
+
+// server.on('connection', (_id) => {
+//   var session = {
+//     TableName: config.SESSION_TABLE,
+//     Item: {
+//       SessionID: _id,
+//       LastUpdated: Date.now()
+//     }
+//   };
+//   db.putItem(session, (_err, _data) => {
+//     if (_err) throw _err.formatted;
+//     else console.log('Crated session for newly connected user ' + _id + '.');
+//   });
+// });
+// server.on('disconnect', (_id) => {
+//   var session = {
+//     TableName: config.SESSION_TABLE,
+//     Key: { SessionID, _id }//,
+//     // ConditionExpression: "_id <= :id",
+//     // ExpressionAttributeValues: { ":id": _id }
+//   };
+//   db.deleteItem(session, (_err, _data) => {
+//     if (_err) throw _err.formatted;
+//     else console.log('Deleted session for newly disconnected user ' + _id + '.');
+//   });
+// });
+
 /*https.createServer({
   key: fs.readFileSync('domain.key'),
   cert: fs.readFileSync('chained.pem'),
