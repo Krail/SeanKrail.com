@@ -1,6 +1,0 @@
-<map id="darts::ThreadedProcedure" name="darts::ThreadedProcedure">
-<area shape="rect" id="node2" href="$classdarts_1_1loop.html" title="darts::loop" alt="" coords="110,80,193,107"/>
-<area shape="rect" id="node5" href="$classdarts_1_1nestedLoop.html" title="darts::nestedLoop" alt="" coords="217,80,344,107"/>
-<area shape="rect" id="node3" href="$classdarts_1_1nestedLoop_1_1DoubleLoop.html" title="darts::nestedLoop::\lDoubleLoop" alt="" coords="5,155,140,196"/>
-<area shape="rect" id="node4" href="$classdarts_1_1nestedLoop_1_1SingleLoop.html" title="darts::nestedLoop::\lSingleLoop" alt="" coords="164,155,299,196"/>
-</map>

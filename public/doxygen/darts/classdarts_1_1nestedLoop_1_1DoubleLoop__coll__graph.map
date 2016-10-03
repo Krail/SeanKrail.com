@@ -1,7 +1,0 @@
-<map id="darts::nestedLoop::DoubleLoop" name="darts::nestedLoop::DoubleLoop">
-<area shape="rect" id="node2" href="$classdarts_1_1loop.html" title="darts::loop" alt="" coords="581,53,664,80"/>
-<area shape="rect" id="node3" href="$classdarts_1_1ThreadedProcedure.html" title="darts::ThreadedProcedure" alt="" coords="5,44,177,71"/>
-<area shape="rect" id="node4" href="$classdarts_1_1Codelet.html" title="darts::Codelet" alt="" coords="311,81,415,108"/>
-<area shape="rect" id="node6" href="$classdarts_1_1codeletFor.html" title="darts::codeletFor\&lt;\l darts::nestedLoop::\lSingleLoop \&gt;" alt="" coords="553,104,692,160"/>
-<area shape="rect" id="node5" href="$classdarts_1_1SyncSlot.html" title="darts::SyncSlot" alt="" coords="35,109,147,136"/>
-</map>

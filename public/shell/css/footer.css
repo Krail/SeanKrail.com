@@ -1,0 +1,16 @@
+/* /public/shell/css/footer.css */
+footer {
+    border-radius: 1vmin 1vmin 5vmin 5vmin;
+}
+footer ul {
+    border-radius: 1vmin 1vmin 0 0;
+}
+footer li:first-child {
+    border-radius: 1vmin 0 0 0;
+}
+footer li {
+    border-radius: 0;
+}
+footer li:last-child {
+    border-radius: 0 1vmin 0 0;
+}

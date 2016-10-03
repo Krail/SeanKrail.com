@@ -1,0 +1,27 @@
+[
+	{
+		"class": "resume",
+		"src": "/resume.png"
+	},
+	{
+		"class": "download",
+		"header": "Downloadable Formats",
+		"downloads":
+		[
+			{
+				"header": "Download in PDF format",
+				"type": "application/pdf",
+				"href": "/resume.pdf",
+				"file": "KrailSean-Resume.pdf",
+				"name": "PDF"
+			},
+			{
+				"header": "Download in PNG format",
+				"type": "image/png",
+				"href": "/resume.png",
+				"file": "KrailSean-Resume.png",
+				"name": "PNG"
+			}
+		]
+	}
+]

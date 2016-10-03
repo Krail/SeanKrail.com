@@ -1,0 +1,24 @@
+[
+  {
+    "class": "article",
+    "header": "Hey, thanks for visiting!",
+    "paragraphs":
+    [
+      "Hello! My name is Sean. My interests include microprocessor design, longboarding, software design, paddleboarding, silent speech interfaces, and hiking to name a few.",
+      "I'm currently an undergraduate student at University of Delaware studying Computer Engineering and Computer Science. In the past, I've worked in the CAPSL group (Computer Architecture and Parallel Systems Laboratory) headed by Professor Guang R. Gao. I plan on graduating after this Spring semester with a B.S. in Computer Engineering and a minor in Computer Science."
+    ],
+    "datetime": "2016-02-05T15:30:00-05:00",
+    "datetext": "Friday, February 5th, 2016"
+  },
+  {
+    "class": "article",
+    "header": "About this site",
+    "paragraphs":
+    [
+      "This site is hosted by Amazon's Web Services' Elastic Beanstalk running Node.js with Express. I use Twitter's Bootstrap for its glyphicons, normalize.css to standardize its appearance in most browsers, the Lato font family for the font, and jQuery for its smooth animations.",
+      "It's almost finished construction and looks the way I'd like it to in the latest versions of Safari, Firefox, and Chrome. If you notice any bugs, dislike my design, or any other concerns, please email me! I'm going to be continually adding more of my projects as I find time to do so in the coming weeks (classes start February 8th)."
+    ],
+    "datetime": "2016-02-05T15:15:00-05:00",
+    "datetext": "Friday, February 5th, 2016"
+  }
+]

@@ -1,21 +1,10 @@
 {
   "name": "seankrail.com",
-  "version": "1.0.48",
+  "version": "2.0.0-alpha",
   "private": true,
   "scripts": { "start": "node server.js" },
   "dependencies": {
-    "express": "3.4.0",
-    "jade": "*",
-    "aws-sdk": "*",
-    "ncp": "*",
-    "node-schedule": "*",
-    "node-sass": "*",
-    "postcss": "*",
-    "autoprefixer": "*",
-    "node-minify": "*",
-    "github": "*",
-    "showdown": "*",
-    "auto-peer": "*"
+    "express": "4.14.x"
   },
   "bugs": { "url": "https://github.com/Krail/SeanKrail.com/issues" }
 }

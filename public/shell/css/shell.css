@@ -1,0 +1,11 @@
+/* /public/shell/css/shell.css */
+body {
+    background-color: lightblue;
+    margin: 2vmin 4vmin;
+}
+header, footer {
+    border-radius: 5vmin 5vmin 1vmin 1vmin;
+}
+header, article, footer {
+    background-color: white;
+}

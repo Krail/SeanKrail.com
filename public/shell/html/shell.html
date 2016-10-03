@@ -1,0 +1,111 @@
+<!-- /public/shell/html/shell.html -->
+<!doctype default>
+<!-- v2.0.0-alpha -->
+<!--
+  ╔╦╦╦═╦╗╔═╦═╦══╦═╗
+  ║║║║╩╣╚╣═╣║║║║║╩╣
+  ╚══╩═╩═╩═╩═╩╩╩╩═╝
+-->
+<!--
+                          .s$$$Ss.
+              .8,         $$$. _. .              ..sS$$$$$"  ...,.;
+   o.   ,@..  88        =.$"$'  '          ..sS$$$$$$$$$$$$s. _;"'
+    @@@.@@@. .88.   `  ` ""l. .sS$$.._.sS$$$$$$$$$$$$S'"'
+     .@@@q@@.8888o.         .s$$$$$$$$$$$$$$$$$$$$$'
+       .:`@@@@33333.       .>$$$$$$$$$$$$$$$$$$$$'
+       .: `@@@@333'       ..>$$$$$$$$$$$$$$$$$$$'
+        :  `@@333.     `.,   s$$$$$$$$$$$$$$$$$'
+        :   `@33       $$ S.s$$$$$$$$$$$$$$$$$'
+        .S   `Y      ..`  ,"$' `$$$$$$$$$$$$$$
+        $s  .       ..S$s,    . .`$$$$$$$$$$$$.
+        $s .,      ,s ,$$$$,,sS$s.$$$$$$$$$$$$$.
+        / /$$SsS.s. ..s$$$$$$$$$$$$$$$$$$$$$$$$$.
+       /`.`$$$$$dN.ssS$$'`$$$$$$$$$$$$$$$$$$$$$$$.
+      ///   `$$$$$$$$$'    `$$$$$$$$$$$$$$$$$$$$$$.
+     ///|     `S$$S$'       `$$$$$$$$$$$$$$$$$$$$$$.
+    / /                      $$$$$$$$$$$$$$$$$$$$$.
+                             `$$$$$$$$$$$$$$$$$$$$$s.
+                              $$$"'        .?T$$$$$$$
+                             .$'        ...      ?$$#\
+                             !       -=S$$$$$s
+                           .!       -=s$$'  `$=-_      :
+                          ,        .$$$'     `$,       .|
+                         ,       .$$$'          .        ,
+                        ,     ..$$$'
+                            .s$$$'                 `s     .
+                     .   .s$$$$'                    $s. ..$s
+                    .  .s$$$$'                      `$s=s$$$
+                      .$$$$'                         ,    $$s
+                 `   " .$$'                               $$$
+                 ,   s$$'                              .  $$$s
+              ` .s..s$'                                .s ,$$
+               .s$$$'                                   "s$$$,
+            -   $$$'                                     .$$$$.
+          ."  .s$$s                                     .$',',$.
+          $s.s$$$$S..............   ................    $$....s$s.....
+           `""'           `     ```"""""""""""""""         `""   ``
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Sean Krail</title>
+    <meta name="description" content="Public host for my resume, projects portfolio, and development.">
+    <meta name="author" content="Sean Krail">
+    <!-- css -->
+    <link rel="stylesheet" href="/shell/css/normalize-4.2.0.min.css" type="text/css">
+    <link rel="stylesheet" href="/shell/css/shell.css" type="text/css">
+  </head>
+  <body>
+    <!-- header -->
+    <link rel="stylesheet" href="/shell/css/header.css">
+    <script> </script>
+    <header id="header">
+      <a id="title" title="Homepage" type="text/html" href="/home">
+        <h1>Sean Krail</h1>
+      </a>
+      <nav>
+        <ul>
+          <li><button id="projects-button">Projects</button></li>
+          <li><button id="home-button">🏠</button></li>
+          <li><button id="resume-button">Resume</button></li>
+        </ul>
+      </nav>
+      <!-- on-screen error notifications for search field -->
+      <div class="notifications">
+        <div id="notification-error-network" role="alert" style="display:none"><p>❗ You are not connected to the internet.</p></div>
+        <div id="notification-error-character" role="alert" style="display:none"><p>❗ Only letters, spaces, and a few <i>necessary</i> special characters are allowed in the search field.</p></div>
+        <div id="notification-error-length" role="alert" style="display:none"><p>❗ Shorten your search criteria (60-character maximum).</p></div>
+      </div>
+      <!-- search field -->
+      <!-- TODO: set oninput to nothing and dynamically set it at startup in shell.js -->
+      <form id="searchForm" autocomplete="off" onsubmit="return false">
+        <input id="search" name="search" type="search" pattern="^[a-zA-Z0-9 ,.&quot;'\-]+$" autocomplete="off" placeholder="Search for a topic here using keywords..." required>
+        <button id="submitButton" form="searchForm" type="submit" value="Submit">🔍</button>
+        <input id="reload" name="reload" type="hidden" value="false" required>
+      </form>
+      <!-- On-screen notification for loading -->
+      <div class="notifications">
+        <div id="notification-loading" role="alert" style="display:none"><p>⌛ Page is loading...</p></div>
+      </div>
+    </header>
+    <!-- main -->
+    <link rel="stylesheet" href="/shell/css/main.css">
+    <script> </script>
+    <main id="main"></main>
+    <!-- main -->
+    <link rel="stylesheet" href="/shell/css/footer.css">
+    <script> </script>
+    <footer>
+      <ul>
+        <li><address><a title="In no rush? Send me an email!" href="mailto:i@seankrail.com">i@seankrail.com 📧</a></address></li>
+        <li><address><a title="Time is a factor? Leave me a message!" href="tel:+12674218790">📱 267.421.8790</a></address></li>
+      </ul>
+      <button id="backtotop">🔝<p id="version">v2.0.0-alpha</p></button>
+    </footer>
+    <!--<script src="/shell/js/compatibility.js" defer></script>-->
+    <script src="/shell/js/testing.js" defer></script>
+    <script src="/shell/js/polyfill/fetch.js" defer></script>
+    <script src="/shell/js/shell.js" defer></script>
+  </body>
+</html>

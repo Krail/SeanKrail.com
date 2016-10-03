@@ -1,8 +1,0 @@
-<map id="darts::ThreadLocalInfo" name="darts::ThreadLocalInfo">
-<area shape="rect" id="node2" href="$classdarts_1_1ThreadedProcedure.html" title="darts::ThreadedProcedure" alt="" coords="5,95,177,121"/>
-<area shape="rect" id="node3" href="$classdarts_1_1TPScheduler.html" title="darts::TPScheduler" alt="" coords="451,95,585,121"/>
-<area shape="rect" id="node4" href="$classdarts_1_1Scheduler.html" title="darts::Scheduler" alt="" coords="279,5,397,32"/>
-<area shape="rect" id="node7" href="$classdarts_1_1MScheduler.html" title="darts::MScheduler" alt="" coords="291,95,419,121"/>
-<area shape="rect" id="node5" href="$classdartsPool.html" title="dartsPool\&lt; darts::tpClosure * \&gt;" alt="" coords="421,5,623,32"/>
-<area shape="rect" id="node6" href="$classdartsPool.html" title="dartsPool\&lt; darts::Codelet * \&gt;" alt="" coords="647,5,839,32"/>
-</map>

@@ -1,5 +1,4 @@
 node_modules/
-.elasticbeanstalk/
+private/
 .DS_Store
-token.token
-*.token
+stale/
